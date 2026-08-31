@@ -42,7 +42,7 @@ Ses trois défauts structurels, qui motivent la refonte :
 
 **O5 — Conserver le rendu à l'identique.** La refonte est structurelle, pas graphique. Le site livré doit être visuellement indiscernable de l'original sur les pages migrées.
 
-**O6 — Rester statique et léger.** Export statique, pas de serveur applicatif, pas de base de données. Hébergement sur n'importe quel service de fichiers statiques.
+**O6 — Rester simple, et construit pour grandir.** Un site web ordinaire, sans machinerie inutile : pas de base de données, pas de couche d'état, pas d'abstraction posée « au cas où ». Mais le dossier grandira — nouveaux chapitres, nouveaux millésimes, nouvelles figures. La simplicité recherchée est donc celle de la structure, pas celle du raccourci : les 21 répertoires ont tous la même forme, les composants sont partagés, les données sont typées. Ajouter un 22ᵉ chapitre doit être un copier-coller de répertoire, pas une refonte.
 
 ### Non-objectifs
 
@@ -57,7 +57,7 @@ Ses trois défauts structurels, qui motivent la refonte :
 | Choix | Motivation |
 |---|---|
 | **Next.js 15** (App Router) + TypeScript | Un répertoire = une route = un chapitre : la structure de fichiers demandée est exactement le modèle de routage de l'App Router. Composants serveur par défaut : le contenu est rendu au build, sans JS de rendu. |
-| **`output: 'export'`** | Build statique complet dans `out/`. Aucun runtime Node en production, conformément à O6. |
+| **Vercel** | Hébergement et déploiement. Build Next.js standard, sans `output: 'export'` : les pages restent prérendues au build (§9), mais on garde la porte ouverte aux capacités serveur du cadre — revalidation, route handlers, images — le jour où le dossier en aura besoin. Se fermer cette porte aujourd'hui n'apporterait rien, puisque l'hébergement est de toute façon Vercel. |
 | **TSX pour le contenu** | Le texte reste du texte, mais les tableaux et figures sont des appels de composants typés : une faute de frappe dans un identifiant de tableau casse la compilation au lieu de produire un trou dans la page. |
 | **`data.ts` typé + Zod** | Le typage TypeScript attrape la plupart des erreurs à l'écriture ; Zod valide au build ce que le type ne peut pas dire (source inexistante au registre, longueur de série incohérente, millésime manquant). |
 | **CSS natif** (custom properties) | Le CSS existant est déjà bon et tient en 292 lignes. On le reprend **verbatim**, avec ses noms de classes. Ni Tailwind, ni CSS Modules, ni CSS-in-JS : tout changement de nom de classe est un risque de régression visuelle pour zéro bénéfice. |
@@ -65,6 +65,8 @@ Ses trois défauts structurels, qui motivent la refonte :
 | **Playwright** | Captures de non-régression visuelle (§12, critère 5). |
 
 Alternative écartée : Astro. Il produirait moins de JavaScript (§9), mais Next.js est le cadre demandé, et l'App Router donne la correspondance répertoire ↔ chapitre ↔ route sans configuration.
+
+Alternative écartée : `output: 'export'`. L'export statique pur produirait un dossier `out/` déployable n'importe où, mais le site est hébergé sur Vercel, qui prérend déjà tout ce qui est prérendable. L'export n'ajouterait donc aucune légèreté réelle, et retirerait par avance des possibilités (revalidation à la demande, génération d'un CSV par tableau, page de recherche côté serveur) que la croissance du dossier rendra peut-être utiles.
 
 Alternative écartée : MDX. Le contenu en TSX pur évite une chaîne de compilation supplémentaire et rend les props des composants vérifiables par le compilateur. Le texte rédactionnel en JSX reste lisible ; c'est le seul point où le TSX est un peu moins confortable que le Markdown, et c'est un prix acceptable pour la vérification de types.
 
@@ -76,7 +78,7 @@ Alternative écartée : MDX. Le contenu en TSX pur évite une chaîne de compila
 France2027/
 ├─ specs/
 │  └─ site-chiffres-2027.md            ← ce document
-├─ next.config.mjs                     ← output: 'export'
+├─ next.config.mjs
 ├─ package.json · tsconfig.json · vitest.config.ts · playwright.config.ts
 ├─ src/
 │  ├─ app/
@@ -288,7 +290,7 @@ L'objectif O3 se vérifie de trois façons, sans quitter le chapitre :
 
 1. **Lecture.** Un `data.ts` contient l'intégralité des chiffres du chapitre, chacun sous un `sources` et un `vintage`. Une relecture éditoriale se fait sur ce seul fichier.
 2. **Compilation.** `npm run build` refuse un chiffre tabulé sans source, une source inconnue, une ligne dont une clé n'existe pas dans `columns`.
-3. **Audit.** `scripts/check-data.ts` produit `out/audit.json` : pour chaque chapitre, la liste des tableaux et séries, leurs sources, leurs millésimes, et les anomalies. C'est le fichier qu'on ouvre quand quelqu'un conteste un chiffre.
+3. **Audit.** `scripts/check-data.ts` produit `.artifacts/audit.json` : pour chaque chapitre, la liste des tableaux et séries, leurs sources, leurs millésimes, et les anomalies. C'est le fichier qu'on ouvre quand quelqu'un conteste un chiffre.
 
 ### 6.4 Validation
 
@@ -347,6 +349,7 @@ Ils sont la garantie de mise en forme cohérente : **c'est le composant, pas le 
 
 ## 9. Accessibilité, performance, SEO
 
+- **Toutes les routes sont prérendues au build.** Aucune page de lecture n'est rendue à la requête : pas de `dynamic = 'force-dynamic'`, pas de `cookies()` ni de `headers()` dans un chapitre. Sur Vercel, une page de chapitre est donc servie depuis le cache statique, exactement comme le ferait un export.
 - Chaque page de chapitre pèse moins de 150 Ko de HTML et n'embarque **aucun JS de rendu** : tableaux, figures et encadrés sont rendus au build par des composants serveur.
 - **Coût du choix Next.js, énoncé franchement.** Même sans composant client, l'App Router livre son runtime React et son routeur — de l'ordre de 90 à 110 Ko compressés. Le HTML est complet et la page se lit intégralement sans JavaScript, mais on ne tient pas la promesse « zéro JS » qu'aurait donnée un générateur statique pur. Budget fixé : **≤ 120 Ko de JS compressé** sur une page de chapitre, mesuré en intégration continue ; scrollspy, thème et recherche sont chargés dynamiquement, la recherche seulement à la première frappe.
 - Contrastes vérifiés en clair et en sombre, y compris les cinq couleurs de série `--s1`…`--s5` et les couleurs d'encadré.
@@ -384,13 +387,13 @@ L'extraction est semi-automatique. `scripts/extract.ts` (Node + `node-html-parse
 
 ## 12. Critères d'acceptation
 
-1. `npm run build` produit un site statique dans `out/` sans avertissement, et échoue si une donnée viole un schéma.
+1. `npm run build` passe sans avertissement et échoue si une donnée viole un schéma ; la sortie du build montre les 21 chapitres, `/`, `/sources` et `/tout` marqués comme prérendus statiquement, aucun en rendu dynamique.
 2. **Les 21 chapitres ont chacun leur répertoire** sous `src/app/(chapitres)/`, contenant `page.tsx`, `content.tsx` et `data.ts` (ou `data/index.ts` pour les deux plus gros) — vérifié par un test de structure.
 3. Aucun nombre destiné à un tableau ou un graphique ne subsiste dans un `content.tsx` ou dans `src/components`.
 4. Les 21 chapitres sont accessibles à `/<slug>`, `/sources` liste la bibliographie, et `/tout` reconstitue le document intégral.
 5. **Non-régression visuelle** : capture Playwright de `/tout` comparée à celle du fichier d'origine, en clair et en sombre, aux largeurs 1440 / 768 / 390 px. Écart toléré : bruit de rendu des polices uniquement.
 6. La page `/sources` est générée ; zéro source orpheline ou fantôme.
-7. Chaque tableau et chaque série porte au moins une source et un millésime — garanti par le typage, revérifié par `check-data.ts` en intégration continue, et restitué dans `out/audit.json`.
+7. Chaque tableau et chaque série porte au moins une source et un millésime — garanti par le typage, revérifié par `check-data.ts` en intégration continue, et restitué dans `.artifacts/audit.json`.
 8. Chaque figure expose ses données en tableau alternatif.
 9. Les pages de lecture sont entièrement lisibles sans JavaScript, sommaire et navigation compris ; le JS embarqué d'une page de chapitre reste sous 120 Ko compressés.
 10. Lighthouse ≥ 95 sur les quatre axes pour une page de chapitre.
@@ -402,7 +405,7 @@ L'extraction est semi-automatique. `scripts/extract.ts` (Node + `node-html-parse
 
 | Lot | Contenu | Livrable vérifiable |
 |---|---|---|
-| **L1** | Squelette Next.js (`output: 'export'`), styles repris, `layout.tsx`, rail, polices, thème | Une page au rendu identique à l'original |
+| **L1** | Squelette Next.js, déploiement Vercel, styles repris, `layout.tsx`, rail, polices, thème | Une page au rendu identique à l'original, en ligne sur une URL de prévisualisation |
 | **L2** | `types.ts`, schémas Zod, `format.ts`, `scales.ts`, `DataTable`, `Source`, `sources.ts` | Tests Vitest verts sur le formatage FR et les échelles |
 | **L3** | Composants de graphique (6 types) + tableau alternatif + `Chapter`, `Question` | Les 5 figures de `synthese` reproduites depuis des données |
 | **L4** | `extract.ts` + chapitre pilote `logement` | Chapitre pilote conforme au critère 5 |
@@ -420,4 +423,4 @@ L1 à L3 sont séquentiels. À partir de L5, les chapitres sont indépendants et
 - **Correction publique des erreurs.** Sur un dossier factuel destiné à une campagne, un journal des corrections daté est un actif, pas une charge. Proposition : une entrée `corrections[]` dans le `meta` de chaque `data.ts` et un encadré en pied de chapitre.
 - **Licence et export des données.** L'architecture proposée permet de publier un CSV téléchargeable par tableau et par figure pour presque rien, généré depuis les mêmes objets. Reste à décider de la licence.
 - **Statut du chapitre `perception-realite`.** L'original s'annonce lui-même partiel sur ce point ; `meta.status: 'partiel'` le dit dans le site. À confirmer avec l'auteur.
-- **Nom de domaine et hébergement** : non tranchés.
+- **Nom de domaine** : non tranché. L'hébergement l'est : Vercel.
