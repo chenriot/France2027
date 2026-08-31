@@ -6,3 +6,9 @@ node_modules/
 dist/
 .astro/
 *.log
+.next/
+out/
+.artifacts/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts

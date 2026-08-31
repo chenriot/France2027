@@ -1,0 +1,38 @@
+/* Repris verbatim de Temp/chiffres2027 (3).html — ne pas retoucher les valeurs.
+   Voir CLAUDE.md, règle 6. */
+
+:root{
+  --paper:#f4f5f3; --surface:#ffffff; --surface-2:#eceeeb;
+  --ink:#151b21; --ink-2:#3d4750; --muted:#6d7780;
+  --rule:#d5d9d6; --rule-2:#c2c8c4;
+  --accent:#1a4e63; --accent-2:#2a7492;
+  --caveat:#8a5320; --caveat-bg:#f6efe6;
+  --gap:#8f3a3a; --gap-bg:#f7ecec;
+  --note:#2c5c4a; --note-bg:#e9f1ed;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7; --s5:#e34948;
+  --shadow:0 1px 2px rgba(21,27,33,.05),0 8px 24px -18px rgba(21,27,33,.35);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#11161a; --surface:#171d22; --surface-2:#1d242a;
+    --ink:#e8ebe9; --ink-2:#bcc4c6; --muted:#8d979b;
+    --rule:#2a3238; --rule-2:#3a444b;
+    --accent:#7cc0d8; --accent-2:#9ad2e6;
+    --caveat:#d6a86a; --caveat-bg:#241d13;
+    --gap:#e08b8b; --gap-bg:#241616;
+    --note:#8fc9b0; --note-bg:#152220;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9; --s5:#e66767;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11161a; --surface:#171d22; --surface-2:#1d242a;
+  --ink:#e8ebe9; --ink-2:#bcc4c6; --muted:#8d979b;
+  --rule:#2a3238; --rule-2:#3a444b;
+  --accent:#7cc0d8; --accent-2:#9ad2e6;
+  --caveat:#d6a86a; --caveat-bg:#241d13;
+  --gap:#e08b8b; --gap-bg:#241616;
+  --note:#8fc9b0; --note-bg:#152220;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9; --s5:#e66767;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -18px rgba(0,0,0,.8);
+}

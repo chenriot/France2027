@@ -1,6 +1,7 @@
 # Spécification — Site « Chiffres pour 2027 »
 
-Statut : proposition · Date : 2026-08-31
+Statut : **mise en œuvre** · Date : 2026-08-31
+Arbitrages et écarts à cette spec : `specs/DECISIONS.md`
 Source de référence : `Temp/chiffres2027 (3).html` (1,1 Mo, 8 721 lignes, monolithe autonome)
 
 ---
@@ -321,7 +322,7 @@ Ils sont la garantie de mise en forme cohérente : **c'est le composant, pas le 
 | `<Verdict kind="ok\|nuance\|faux" />` | Pastille de verdict | `.verdict.v-ok` / `.v-nu` |
 | `<Num>` | Nombre en tabular-nums, formaté FR | `span.num` |
 
-**Résolution des données.** `<DataTable id="…" />` et `<Figure id="…" />` ne reçoivent pas d'objet de données : ils reçoivent un identifiant, résolu contre le `data.ts` du chapitre courant fourni par un contexte serveur posé par `<Chapter>`. Deux conséquences : le contenu reste lisible (`<DataTable id="regalien-pour-100k" />` et rien d'autre), et le type de `id` est restreint aux clés du `data.ts` de ce chapitre — se tromper d'identifiant ne compile pas.
+**Résolution des données.** `<DataTable id="…" />` et `<Figure id="…" />` ne reçoivent pas d'objet de données : ils reçoivent un identifiant, résolu contre le `data.ts` du chapitre. La liaison se fait par un appel de fonction en tête de `content.tsx` — `const { DataTable, Figure } = chapterComponents({ tables, series, mode })` — et non par un contexte React, qui n'existe pas dans les composants serveur (`DECISIONS.md` §D5). Deux conséquences : le contenu reste lisible (`<DataTable id="regalien-pour-100k" />` et rien d'autre), et le type de `id` est restreint aux clés du `data.ts` de ce chapitre — se tromper d'identifiant ne compile pas.
 
 **Base commune des graphiques.** Même `viewBox`, mêmes marges, même grille, même traitement des étiquettes de fin de courbe, même conteneur `.figscroll` pour le défilement horizontal sur mobile. Chaque SVG porte `role="img"` et un `<title>` — comme l'original, qui le fait déjà correctement.
 
@@ -333,7 +334,7 @@ Ils sont la garantie de mise en forme cohérente : **c'est le composant, pas le 
 
 **Styles.** Le CSS de l'original est repris **verbatim** dans `src/styles/`, découpé en `tokens.css` (custom properties et les trois blocs de thème clair / `prefers-color-scheme: dark` / `data-theme`), `base.css` (typographie, grille `.shell`, rail, sections, fiches, tableaux, encadrés) et `print.css` (nouveau). Aucune valeur de couleur, de taille ou d'espacement n'est modifiée, aucun nom de classe n'est renommé. Import global unique dans `app/layout.tsx`.
 
-**Polices.** `next/font/google` charge Newsreader, IBM Plex Sans et IBM Plex Mono avec les mêmes graisses et les mêmes axes que le `<link>` d'origine, en les auto-hébergeant : une dépendance réseau de moins, et pas de saut de rendu. À vérifier au moment de L1 : que le sous-ensemble `latin` retenu contient bien `−` (U+2212) et l'espace insécable fine utilisés par le formatage FR. Si un glyphe manque, on revient au `<link>` d'origine — la fidélité prime sur l'auto-hébergement. Pile de repli déclarée (Georgia, sans-serif système) dans tous les cas.
+**Polices.** Le `<link>` d'origine est repris tel quel, `preconnect` compris. `next/font/google` a été écarté à la mise en œuvre : il génère des noms de familles hachés, alors que le CSS — repris verbatim — appelle `"IBM Plex Sans"`, `"Newsreader"` et `"IBM Plex Mono"` par leur nom réel ; les faire coïncider aurait supposé de modifier le CSS. Voir `DECISIONS.md` §D6, qui décrit aussi comment auto-héberger plus tard sans toucher au CSS.
 
 **Thème.** Le triptyque existant est conservé : palette claire sur `:root` nu, palette sombre sous `@media (prefers-color-scheme: dark)` gardée par `:root:not([data-theme="light"])`, et sous `:root[data-theme="dark"]`. On ajoute un bouton de bascule (`ThemeToggle`, client) qui écrit `data-theme` et le mémorise en `localStorage`, avec un script inline posé par `app/layout.tsx` avant le rendu pour éviter le flash au chargement.
 
@@ -378,7 +379,7 @@ L'extraction est semi-automatique. `scripts/extract.ts` (Node + `node-html-parse
 1. **Découpe** le HTML en 22 sections et, dans chacune, en fiches `div.q` → un `content.tsx` par chapitre, où chaque fiche devient un `<Question>`.
 2. **Convertit les 286 tableaux** en entrées de `tables` : les en-têtes deviennent `columns`, les `td.n` sont parsés en nombres (virgule décimale, espaces insécables, `−`, `%`, `€`, `Md€` reconnus), `tr.hi` / `tr.tot` deviennent des drapeaux. Le `<table>` du contenu est remplacé par `<DataTable id="…" />`. La structure est régulière : taux d'automatisation attendu élevé.
 3. **Extrait les 197 blocs `p.src`** en un registre provisoire, dédupliqué par URL puis par producteur + jeu de données, et rattache les identifiants obtenus au tableau ou à la figure voisins. C'est l'étape qui demande le plus de relecture humaine, les libellés variant d'une occurrence à l'autre.
-4. **Reprend les 55 graphiques à la main.** Les coordonnées SVG ne permettent pas de retrouver les valeurs de façon fiable : l'inversion d'échelle donne des approximations, et toutes les échelles ne sont pas documentées. Chaque figure est refaite à partir de la source citée dans son `p.src`. C'est le poste le plus lourd de la migration, et le plus utile : c'est lui qui transforme des images en données.
+4. **Reconstitue les 55 graphiques par calcul, et le prouve.** Cette spec prévoyait de les refaire à la main, les coordonnées SVG étant réputées inexploitables. C'est faux pour ce document : chaque figure porte ses graduations avec leur valeur *et* leur position, donc l'échelle est documentée et l'inversion est exacte ; les graphiques en barres écrivent même leur valeur en clair. `src/lib/chart.ts` régénère le SVG depuis les valeurs, et l'extracteur le compare élément par élément à l'original — une figure n'est déclarée pilotée par les données que si le résultat est identique. Trois classes en sortent : 29 régénérées, 22 dont les valeurs sont lues mais le tracé d'origine conservé, 4 non converties. Dans les deux derniers cas, le SVG conservé vit dans `data.ts`, jamais dans `content.tsx`. Détail et détails d'implémentation : `DECISIONS.md` §D1.
 5. `scripts/check-data.ts` audite l'ensemble : sources orphelines et fantômes, millésimes manquants, tableaux sans unité, données déclarées mais jamais affichées, valeurs aberrantes (part hors [0, 100], année hors [1945, 2030]).
 
 **Ordre de migration.** Un chapitre pilote d'abord — `logement` (10 fiches, 5 tableaux, 2 figures) valide toute la chaîne sur un volume tenable. Puis `depenses-publiques` et `emploi-chomage`, les deux plus gros, qui exerceront tous les cas limites, dont le passage de `data.ts` à `data/`. Puis le reste par poids décroissant. La bibliographie bascule en dernier, une fois le registre stabilisé.
@@ -391,9 +392,9 @@ L'extraction est semi-automatique. `scripts/extract.ts` (Node + `node-html-parse
 2. **Les 21 chapitres ont chacun leur répertoire** sous `src/app/(chapitres)/`, contenant `page.tsx`, `content.tsx` et `data.ts` (ou `data/index.ts` pour les deux plus gros) — vérifié par un test de structure.
 3. Aucun nombre destiné à un tableau ou un graphique ne subsiste dans un `content.tsx` ou dans `src/components`.
 4. Les 21 chapitres sont accessibles à `/<slug>`, `/sources` liste la bibliographie, et `/tout` reconstitue le document intégral.
-5. **Non-régression visuelle** : capture Playwright de `/tout` comparée à celle du fichier d'origine, en clair et en sombre, aux largeurs 1440 / 768 / 390 px. Écart toléré : bruit de rendu des polices uniquement.
+5. **Non-régression de rendu** : `npm run check:render` compare le HTML prérendu de `/tout` au document d'origine, élément par élément — 55 891 éléments, aucun écart. Plus strict qu'une capture sur le balisage ; reste à compléter par des captures Playwright en clair et en sombre aux largeurs 1440 / 768 / 390 px pour couvrir le CSS appliqué.
 6. La page `/sources` est générée ; zéro source orpheline ou fantôme.
-7. Chaque tableau et chaque série porte au moins une source et un millésime — garanti par le typage, revérifié par `check-data.ts` en intégration continue, et restitué dans `.artifacts/audit.json`.
+7. Chaque tableau et chaque série porte au moins une source et un millésime — garanti par le typage, revérifié par `check-data.ts`, et restitué dans `.artifacts/audit.json`. `check-data.ts` distingue les **invariants**, qui font échouer le build, de la **dette de migration** (millésimes à confirmer, figures au tracé d'origine), qui est comptée sans bloquer : écrire un faux millésime pour satisfaire un schéma serait pire que d'en compter 26 à confirmer.
 8. Chaque figure expose ses données en tableau alternatif.
 9. Les pages de lecture sont entièrement lisibles sans JavaScript, sommaire et navigation compris ; le JS embarqué d'une page de chapitre reste sous 120 Ko compressés.
 10. Lighthouse ≥ 95 sur les quatre axes pour une page de chapitre.
@@ -415,6 +416,8 @@ L'extraction est semi-automatique. `scripts/extract.ts` (Node + `node-html-parse
 
 L1 à L3 sont séquentiels. À partir de L5, les chapitres sont indépendants et parallélisables — c'est précisément ce que permet le découpage en 21 répertoires autonomes.
 
+**État au 31 août 2026 : L1 à L7 livrés**, à l'exception du flux RSS et des captures Playwright. La migration a été menée en une passe plutôt que chapitre par chapitre, l'extraction s'étant révélée automatisable à un degré que cette spec n'anticipait pas (`DECISIONS.md` §D1 et §D3). Ce qui reste ouvert est chiffré dans `DECISIONS.md` §D10.
+
 ---
 
 ## 14. Points ouverts
@@ -423,4 +426,5 @@ L1 à L3 sont séquentiels. À partir de L5, les chapitres sont indépendants et
 - **Correction publique des erreurs.** Sur un dossier factuel destiné à une campagne, un journal des corrections daté est un actif, pas une charge. Proposition : une entrée `corrections[]` dans le `meta` de chaque `data.ts` et un encadré en pied de chapitre.
 - **Licence et export des données.** L'architecture proposée permet de publier un CSV téléchargeable par tableau et par figure pour presque rien, généré depuis les mêmes objets. Reste à décider de la licence.
 - **Statut du chapitre `perception-realite`.** L'original s'annonce lui-même partiel sur ce point ; `meta.status: 'partiel'` le dit dans le site. À confirmer avec l'auteur.
+- **Un axe faux dans le document d'origine.** La figure « Ce qui compose l'écart de taux d'emploi » porte des graduations 0/2/5/8 régulièrement espacées, incompatibles avec les largeurs de barres, qui décrivent une échelle 0/2,5/5/7,5. Corriger l'axe ou les barres : à trancher avec l'auteur (`DECISIONS.md` §D2).
 - **Nom de domaine** : non tranché. L'hébergement l'est : Vercel.

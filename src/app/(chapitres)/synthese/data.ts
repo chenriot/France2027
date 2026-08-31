@@ -1,0 +1,486 @@
+// Généré par `npm run extract` depuis Temp/chiffres2027 (3).html.
+// Toutes les données chiffrées du chapitre vivent ici, chacune sous sa source
+// et son millésime. Voir CLAUDE.md, règles 2 à 4.
+import type { ChapterMeta, SeriesSet, SourceId, Tables } from '@/lib/types'
+
+export const meta = {
+  slug: 'synthese',
+  num: 'Synthèse',
+  title: 'Ce que l\'ensemble de ces chiffres établit',
+  shortTitle: 'Synthèse et commentaire',
+  note: 'Sept propositions confrontées aux données, un résumé par thème, puis un commentaire clairement séparé des faits. Deux des sept propositions demandent une correction — elles sont signalées.',
+  status: 'complete',
+  updated: '2026-08',
+  legacyAnchor: 'synth',
+} satisfies ChapterMeta
+
+export const tables = {
+  'pour-100-000-habitants': {
+    vintage: '2025',
+    sources: [
+      'eurostat-nasa-10-nf-tr', 'eurostat-nama-10-lp-ulc', 'eurostat-gov-10a-exp',
+      'ocde-ocde-regards-sur-l-education-2025-tabl',
+    ],
+    columns: [
+      {
+        key: 'pour-100-000-habitants',
+        header: 'Pour 100 000 habitants',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'mediane-europeenne', header: 'Médiane européenne', type: 'number', headerNumeric: true },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Juges professionnels</b>' },
+          { v: 11.3, d: 1, strong: true },
+          { v: 24.7, d: 1 },
+          { v: 17.6, d: 1 },
+          { v: -54, d: 0, u: '% vs Allemagne', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Budget de la justice par habitant' },
+          { v: 77, d: 0, u: '€' },
+          { v: 136, d: 0, u: '€' },
+          { v: 75, d: 0, u: '€' },
+          { v: -43, d: 0, u: '% vs Allemagne' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Médecins' },
+          { v: 328, d: 0 },
+          { v: 453, d: 0 },
+          null,
+          { v: -28, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Infirmiers et sages-femmes' },
+          { v: 942, d: 0 },
+          { v: 1225, d: 0 },
+          null,
+          { v: -23, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Enseignants' },
+          { v: 1194, d: 0 },
+          { v: 1550, d: 0 },
+          null,
+          { v: -23, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Policiers' },
+          { v: 361, d: 0 },
+          { v: 311, d: 0 },
+          null,
+          { v: 16, d: 0, u: '%', sign: true, strong: true },
+        ],
+      },
+    ],
+  },
+} satisfies Tables
+
+export const series = {
+  'depense-publique-par-nature-1975-2024': {
+    raw: true,
+    title: 'Dépense publique par nature, 1975-2024',
+    subtitle: 'En % du PIB. Sous l\'axe, les mandats présidentiels ; hachures pendant les cohabitations.',
+    caption: 'Une seule courbe monte. Et la corrélation avec la couleur politique est faible : les trois plus fortes baisses du ratio surviennent sous une cohabitation de droite, une cohabitation de gauche et une présidence de gauche puis centriste ; les trois plus fortes hausses annuelles sont trois chocs — 1975, 2009, 2020 — sous trois présidents différents.',
+    legend: [
+      { color: 's1', label: 'Prestations sociales' },
+      { color: 's4', label: 'Rémunération des agents' },
+      { color: 's3', label: 'Consommations intermédiaires' },
+      { color: 's5', label: 'Investissement' },
+      { color: 's2', label: 'Charge de la dette' },
+    ],
+    svg: '<svg viewBox="0 0 720 452" class="cv" role="img" aria-labelledby="cnatur-y-t" preserveAspectRatio="xMidYMid meet">\n<title id="cnatur-y-t">Dépense publique par nature</title>\n<defs><pattern id="coh-y" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="cohl" x1="0" y1="0" x2="0" y2="6"></line></pattern></defs>\n<line class="grid" x1="52" y1="372.0" x2="602" y2="372.0"></line>\n<text class="ax ar" x="43" y="376.0">0</text>\n<line class="grid" x1="52" y1="313.7" x2="602" y2="313.7"></line>\n<text class="ax ar" x="43" y="317.7">5</text>\n<line class="grid" x1="52" y1="255.3" x2="602" y2="255.3"></line>\n<text class="ax ar" x="43" y="259.3">10</text>\n<line class="grid" x1="52" y1="197.0" x2="602" y2="197.0"></line>\n<text class="ax ar" x="43" y="201.0">15</text>\n<line class="grid" x1="52" y1="138.7" x2="602" y2="138.7"></line>\n<text class="ax ar" x="43" y="142.7">20</text>\n<line class="grid" x1="52" y1="80.3" x2="602" y2="80.3"></line>\n<text class="ax ar" x="43" y="84.3">25</text>\n<line class="grid" x1="52" y1="22.0" x2="602" y2="22.0"></line>\n<text class="ax ar" x="43" y="26.0">30</text>\n<text class="ax" x="43" y="14" text-anchor="end">% du PIB</text>\n<line class="axis" x1="52" y1="372" x2="602" y2="372"></line>\n<polyline class="ln s1" points="52.0,171.0 63.2,172.0 74.4,169.3 85.7,162.0 96.9,161.9 108.1,157.1 119.3,144.7 130.6,136.1 141.8,134.7 153.0,130.8 164.2,127.2 175.5,128.6 186.7,131.7 197.9,135.4 209.1,137.6 220.4,134.0 231.6,127.1 242.8,120.7 254.0,109.0 265.3,110.2 276.5,110.7 287.7,108.3 298.9,107.2 310.2,111.8 321.4,111.8 332.6,118.8 343.8,116.5 355.1,110.7 366.3,104.8 377.5,103.7 388.7,102.5 400.0,102.5 411.2,103.7 422.4,100.2 433.6,79.2 444.9,78.0 456.1,80.3 467.3,73.3 478.5,71.0 489.8,68.7 501.0,69.8 512.2,68.7 523.4,71.0 534.7,73.3 545.9,74.5 557.1,36.0 568.3,55.8 579.6,71.0 590.8,80.3 602.0,74.5"></polyline>\n<polyline class="ln s4" points="52.0,235.4 63.2,231.8 74.4,227.7 85.7,224.6 96.9,225.2 108.1,222.4 119.3,218.8 130.6,215.3 141.8,215.1 153.0,214.4 164.2,214.5 175.5,215.9 186.7,219.1 197.9,224.9 209.1,228.6 220.4,229.0 231.6,227.0 242.8,223.6 254.0,217.3 265.3,216.8 276.5,214.5 287.7,212.2 298.9,214.5 310.2,216.8 321.4,216.8 332.6,218.0 343.8,219.2 355.1,216.8 366.3,216.8 377.5,219.2 388.7,220.3 400.0,222.7 411.2,226.2 422.4,226.2 433.6,216.8 444.9,218.0 456.1,220.3 467.3,219.2 478.5,219.2 489.8,219.2 501.0,220.3 512.2,221.5 523.4,221.5 534.7,225.0 545.9,227.3 557.1,216.8 568.3,225.0 579.6,226.2 590.8,229.7 602.0,227.3"></polyline>\n<polyline class="ln s3" points="52.0,304.9 63.2,305.0 74.4,307.8 85.7,306.0 96.9,307.4 108.1,303.5 119.3,301.6 130.6,301.1 141.8,299.2 153.0,299.7 164.2,298.3 175.5,304.8 186.7,303.6 197.9,302.9 209.1,307.8 220.4,308.5 231.6,307.1 242.8,305.0 254.0,300.7 265.3,305.7 276.5,307.8 287.7,305.5 298.9,305.5 310.2,312.5 321.4,312.5 332.6,312.5 343.8,313.7 355.1,311.3 366.3,312.5 377.5,312.5 388.7,312.5 400.0,313.7 411.2,314.8 422.4,314.8 433.6,309.0 444.9,309.0 456.1,310.2 467.3,309.0 478.5,309.0 489.8,310.2 501.0,310.2 512.2,311.3 523.4,310.2 534.7,311.3 545.9,311.3 557.1,307.8 568.3,309.0 579.6,307.8 590.8,306.7 602.0,307.8"></polyline>\n<polyline class="ln s5" points="52.0,310.2 63.2,311.1 74.4,316.7 85.7,319.3 96.9,318.9 108.1,317.3 119.3,315.5 130.6,313.7 141.8,316.6 153.0,317.1 164.2,315.4 175.5,316.0 186.7,314.8 197.9,312.0 209.1,312.3 220.4,311.4 231.6,309.6 242.8,310.6 254.0,313.1 265.3,314.7 276.5,318.3 287.7,318.3 298.9,323.0 310.2,324.2 321.4,324.2 332.6,321.8 343.8,323.0 355.1,324.2 366.3,321.8 377.5,321.8 388.7,320.7 400.0,320.7 411.2,320.7 422.4,320.7 433.6,316.0 444.9,316.0 456.1,319.5 467.3,318.3 478.5,318.3 489.8,321.8 501.0,326.5 512.2,326.5 523.4,327.7 534.7,326.5 545.9,323.0 557.1,323.0 568.3,324.2 579.6,323.0 590.8,323.0 602.0,321.8"></polyline>\n<polyline class="ln s2" points="52.0,361.3 63.2,362.3 74.4,360.9 85.7,359.9 96.9,358.7 108.1,357.6 119.3,351.9 130.6,351.4 141.8,345.9 153.0,344.5 164.2,342.2 175.5,341.9 186.7,342.9 197.9,344.1 209.1,343.2 220.4,340.6 231.6,339.1 242.8,337.0 254.0,334.4 265.3,333.0 276.5,331.2 287.7,330.0 298.9,330.0 310.2,332.3 321.4,335.8 332.6,337.0 343.8,335.8 355.1,337.0 366.3,338.2 377.5,339.3 388.7,340.5 400.0,341.7 411.2,340.5 422.4,338.2 433.6,342.8 444.9,342.8 456.1,340.5 467.3,341.7 478.5,345.2 489.8,346.3 501.0,348.7 512.2,349.8 523.4,351.0 534.7,351.0 545.9,354.5 557.1,356.8 568.3,355.7 579.6,349.8 590.8,349.8 602.0,348.7"></polyline>\n<circle class="dot s1" cx="602.0" cy="74.5" r="4"></circle>\n<text class="lbl s1t" x="610.0" y="78.5">Prestations sociales</text>\n<circle class="dot s4" cx="602.0" cy="227.3" r="4"></circle>\n<text class="lbl s4t" x="610.0" y="231.3">Rémunération des agents</text>\n<circle class="dot s3" cx="602.0" cy="307.8" r="4"></circle>\n<text class="lbl s3t" x="610.0" y="311.8">Consommations intermédiaires</text>\n<circle class="dot s5" cx="602.0" cy="321.8" r="4"></circle>\n<text class="lbl s5t" x="610.0" y="325.8">Investissement</text>\n<circle class="dot s2" cx="602.0" cy="348.7" r="4"></circle>\n<text class="lbl s2t" x="610.0" y="352.7">Charge de la dette</text>\n<rect class="pr pr-d" x="52.0" y="388" width="71.8" height="30" rx="2"></rect>\n<text class="prl" x="87.9" y="400" text-anchor="middle">Giscard d\'Estaing</text>\n<rect class="pr pr-g" x="123.8" y="388" width="157.1" height="30" rx="2"></rect>\n<text class="prl" x="202.4" y="400" text-anchor="middle">Mitterrand</text>\n<rect class="pr pr-d" x="281.0" y="388" width="134.7" height="30" rx="2"></rect>\n<text class="prl" x="348.3" y="400" text-anchor="middle">Chirac</text>\n<rect class="pr pr-d" x="415.7" y="388" width="56.1" height="30" rx="2"></rect>\n<text class="prl" x="443.7" y="400" text-anchor="middle">Sarkozy</text>\n<rect class="pr pr-g" x="471.8" y="388" width="56.1" height="30" rx="2"></rect>\n<text class="prl" x="499.9" y="400" text-anchor="middle">Hollande</text>\n<rect class="pr pr-c" x="527.9" y="388" width="80.8" height="30" rx="2"></rect>\n<text class="prl" x="568.3" y="400" text-anchor="middle">Macron</text>\n<rect class="coh" x="177.7" y="404" width="24.7" height="12" rx="1"></rect>\n<rect class="coh" x="256.3" y="404" width="24.7" height="12" rx="1"></rect>\n<rect class="coh" x="304.6" y="404" width="55.0" height="12" rx="1"></rect>\n<text class="prl mutp" x="245.1" y="416" text-anchor="middle">cohabitations</text>\n<text class="ax" x="52.0" y="434" text-anchor="start">1975</text>\n<text class="ax" x="164.2" y="434" text-anchor="middle">1985</text>\n<text class="ax" x="276.5" y="434" text-anchor="middle">1995</text>\n<text class="ax" x="388.7" y="434" text-anchor="middle">2005</text>\n<text class="ax" x="501.0" y="434" text-anchor="middle">2015</text>\n<text class="ax" x="602.0" y="434" text-anchor="end">2024</text>\n</svg>',
+    sources: ['eurostat-nasa-10-nf-tr'],
+    vintage: '2024',
+    values: {
+      svg: {
+        viewBox: '0 0 720 452',
+        titleId: 'cnatur-y-t',
+        title: 'Dépense publique par nature',
+        preserveAspectRatio: 'xMidYMid meet',
+      },
+      title: 'Dépense publique par nature, 1975-2024',
+      subtitle: 'En % du PIB. Sous l\'axe, les mandats présidentiels ; hachures pendant les cohabitations.',
+      caption: 'Une seule courbe monte. Et la corrélation avec la couleur politique est faible : les trois plus fortes baisses du ratio surviennent sous une cohabitation de droite, une cohabitation de gauche et une présidence de gauche puis centriste ; les trois plus fortes hausses annuelles sont trois chocs — 1975, 2009, 2020 — sous trois présidents différents.',
+      sources: ['eurostat-nasa-10-nf-tr'],
+      vintage: '2024',
+      legend: [
+        { color: 's1', label: 'Prestations sociales' },
+        { color: 's4', label: 'Rémunération des agents' },
+        { color: 's3', label: 'Consommations intermédiaires' },
+        { color: 's5', label: 'Investissement' },
+        { color: 's2', label: 'Charge de la dette' },
+      ],
+      type: 'line',
+      layout: {
+        kind: 'line',
+        tickLabelX: 43,
+        tickLabelDy: 4,
+        axisLabel: { x: 43, y: 14, text: '% du PIB', anchor: 'end' },
+        axisLineY: 372,
+        dotR: 4,
+        endLabelDx: 8,
+        endLabelDy: 4,
+        xLabelY: 434,
+        xLabelsLast: true,
+        bands: { y: 388, height: 30, rx: 2, labelDy: 12, patternId: 'coh-y' },
+      },
+      xAxis: { min: 1975, max: 2024, ticks: [1975, 1985, 1995, 2005, 2015, 2024] },
+      x: [
+        1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989,
+        1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
+        2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+        2020, 2021, 2022, 2023, 2024,
+      ],
+      y: { min: 0, max: 30, ticks: [0, 5, 10, 15, 20, 25, 30], label: '% du PIB' },
+      series: [
+        {
+          key: 's1',
+          color: 's1',
+          label: 'Prestations sociales',
+          values: [
+            17.228, 17.143, 17.374, 18, 18.008, 18.42, 19.483, 20.22, 20.34, 20.674, 20.983, 20.863,
+            20.597, 20.28, 20.091, 20.4, 20.991, 21.54, 22.543, 22.44, 22.397, 22.603, 22.697, 22.303,
+            22.303, 21.703, 21.9, 22.397, 22.903, 22.997, 23.1, 23.1, 22.997, 23.297, 25.097, 25.2,
+            25.002, 25.602, 25.8, 25.997, 25.902, 25.997, 25.8, 25.602, 25.5, 28.799, 27.102, 25.8,
+            25.002, 25.5,
+          ],
+        },
+        {
+          key: 's4',
+          color: 's4',
+          label: 'Rémunération des agents',
+          values: [
+            11.709, 12.017, 12.369, 12.634, 12.583, 12.823, 13.132, 13.431, 13.449, 13.509, 13.5,
+            13.38, 13.106, 12.609, 12.292, 12.257, 12.429, 12.72, 13.26, 13.303, 13.5, 13.697, 13.5,
+            13.303, 13.303, 13.2, 13.097, 13.303, 13.303, 13.097, 13.003, 12.797, 12.497, 12.497,
+            13.303, 13.2, 13.003, 13.097, 13.097, 13.097, 13.003, 12.9, 12.9, 12.6, 12.403, 13.303,
+            12.6, 12.497, 12.197, 12.403,
+          ],
+        },
+        {
+          key: 's3',
+          color: 's3',
+          label: 'Consommations intermédiaires',
+          values: [
+            5.752, 5.743, 5.503, 5.658, 5.538, 5.872, 6.035, 6.078, 6.24, 6.198, 6.317, 5.76, 5.863,
+            5.923, 5.503, 5.443, 5.563, 5.743, 6.112, 5.683, 5.503, 5.7, 5.7, 5.1, 5.1, 5.1, 4.998,
+            5.203, 5.1, 5.1, 5.1, 4.998, 4.903, 4.903, 5.4, 5.4, 5.298, 5.4, 5.4, 5.298, 5.298, 5.203,
+            5.298, 5.203, 5.203, 5.503, 5.4, 5.503, 5.598, 5.503,
+          ],
+        },
+        {
+          key: 's5',
+          color: 's5',
+          label: 'Investissement',
+          values: [
+            5.298, 5.22, 4.74, 4.518, 4.552, 4.689, 4.843, 4.998, 4.749, 4.706, 4.852, 4.8, 4.903,
+            5.143, 5.118, 5.195, 5.349, 5.263, 5.049, 4.912, 4.603, 4.603, 4.2, 4.098, 4.098, 4.303,
+            4.2, 4.098, 4.303, 4.303, 4.398, 4.398, 4.398, 4.398, 4.8, 4.8, 4.5, 4.603, 4.603, 4.303,
+            3.9, 3.9, 3.798, 3.9, 4.2, 4.2, 4.098, 4.2, 4.2, 4.303,
+          ],
+        },
+        {
+          key: 's2',
+          color: 's2',
+          label: 'Charge de la dette',
+          values: [
+            0.918, 0.832, 0.952, 1.038, 1.141, 1.235, 1.723, 1.766, 2.238, 2.358, 2.555, 2.581, 2.495,
+            2.392, 2.469, 2.692, 2.82, 3, 3.223, 3.343, 3.498, 3.6, 3.6, 3.403, 3.103, 3, 3.103, 3,
+            2.898, 2.803, 2.701, 2.598, 2.701, 2.898, 2.503, 2.503, 2.701, 2.598, 2.298, 2.203, 1.998,
+            1.903, 1.801, 1.801, 1.501, 1.303, 1.398, 1.903, 1.903, 1.998,
+          ],
+        },
+      ],
+      frame: {
+        width: 720,
+        height: 452,
+        left: 52,
+        right: 602,
+        top: 21.99285714285716,
+        bottom: 372.00714285714287,
+      },
+      annotations: {
+        mandates: [
+          { label: 'Giscard d\'Estaing', from: 0, to: 6.3967, bloc: 'd' },
+          { label: 'Mitterrand', from: 6.3967, to: 20.3929, bloc: 'g' },
+          { label: 'Chirac', from: 20.4018, to: 32.4024, bloc: 'd' },
+          { label: 'Sarkozy', from: 32.4024, to: 37.4004, bloc: 'd' },
+          { label: 'Hollande', from: 37.4004, to: 42.3984, bloc: 'g' },
+          { label: 'Macron', from: 42.3984, to: 49.5969, bloc: 'c' },
+        ],
+        cohabitations: [
+          { from: 11.1987, to: 13.3993 },
+          { from: 18.2013, to: 20.4018 },
+          { from: 22.5044, to: 27.4044 },
+        ],
+      },
+    },
+  },
+  'france-trois-mesures-du-pib-indice-ue-27-100': {
+    svg: {
+      viewBox: '0 0 720 340',
+      titleId: 'cpibfr-y-t',
+      title: 'France, UE-27 = 100',
+      preserveAspectRatio: 'xMidYMid meet',
+    },
+    title: 'France : trois mesures du PIB, indice UE-27 = 100',
+    subtitle: '1995-2024. L\'écart entre les courbes mesure ce que coûtent la durée du travail et le taux d\'emploi.',
+    caption: 'Jusqu\'en 2019 la productivité horaire française suit exactement la trajectoire allemande ; c\'est le PIB par habitant qui décroche, et l\'écart entre les deux courbes est le taux d\'emploi. Puis, entre 2019 et 2022, la productivité s\'effondre de 11 points — une rupture sans équivalent dans les vingt-cinq années précédentes.',
+    sources: ['eurostat-nama-10-lp-ulc'],
+    vintage: '2024',
+    legend: [
+      { color: 's2', label: 'PIB par heure travaillée' },
+      { color: 's4', label: 'PIB par personne en emploi' },
+      { color: 's1', label: 'PIB par habitant' },
+    ],
+    type: 'line',
+    layout: {
+      kind: 'line',
+      tickLabelX: 43,
+      tickLabelDy: 4,
+      axisLabel: { x: 43, y: 14, text: 'indice, UE-27 = 100', anchor: 'end' },
+      axisLineY: 306,
+      dotR: 4,
+      endLabelDx: 8,
+      endLabelDy: 4,
+      xLabelY: 324,
+    },
+    xAxis: { min: 1995, max: 2024, ticks: [1995, 2005, 2015, 2024] },
+    x: [1995, 2000, 2005, 2008, 2010, 2015, 2019, 2022, 2024],
+    y: { min: 90, max: 140, ticks: [90, 100, 110, 120, 130, 140], label: 'indice, UE-27 = 100' },
+    series: [
+      {
+        key: 's2',
+        color: 's2',
+        label: 'PIB par heure travaillée',
+        values: [133.996, 135, 131.901, 127.694, 126.197, 124.507, 125.299, 113.908, 114.296],
+      },
+      {
+        key: 's4',
+        color: 's4',
+        label: 'PIB par personne en emploi',
+        values: [122.394, 121.796, 119.208, 116.408, 116.408, 114.701, 116.197, 106.092, 107.394],
+      },
+      {
+        key: 's1',
+        color: 's1',
+        label: 'PIB par habitant',
+        values: [116.496, 117.606, 113.099, 111.004, 108.803, 106.197, 104.894, 97.306, 98.292],
+      },
+    ],
+    frame: { width: 720, height: 340, left: 52, right: 602, top: 22, bottom: 306 },
+  },
+  'depense-publique-par-fonction-en-euros-par-habitant': {
+    svg: { viewBox: '0 0 720 692', titleId: 'ccofhab3-y-t', title: 'euros par habitant, 2024' },
+    title: 'Dépense publique par fonction, en euros par habitant',
+    subtitle: '2024. Trois barres par fonction : moyenne européenne, Allemagne, France.',
+    caption: 'L\'Allemagne dépense plus que la France sur huit fonctions sur dix. Les seules exceptions sont le logement (613 € contre 245) et les loisirs et la culture, plus la défense depuis le réarmement français.',
+    sources: ['eurostat-gov-10a-exp'],
+    vintage: '2024',
+    legend: [
+      { color: 's4', label: 'UE-27' },
+      { color: 's5', label: 'Allemagne' },
+      { color: 's1', label: 'France' },
+    ],
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 644,
+      tickLabelY: 666,
+      catLabelX: 182,
+      catLabelDy: 25,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 63,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10.5,
+      valueClasses: ['lbl mut', 'lbl mut', 'lbl s1t'],
+      rx: 3,
+    },
+    x: [
+      'Protection sociale', 'Santé', 'Services généraux', 'Affaires économiques',
+      'Enseignement', 'Défense', 'Ordre et sécurité', 'Loisirs, culture', 'Logement',
+      'Environnement',
+    ],
+    y: { min: 0, max: 10000, ticks: [0, 5000, 10000] },
+    series: [
+      {
+        key: 'b1',
+        color: 's4',
+        label: 'UE-27',
+        values: [7865.37, 2957, 2434.093, 2119.273, 1910, 592, 697, 473, 296, 330.177],
+        decimals: 0,
+      },
+      {
+        key: 'b2',
+        color: 's5',
+        label: 'Allemagne',
+        values: [10575, 3941.643, 3327.361, 2807.781, 2330, 701.305, 846, 551, 245, 294.343],
+        decimals: 0,
+      },
+      {
+        key: 'b3',
+        color: 's1',
+        label: 'France',
+        values: [10076.785, 3797, 2633, 2415, 2161, 788.329, 757.615, 626, 613, 440.235],
+        decimals: 0,
+      },
+    ],
+    frame: { width: 720, height: 692, left: 196, right: 586.7144202583637, top: 16, bottom: 644 },
+  },
+  'eleves-par-enseignant-et-par-classe-primaire': {
+    svg: { viewBox: '0 0 720 518', titleId: 'cencadre-y-t', title: 'primaire, 2023-2024' },
+    title: 'Élèves par enseignant et par classe, primaire',
+    subtitle: '2023-2024, public et privé. Dans les deux cas, plus la barre est courte, mieux c\'est.',
+    caption: 'La France n\'a pas « un bon taux d\'encadrement et des classes chargées » : elle est au-dessus de la moyenne de l\'OCDE sur les deux mesures. Son fait distinctif est ailleurs — 864 heures d\'instruction au primaire contre 804, concentrées sur 180 jours contre 186.',
+    sources: ['ocde-ocde-regards-sur-l-education-2025-tabl'],
+    vintage: '2024',
+    legend: [
+      { color: 's4', label: 'Élèves par enseignant' },
+      { color: 's1', label: 'Élèves par classe' },
+    ],
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 470,
+      tickLabelY: 492,
+      catLabelX: 156,
+      catLabelDy: 18,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 38,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10.5,
+      valueClasses: ['lbl mut', 'lbl s1t'],
+      rx: 3,
+    },
+    x: [
+      'Japon', 'France', 'Royaume-Uni', 'Pays-Bas', 'Allemagne', 'Moyenne OCDE', 'Corée du Sud',
+      'États-Unis', 'Espagne', 'Finlande', 'Pologne', 'Italie',
+    ],
+    y: { min: 0, max: 20, ticks: [0, 10, 20] },
+    series: [
+      {
+        key: 'b1',
+        color: 's4',
+        label: 'Élèves par enseignant',
+        values: [14.698, 17.901, 19.499, 16.303, 15.199, 13.999, 16.104, 13.703, 11.9, 12.002, 13.004, 10.501],
+        decimals: 1,
+      },
+      {
+        key: 'b2',
+        color: 's1',
+        label: 'Élèves par classe',
+        values: [26.399, 21.598, 26.001, 22.503, 21.104, 20, 20.899, 20.103, 20.899, 18.703, 18.004, 17.901],
+        decimals: 1,
+      },
+    ],
+    frame: { width: 720, height: 518, left: 170, right: 501.59975229746584, top: 16, bottom: 470 },
+  },
+  'pib-par-personne-en-emploi-1995-2024': {
+    svg: {
+      viewBox: '0 0 720 340',
+      titleId: 'cpibemp-y-t',
+      title: 'PIB par personne en emploi',
+      preserveAspectRatio: 'xMidYMid meet',
+    },
+    title: 'PIB par personne en emploi, 1995-2024',
+    subtitle: 'En milliers de dollars internationaux constants de 2021.',
+    caption: 'Rapporté à ceux qui produisent effectivement, le PIB français dépasse l\'allemand de 3,0 % et égale le néerlandais — et c\'est stable depuis trente ans. Le seul décrochage qui résiste à tous les changements de dénominateur est l\'américain : de +6,5 % en 1995 à −17,3 % en 2024.',
+    sources: ['eurostat-lfsi-emp-a'],
+    vintage: '2024',
+    legend: [
+      { color: 's2', label: 'États-Unis' },
+      { color: 's3', label: 'Pays-Bas' },
+      { color: 's1', label: 'France' },
+      { color: 's4', label: 'Allemagne' },
+      { color: 's5', label: 'Royaume-Uni' },
+    ],
+    type: 'line',
+    layout: {
+      kind: 'line',
+      tickLabelX: 43,
+      tickLabelDy: 4,
+      axisLabel: { x: 43, y: 14, text: 'milliers de $ int. constants 2021', anchor: 'end' },
+      axisLineY: 306,
+      dotR: 4,
+      endLabelDx: 8,
+      endLabelDy: 4,
+      xLabelY: 324,
+    },
+    xAxis: { min: 1995, max: 2024, ticks: [1995, 2000, 2010, 2019, 2024] },
+    x: [1995, 2000, 2010, 2019, 2024],
+    y: {
+      min: 80,
+      max: 160,
+      ticks: [80, 100, 120, 140, 160],
+      label: 'milliers de $ int. constants 2021',
+    },
+    series: [
+      { key: 's2', color: 's2', label: 'États-Unis', values: [97.606, 109.887, 129.296, 140.31, 154] },
+      {
+        key: 's3',
+        color: 's3',
+        label: 'Pays-Bas',
+        values: [92.507, 104.592, 118.113, 125.014, 127.69],
+      },
+      {
+        key: 's1',
+        color: 's1',
+        label: 'France',
+        values: [103.887, 114.113, 118.197, 128.901, 127.296],
+      },
+      {
+        key: 's4',
+        color: 's4',
+        label: 'Allemagne',
+        values: [101.69, 110.901, 115.211, 122.789, 123.69],
+      },
+      {
+        key: 's5',
+        color: 's5',
+        label: 'Royaume-Uni',
+        values: [83.493, 93.296, 101.887, 107.887, 109.606],
+      },
+    ],
+    frame: { width: 720, height: 340, left: 52, right: 602, top: 22, bottom: 306 },
+  },
+} satisfies SeriesSet
+
+/** Fiches du chapitre, dans l'ordre : alimente le rail et la recherche. */
+export const questions = [
+  { id: 'synth-q1', title: 'La thèse centrale, mise à l\'épreuve' },
+  { id: 'synth-q2', title: 'Le contrepoint qu\'il faut garder en tête' },
+  { id: 'synth-q3', title: 'Résumé par thème' },
+  { id: 'synth-q4', title: 'Commentaire' },
+] satisfies readonly { id: string; title: string }[]
+
+/**
+ * Sources citées dans le texte du chapitre, en plus de celles portées par les
+ * tableaux et les figures. La bibliographie les recense aussi : une source
+ * citée en prose reste une source du dossier.
+ */
+export const citedSources = [] satisfies readonly SourceId[]

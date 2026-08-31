@@ -17,6 +17,10 @@ l'arborescence, le modèle de données, les composants et les critères
 d'acceptation. En cas de doute sur une décision d'architecture, c'est elle qu'il
 faut lire, et c'est elle qu'il faut mettre à jour si la décision change.
 
+**`specs/DECISIONS.md` dit ce qui a été fait quand la réalité du document
+d'origine ne correspondait pas au plan** — et pourquoi. À lire avant de
+s'étonner d'un choix : les écarts à la spec y sont justifiés et chiffrés.
+
 ## Git
 
 - **On travaille directement sur `main`.** Pas de branche de fonctionnalité, pas
@@ -27,9 +31,23 @@ faut lire, et c'est elle qu'il faut mettre à jour si la décision change.
   une mise à jour de millésime en est un autre.
 - Ne jamais réécrire l'historique de `main`.
 
+## Commandes
+
+| Commande | Ce qu'elle fait |
+|---|---|
+| `npm run dev` | serveur de développement |
+| `npm run verify` | **la chaîne complète** : types, tests, audit des données, build, non-régression de rendu |
+| `npm run extract` | régénère les 21 chapitres depuis `Temp/chiffres2027 (3).html` |
+| `npm run check:data` | audit des données ; écrit `.artifacts/audit.json` |
+| `npm run check:render` | compare `/tout` au document d'origine, élément par élément |
+| `npm test` | tests unitaires (formatage FR, échelles, graphiques) |
+
+**Avant de pousser : `npm run verify`.** C'est cette commande qui protège la
+garantie centrale du projet — un rendu identique au document d'origine.
+
 ## Stack
 
-Next.js 15 (App Router) · TypeScript · CSS natif · Zod · Vitest · Playwright.
+Next.js 15 (App Router) · TypeScript · CSS natif · Vitest.
 Hébergement et déploiement : **Vercel**.
 
 - **Ne pas utiliser `output: 'export'`.** Le site est déployé sur Vercel avec un
@@ -64,7 +82,13 @@ d'acceptation de la spec.
    Tailwind, ni CSS Modules, ni CSS-in-JS. Renommer une classe est une
    régression visuelle potentielle pour zéro bénéfice.
 7. **Composants serveur par défaut.** `"use client"` est réservé à
-   `src/components/client/` : bascule de thème, scrollspy, recherche.
+   `src/components/client/` : bascule de thème, scrollspy, recherche. Un
+   `"use client"` sur une page de lecture lui coûterait son prérendu.
+8. **Les fichiers générés ne se modifient pas à la main.** `data.ts`,
+   `content.tsx` et `page.tsx` des 21 chapitres, ainsi que `src/data/sources.ts`
+   et `src/data/chapters.ts`, sont produits par `npm run extract`. Une
+   correction se fait dans `scripts/extract.ts`, puis on régénère. En-tête de
+   fichier : « Généré par `npm run extract` ».
 
 ## Simple, mais construit pour grandir
 
@@ -80,19 +104,49 @@ année à une série doit se faire en éditant un seul fichier.
 
 ## Rendu à l'identique
 
-C'est la contrainte la plus facile à violer sans s'en apercevoir. Avant de
-considérer un chapitre migré :
+C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
+donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
+prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
+55 891 éléments, aucun écart.
 
-- comparer visuellement avec l'original, en thème clair **et** en thème sombre ;
-- vérifier le formatage français : virgule décimale, espace insécable fine pour
-  les milliers, `−` (U+2212) pour le signe moins, `—` pour une donnée absente ;
+Ce que ça implique au quotidien :
+
+- **si `check:render` passe au rouge, c'est une régression**, pas un réglage
+  du script. Corriger le rendu, pas la mesure ;
+- le formatage français passe par `src/lib/format.ts` et seulement par lui :
+  virgule décimale, espace ordinaire pour les milliers dans les tableaux,
+  **espace fine insécable (U+202F) dans les SVG**, `−` (U+2212) pour le signe
+  moins, `—` pour une donnée absente ;
+- les positions de graphique passent par `src/lib/scales.ts`, qui reproduit
+  l'**arrondi au pair le plus proche** du générateur d'origine. Un
+  `Math.round` ordinaire décale une étiquette sur deux ;
 - ne jamais « améliorer » une formulation, un espacement ou une couleur au
   passage. La refonte est structurelle, pas graphique. Une amélioration
   graphique se discute d'abord et se note dans la spec.
 
+**Deux modes de rendu.** Les pages de chapitre (`mode="page"`) ajoutent le pied
+de chapitre daté et le tableau de données replié sous les figures ; `/tout`
+(`mode="verbatim"`) n'ajoute rien, pour rester comparable. Tout ajout visuel
+doit être conditionné au mode, sinon il casse la vérification.
+
+## Ajouter ou corriger
+
+- **Corriger un chiffre** : éditer le `data.ts` du chapitre, puis
+  `npm run verify`. Un seul fichier, jamais de balisage.
+- **Ajouter un chapitre** : copier un répertoire existant, l'inscrire dans
+  `src/data/chapters.ts` et `src/data/all.ts`. Rien d'autre.
+- **Ajouter une mise en forme** : étendre un composant partagé. Jamais de
+  balisage dans un `content.tsx`.
+- **Régénérer depuis la source** : corriger `scripts/extract.ts`, lancer
+  `npm run extract`, relire le diff, `npm run verify`.
+
 ## État actuel
 
-Le dépôt ne contient pour l'instant que la spécification et le HTML source.
-L'application Next.js n'est pas encore échafaudée : le premier lot (L1 de la
-spec, §13) consiste à la créer. Mettre à jour cette section quand ce n'est plus
-vrai.
+Le site est construit et vérifié : 21 chapitres, 286 tableaux, 55 figures,
+192 sources, rendu identique au document d'origine sur `/tout`, 103 Ko de JS
+par page, 25 routes prérendues.
+
+Ce qui reste ouvert est listé et chiffré dans `specs/DECISIONS.md` §D10 :
+URL des sources, 26 millésimes à confirmer, 26 figures dont le tracé n'est pas
+encore régénéré, un axe incohérent du document d'origine à arbitrer, et les
+captures Playwright clair/sombre.

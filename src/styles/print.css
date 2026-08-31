@@ -1,0 +1,63 @@
+/* Nouveau : le document d'origine n'avait pas de feuille d'impression. */
+
+@media print {
+  .rail,
+  .toolbar,
+  .figdata,
+  .skip {
+    display: none !important;
+  }
+
+  /* L'impression force la palette claire : une page imprimée en sombre
+     consomme de l'encre pour rien et se lit mal. */
+  :root {
+    --paper: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f4f5f3;
+    --ink: #111111;
+    --ink-2: #333333;
+    --muted: #555555;
+    --rule: #cccccc;
+    --rule-2: #999999;
+    --shadow: none;
+  }
+
+  .shell {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+
+  .sec,
+  .q {
+    break-inside: auto;
+  }
+
+  .tw,
+  .fig,
+  .defn,
+  .lim,
+  .hole,
+  .take {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .sec {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .sec:first-of-type {
+    break-before: auto;
+    page-break-before: auto;
+  }
+
+  /* Les URL des sources deviennent visibles : sur papier, un lien sans son
+     adresse n'est pas une source. */
+  .src a::after {
+    content: ' <' attr(href) '>';
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+}

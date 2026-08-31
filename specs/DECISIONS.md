@@ -1,0 +1,223 @@
+# Décisions de mise en œuvre
+
+Journal des arbitrages pris pendant la construction du site, avec ce qui les a
+motivés et ce qu'ils coûtent. La spécification (`site-chiffres-2027.md`) dit ce
+qu'on veut ; ce document dit ce qu'on a fait quand la réalité du document
+d'origine ne correspondait pas à ce qui était prévu.
+
+Date : 2026-08-31 · État : première mise en œuvre complète.
+
+---
+
+## Résultat mesuré
+
+| Mesure | Valeur | Vérifiée par |
+|---|---|---|
+| Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
+| Tableaux migrés | 286 | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 079 sur 6 404 (64 %) | extraction |
+| Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
+| Sources | 197 blocs → **192 entrées**, 192 citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **identique au document d'origine, 55 891 éléments, aucun écart** | `npm run check:render` |
+| JS par page | 103 Ko (budget : 120 Ko) | `next build` |
+| Routes prérendues | 25 sur 25 | `next build` |
+
+---
+
+## D1 — Les figures : régénérer et le prouver, plutôt que l'espérer
+
+**Ce que prévoyait la spec** (§11.4) : reprendre les 55 graphiques à la main,
+« les coordonnées SVG ne permettent pas de retrouver les valeurs de façon
+fiable ».
+
+**Ce qu'on a trouvé.** C'est faux pour ce document : chaque figure porte ses
+graduations, avec leur valeur *et* leur position. L'échelle est donc
+documentée, et l'inversion pixel → valeur est exacte, pas approximative. Les
+graphiques en barres vont plus loin : leur valeur est écrite en toutes lettres
+à côté de chaque barre.
+
+**Décision.** Reconstituer les valeurs par calcul, et **prouver** le résultat
+plutôt que l'affirmer. `src/lib/chart.ts` décrit un graphique sous forme de
+primitives SVG ; les composants la transforment en JSX, et le script de
+migration la sérialise pour la comparer, élément par élément, au SVG
+d'origine. Composant et preuve partagent le même code : une figure n'est
+déclarée « pilotée par les données » que si le SVG régénéré est identique.
+
+**Trois classes de figures** en sortent, et l'audit les compte séparément :
+
+1. **29 régénérées** — plus une seule coordonnée dans les données.
+2. **22 dont les valeurs sont lues, tracé d'origine conservé** — le SVG
+   contient un élément hors modèle (repère, ligne de rappel, mention). La
+   figure est auditable et expose son tableau de données ; c'est encore le
+   tracé d'origine qui s'affiche.
+3. **4 non converties** — forme non reconnue, ou dérive supérieure à 0,6 px.
+
+Dans les cas 2 et 3, le SVG conservé vit **dans `data.ts`**, jamais dans
+`content.tsx` : la règle « aucun chiffre dans le contenu » tient sans
+exception.
+
+**Ce que ça a demandé.** Trois détails du générateur d'origine ont dû être
+retrouvés pour atteindre l'identité au caractère près, et chacun est
+documenté dans le code :
+
+- l'**arrondi au pair le plus proche** (`roundHalfEven`) — 32,5 → 32 mais
+  47,5 → 48. Sans lui, une étiquette de barre sur deux tombait à côté ;
+- l'**espace fine insécable** (U+202F) dans les étiquettes de SVG, là où les
+  tableaux utilisent une espace ordinaire ;
+- le **calibrage des échelles**. Les positions de grille sont arrondies au
+  dixième de pixel, ce qui ne détermine l'échelle qu'à 2 pour 10 000 près —
+  assez pour faire basculer une largeur de 148,3 à 148,4. L'échelle est donc
+  réajustée par régression sur l'ensemble des graduations et des largeurs.
+
+---
+
+## D2 — Anomalie trouvée dans le document d'origine
+
+La figure **« Ce qui compose l'écart de taux d'emploi »** (chapitre Emploi)
+porte un axe dont les graduations sont régulièrement espacées en pixels mais
+étiquetées 0, 2, 5, 8. Les largeurs de barres, elles, sont cohérentes avec une
+échelle 0 – 2,5 – 5 – 7,5. **L'axe affiché contredit les données tracées.**
+
+La détection est automatique (`isLinear`) et la figure est laissée en tracé
+d'origine plutôt que régénérée : on ne reproduit pas silencieusement un axe
+faux. C'est exactement le genre d'erreur qu'un fichier de 8 721 lignes de
+pixels rendait invisible, et le premier bénéfice concret de la refonte.
+
+**À trancher** avec l'auteur : corriger l'axe, ou corriger les barres.
+
+---
+
+## D3 — Cellules : un nombre seulement si le rendu est prouvé identique
+
+Les 5 247 cellules `.n` mélangent valeur et unité (`693,0 Md€`, `+27,4 %
+pour l'Allemagne`), avec une unité qui change d'une cellule à l'autre, pas
+d'une colonne à l'autre.
+
+**Décision.** Une cellule devient `{ v: 693, d: 1, u: 'Md€' }` — un vrai
+nombre — **si et seulement si** `formatNum` reproduit exactement la chaîne
+d'origine. Sinon elle reste du texte. Le garde-fou est dans l'extracteur : il
+n'y a pas de cas non prévu qui puisse dégrader le rendu, seulement des cas non
+prévus qui restent en texte.
+
+Résultat : 64 % des cellules chiffrées sont des nombres exploitables. Le reste
+est surtout du texte comparatif (« +27,4 % pour l'Allemagne », « n.d. »,
+« Aucune évaluation avec contrefactuel ») et des en-têtes.
+
+**Limite assumée.** 36 % des cellules ne sont pas encore des nombres. Les
+convertir suppose d'enrichir le modèle (intervalles, mentions, comparaisons),
+ce qui se fera au fil de l'eau — le typage rend l'opération sûre.
+
+---
+
+## D4 — Registre des sources : le texte d'origine fait partie de la donnée
+
+Le registre conserve, pour chaque source, la **formulation exacte** du bloc
+`p.src` d'origine, en plus du producteur, des identifiants de jeux de données
+et du drapeau « organisme engagé ».
+
+C'est ce qui permet de tenir les deux objectifs à la fois : les 197 blocs
+dupliqués deviennent 192 entrées uniques (la bibliographie est *dérivée*), et
+le rendu ne bouge pas d'un caractère.
+
+`SourceId` est l'union des clés du registre : **citer une source inexistante,
+ou n'en citer aucune, est une erreur de compilation**, pas un oubli découvert
+à la relecture.
+
+**Limite assumée.** Les blocs d'origine ne contiennent pas d'URL. Le champ
+`url` existe et reste vide : c'est le principal chantier documentaire ouvert.
+
+---
+
+## D5 — Pas de contexte React : une liaison typée en tête de contenu
+
+**Prévu** (spec §7) : `<DataTable id="…" />` résout son identifiant via un
+contexte serveur posé par `<Chapter>`.
+
+**Impossible** : `createContext` n'existe pas dans les composants serveur, et
+passer les pages de lecture en `"use client"` aurait coûté le prérendu.
+
+**Décision.** Une fonction de liaison, appelée en tête de `content.tsx` :
+
+```tsx
+const { DataTable, Figure } = chapterComponents({ tables, series, mode })
+```
+
+Deux lignes de plus par chapitre, et un gain : le type de `id` est restreint
+aux clés réellement présentes dans **ce** `data.ts`. Se tromper d'identifiant
+ne compile pas — ce que le contexte n'aurait pas donné.
+
+---
+
+## D6 — Polices : on garde le `<link>` d'origine
+
+**Prévu** (spec §8) : `next/font/google`, auto-hébergé.
+
+**Abandonné.** `next/font` génère des noms de familles hachés, alors que le CSS
+— repris verbatim, règle 6 — appelle `"IBM Plex Sans"`, `"Newsreader"` et
+`"IBM Plex Mono"` par leur nom réel. Les faire coïncider supposait de modifier
+le CSS, c'est-à-dire de renoncer à la garantie qui vaut le plus.
+
+**Décision.** Le `<link>` d'origine, `preconnect` compris, est repris tel quel.
+On garde une dépendance réseau ; on garde surtout un rendu identique.
+
+**Réversible** : auto-héberger les fichiers de police et déclarer les
+`@font-face` sous les mêmes noms, dans une feuille *séparée*, rendrait le CSS
+d'origine toujours valable. À faire si la dépendance à Google Fonts devient un
+problème.
+
+---
+
+## D7 — Deux modes de rendu, pour ne pas choisir entre lisibilité et preuve
+
+Le pied de chapitre daté et le tableau de données replié sous chaque figure
+sont des ajouts utiles — et ils rendaient `/tout` non comparable au document
+d'origine.
+
+**Décision.** `mode: 'page' | 'verbatim'`. Les pages de chapitre rendent les
+ajouts ; `/tout`, qui sert de référence de non-régression, n'en rend aucun.
+La comparaison automatique reste donc valide, et les lecteurs gardent les
+compléments là où ils lisent réellement.
+
+---
+
+## D8 — La bibliographie est la seule différence assumée de `/tout`
+
+`/tout` reconstitue les 21 chapitres **à l'identique** (vérifié :
+`npm run check:render`), puis se referme sur une bibliographie **générée**
+depuis les données, là où le document d'origine en avait une tenue à la main.
+
+C'est une différence voulue — c'est l'objectif O3 — et c'est la seule. Le
+script de comparaison l'exclut explicitement de son périmètre, et le dit.
+
+---
+
+## D9 — Millésimes : déduits, et comptés quand ils manquent
+
+`vintage` est obligatoire. Il est déduit de l'année la plus récente citée dans
+l'en-tête du tableau, son texte ou sa source. Pour **26 entrées sur 341**,
+aucune année n'est déductible : elles portent `'à confirmer'`.
+
+**Décision.** `check-data.ts` sépare deux régimes : les **invariants** font
+échouer le build (source inconnue, ligne plus large que ses colonnes, série
+désalignée) ; la **dette de migration** est comptée et détaillée dans
+`.artifacts/audit.json` sans bloquer. Écrire un faux millésime pour satisfaire
+un schéma aurait été pire que d'en compter 26 à confirmer.
+
+---
+
+## D10 — Ce qui reste à faire
+
+| Chantier | Volume | Où le voir |
+|---|---|---|
+| URL des sources | 192 entrées sans `url` | `src/data/sources.ts` |
+| Millésimes à confirmer | 26 | `.artifacts/audit.json` |
+| Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
+| Figures non converties | 4 | `.artifacts/audit.json` |
+| Axe incohérent à arbitrer | 1 | D2 ci-dessus |
+| Cellules encore en texte | 2 325 | extraction |
+| Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
+
+La comparaison de non-régression est aujourd'hui structurelle (HTML élément par
+élément), ce qui est plus strict qu'une capture d'écran sur le balisage, mais
+ne dit rien du CSS appliqué. Les captures Playwright restent à ajouter pour
+couvrir les thèmes clair et sombre aux trois largeurs.
