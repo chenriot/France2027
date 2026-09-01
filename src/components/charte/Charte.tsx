@@ -3,16 +3,23 @@
 // Les trois pages de `/accueil-2027` la partagent. Le libellé et la
 // destination de chaque entrée de navigation ne sont donc écrits qu'ici.
 import type { ReactNode } from 'react'
+import { chapters } from '@/data/chapters'
 import { sources } from '@/data/sources'
-import '@/styles/accueil-2027.css'
+import '@/styles/charte-2027.css'
+
+const CHAPITRES = chapters.length
 
 export const NAV = [
-  { href: '/accueil-2027', label: 'Accueil' },
-  { href: '/accueil-2027/themes', label: 'Thèmes' },
-  { href: '/accueil-2027/synthese', label: 'Synthèse' },
+  { href: '/', label: 'Accueil' },
+  { href: '/synthese', label: 'Synthèse' },
   { href: '/grille-promesses', label: 'Promesses' },
   { href: '/sources', label: 'Sources' },
+  { href: '/tout', label: 'Document intégral' },
 ] as const
+
+/** Une entrée est active si elle est la page, ou si la page en dépend. */
+const actif = (href: string, courant: string) =>
+  href === '/' ? courant === '/' : courant === href || courant.startsWith(`${href}/`)
 
 export function Charte({ courant, children }: { courant: string; children: ReactNode }) {
   return (
@@ -26,16 +33,15 @@ export function Charte({ courant, children }: { courant: string; children: React
 
       <div className="a27">
         <p className="a27-provenance">
-          <b>Maquette</b>
+          <b>{CHAPITRES} chapitres</b>
           <span>
-            Mise en page proposée. Les chiffres, eux, viennent du dossier : chacun est lu dans le
-            chapitre qui l’établit, avec sa source et son millésime parmi{' '}
+            Chaque chiffre porte sa source et son millésime, parmi{' '}
             {Object.keys(sources).length} références. <a href="/sources">Voir les sources</a>.
           </span>
         </p>
 
         <header className="a27-head">
-          <a className="a27-brand" href="/accueil-2027">
+          <a className="a27-brand" href="/">
             <span className="a27-compass" aria-hidden="true">
               <i />
             </span>
@@ -44,8 +50,8 @@ export function Charte({ courant, children }: { courant: string; children: React
           <nav aria-label="Navigation principale">
             <ul className="a27-nav">
               {NAV.map((item) => (
-                <li key={item.href} className={item.href === courant ? 'on' : undefined}>
-                  <a href={item.href} aria-current={item.href === courant ? 'page' : undefined}>
+                <li key={item.href} className={actif(item.href, courant) ? 'on' : undefined}>
+                  <a href={item.href} aria-current={actif(item.href, courant) ? 'page' : undefined}>
                     {item.label}
                   </a>
                 </li>

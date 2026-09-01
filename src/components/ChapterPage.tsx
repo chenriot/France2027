@@ -1,11 +1,19 @@
 import type { ReactNode } from 'react'
+import { Charte } from '@/components/charte/Charte'
+import { Document } from '@/components/charte/Document'
+import { ScrollSpy } from '@/components/client/ScrollSpy'
 import { chapters } from '@/data/chapters'
 import type { ChapterMeta } from '@/lib/types'
 import { Chapter } from './Chapter'
-import { Rail } from './Rail'
-import { ScrollSpy } from './client/ScrollSpy'
 
-/** Page d'un chapitre : coquille, rail des fiches, section, navigation. */
+/**
+ * Page d'un chapitre, sous la charte.
+ *
+ * Le contenu du chapitre est rendu tel quel — même composant, même balisage
+ * que sur `/tout`. Seules la coquille et la peau changent. C'est ce qui permet
+ * de porter les vingt et un chapitres d'un seul geste, sans toucher à une
+ * ligne de `content.tsx`.
+ */
 export function ChapterPage({
   meta,
   questions,
@@ -20,22 +28,25 @@ export function ChapterPage({
   const next = index >= 0 && index < chapters.length - 1 ? chapters[index + 1] : undefined
 
   return (
-    <div className="shell">
-      <a className="skip" href="#contenu">
-        Aller au contenu
-      </a>
-      <Rail
-        title={meta.shortTitle}
-        entries={questions.map((q) => ({ href: `#${q.id}`, label: q.title }))}
-      />
-      <main className="main" id="contenu">
-        <Chapter meta={meta}>{children}</Chapter>
-        <nav className="chapnav">
-          {previous ? <a href={`/${previous.slug}`}>← {previous.shortTitle}</a> : <span />}
-          {next ? <a href={`/${next.slug}`}>{next.shortTitle} →</a> : <span />}
-        </nav>
-      </main>
+    <>
+      <Charte courant={`/${meta.slug}`}>
+        <Document
+          railTitle={meta.shortTitle}
+          rail={questions.map((q) => ({ href: `#${q.id}`, label: q.title }))}
+          liens={
+            <>
+              <a href="/">Sommaire du dossier</a>
+              <a href="/sources">Toutes les sources</a>
+              <a href="/tout">Document intégral</a>
+            </>
+          }
+          precedent={previous ? { href: `/${previous.slug}`, label: previous.shortTitle } : undefined}
+          suivant={next ? { href: `/${next.slug}`, label: next.shortTitle } : undefined}
+        >
+          <Chapter meta={meta}>{children}</Chapter>
+        </Document>
+      </Charte>
       <ScrollSpy />
-    </div>
+    </>
   )
 }

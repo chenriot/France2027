@@ -1,7 +1,18 @@
 /* Nouveau : le document d'origine n'avait pas de feuille d'impression. */
 
 @media print {
+  /* La coquille de la charte ne s'imprime pas : ni le rail, ni la navigation,
+     ni le bandeau de provenance, ni le pied. Reste le document. */
   .rail,
+  .a27-rail,
+  .a27-head,
+  .a27-provenance,
+  .a27-foot,
+  .a27-chapnav,
+  .a27-boardhead,
+  .a27-ctl,
+  .a27-pips,
+  .a27-tick,
   .toolbar,
   .figdata,
   .skip {
@@ -22,10 +33,33 @@
     --shadow: none;
   }
 
-  .shell {
+  .shell,
+  .a27,
+  .a27-doc,
+  .a27-doc-body,
+  .a27-article {
     display: block;
     max-width: none;
     padding: 0;
+    border: none;
+    background: #fff;
+  }
+
+  /* Sur papier, une tuile n'a plus de face cachée : on les déplie toutes. */
+  .a27-tile {
+    height: auto;
+    perspective: none;
+  }
+  .a27-card {
+    position: static;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .a27-face {
+    position: static;
+    display: block !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   .sec,
@@ -56,7 +90,7 @@
   /* Les URL des sources deviennent visibles : sur papier, un lien sans son
      adresse n'est pas une source. */
   .src a::after {
-    content: ' <' attr(href) '>';
+    content: " <" attr(href) ">";
     font-size: 0.85em;
     word-break: break-all;
   }

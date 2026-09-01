@@ -4,8 +4,8 @@
 // tous les tracés, toutes les valeurs finales. `KpiBoard` ne fait ensuite que
 // choisir laquelle est visible et rejouer les animations d'entrée.
 import { formatValue } from '@/lib/format'
-import { KpiChart, countAttrs, tone } from './Charts'
-import type { Kpi, Tile as TileSpec } from './data'
+import { KpiChart, countAttrs, tone } from './KpiChart'
+import type { Kpi, Tile as TileSpec } from '@/data/indicateurs'
 
 function Face({ kpi, uid }: { kpi: Kpi; uid: string }) {
   return (
@@ -60,7 +60,7 @@ function Face({ kpi, uid }: { kpi: Kpi; uid: string }) {
   )
 }
 
-export function Tile({
+export function KpiTile({
   spec,
   id,
   className = '',

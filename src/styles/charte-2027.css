@@ -31,6 +31,17 @@
  *    de leur emplacement et calés à gauche (`xMinYMid meet`).
  */
 
+/*
+ * La charte est claire, et elle sert désormais toutes les pages : le fond de
+ * la page suit, sinon le thème sombre du dossier laisserait des gouttières
+ * noires autour de la planche. C'est aussi pourquoi la bascule clair/sombre a
+ * disparu — elle n'aurait plus rien à basculer.
+ */
+html body {
+  background: #f4f5f3;
+  color-scheme: light;
+}
+
 .a27 {
   --a27-blue: #1b3fd8;
   --a27-blue-2: #8fa2ee;
@@ -960,15 +971,25 @@
 
 /* -------------------------------------------------------- grille des thèmes */
 
+/*
+ * Les filets ne viennent pas du fond de la grille mais de chaque carte : une
+ * famille de deux thèmes laisserait sinon une case vide en aplat noir. Chaque
+ * carte peint son filet droit et son filet bas dans l'écart de 2 px, et le
+ * conteneur rogne ce qui dépasse.
+ */
 .a27-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2px;
-  background: var(--a27-ink);
+  background: #fff;
   border-bottom: 2px solid var(--a27-ink);
+  overflow: hidden;
 }
 .a27-theme {
   background: #fff;
+  box-shadow:
+    2px 0 0 var(--a27-ink),
+    0 2px 0 var(--a27-ink);
   padding: 26px var(--a27-cell) 24px;
   display: flex;
   flex-direction: column;
@@ -1129,7 +1150,9 @@
      les couleurs du dossier au milieu de la planche. */
   --ink: var(--a27-ink);
   --ink-2: var(--a27-ink-2);
-  --muted: var(--a27-grey);
+  /* Un gris un peu plus sombre que celui de la charte : `--muted` porte ici
+     du texte courant (légendes, notes de figure), pas des étiquettes. */
+  --muted: #6a6a64;
   --paper: #fff;
   --surface: #fff;
   --surface-2: var(--a27-track);
@@ -1137,15 +1160,17 @@
   --rule-2: #d8d8d4;
   --accent: var(--a27-blue);
   --accent-2: #142fa4;
-  /* Les trois familles d'encadrés du dossier, ramenées aux deux couleurs de
-     la charte : le bleu pour ce qui est établi, le rouge pour ce qui manque
-     ou se corrige. Le vert et le brun n'existent pas dans cette charte. */
-  --caveat: var(--a27-ink-2);
-  --caveat-bg: var(--a27-track);
+  /* Les encadrés gardent leurs couleurs sémantiques — vert pour une
+     définition, orange pour une limite de mesure, rouge pour une donnée
+     absente. Le masthead les nomme par leur couleur : les ramener au bleu et
+     au rouge de la charte rendrait sa légende fausse. Seul le rouge est
+     aligné sur celui de la charte. */
+  --caveat: #8a5320;
+  --caveat-bg: #faf3e9;
   --gap: var(--a27-red);
   --gap-bg: #fdeef0;
-  --note: var(--a27-blue);
-  --note-bg: #e9edfc;
+  --note: #17603f;
+  --note-bg: #eaf4ef;
   --s1: var(--a27-blue);
   --s2: var(--a27-red);
   --s3: var(--a27-ink-2);
@@ -1214,4 +1239,334 @@
   .a27-tally > div {
     padding: 12px 18px;
   }
+}
+
+/* ==========================================================================
+   Surface de lecture : rail collant et corps de chapitre
+   ========================================================================== */
+
+.a27-doc {
+  display: grid;
+  grid-template-columns: 274px minmax(0, 1fr);
+  gap: 2px;
+  background: var(--a27-ink);
+  border-bottom: 2px solid var(--a27-ink);
+}
+.a27-rail {
+  background: #fff;
+}
+.a27-rail-in {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 26px var(--a27-cell) 34px;
+}
+.a27-rail-title {
+  font:
+    700 11px/1.3 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+  margin: 0 0 14px;
+}
+.a27-rail ol {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.a27-rail li {
+  margin: 0;
+}
+.a27-rail li a {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 9px;
+  align-items: baseline;
+  padding: 8px 8px 8px 0;
+  border-top: 1px solid var(--a27-track);
+  color: var(--a27-ink-2);
+  text-decoration: none;
+  font:
+    600 12.5px/1.35 "Libre Franklin",
+    sans-serif;
+}
+.a27-rail li a .n {
+  font:
+    600 10px/1.4 "IBM Plex Mono",
+    monospace;
+  color: var(--a27-grey);
+}
+.a27-rail li a:hover {
+  color: var(--a27-ink);
+}
+.a27-rail li a.on {
+  color: var(--a27-blue);
+  box-shadow: inset 3px 0 0 var(--a27-blue);
+  padding-left: 10px;
+}
+.a27-rail li a.on .n {
+  color: var(--a27-blue);
+}
+.a27-rail-extra {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 2px solid var(--a27-ink);
+}
+.a27-rail-extra a {
+  font:
+    700 12.5px/1.3 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink);
+  text-decoration: none;
+}
+.a27-rail-extra a:hover {
+  color: var(--a27-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+/* Le champ de recherche du dossier, ramené à la charte. */
+.a27-rail .filter {
+  width: 100%;
+  padding: 11px 12px;
+  font:
+    400 13px/1.3 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink);
+  background: #fff;
+  border: 2px solid var(--a27-ink);
+  border-radius: 0;
+  margin: 0;
+}
+.a27-rail .filter::placeholder {
+  color: var(--a27-grey);
+}
+
+.a27-doc-body {
+  background: #fff;
+  min-width: 0;
+}
+
+/* --------------------------------------------------- chapitre précédent et suivant */
+
+.a27-chapnav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--a27-ink);
+  border-top: 2px solid var(--a27-ink);
+}
+.a27-chapnav > a,
+.a27-chapnav > span {
+  background: #fff;
+  padding: 22px var(--a27-pad);
+  text-decoration: none;
+  color: var(--a27-ink);
+  font:
+    800 17px/1.25 "Archivo",
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+.a27-chapnav > a.next {
+  text-align: right;
+}
+.a27-chapnav > a span {
+  display: block;
+  font:
+    600 10.5px/1.2 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+  margin-bottom: 8px;
+}
+.a27-chapnav > a:hover {
+  background: var(--a27-blue);
+  color: #fff;
+}
+.a27-chapnav > a:hover span {
+  color: rgb(255 255 255 / 70%);
+}
+
+/* ----------------------------------- l'en-tête du chapitre, en tête de charte */
+
+/*
+ * Le chapitre porte déjà son titre dans `.sec-head` : on le met à la mesure de
+ * la charte plutôt que d'en écrire un second au-dessus. Rien n'est dupliqué,
+ * rien n'est masqué.
+ */
+.a27-article .sec {
+  padding-top: 0;
+  max-width: none;
+}
+.a27-article .sec-head {
+  border-top: none;
+  padding: 40px var(--a27-pad) 0;
+  margin-bottom: 0;
+}
+.a27-article .sec-num {
+  display: inline-block;
+  font:
+    700 11px/1 "Libre Franklin",
+    sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--a27-red);
+  color: #fff;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+}
+.a27-article .sec h2 {
+  font:
+    900 clamp(34px, 4.4vw, 50px) / 0.98 "Archivo",
+    sans-serif;
+  letter-spacing: -0.04em;
+  margin: 0;
+  max-width: 22ch;
+}
+/* Le chapeau garde une largeur de lecture, mais son filet va d'un bord à
+   l'autre : d'où la réserve à droite plutôt qu'un `max-width`. */
+.a27-article .sec-note {
+  font:
+    400 17px/1.55 "Libre Franklin",
+    sans-serif;
+  font-style: normal;
+  color: var(--a27-ink-2);
+  max-width: none;
+  margin: 18px 0 0;
+  padding: 0 var(--a27-pad) 34px;
+  padding-right: max(var(--a27-pad), 26%);
+  border-bottom: 2px solid var(--a27-ink);
+}
+.a27-article .sec-note b,
+.a27-article .sec-note strong {
+  color: var(--a27-ink);
+  font-weight: 700;
+}
+
+/* Les fiches, à la largeur de lecture. */
+.a27-article .q {
+  padding: 30px var(--a27-pad);
+  border-bottom: 2px solid var(--a27-track);
+  max-width: none;
+}
+.a27-article .q > * {
+  max-width: 80ch;
+}
+.a27-article .q .tw,
+.a27-article .q figure,
+.a27-article .q .fig {
+  max-width: none;
+}
+.a27-article .chapfoot {
+  padding: 22px var(--a27-pad);
+  font:
+    600 11px/1.4 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+}
+
+@media (max-width: 1000px) {
+  .a27-doc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .a27-rail-in {
+    position: static;
+    max-height: none;
+    border-bottom: 2px solid var(--a27-ink);
+  }
+  .a27-chapnav {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .a27-chapnav > a.next {
+    text-align: left;
+  }
+  .a27-article .sec-note {
+    padding-right: var(--a27-pad);
+  }
+}
+
+/* --------------------------------------------------- familles de lecture */
+
+.a27-family {
+  padding: 34px var(--a27-pad) 22px;
+  border-top: 2px solid var(--a27-ink);
+}
+.a27-family h3 {
+  font:
+    900 30px/1.05 "Archivo",
+    sans-serif;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+.a27-family p {
+  font:
+    400 15px/1.55 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink-2);
+  margin: 10px 0 0;
+  max-width: 68ch;
+}
+.a27-theme h4 {
+  font:
+    800 20px/1.2 "Archivo",
+    sans-serif;
+  letter-spacing: -0.02em;
+  margin: 12px 0 0;
+  text-wrap: pretty;
+}
+.a27-theme h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+.a27-theme h4 a:hover {
+  color: var(--a27-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+/* ------------------------------------------- l'en-tête du document intégral */
+
+/*
+ * `/tout` porte le masthead du document d'origine. Son balisage est figé — il
+ * entre dans la comparaison de `check:render` — mais rien n'empêche de lui
+ * donner la typographie de la charte.
+ */
+.a27-article .mast {
+  padding: 44px var(--a27-pad) 0;
+  max-width: none;
+}
+.a27-article .mast h1 {
+  font:
+    900 clamp(40px, 5.4vw, 62px) / 0.95 "Archivo",
+    sans-serif;
+  letter-spacing: -0.045em;
+  max-width: 18ch;
+}
+.a27-article .mast .kicker {
+  font-family: "IBM Plex Mono", monospace;
+}
+.a27-article .mast .standfirst {
+  font:
+    400 18px/1.55 "Libre Franklin",
+    sans-serif;
+  max-width: 64ch;
+}
+.a27-article .method {
+  border: 2px solid var(--a27-ink);
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+  margin-right: var(--a27-pad);
+}
+.a27-article .method h2 {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
 }

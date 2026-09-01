@@ -498,6 +498,46 @@ manière de produire les 21 répertoires.
 
 ---
 
+## D18 — La charte d'Élections 2027 devient celle du site
+
+La maquette `Élections 2027` avait été construite sur une seule route,
+`/elections-2027`, avec une palette en dur et des classes préfixées `b27-`
+(voir l'en-tête de `src/styles/elections-2027.css`). Une page d'accueil à
+indicateurs a été bâtie sur la même charte, puis le reste du dossier. La charte
+sert donc maintenant **toutes les routes** : accueil, 21 chapitres, `/sources`
+et `/tout`.
+
+Trois conséquences, et ce qui les rend acceptables.
+
+**Le balisage des chapitres n'a pas bougé d'une ligne.** Les pages de chapitre
+rendent le même `content.tsx` que `/tout`, et `/tout` rend le même `<main
+class="main">` qu'avant. `check:render` compare la chaîne à partir de cette
+balise : elle est restée à 57 752 éléments identiques tout au long du portage.
+La charte est une peau — `src/styles/charte-2027.css` redéfinit, sous
+`.a27-article`, les jetons de couleur et la typographie du dossier — et une
+peau ne se voit pas dans le HTML. C'est ce qui a permis de porter les vingt et
+un chapitres en modifiant un seul composant, `ChapterPage`.
+
+**La bascule clair/sombre disparaît.** La charte est claire, ses aplats sont
+saturés, et il n'existe pas de version sombre qui garde le même sens. Le
+`ThemeToggle`, le script de restauration du thème dans le layout et le rail du
+dossier ont donc été supprimés — ils n'avaient plus rien à commander. La
+règle 6 de `CLAUDE.md` est mise à jour en conséquence : les jetons de
+`tokens.css` restent le seul endroit où écrire une couleur **dans le corps du
+dossier**, mais leur raison d'être n'est plus la bascule, c'est de garder un
+seul point de réglage pour la peau.
+
+**Les encadrés gardent leurs couleurs sémantiques.** Vert pour une définition,
+orange pour une limite de mesure, rouge pour une donnée absente. On avait
+d'abord ramené ces trois familles au bleu et au rouge de la charte ; c'était
+une erreur, parce que le masthead du document d'origine les nomme par leur
+couleur (« les encadrés verts définissent une notion, les orange signalent une
+limite »). Ce texte entre dans la comparaison de `check:render` et ne peut donc
+pas être réécrit : ce sont les couleurs qui devaient rester justes.
+
+Les URL de la maquette — `/accueil-2027` et ses deux sous-pages — restent
+valides et redirigent vers les pages définitives (`next.config.mjs`).
+
 ## D10 — Ce qui reste à faire
 
 | Chantier | Volume | Où le voir |

@@ -26,7 +26,7 @@ import {
   sourcesDe,
   valeur,
   type Origine,
-} from './origine'
+} from '@/lib/origine'
 
 /** Les cinq tons de la charte utilisables sur fond blanc. Pas de jaune : il
  *  ne passe pas le contraste hors aplat bleu. */

@@ -5,8 +5,8 @@
 // colonne ou une série que l'accueil cite, ce test tombe — et il tombe en
 // deux secondes, avant le build, avec le nom de l'origine fautive.
 import { describe, expect, it } from 'vitest'
-import { hero, minis, tiles } from './data'
-import type { Kpi } from './data'
+import { hero, minis, tiles } from '@/data/indicateurs'
+import type { Kpi } from '@/data/indicateurs'
 
 const toutes: readonly Kpi[] = [hero, ...tiles, ...minis].flatMap((t) => t.faces)
 

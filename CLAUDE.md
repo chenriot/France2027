@@ -94,10 +94,17 @@ d'acceptation de la spec.
      Modules et le CSS-in-JS sont autorisés**, au même titre que le CSS natif.
      Choisir l'outil qui convient à la surface qu'on construit.
 
-   Une seule contrainte demeure des deux côtés : les couleurs passent par les
-   jetons de `src/styles/tokens.css` (`--ink`, `--surface`, `--accent`,
-   `--s1`…) et non par des valeurs en dur, sans quoi la bascule clair/sombre
-   cesse de fonctionner sur la surface concernée.
+   Une seule contrainte demeure des deux côtés : **dans le corps du dossier**,
+   les couleurs passent par les jetons de `src/styles/tokens.css` (`--ink`,
+   `--surface`, `--accent`, `--s1`…) et non par des valeurs en dur — c'est ce
+   qui permet à `src/styles/charte-2027.css` de reteinter tout le dossier en
+   redéfinissant une dizaine de variables sous `.a27-article`.
+
+   **La charte du site est celle d'`Élections 2027`** (`charte-2027.css`,
+   classes `a27-`) : grille suisse, aplats, typographie massive, palette en
+   dur et locale à `.a27`. Elle habille toutes les routes. Elle est claire, et
+   la bascule clair/sombre a été supprimée avec elle — voir `DECISIONS.md`
+   §D18.
 7. **Composants serveur par défaut.** `"use client"` est réservé à
    `src/components/client/` : bascule de thème, scrollspy, recherche. Un
    `"use client"` sur une page de lecture lui coûterait son prérendu.
@@ -189,7 +196,7 @@ doit être conditionné au mode, sinon il casse la vérification.
 ## État actuel
 
 Le site est construit et vérifié : 21 chapitres, 304 tableaux, 58 figures,
-212 sources, 25 routes prérendues. `/tout` rend 57 752 éléments avec
+212 sources, 28 routes prérendues, toutes sous la charte (§D18). `/tout` rend 57 752 éléments avec
 **29 corrections déclarées et aucun écart non déclaré**. Le JavaScript par page
 est de 170 Ko pour 120 visés : dette mesurée, expliquée et cliquetée
 (`DECISIONS.md` §D11).

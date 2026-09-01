@@ -9,7 +9,7 @@
 // l'animation d'entrée : voir `src/components/client/KpiBoard.tsx`.
 import { formatMagnitude, MINUS } from "@/lib/format";
 import { svgNumber } from "@/lib/chart";
-import type { Chart, Tone } from "./data";
+import type { Chart, Tone } from "@/data/indicateurs";
 
 const TONE: Record<Tone, string> = {
   blue: "var(--a27-blue)",

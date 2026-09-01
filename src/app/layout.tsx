@@ -13,12 +13,6 @@ export const metadata: Metadata = {
   description: SITE.description,
 }
 
-/**
- * Applique le thème mémorisé avant le premier rendu, pour éviter le flash
- * clair au chargement d'une page en thème sombre.
- */
-const THEME_SCRIPT = `try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}`
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
@@ -31,7 +25,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
         />
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>{children}</body>
     </html>

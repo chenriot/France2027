@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Chapter } from '@/components/Chapter'
+import { Charte } from '@/components/charte/Charte'
 import { Masthead } from '@/components/Masthead'
 import { ScrollSpy } from '@/components/client/ScrollSpy'
 import { Search } from '@/components/client/Search'
-import { ThemeToggle } from '@/components/client/ThemeToggle'
 import { Bibliography } from '@/components/Bibliography'
 import { allChapters } from '@/data/all'
 import CommerceExterieur from '@/app/(chapitres)/commerce-exterieur/content'
@@ -66,30 +66,44 @@ const CONTENTS = [
 
 export default function Tout() {
   return (
-    <div className="shell">
-      <nav className="rail" aria-label="Sommaire">
-        <p className="rail-title">Sommaire</p>
-        <Search />
-        <div className="extra top">
-          <a href="#synth">Synthèse et commentaire</a>
-        </div>
-        <ol id="toc">
-          {allChapters
-            .filter((c) => c.meta.legacyAnchor !== 'synth')
-            .map((c) => (
-              <li key={c.meta.slug}>
-                <a href={`#${c.meta.legacyAnchor}`}>{c.meta.shortTitle}</a>
+    <Charte courant="/tout">
+      {/*
+        La coquille change, le corps ne change pas : `check:render` compare la
+        chaîne à partir de `<main class="main">`, et tout ce qu'elle contient
+        est ici exactement ce qu'il était. Seule la peau — `.a27-article` —
+        est nouvelle, et une peau ne se voit pas dans le HTML.
+      */}
+      <div className="a27-doc">
+        <nav className="a27-rail" aria-label="Sommaire">
+          <div className="a27-rail-in">
+            <p className="a27-rail-title">Sommaire</p>
+            <Search />
+            <ol id="toc">
+              <li>
+                <a href="#synth">
+                  <span className="n">00</span>
+                  <span>Synthèse et commentaire</span>
+                </a>
               </li>
-            ))}
-        </ol>
-        <div className="extra">
-          <a href="#sources">Toutes les sources</a>
-        </div>
-        <div className="toolbar">
-          <ThemeToggle />
-        </div>
-      </nav>
+              {allChapters
+                .filter((c) => c.meta.legacyAnchor !== 'synth')
+                .map((c, i) => (
+                  <li key={c.meta.slug}>
+                    <a href={`#${c.meta.legacyAnchor}`}>
+                      <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                      <span>{c.meta.shortTitle}</span>
+                    </a>
+                  </li>
+                ))}
+            </ol>
+            <div className="a27-rail-extra">
+              <a href="#sources">Toutes les sources</a>
+              <a href="/">Sommaire du dossier</a>
+            </div>
+          </div>
+        </nav>
 
+        <div className="a27-doc-body a27-article">
       <main className="main">
         <Masthead />
         {allChapters.map((chapter, i) => {
@@ -105,7 +119,9 @@ export default function Tout() {
             seule différence assumée de la reconstitution. */}
         <Bibliography />
       </main>
+        </div>
+      </div>
       <ScrollSpy />
-    </div>
+    </Charte>
   )
 }
