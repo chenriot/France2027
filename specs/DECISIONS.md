@@ -14,11 +14,11 @@ Date : 2026-09-01 · État : première mise en œuvre complète, plus une fiche 
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux migrés | 290 | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 117 sur 6 468 (64 %) | extraction |
+| Tableaux migrés | 292 | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 127 sur 6 484 (64 %) | extraction |
 | Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
-| Sources | 203 blocs → **198 entrées**, 198 citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **identique au document d'origine, 56 550 éléments, aucun écart** | `npm run check:render` |
+| Sources | 208 blocs → **200 entrées**, 200 citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **identique au document d'origine, 56 843 éléments, aucun écart** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -321,10 +321,11 @@ l'historique Git, qui est le bon endroit pour elle.
 
 **Première application : `s4-q24`**, sur l'emploi et le salaire des femmes,
 en fin de partie 1 du chapitre « Emploi, chômage et coût du travail ».
-Quatre tableaux, six sources, aucune dette de migration ajoutée. Trois encadrés
+Sept tableaux, huit sources, aucune dette de migration ajoutée. Quatre encadrés
 `hole` y signalent ce que la statistique publique ne permet pas d'établir :
 l'écart de salaire à poste comparable par tranche d'âge, les tranches d'âge
-intermédiaires, et l'ancienneté par sexe. Ces trous ne sont pas des lacunes de
+intermédiaires, la ventilation sectorielle à métier constant, et l'ancienneté
+par sexe. Ces trous ne sont pas des lacunes de
 recherche à combler plus tard : ce sont des données qui ne sont pas publiées,
 et c'est un résultat en soi.
 
@@ -334,12 +335,12 @@ et c'est un résultat en soi.
 
 | Chantier | Volume | Où le voir |
 |---|---|---|
-| URL des sources | 198 entrées sans `url` | `src/data/sources.ts` |
+| URL des sources | 200 entrées sans `url` | `src/data/sources.ts` |
 | Millésimes à confirmer | 26 | `.artifacts/audit.json` |
 | Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
 | Figures non converties | 4 | `.artifacts/audit.json` |
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
-| Cellules encore en texte | 2 351 | extraction |
+| Cellules encore en texte | 2 357 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 | Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |
 

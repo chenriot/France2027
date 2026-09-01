@@ -1484,7 +1484,9 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
-      'insee-insee-focus-n-377-ecart-de-salaire-e-2', 'eurostat-earn-gr-gpgr2',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
     ],
     columns: [
       {
@@ -1519,11 +1521,13 @@ export const tables = {
     ],
   },
   'ecart-hommes-femmes-de-taux-d-emploi-20-64-ans': {
-    vintage: '2024',
+    vintage: '2025',
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
-      'insee-insee-focus-n-377-ecart-de-salaire-e-2', 'eurostat-earn-gr-gpgr2',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
     ],
     columns: [
       {
@@ -1608,7 +1612,9 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
-      'insee-insee-focus-n-377-ecart-de-salaire-e-2', 'eurostat-earn-gr-gpgr2',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
     ],
     columns: [
       {
@@ -1653,12 +1659,54 @@ export const tables = {
       },
     ],
   },
+  'ce-que-neutralise-chaque-etage': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ce-que-neutralise-chaque-etage',
+        header: 'Ce que neutralise chaque étage',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'ecart-restant', header: 'Écart restant', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Rien : revenu salarial brut de comparaison, 2024' },
+          { v: 21.8, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '+ la durée du travail : temps partiel et mois hors emploi' },
+          { v: 14, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>+ le métier, le niveau du poste et l’employeur</b>' },
+          { v: 3.6, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
   'ecart-de-salaire-net-en-eqtp-secteur-prive-par-age': {
     vintage: '2024',
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
-      'insee-insee-focus-n-377-ecart-de-salaire-e-2', 'eurostat-earn-gr-gpgr2',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
     ],
     columns: [
       {
@@ -1667,6 +1715,7 @@ export const tables = {
         type: 'text',
         headerNumeric: false,
       },
+      { key: '2022', header: '2022', type: 'number', headerNumeric: true },
       { key: '2023', header: '2023', type: 'number', headerNumeric: true },
       { key: '2024', header: '2024', type: 'number', headerNumeric: true },
     ],
@@ -1674,13 +1723,23 @@ export const tables = {
       {
         cells: [
           { t: 'Moins de 25 ans' },
+          { v: 4.7, d: 1, u: '%' },
           { v: 4.3, d: 1, u: '%' },
           { v: 3.2, d: 1, u: '%' },
         ],
       },
       {
         cells: [
+          { v: 55, d: 0, u: 'ans ou plus' },
+          { v: 22.7, d: 1, u: '%' },
+          null,
+          null,
+        ],
+      },
+      {
+        cells: [
           { v: 60, d: 0, u: 'ans ou plus', strong: true },
+          null,
           { v: 24.9, d: 1, u: '%', strong: true },
           { v: 24.1, d: 1, u: '%', strong: true },
         ],
@@ -1690,14 +1749,57 @@ export const tables = {
         cells: [
           { t: 'Ensemble' },
           null,
+          null,
           { v: 13, d: 1, u: '%' },
         ],
       },
       {
         cells: [
-          { t: 'Rapport 60 ans ou plus / moins de 25 ans' },
+          { t: 'Rapport borne haute / borne basse' },
+          { v: 4.8, d: 1 },
           { v: 5.8, d: 1 },
           { v: 7.5, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'ecart-femmes-hommes-selon-les-enfants-secteur-prive-2022': {
+    vintage: '2022',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-femmes-hommes-selon-les-enfants-secteur-prive-2022',
+        header: 'Écart femmes-hommes selon les enfants, secteur privé, 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'c2', header: '%', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Salariés sans enfant — écart de salaire net en EQTP' },
+          { v: 5.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Mères et pères de trois enfants ou plus — écart en EQTP</b>' },
+          { v: 28.2, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Mères et pères, tous effets cumulés — écart de revenu salarial' },
+          { v: 29.9, d: 1 },
         ],
         total: true,
       },
@@ -4238,8 +4340,10 @@ export const citedSources = [
   'ined-ined-population-societes-apres-plu', 'insee-accompagnement-crepon-duflo-gurgand',
   'insee-france-travail-dares-statistiques-du',
   'insee-insee-enquetes-emploi-series-longues-d',
+  'insee-insee-focus-n-320-ecart-de-salaire-e',
+  'insee-insee-focus-n-320-pour-2022-n-349-pou',
   'insee-insee-focus-n-377-ecart-de-salaire-e',
-  'insee-insee-focus-n-377-ecart-de-salaire-e-2',
+  'insee-insee-premiere-n-1803-ecarts-de-remu',
   'ocde-ocde-taxing-wages-2026-donnees-2025-c',
   'unedic-france-unedic-convention-du-15-novemb',
   'unedic-ofce-revue-de-l-ofce-n-184-2024-ma',

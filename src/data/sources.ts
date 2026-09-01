@@ -1149,17 +1149,24 @@ const registry = {
     theme: 'immigration',
     accessed: '2026-08',
   },
-  'insee-insee-focus-n-377-ecart-de-salaire-e': {
+  'insee-insee-focus-n-320-ecart-de-salaire-e': {
     producer: 'Insee',
     kind: 'other',
-    text: 'Insee Focus n° 377, « Écart de salaire entre femmes et hommes en 2024 », et n° 349, même titre pour 2023. Base Tous salariés, déclarations sociales nominatives, secteur privé. L’écart à poste comparable est estimé par une régression du logarithme du salaire à effets fixes croisant le libellé d’emploi, la catégorie socioprofessionnelle et le numéro Siret de l’établissement. Depuis 1995, les inégalités de revenu salarial ont diminué d’un tiers.',
+    text: 'Insee Focus n° 320, « Écart de salaire entre femmes et hommes en 2022 » : écarts selon le nombre d’enfants. Insee Analyses n° 44, « Entreprises, enfants : quels rôles dans les inégalités salariales entre femmes et hommes ? » : effet causal de l’arrivée d’un enfant, estimé par comparaison à la trajectoire contrefactuelle.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
   },
-  'insee-insee-focus-n-377-ecart-de-salaire-e-2': {
+  'insee-insee-focus-n-320-pour-2022-n-349-pou': {
     producer: 'Insee',
     kind: 'report',
-    text: 'Insee Focus n° 377, « Écart de salaire entre femmes et hommes en 2024 », et n° 349 pour 2023. Champ : salariés du privé, hors rémunérations tirées d’une activité secondaire publique. Le rapport de la dernière ligne est calculé par nos soins à partir des deux bornes publiées.',
+    text: 'Insee Focus n° 320 pour 2022, n° 349 pour 2023 et n° 377 pour 2024. Champ : salariés du privé, hors rémunérations tirées d’une activité secondaire publique. La borne haute publiée change de définition entre 2022 et 2023 — « 55 ans ou plus » puis « 60 ans ou plus » — les deux colonnes ne sont donc pas comparables ligne à ligne, et les rapports de la dernière ligne, calculés par nos soins, portent chacun sur les bornes de leur propre millésime.',
+    theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
+  'insee-insee-focus-n-377-ecart-de-salaire-e': {
+    producer: 'Insee',
+    kind: 'other',
+    text: 'Insee Focus n° 377, « Écart de salaire entre femmes et hommes en 2024 », et n° 349, même titre pour 2023. Base Tous salariés, déclarations sociales nominatives, secteur privé. L’écart à poste comparable est estimé par une régression du logarithme du salaire à effets fixes croisant le libellé d’emploi, la catégorie socioprofessionnelle et le numéro Siret de l’établissement. Série longue 1995-2023 : blog de l’Insee, « Évolution des inégalités entre les femmes et les hommes », édition 2025.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
   },
@@ -1190,6 +1197,13 @@ const registry = {
     text: 'Insee, « Parts de marché dans les exportations de marchandises de quelques pays du monde », données OMC, publication du 22 mai 2026. Rexecode — institut proche des organisations patronales, <b>à traiter comme contribution au débat</b> — donne 2,4 % pour 2025 contre 3,1 % en 2019 ; l\'écart entre les deux sources tient à des périmètres différents, l\'ordre de grandeur est le même.',
     theme: 'industrie',
     engaged: true,
+    accessed: '2026-08',
+  },
+  'insee-insee-premiere-n-1803-ecarts-de-remu': {
+    producer: 'Insee',
+    kind: 'other',
+    text: 'Insee Première n° 1803, « Écarts de rémunération femmes-hommes : surtout l’effet du temps de travail et de l’emploi occupé », juin 2020, données 2017 : part de 68 % et concentration professionnelle. Insee Analyses n° 44, « Entreprises, enfants : quels rôles dans les inégalités salariales entre femmes et hommes ? » : effet de répartition entre entreprises, panel du secteur privé, France métropolitaine, 16-65 ans, 1995-2015, 3 307 020 observations, effets employeurs identifiés par la mobilité des salariés. Part des femmes parmi les cadres dirigeants et les dirigeants salariés : Insee, données 2022.',
+    theme: 'emploi-chomage',
     accessed: '2026-08',
   },
   'insee-memes-sources-et-meme-perimetre-que-le-g': {
