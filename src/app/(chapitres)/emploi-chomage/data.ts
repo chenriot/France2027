@@ -1484,6 +1484,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1525,6 +1526,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1612,6 +1614,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1664,6 +1667,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1704,6 +1708,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1759,11 +1764,62 @@ export const tables = {
       },
     ],
   },
+  'decomposition-de-l-ecart-de-salaire-nomenclature-pcs-2013': {
+    vintage: '2013',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'decomposition-de-l-ecart-de-salaire-nomenclature-pcs-2013',
+        header: 'Décomposition de l’écart de salaire, nomenclature PCS, 2013',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'points', header: 'Points', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Écart interprofessionnel — la ségrégation entre métiers</b>' },
+          { v: 6.7, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          {
+            t: 'Écart intraprofessionnel expliqué — structure de l’emploi par sexe à l’intérieur de chaque métier',
+          },
+          { v: 3.2, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Écart intraprofessionnel inexpliqué' },
+          { v: 6.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Écart total</b>' },
+          { v: 16.7, d: 1, strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
   'salaire-net-mensuel-median-selon-la-taille-de-l-entreprise': {
     vintage: '2023',
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1811,6 +1867,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1872,6 +1929,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1929,6 +1987,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -1994,6 +2053,7 @@ export const tables = {
     sources: [
       'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
       'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
       'insee-insee-premiere-n-1803-ecarts-de-remu',
       'insee-insee-focus-n-320-pour-2022-n-349-pou',
       'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
@@ -4564,6 +4624,7 @@ export const citedSources = [
   'goulart-oesch-goulart-oesch-job-tenure-in-western',
   'ined-ined-population-societes-apres-plu', 'insee-accompagnement-crepon-duflo-gurgand',
   'insee-france-travail-dares-statistiques-du',
+  'insee-insee-decomposition-de-blinder-oaxaca-s',
   'insee-insee-enquetes-emploi-series-longues-d',
   'insee-insee-focus-n-320-ecart-de-salaire-e',
   'insee-insee-focus-n-320-pour-2022-n-349-pou',

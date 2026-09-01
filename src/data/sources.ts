@@ -1086,6 +1086,13 @@ const registry = {
     theme: 'niveau-de-vie',
     accessed: '2026-08',
   },
+  'insee-insee-decomposition-de-blinder-oaxaca-s': {
+    producer: 'Insee',
+    kind: 'report',
+    text: 'Insee, décomposition de Blinder-Oaxaca sur la nomenclature PCS, données 2013, reprise dans les travaux régionaux de l’institut. Conseil d’analyse économique, note n° 17, « Réduire les inégalités de salaires entre femmes et hommes », 2014, Antoine Bozio, Brigitte Dormont et Cecilia García-Peñalosa : décomposition sur 1990, 2002 et 2012.',
+    theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
   'insee-insee-enquete-emploi-en-continu-donnee': {
     producer: 'Insee',
     kind: 'other',
