@@ -33,6 +33,16 @@ Les 21 chapitres, dans l'ordre du sommaire :
 Chaque fiche a son ancre : `/logement#s13-q4`. Les identifiants sont ceux du
 document d'origine, pour que les liens déjà partagés continuent de fonctionner.
 
+## Un fichier autonome
+
+```sh
+npm run build && npm run export:html    # .artifacts/chiffres-2027.html
+```
+
+Le document intégral en un seul fichier HTML, styles compris : les liens
+internes deviennent des ancres, le sommaire latéral fonctionne, l'impression
+aussi. Pour partager, archiver, ou déposer le dossier là où un site ne va pas.
+
 ## Lancer en local
 
 ```sh
@@ -85,4 +95,5 @@ commande à lancer avant de pousser.
 | `npm run extract` | régénère les 21 chapitres depuis le document d'origine |
 | `npm run check:data` | audit des données ; écrit `.artifacts/audit.json` |
 | `npm run check:render` | compare `/tout` au document d'origine |
+| `npm run export:html` | exporte le document en un fichier HTML autonome |
 | `npm test` | tests unitaires |

@@ -12,7 +12,8 @@
     "check:data": "tsx scripts/check-data.ts",
     "extract": "tsx scripts/extract.ts",
     "check:render": "tsx scripts/check-render.ts",
-    "verify": "npm run lint && npm run test && npm run check:data && next build && npm run check:render"
+    "verify": "npm run lint && npm run test && npm run check:data && next build && npm run check:render",
+    "export:html": "tsx scripts/export-html.ts"
   },
   "dependencies": {
     "next": "15.5.4",
