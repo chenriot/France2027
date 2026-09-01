@@ -1202,7 +1202,7 @@ const registry = {
   'insee-insee-premiere-n-1803-ecarts-de-remu': {
     producer: 'Insee',
     kind: 'other',
-    text: 'Insee Première n° 1803, « Écarts de rémunération femmes-hommes : surtout l’effet du temps de travail et de l’emploi occupé », juin 2020, données 2017 : part de 68 % et concentration professionnelle. Insee Analyses n° 44, « Entreprises, enfants : quels rôles dans les inégalités salariales entre femmes et hommes ? » : effet de répartition entre entreprises, panel du secteur privé, France métropolitaine, 16-65 ans, 1995-2015, 3 307 020 observations, effets employeurs identifiés par la mobilité des salariés. Part des femmes parmi les cadres dirigeants et les dirigeants salariés : Insee, données 2022.',
+    text: 'Insee Première n° 1803, « Écarts de rémunération femmes-hommes : surtout l’effet du temps de travail et de l’emploi occupé », juin 2020, données 2017 : part de 68 % et concentration professionnelle. Insee Analyses n° 44, « Entreprises, enfants : quels rôles dans les inégalités salariales entre femmes et hommes ? » : effet de répartition entre entreprises, panel du secteur privé, France métropolitaine, 16-65 ans, 1995-2015, 3 307 020 observations, effets employeurs identifiés par la mobilité des salariés. Insee Première n° 2020 et n° 2079, « Les salaires dans le secteur privé » en 2023 et 2024 : salaires par catégorie et par taille d’entreprise, déciles, part des femmes en haut de la distribution. Insee, <i>France, portrait social</i>, édition 2025, fiche sur les très hauts salaires. Dares, salariés au Smic au 1<sup>er</sup> novembre 2024. Écarts par catégorie socioprofessionnelle : Insee Focus n° 377. Part des femmes par catégorie : Insee, données 2019.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
   },

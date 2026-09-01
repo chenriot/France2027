@@ -1699,6 +1699,231 @@ export const tables = {
       },
     ],
   },
+  'quelques-metiers-et-la-part-des-femmes-qui-les-exercent': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'quelques-metiers-et-la-part-des-femmes-qui-les-exercent',
+        header: 'Quelques métiers, et la part des femmes qui les exercent',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'part-des-femmes', header: 'Part des femmes', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Assistantes maternelles</b>' },
+          { v: 98, d: 0, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Secrétaires de direction' },
+          { v: 95, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Aides à domicile et aides ménagères' },
+          { v: 93, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Aides-soignantes' },
+          { v: 92, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Conducteurs routiers' },
+          { v: 3.2, d: 1, u: '%' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: '<b>Maçons qualifiés</b>' },
+          { v: 0.6, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'salaire-net-mensuel-median-selon-la-taille-de-l-entreprise': {
+    vintage: '2023',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'salaire-net-mensuel-median-selon-la-taille-de-l-entreprise',
+        header: 'Salaire net mensuel médian selon la taille de l’entreprise, secteur privé, 2023',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'c2', header: '€', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Moins de 10 salariés' },
+          { v: 1865, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'De 50 à 249 salariés' },
+          { v: 2238, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { v: 5000, d: 0, u: 'salariés ou plus', strong: true },
+          { v: 2689, d: 0, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Écart entre les très grandes et les très petites' },
+          { v: 824, d: 0 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'part-des-femmes-selon-le-niveau-de-remuneration-secteur-pr': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'part-des-femmes-selon-le-niveau-de-remuneration-secteur-pr',
+        header: 'Part des femmes selon le niveau de rémunération, secteur privé',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'part-des-femmes', header: 'Part des femmes', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Bénéficiaires de la revalorisation du Smic, novembre 2024</b>' },
+          { v: 59.2, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Ensemble des salariés en équivalent temps plein, 2023</b>' },
+          { v: 41.9, d: 1, u: '%', strong: true },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Au-dessus du 9<sup>e</sup> décile, soit 4 302 € nets par mois' },
+          { v: 34, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Top 1 %, au-dessus de 10 222 € nets par mois' },
+          { v: 23.5, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Top 100 des rémunérations</b>' },
+          { v: 10, d: 0, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<em>Pour comparaison — fonction publique : 65 % des emplois, mais…</em>' },
+          { v: 39, d: 0, u: '%' },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'ecart-de-salaire-femmes-hommes-en-eqtp-par-categorie-2024': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-de-salaire-femmes-hommes-en-eqtp-par-categorie-2024',
+        header: 'Écart de salaire femmes-hommes en EQTP, par catégorie, 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+      {
+        key: 'part-des-femmes-dans-la-categorie-2019',
+        header: 'Part des femmes dans la catégorie (2019)',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Cadres</b>' },
+          { v: 14.8, d: 1, u: '%', strong: true },
+          { v: 41, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Ouvriers' },
+          { v: 11.7, d: 1, u: '%' },
+          null,
+        ],
+      },
+      {
+        cells: [
+          { t: 'Professions intermédiaires' },
+          { v: 11.2, d: 1, u: '%' },
+          { v: 57, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Employés</b>' },
+          { v: 1.9, d: 1, u: '%', strong: true },
+          { v: 70, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
   'ecart-de-salaire-net-en-eqtp-secteur-prive-par-age': {
     vintage: '2024',
     sources: [
