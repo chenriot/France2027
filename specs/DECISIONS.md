@@ -268,6 +268,28 @@ d'interface.
 
 ---
 
+## D13 — Le déploiement est décrit dans le dépôt, pas dans un tableau de bord
+
+Le premier déploiement répondait `404 · NOT_FOUND` sur toutes les URL, alors
+que le build réussissait et affichait la table complète des routes. Les deux
+faits sont compatibles : avec le préréglage « Other », Vercel exécute quand
+même `npm run build` — donc `next build` imprime bien ses routes — puis sert
+le répertoire statique par défaut, `public/`, qui ne contient que l'index de
+recherche. Un *Output Directory* forcé à `out`, vestige de la version de cette
+spec qui prévoyait `output: 'export'` (§ retirée depuis), produit exactement
+le même symptôme.
+
+**Décision.** `vercel.json` déclare `framework: nextjs`. La configuration du
+dépôt l'emporte sur les réglages du tableau de bord : le préréglage ne peut
+plus diverger de ce que le projet est réellement, et un déploiement neuf n'a
+aucun réglage à saisir.
+
+**Ce que ça dit du diagnostic.** Un build vert et un site vide ne se
+contredisent pas : le build dit ce qui a été compilé, pas ce qui est servi. Ce
+sont deux étapes distinctes, et seule la seconde est visible du lecteur.
+
+---
+
 ## D10 — Ce qui reste à faire
 
 | Chantier | Volume | Où le voir |

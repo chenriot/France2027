@@ -56,11 +56,21 @@ Le dépôt est prêt : build Next.js standard, aucun `output: 'export'`, aucune
 route dynamique, rien à configurer côté runtime.
 
 1. Sur [vercel.com/new](https://vercel.com/new), importer `chenriot/France2027`.
-2. Laisser les réglages détectés : *Framework* Next.js, *Build Command*
-   `npm run build`, *Output* `.next`. La commande de build lance l'audit des
-   données avant la compilation : **une donnée incohérente arrête le
+2. Ne rien régler. `vercel.json` déclare `framework: nextjs`, et **la
+   configuration du dépôt l'emporte sur les réglages du tableau de bord** :
+   le projet ne peut pas se retrouver sur un autre préréglage, ni servir un
+   répertoire de sortie qui n'existe pas. La commande de build lance l'audit
+   des données avant la compilation : **une donnée incohérente arrête le
    déploiement**, elle n'est pas publiée.
 3. Déployer. Vercel attribue une URL `…vercel.app` immédiatement.
+
+Si un déploiement répond `404 · NOT_FOUND` sur toutes les URL alors que le
+build affiche la table des routes, c'est que Vercel sert autre chose que
+`.next` — préréglage « Other », ou *Output Directory* forcé à `out`, vestige
+d'une version de la spécification qui prévoyait `output: 'export'`. Le
+`vercel.json` existe pour rendre ce cas impossible ; s'il persiste, désactiver
+l'*Override* du champ *Output Directory* dans **Settings → Build and
+Deployment**.
 
 ### Domaine
 
