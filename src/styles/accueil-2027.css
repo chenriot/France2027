@@ -96,6 +96,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  color: inherit;
+  text-decoration: none;
 }
 .a27-compass {
   width: 26px;
@@ -905,5 +907,311 @@
   }
   .a27-tick {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   Pages intérieures : Thèmes et Synthèse
+   ========================================================================== */
+
+.a27-pagehead {
+  padding: 46px var(--a27-pad) 40px;
+  border-bottom: 2px solid var(--a27-ink);
+}
+.a27-pagehead .a27-h1 {
+  font-size: clamp(38px, 5vw, 56px);
+  max-width: 20ch;
+}
+.a27-pagehead .a27-lede {
+  max-width: 62ch;
+}
+
+/* La volumétrie du dossier, en trois nombres. */
+.a27-tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 30px 0 0;
+  border: 2px solid var(--a27-ink);
+  width: fit-content;
+}
+.a27-tally > div {
+  padding: 14px 26px;
+  border-right: 2px solid var(--a27-ink);
+}
+.a27-tally > div:last-child {
+  border-right: none;
+}
+.a27-tally dt {
+  font:
+    600 10.5px/1.2 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+}
+.a27-tally dd {
+  font:
+    900 32px/1 "Archivo",
+    sans-serif;
+  letter-spacing: -0.035em;
+  margin: 8px 0 0;
+}
+
+/* -------------------------------------------------------- grille des thèmes */
+
+.a27-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  background: var(--a27-ink);
+  border-bottom: 2px solid var(--a27-ink);
+}
+.a27-theme {
+  background: #fff;
+  padding: 26px var(--a27-cell) 24px;
+  display: flex;
+  flex-direction: column;
+}
+.a27-index {
+  font:
+    900 34px/1 "Archivo",
+    sans-serif;
+  letter-spacing: -0.04em;
+  color: var(--a27-blue);
+  margin: 0;
+}
+.a27-theme h2 {
+  font:
+    800 20px/1.2 "Archivo",
+    sans-serif;
+  letter-spacing: -0.02em;
+  margin: 12px 0 0;
+  text-wrap: pretty;
+}
+.a27-theme h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+.a27-theme h2 a:hover {
+  color: var(--a27-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+.a27-themenote {
+  font:
+    400 13.5px/1.5 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink-2);
+  margin: 10px 0 0;
+  flex: 1 1 auto;
+}
+.a27-themenote b {
+  color: var(--a27-ink);
+  font-weight: 700;
+}
+.a27-counts {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  margin: 18px 0 0;
+  /* Les cartes sans chapeau alignent quand même leur pied sur les autres. */
+  margin-top: auto;
+  padding: 14px 0 0;
+  border-top: 2px solid var(--a27-track);
+  font:
+    600 10.5px/1.2 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+}
+.a27-counts b {
+  color: var(--a27-ink);
+  font-weight: 700;
+}
+
+.a27-annexes {
+  padding: 34px var(--a27-pad) 40px;
+}
+.a27-annexes h2 {
+  font:
+    800 22px/1.2 "Archivo",
+    sans-serif;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+.a27-annexes ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 78ch;
+}
+.a27-annexes li {
+  padding: 14px 0;
+  border-top: 1px solid var(--a27-track);
+  font:
+    400 14.5px/1.55 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink-2);
+}
+.a27-annexes li a {
+  font-weight: 700;
+  color: var(--a27-ink);
+  text-decoration: none;
+}
+.a27-annexes li a:hover {
+  color: var(--a27-blue);
+  text-decoration: underline;
+}
+.a27-annexes b {
+  color: var(--a27-ink);
+}
+
+/* ------------------------------------------------------------ sommaire court */
+
+.a27-toc {
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: toc;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: 80ch;
+}
+.a27-toc li {
+  counter-increment: toc;
+  flex: 1 1 200px;
+}
+.a27-toc a {
+  display: block;
+  padding: 13px 15px;
+  background: var(--a27-track);
+  color: var(--a27-ink);
+  text-decoration: none;
+  font:
+    700 13px/1.35 "Libre Franklin",
+    sans-serif;
+  height: 100%;
+}
+.a27-toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  display: block;
+  font:
+    600 10px/1 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.12em;
+  color: var(--a27-grey);
+  margin-bottom: 7px;
+}
+.a27-toc a:hover {
+  background: var(--a27-blue);
+  color: #fff;
+}
+.a27-toc a:hover::before {
+  color: rgb(255 255 255 / 70%);
+}
+
+/* ==========================================================================
+   Le chapitre rendu sous la charte
+   --------------------------------------------------------------------------
+   `.a27-article` enveloppe le composant du chapitre — le même que servent
+   `/synthese` et `/tout`. On ne touche pas à son balisage : on redéfinit
+   seulement, sous cette classe, les jetons de couleur du dossier et la
+   typographie de ses titres. `/tout` n'est pas concerné, et `check:render`
+   ne voit rien passer.
+   ========================================================================== */
+
+.a27-article {
+  /* Les jetons du dossier, traduits dans la palette de la charte. Les séries
+     de graphiques comprises : sans cela, les figures du chapitre garderaient
+     les couleurs du dossier au milieu de la planche. */
+  --ink: var(--a27-ink);
+  --ink-2: var(--a27-ink-2);
+  --muted: var(--a27-grey);
+  --paper: #fff;
+  --surface: #fff;
+  --surface-2: var(--a27-track);
+  --rule: var(--a27-track);
+  --rule-2: #d8d8d4;
+  --accent: var(--a27-blue);
+  --accent-2: #142fa4;
+  /* Les trois familles d'encadrés du dossier, ramenées aux deux couleurs de
+     la charte : le bleu pour ce qui est établi, le rouge pour ce qui manque
+     ou se corrige. Le vert et le brun n'existent pas dans cette charte. */
+  --caveat: var(--a27-ink-2);
+  --caveat-bg: var(--a27-track);
+  --gap: var(--a27-red);
+  --gap-bg: #fdeef0;
+  --note: var(--a27-blue);
+  --note-bg: #e9edfc;
+  --s1: var(--a27-blue);
+  --s2: var(--a27-red);
+  --s3: var(--a27-ink-2);
+  --s4: var(--a27-blue-2);
+  --s5: var(--a27-ink);
+  --shadow: none;
+
+  padding: 8px var(--a27-pad) 48px;
+  background: #fff;
+}
+
+/* Le chapitre pose sa propre section : on annule ce qui la centrait dans la
+   coquille du dossier. */
+.a27-article .sec {
+  padding-top: 34px;
+  max-width: 84ch;
+}
+.a27-article .sec-head {
+  border-top: 2px solid var(--a27-ink);
+}
+.a27-article h2,
+.a27-article h3 {
+  font-family: "Archivo", sans-serif;
+  letter-spacing: -0.02em;
+}
+.a27-article h2 {
+  font-weight: 800;
+}
+.a27-article .sec h2 {
+  font-size: clamp(24px, 3vw, 32px);
+}
+.a27-article .q > h3 {
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1.24;
+}
+.a27-article .q h4,
+.a27-article .sec-num,
+.a27-article .kicker {
+  font-family: "IBM Plex Mono", monospace;
+}
+.a27-article p,
+.a27-article li,
+.a27-article .q p {
+  font-family: "Libre Franklin", sans-serif;
+}
+.a27-article .verdict {
+  border-radius: 0;
+  font-family: "IBM Plex Mono", monospace;
+  letter-spacing: 0.06em;
+}
+.a27-article .tw table {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 1000px) {
+  .a27-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .a27-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .a27-tally > div {
+    padding: 12px 18px;
   }
 }
