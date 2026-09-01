@@ -15,7 +15,7 @@ Date : 2026-09-01 · État : première mise en œuvre complète, plus une fiche 
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
 | Tableaux migrés | 296 | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 156 sur 6 535 (64 %) | extraction |
+| Cellules chiffrées typées en nombres | 4 151 sur 6 527 (64 %) | extraction |
 | Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
 | Sources | 208 blocs → **200 entrées**, 200 citées, **0 orpheline** | `npm run check:data` |
 | **Rendu de `/tout`** | **identique au document d'origine, 57 250 éléments, aucun écart** | `npm run check:render` |
@@ -340,7 +340,7 @@ et c'est un résultat en soi.
 | Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
 | Figures non converties | 4 | `.artifacts/audit.json` |
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
-| Cellules encore en texte | 2 379 | extraction |
+| Cellules encore en texte | 2 376 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 | Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |
 
