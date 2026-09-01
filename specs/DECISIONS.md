@@ -18,7 +18,7 @@ Date : 2026-09-01 · État : première mise en œuvre complète, plus une fiche 
 | Cellules chiffrées typées en nombres | 4 165 sur 6 558 (64 %) | extraction |
 | Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
 | Sources | 211 blocs → **202 entrées**, 202 citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **identique au document d'origine, 57 724 éléments, aucun écart** | `npm run check:render` |
+| **Rendu de `/tout`** | **identique au document d'origine, 57 752 éléments, aucun écart** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 

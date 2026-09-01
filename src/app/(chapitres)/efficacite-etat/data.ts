@@ -331,7 +331,7 @@ export const tables = {
       {
         cells: [
           { t: '<strong>Sécurité</strong>' },
-          { v: 361, d: 0, u: 'policiers/100 000, plus que l\'Allemagne' },
+          { v: 361, d: 0, u: 'policiers/100 000, plus que l\'Allemagne — sous réserve de périmètre' },
           {
             t: 'Moyens comparativement élevés. Taux d\'élucidation des vols ≤ 8 %. <strong>Question d\'efficacité et d\'organisation</strong> plus que de volume — mais la donnée comparative manque.',
           },

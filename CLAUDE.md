@@ -108,7 +108,7 @@ année à une série doit se faire en éditant un seul fichier.
 C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
 donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
 prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
-57 724 éléments, aucun écart.
+57 752 éléments, aucun écart.
 
 Ce que ça implique au quotidien :
 
