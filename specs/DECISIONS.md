@@ -14,11 +14,11 @@ Date : 2026-09-01 · État : première mise en œuvre complète, plus une fiche 
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux migrés | 298 | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 158 sur 6 547 (64 %) | extraction |
+| Tableaux migrés | 299 | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 165 sur 6 558 (64 %) | extraction |
 | Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
-| Sources | 209 blocs → **201 entrées**, 201 citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **identique au document d'origine, 57 473 éléments, aucun écart** | `npm run check:render` |
+| Sources | 211 blocs → **202 entrées**, 202 citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **identique au document d'origine, 57 724 éléments, aucun écart** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -353,8 +353,34 @@ est généré, on n'y écrit pas à la main.
 texte du bloc : reformuler un `p.src` change son identifiant et laisserait son
 URL orpheline, en silence. `npm run extract` recense donc les clés qui ne
 correspondent à aucune source, et affiche le compte d'URL renseignées sur le
-total. Aujourd'hui : **9 sur 201**, aucune orpheline. Le reste est le chantier
+total. Aujourd'hui : **10 sur 202**, aucune orpheline. Le reste est le chantier
 listé en §D10 — la mécanique est en place, le remplissage ne l'est pas.
+
+---
+
+## D16 — Un bloc source ajouté peut fausser le millésime des tableaux voisins
+
+**Ce qui s'est passé.** L'extracteur déduit le millésime d'un tableau de la
+plus récente année plausible trouvée dans son en-tête, puis, à défaut, dans
+**tous les blocs `p.src` de la fiche** qui le contient (§D9). Ajouter une
+section sourcée à l'intérieur d'une fiche existante a donc converti un
+`vintage: 'à confirmer'` honnête, sur le tableau des effectifs de police, en
+un `2025` faux — l'année d'un rapport que ce tableau ne cite pas.
+
+Le symptôme était trompeur : la dette de migration **baissait** de 52 à 51
+points. Une dette qui diminue sans qu'on ait rien corrigé est un signal
+d'alerte, pas un progrès.
+
+**Ce qu'on en tire, deux règles.**
+
+1. **Une section nouvelle va dans sa propre fiche `div.q`**, pas au milieu
+   d'une fiche existante. Les `p.src` sont partagés à l'échelle de la fiche :
+   c'est l'unité d'isolement des sources et des millésimes. Ici, la section sur
+   les effectifs de police est devenue `s12-q14`.
+2. **Un tableau dont les données sont pluriannuelles porte ses bornes dans son
+   en-tête** — « Trois éléments français, 2016-2022, … » — sinon le millésime
+   est deviné sur la source la plus récente citée dans la fiche, qui n'est pas
+   forcément celle de la donnée.
 
 ---
 
@@ -362,12 +388,12 @@ listé en §D10 — la mécanique est en place, le remplissage ne l'est pas.
 
 | Chantier | Volume | Où le voir |
 |---|---|---|
-| URL des sources | 192 entrées sans `url`, 9 renseignées | `npm run extract` |
+| URL des sources | 192 entrées sans `url`, 10 renseignées | `npm run extract` |
 | Millésimes à confirmer | 26 | `.artifacts/audit.json` |
 | Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
 | Figures non converties | 4 | `.artifacts/audit.json` |
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
-| Cellules encore en texte | 2 389 | extraction |
+| Cellules encore en texte | 2 393 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 | Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |
 

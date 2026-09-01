@@ -214,7 +214,7 @@ export const tables = {
   },
   'pour-100-000-habitants-2': {
     vintage: 'à confirmer',
-    sources: ['eurostat-crim-just-job-2'],
+    sources: ['eurostat-crim-just-job-3'],
     columns: [
       {
         key: 'pour-100-000-habitants',
@@ -431,6 +431,6 @@ export const questions = [
  * citée en prose reste une source du dossier.
  */
 export const citedSources = [
-  'eurostat-crim-just-job-2', 'insee-dgafp-rapport-annuel-sur-l-etat-de-la-f',
+  'eurostat-crim-just-job-3', 'insee-dgafp-rapport-annuel-sur-l-etat-de-la-f',
   'tableau-de-synthese-tableau-de-synthese-chaque-ligne-renvo',
 ] satisfies readonly SourceId[]

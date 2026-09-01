@@ -176,7 +176,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's12',
     kind: 'theme',
-    counts: { questions: 13, tables: 16, figures: 1 },
+    counts: { questions: 14, tables: 17, figures: 1 },
   },
   {
     slug: 'logement',

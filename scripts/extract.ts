@@ -127,6 +127,7 @@ const SOURCE_URLS: Record<string, string> = {
   'insee-insee-focus-n-320-pour-2022-n-349-pou': 'https://www.insee.fr/fr/statistiques/7766515',
   'insee-insee-focus-n-320-ecart-de-salaire-e': 'https://www.insee.fr/fr/statistiques/7766515',
   'eurostat-earn-gr-gpgr2': 'https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Gender_pay_gap_statistics',
+  'eurostat-crim-just-job-2': 'https://www.ccomptes.fr/sites/default/files/2025-01/20250113-La-repartition-des-zones-de-competence-entre-la-police-et-la-gendarmerie-nationales.pdf',
 }
 
 interface SourceEntry {

@@ -108,7 +108,7 @@ année à une série doit se faire en éditant un seul fichier.
 C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
 donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
 prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
-57 473 éléments, aucun écart.
+57 724 éléments, aucun écart.
 
 Ce que ça implique au quotidien :
 
@@ -147,12 +147,12 @@ doit être conditionné au mode, sinon il casse la vérification.
 
 ## État actuel
 
-Le site est construit et vérifié : 21 chapitres, 298 tableaux, 55 figures,
-201 sources, rendu identique au document d'origine sur `/tout`, 25 routes
+Le site est construit et vérifié : 21 chapitres, 299 tableaux, 55 figures,
+202 sources, rendu identique au document d'origine sur `/tout`, 25 routes
 prérendues. Le JavaScript par page est de 170 Ko pour 120 visés : dette
 mesurée, expliquée et cliquetée (`DECISIONS.md` §D11).
 
 Ce qui reste ouvert est listé et chiffré dans `specs/DECISIONS.md` §D10 :
-URL des sources (9 renseignées sur 201), 26 millésimes à confirmer, 26 figures dont le tracé n'est pas
+URL des sources (10 renseignées sur 202), 26 millésimes à confirmer, 26 figures dont le tracé n'est pas
 encore régénéré, un axe incohérent du document d'origine à arbitrer, et les
 captures Playwright clair/sombre.
