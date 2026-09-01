@@ -32,7 +32,7 @@ export function chapterComponents<T extends Tables, S extends SeriesSet>({
   readonly mode?: RenderMode
 }) {
   function DataTable({ id }: { id: keyof T & string }) {
-    return <TableView table={tables[id]} />
+    return <TableView table={tables[id]} mode={mode} />
   }
 
   function Figure({ id }: { id: keyof S & string }) {
@@ -80,7 +80,18 @@ function rowClass(row: Row): string | undefined {
   return classes.length > 0 ? classes.join(' ') : undefined
 }
 
-export function TableView({ table }: { table: Tables[string] }) {
+export function TableView({
+  table,
+  mode = 'page',
+}: {
+  table: Tables[string]
+  mode?: RenderMode
+}) {
+  // Une ligne ajoutée par la refonte n'existe pas dans le document d'origine :
+  // la rendre sur `/tout` décalerait tous les éléments suivants et rendrait la
+  // comparaison de non-régression inutilisable. Voir `scripts/amendments.ts`.
+  const rows = mode === 'verbatim' ? table.rows.filter((r) => !r.addition) : table.rows
+
   const body = (row: Row, key: number) => (
     <tr key={key} className={rowClass(row)}>
       {row.cells.map((cell, i) => (
@@ -104,7 +115,7 @@ export function TableView({ table }: { table: Tables[string] }) {
           </tr>
         </thead>
         <tbody>
-          {table.rows.map(body)}
+          {rows.map(body)}
           {table.footer ? body(table.footer, -1) : null}
         </tbody>
       </table>

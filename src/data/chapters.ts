@@ -4,8 +4,47 @@ import type { ChapterMeta } from '@/lib/types'
 
 export type ChapterKind = 'synthese' | 'theme' | 'annexe'
 
+/**
+ * Famille de lecture, pour le sommaire et le rail. Elle ne change ni l'ordre
+ * des chapitres ni leur rendu : `/tout` suit l'ordre du document d'origine.
+ */
+export type ChapterFamily = ['argent', 'produire', 'climat', 'vivre', 'lire'][number]
+
+export const families = [
+  {
+    id: 'argent',
+    label: 'L’argent public',
+    lede: 'Ce que la France dépense, ce qu’elle prélève, ce qu’elle doit, et ce que coûte son administration.',
+  },
+  {
+    id: 'produire',
+    label: 'Produire et travailler',
+    lede: 'Le dénominateur de presque tous les ratios de ce dossier : qui travaille, combien de temps, et ce que le pays produit et vend.',
+  },
+  {
+    id: 'climat',
+    label: 'Énergie et climat',
+    lede: 'Les émissions, ce qu’elles mesurent vraiment, et l’atout le plus incontestable du dossier.',
+  },
+  {
+    id: 'vivre',
+    label: 'Vivre en France',
+    lede: 'Se soigner, se loger, étudier, vieillir — et ce que valent les chiffres qu’on cite sur ces sujets.',
+  },
+  {
+    id: 'lire',
+    label: 'Lire les chiffres',
+    lede: 'Ce que les données ne disent pas — et, avec les deux annexes, comment lire une promesse chiffrée : la grille de lecture et le dossier expliqué simplement complètent cette famille.',
+  },
+] satisfies readonly {
+  readonly id: ChapterFamily
+  readonly label: string
+  readonly lede: string
+}[]
+
 export interface ChapterEntry extends ChapterMeta {
   readonly kind: ChapterKind
+  readonly family?: ChapterFamily
   /** Volumétrie du chapitre, pour le sommaire. */
   readonly counts: {
     readonly questions: number
@@ -37,7 +76,8 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's1',
     kind: 'theme',
-    counts: { questions: 26, tables: 44, figures: 15 },
+    family: 'argent',
+    counts: { questions: 27, tables: 46, figures: 18 },
   },
   {
     slug: 'dette-deficit',
@@ -49,7 +89,8 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's2',
     kind: 'theme',
-    counts: { questions: 9, tables: 11, figures: 2 },
+    family: 'argent',
+    counts: { questions: 10, tables: 12, figures: 2 },
   },
   {
     slug: 'retraites-travail',
@@ -61,6 +102,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's3',
     kind: 'theme',
+    family: 'produire',
     counts: { questions: 10, tables: 8, figures: 1 },
   },
   {
@@ -82,6 +124,7 @@ export const chapters: readonly ChapterEntry[] = [
     ],
     legacyAnchor: 's4',
     kind: 'theme',
+    family: 'produire',
     counts: { questions: 23, tables: 55, figures: 10 },
   },
   {
@@ -94,6 +137,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's5',
     kind: 'theme',
+    family: 'produire',
     counts: { questions: 13, tables: 24, figures: 4 },
   },
   {
@@ -106,7 +150,8 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's6',
     kind: 'theme',
-    counts: { questions: 12, tables: 23, figures: 0 },
+    family: 'produire',
+    counts: { questions: 12, tables: 24, figures: 0 },
   },
   {
     slug: 'immigration',
@@ -118,6 +163,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's7',
     kind: 'theme',
+    family: 'vivre',
     counts: { questions: 8, tables: 14, figures: 1 },
   },
   {
@@ -130,6 +176,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's8',
     kind: 'theme',
+    family: 'climat',
     counts: { questions: 12, tables: 9, figures: 7 },
   },
   {
@@ -141,6 +188,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's9',
     kind: 'theme',
+    family: 'climat',
     counts: { questions: 6, tables: 6, figures: 0 },
   },
   {
@@ -152,6 +200,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's10',
     kind: 'theme',
+    family: 'argent',
     counts: { questions: 7, tables: 3, figures: 0 },
   },
   {
@@ -164,6 +213,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's11',
     kind: 'theme',
+    family: 'vivre',
     counts: { questions: 5, tables: 6, figures: 0 },
   },
   {
@@ -176,6 +226,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's12',
     kind: 'theme',
+    family: 'vivre',
     counts: { questions: 13, tables: 16, figures: 1 },
   },
   {
@@ -188,6 +239,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's13',
     kind: 'theme',
+    family: 'vivre',
     counts: { questions: 10, tables: 5, figures: 2 },
   },
   {
@@ -200,6 +252,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's14',
     kind: 'theme',
+    family: 'vivre',
     counts: { questions: 9, tables: 22, figures: 2 },
   },
   {
@@ -215,7 +268,8 @@ export const chapters: readonly ChapterEntry[] = [
     ],
     legacyAnchor: 's15',
     kind: 'theme',
-    counts: { questions: 12, tables: 27, figures: 4 },
+    family: 'vivre',
+    counts: { questions: 12, tables: 28, figures: 4 },
   },
   {
     slug: 'efficacite-etat',
@@ -227,6 +281,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's16',
     kind: 'theme',
+    family: 'argent',
     counts: { questions: 7, tables: 5, figures: 1 },
   },
   {
@@ -238,6 +293,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's17',
     kind: 'theme',
+    family: 'vivre',
     counts: { questions: 3, tables: 0, figures: 0 },
   },
   {
@@ -250,6 +306,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 's18',
     kind: 'theme',
+    family: 'lire',
     counts: { questions: 4, tables: 6, figures: 0 },
   },
   {
@@ -281,4 +338,9 @@ export const themes = chapters.filter((c) => c.kind === 'theme')
 
 export function chapterBySlug(slug: string): ChapterEntry | undefined {
   return chapters.find((c) => c.slug === slug)
+}
+
+/** Les thèmes d'une famille, dans l'ordre du dossier. */
+export function themesOf(family: ChapterFamily): readonly ChapterEntry[] {
+  return themes.filter((c) => c.family === family)
 }

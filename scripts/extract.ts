@@ -22,6 +22,16 @@ import { parse } from 'node-html-parser'
 import type { HTMLElement } from 'node-html-parser'
 import { NodeType } from 'node-html-parser'
 import { lit, parseCell, slugify, stripTags, toJsx, unique, decodeEntities } from './lib-extract'
+import {
+  addedBlocks,
+  addedFiches,
+  addedFigures,
+  addedParts,
+  addedSources,
+  addedTables,
+  tableAmendments,
+} from './amendments'
+import { cellText } from '../src/lib/format'
 import { px, valueOfX, valueOfY, xAt, xOf, xOfValue, yOf } from '../src/lib/scales'
 import { buildChart } from '../src/lib/chart'
 import type { SvgNode } from '../src/lib/chart'
@@ -40,28 +50,67 @@ interface ChapterSpec {
   readonly anchor: string
   readonly slug: string
   readonly kind: 'synthese' | 'theme' | 'annexe'
+  /**
+   * Famille de lecture. Elle ne change **ni l'ordre des chapitres, ni le
+   * rendu** : l'ordre du document d'origine est celui de `/tout`, et il est
+   * vérifié élément par élément. Elle ne sert qu'à regrouper le sommaire et le
+   * rail, pour qu'on s'y retrouve à dix-huit thèmes.
+   */
+  readonly family?: FamilyId
 }
+
+type FamilyId = 'argent' | 'produire' | 'climat' | 'vivre' | 'lire'
+
+const FAMILIES: readonly { readonly id: FamilyId; readonly label: string; readonly lede: string }[] = [
+  {
+    id: 'argent',
+    label: 'L’argent public',
+    lede: 'Ce que la France dépense, ce qu’elle prélève, ce qu’elle doit, et ce que coûte son administration.',
+  },
+  {
+    id: 'produire',
+    label: 'Produire et travailler',
+    lede: 'Le dénominateur de presque tous les ratios de ce dossier : qui travaille, combien de temps, et ce que le pays produit et vend.',
+  },
+  {
+    id: 'climat',
+    label: 'Énergie et climat',
+    lede: 'Les émissions, ce qu’elles mesurent vraiment, et l’atout le plus incontestable du dossier.',
+  },
+  {
+    id: 'vivre',
+    label: 'Vivre en France',
+    lede: 'Se soigner, se loger, étudier, vieillir — et ce que valent les chiffres qu’on cite sur ces sujets.',
+  },
+  {
+    id: 'lire',
+    label: 'Lire les chiffres',
+    lede:
+      'Ce que les données ne disent pas — et, avec les deux annexes, comment lire une promesse chiffrée : ' +
+      'la grille de lecture et le dossier expliqué simplement complètent cette famille.',
+  },
+]
 
 const CHAPTERS: readonly ChapterSpec[] = [
   { anchor: 'synth', slug: 'synthese', kind: 'synthese' },
-  { anchor: 's1', slug: 'depenses-publiques', kind: 'theme' },
-  { anchor: 's2', slug: 'dette-deficit', kind: 'theme' },
-  { anchor: 's3', slug: 'retraites-travail', kind: 'theme' },
-  { anchor: 's4', slug: 'emploi-chomage', kind: 'theme' },
-  { anchor: 's5', slug: 'industrie', kind: 'theme' },
-  { anchor: 's6', slug: 'commerce-exterieur', kind: 'theme' },
-  { anchor: 's7', slug: 'immigration', kind: 'theme' },
-  { anchor: 's8', slug: 'ecologie-climat', kind: 'theme' },
-  { anchor: 's9', slug: 'energie', kind: 'theme' },
-  { anchor: 's10', slug: 'europe', kind: 'theme' },
-  { anchor: 's11', slug: 'sante', kind: 'theme' },
-  { anchor: 's12', slug: 'securite-justice', kind: 'theme' },
-  { anchor: 's13', slug: 'logement', kind: 'theme' },
-  { anchor: 's14', slug: 'education', kind: 'theme' },
-  { anchor: 's15', slug: 'niveau-de-vie', kind: 'theme' },
-  { anchor: 's16', slug: 'efficacite-etat', kind: 'theme' },
-  { anchor: 's17', slug: 'demographie', kind: 'theme' },
-  { anchor: 's18', slug: 'perception-realite', kind: 'theme' },
+  { anchor: 's1', slug: 'depenses-publiques', kind: 'theme', family: 'argent' },
+  { anchor: 's2', slug: 'dette-deficit', kind: 'theme', family: 'argent' },
+  { anchor: 's3', slug: 'retraites-travail', kind: 'theme', family: 'produire' },
+  { anchor: 's4', slug: 'emploi-chomage', kind: 'theme', family: 'produire' },
+  { anchor: 's5', slug: 'industrie', kind: 'theme', family: 'produire' },
+  { anchor: 's6', slug: 'commerce-exterieur', kind: 'theme', family: 'produire' },
+  { anchor: 's7', slug: 'immigration', kind: 'theme', family: 'vivre' },
+  { anchor: 's8', slug: 'ecologie-climat', kind: 'theme', family: 'climat' },
+  { anchor: 's9', slug: 'energie', kind: 'theme', family: 'climat' },
+  { anchor: 's10', slug: 'europe', kind: 'theme', family: 'argent' },
+  { anchor: 's11', slug: 'sante', kind: 'theme', family: 'vivre' },
+  { anchor: 's12', slug: 'securite-justice', kind: 'theme', family: 'vivre' },
+  { anchor: 's13', slug: 'logement', kind: 'theme', family: 'vivre' },
+  { anchor: 's14', slug: 'education', kind: 'theme', family: 'vivre' },
+  { anchor: 's15', slug: 'niveau-de-vie', kind: 'theme', family: 'vivre' },
+  { anchor: 's16', slug: 'efficacite-etat', kind: 'theme', family: 'argent' },
+  { anchor: 's17', slug: 'demographie', kind: 'theme', family: 'vivre' },
+  { anchor: 's18', slug: 'perception-realite', kind: 'theme', family: 'lire' },
   { anchor: 's19', slug: 'grille-promesses', kind: 'annexe' },
   { anchor: 's20', slug: 'explique-simplement', kind: 'annexe' },
 ]
@@ -104,6 +153,10 @@ const report = {
   valuesOnly: 0,
   sourcesMissing: [] as string[],
   maxPixelDrift: 0,
+  /** Cellules corrigees contre leur source. Voir amendments.ts. */
+  corrections: 0,
+  /** Blocs, lignes et fiches ajoutes, rendus en mode page seulement. */
+  additions: 0,
 }
 
 // ----------------------------------------------------------------- sources
@@ -884,6 +937,34 @@ const searchIndex: { id: string; title: string; text: string; slug: string; chap
 
 rmSync(CHAPTERS_DIR, { recursive: true, force: true })
 
+// Sources que le document d'origine ne citait pas : enregistrées avant la
+// boucle pour que leurs identifiants soient réservés. Voir `amendments.ts`.
+for (const added of addedSources) {
+  if (sourceById.has(added.id)) throw new Error(`source ajoutée déjà présente : ${added.id}`)
+  takenSourceIds.add(added.id)
+  sourceById.set(added.id, {
+    producer: added.producer,
+    kind: added.kind,
+    ...(added.datasets ? { datasets: [...added.datasets] } : {}),
+    text: added.text,
+    theme: added.theme,
+    ...(added.engaged ? { engaged: true as const } : {}),
+    accessed: UPDATED,
+  })
+}
+
+/** Un ajout ne se rend que sur la page de chapitre, jamais dans `/tout`. */
+function gated(jsx: string): string {
+  return `{mode === 'page' ? (\n<>\n${jsx}\n</>\n) : null}`
+}
+
+/** Les sources citées par un bloc ajouté, pour que la bibliographie les voie. */
+function citedIn(jsx: string): string[] {
+  return [...jsx.matchAll(/<Source ids=\{\[([^\]]*)\]\}/g)].flatMap((m) =>
+    [...m[1].matchAll(/"([^"]+)"/g)].map((s) => s[1]),
+  )
+}
+
 for (const spec of CHAPTERS) {
   const section = doc.querySelector(`section#${spec.anchor}`)
   if (!section) throw new Error(`section ${spec.anchor} introuvable`)
@@ -1027,9 +1108,160 @@ for (const spec of CHAPTERS) {
     return undefined
   }
 
+  // ------------------------------------------------------------ amendements
+  //
+  // Corrections et ajouts déclarés dans `amendments.ts`, appliqués après
+  // l'extraction. Chaque correction est vérifiée contre le rendu du document
+  // d'origine : si la valeur attendue n'y est plus, l'extraction échoue plutôt
+  // que d'écraser silencieusement autre chose.
+
+  for (const amendment of tableAmendments.filter((a) => a.chapter === spec.slug)) {
+    const table = tables[amendment.table]
+    if (!table) throw new Error(`amendement : tableau ${spec.slug}/${amendment.table} introuvable`)
+
+    const columns = table.columns.map((column, index) => {
+      const fix = amendment.headers?.[index]
+      if (!fix) return column
+      if (column.header !== fix.was) {
+        throw new Error(
+          `amendement ${spec.slug}/${amendment.table}, en-tête ${index} : ` +
+            `le document d’origine rend « ${column.header} », l’amendement attendait « ${fix.was} »`,
+        )
+      }
+      report.corrections++
+      return { ...column, header: fix.header }
+    })
+
+    const seen = new Set<string>()
+    const rows = table.rows.map((row) => {
+      const label = cellText(row.cells[0]).trim()
+      const fixes = amendment.corrections?.[label]
+      if (!fixes) return row
+      seen.add(label)
+      return {
+        ...row,
+        cells: row.cells.map((cell, column) => {
+          const fix = fixes[column]
+          if (!fix) return cell
+          const rendered = cellText(cell)
+          if (rendered !== fix.was) {
+            throw new Error(
+              `amendement ${spec.slug}/${amendment.table}, ligne « ${label} », colonne ${column} : ` +
+                `le document d’origine rend « ${rendered} », l’amendement attendait « ${fix.was} »`,
+            )
+          }
+          report.corrections++
+          return fix.cell
+        }),
+      }
+    })
+
+    for (const label of Object.keys(amendment.corrections ?? {})) {
+      if (!seen.has(label)) {
+        throw new Error(`amendement ${spec.slug}/${amendment.table} : ligne « ${label} » introuvable`)
+      }
+    }
+
+    for (const source of amendment.sources ?? []) {
+      if (!sourceById.has(source)) {
+        throw new Error(`amendement ${spec.slug}/${amendment.table} : source inconnue « ${source} »`)
+      }
+    }
+
+    tables[amendment.table] = {
+      ...table,
+      ...(amendment.vintage ? { vintage: amendment.vintage } : {}),
+      ...(amendment.sources ? { sources: amendment.sources as unknown as Table['sources'] } : {}),
+      columns,
+      rows: [...rows, ...(amendment.added ?? [])],
+    }
+    report.additions += amendment.added?.length ?? 0
+  }
+
+  for (const addition of addedTables.filter((a) => a.chapter === spec.slug)) {
+    if (tables[addition.id]) throw new Error(`tableau ajouté déjà présent : ${spec.slug}/${addition.id}`)
+    for (const source of addition.table.sources) {
+      if (!sourceById.has(source)) {
+        throw new Error(`tableau ajouté ${spec.slug}/${addition.id} : source inconnue « ${source} »`)
+      }
+    }
+    tables[addition.id] = addition.table as Table
+    takenIds.add(addition.id)
+    report.tables++
+  }
+
+  // Une figure ajoutée n'a pas de SVG d'origine à reproduire : elle est écrite
+  // directement en valeurs, et `buildChart` la trace. Elle est donc « prouvée »
+  // par construction — il n'y a rien à quoi la comparer.
+  for (const addition of addedFigures.filter((a) => a.chapter === spec.slug)) {
+    if (series[addition.id]) throw new Error(`figure ajoutée déjà présente : ${spec.slug}/${addition.id}`)
+    for (const source of addition.figure.sources) {
+      if (!sourceById.has(source)) {
+        throw new Error(`figure ajoutée ${spec.slug}/${addition.id} : source inconnue « ${source} »`)
+      }
+    }
+    series[addition.id] = addition.figure as Series
+    takenIds.add(addition.id)
+    report.figures++
+    report.figuresOk++
+    report.svgProven++
+  }
+
+  let content = body.join('\n')
+
+  // Plusieurs blocs peuvent partager la même ancre : on les insère en une fois,
+  // sinon chaque insertion se glisserait avant la précédente.
+  const byAnchor = new Map<string, string[]>()
+  for (const block of addedBlocks.filter((b) => b.chapter === spec.slug)) {
+    byAnchor.set(block.afterTable, [...(byAnchor.get(block.afterTable) ?? []), block.jsx])
+  }
+  for (const [id, blocks] of byAnchor) {
+    const anchor = `<DataTable id=${JSON.stringify(id)} />`
+    if (!content.includes(anchor)) {
+      throw new Error(`amendement : ancre ${anchor} introuvable dans ${spec.slug}`)
+    }
+    const jsx = blocks.join('\n')
+    for (const source of citedIn(jsx)) citedInProse.add(source)
+    content = content.replace(anchor, `${anchor}\n${gated(jsx)}`)
+    report.additions++
+  }
+
+  // Intertitres de partie : on insère devant une fiche, sans jamais déplacer
+  // quoi que ce soit. Le balisage est celui du document d'origine, qui porte
+  // déjà des parties sur deux chapitres.
+  for (const part of addedParts.filter((p) => p.chapter === spec.slug)) {
+    const anchor = `<Question id=${JSON.stringify(part.beforeFiche)}`
+    if (!content.includes(anchor)) {
+      throw new Error(`partie ajoutée : fiche ${spec.slug}/${part.beforeFiche} introuvable`)
+    }
+    const jsx =
+      `<div className="part"><span>${part.label}</span><h3>${part.title}</h3>` +
+      `<p>${part.lede}</p></div>`
+    content = content.replace(anchor, `${gated(jsx)}
+${anchor}`)
+    report.additions++
+  }
+
+  for (const fiche of addedFiches.filter((f) => f.chapter === spec.slug)) {
+    if (questions.some((q) => q.id === fiche.id)) {
+      throw new Error(`fiche ajoutée déjà présente : ${spec.slug}/${fiche.id}`)
+    }
+    questions.push({
+      id: fiche.id,
+      title: fiche.title,
+      text: decodeEntities(stripTags(fiche.body).replace(/\s+/g, ' ').trim()),
+    })
+    for (const source of citedIn(fiche.body)) citedInProse.add(source)
+    content += `\n${gated(
+      `<Question id=${JSON.stringify(fiche.id)} title=${JSON.stringify(fiche.title)}>${fiche.body}</Question>`,
+    )}\n`
+    report.additions++
+  }
+
   metas.push({
     ...cleanMeta,
     kind: spec.kind,
+    ...(spec.family ? { family: spec.family } : {}),
     counts: {
       questions: questions.length,
       tables: Object.keys(tables).length,
@@ -1046,7 +1278,7 @@ for (const spec of CHAPTERS) {
     series,
     questions.map(({ id, title }) => ({ id, title })),
     [...citedInProse].sort(),
-    body.join('\n'),
+    content,
   )
 }
 
@@ -1174,8 +1406,21 @@ import type { ChapterMeta } from '@/lib/types'
 
 export type ChapterKind = 'synthese' | 'theme' | 'annexe'
 
+/**
+ * Famille de lecture, pour le sommaire et le rail. Elle ne change ni l'ordre
+ * des chapitres ni leur rendu : \`/tout\` suit l'ordre du document d'origine.
+ */
+export type ChapterFamily = ${lit(FAMILIES.map((f) => f.id))}[number]
+
+export const families = ${lit(FAMILIES)} satisfies readonly {
+  readonly id: ChapterFamily
+  readonly label: string
+  readonly lede: string
+}[]
+
 export interface ChapterEntry extends ChapterMeta {
   readonly kind: ChapterKind
+  readonly family?: ChapterFamily
   /** Volumétrie du chapitre, pour le sommaire. */
   readonly counts: {
     readonly questions: number
@@ -1190,6 +1435,11 @@ export const themes = chapters.filter((c) => c.kind === 'theme')
 
 export function chapterBySlug(slug: string): ChapterEntry | undefined {
   return chapters.find((c) => c.slug === slug)
+}
+
+/** Les thèmes d'une famille, dans l'ordre du dossier. */
+export function themesOf(family: ChapterFamily): readonly ChapterEntry[] {
+  return themes.filter((c) => c.family === family)
 }
 `,
 )
@@ -1206,6 +1456,10 @@ console.log(
     `${report.figures - report.svgProven - report.valuesOnly} non converties (sur ${report.figures})`,
 )
 console.log(`sources            : ${sourceById.size} entrées distinctes`)
+console.log(
+  `amendements        : ${report.corrections} cellules corrigées (rendues partout) · ` +
+    `${report.additions} ajouts (mode page seulement)`,
+)
 if (report.figuresFallback.length > 0) {
   console.log(`\nfigures non converties (${report.figuresFallback.length}) :`)
   for (const f of report.figuresFallback) console.log(`  - ${f}`)

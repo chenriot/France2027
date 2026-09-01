@@ -94,6 +94,12 @@ export interface Row {
   readonly separator?: true
   /** `tr.hole-row` de l'original. */
   readonly missing?: true
+  /**
+   * Ligne ajoutée par la refonte, absente du document d'origine : rendue sur
+   * la page de chapitre, omise de `/tout` pour que la comparaison élément par
+   * élément reste valide. Voir `scripts/amendments.ts`.
+   */
+  readonly addition?: true
 }
 
 export interface Table {

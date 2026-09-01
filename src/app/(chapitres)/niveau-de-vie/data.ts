@@ -736,12 +736,12 @@ export const tables = {
     ],
   },
   'patrimoine-net-par-menage-enquete-bce-2023': {
-    vintage: '2023',
-    sources: ['eurostat-insee-premiere-n-2081-comptes-de-patri'],
+    vintage: '2021',
+    sources: ['bce-hfcs-vague-2021-tableaux-a1-a2', 'bnb-revue-economique-2024-patrimoine-des-menages'],
     columns: [
       {
         key: 'patrimoine-net-par-menage-enquete-bce-2023',
-        header: 'Patrimoine net par ménage, enquête BCE 2023',
+        header: 'Patrimoine net par ménage, enquête BCE vague 2021',
         type: 'text',
         headerNumeric: false,
       },
@@ -754,67 +754,87 @@ export const tables = {
       {
         cells: [
           { t: 'Belgique' },
-          { v: 254200, d: 0, u: '€' },
-          { v: 411500, d: 0, u: '€' },
-          { v: 1.62, d: 2 },
-          { v: 66.7, d: 1, u: '%' },
+          { v: 242400, d: 0, u: '€' },
+          { v: 408000, d: 0, u: '€' },
+          { v: 1.68, d: 2 },
+          { v: 72.4, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'Italie' },
-          { v: 162800, d: 0, u: '€' },
-          { v: 307300, d: 0, u: '€' },
-          { v: 1.89, d: 2 },
-          { v: 74.5, d: 1, u: '%' },
+          { v: 159000, d: 0, u: '€' },
+          { v: 350000, d: 0, u: '€' },
+          { v: 2.2, d: 2 },
+          { v: 77.5, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'Espagne' },
-          { v: 151600, d: 0, u: '€' },
-          { v: 321800, d: 0, u: '€' },
-          { v: 2.12, d: 2 },
-          { v: 72.1, d: 1, u: '%' },
+          { v: 127700, d: 0, u: '€' },
+          { v: 278700, d: 0, u: '€' },
+          { v: 2.18, d: 2 },
+          { v: 73.9, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'France' },
-          { v: 149000, d: 0, u: '€' },
-          { v: 330700, d: 0, u: '€' },
-          { v: 2.22, d: 2 },
-          { v: 57.2, d: 1, u: '%' },
+          { v: 125700, d: 0, u: '€' },
+          { v: 277100, d: 0, u: '€' },
+          { v: 2.2, d: 2 },
+          { v: 57.5, d: 1, u: '%' },
         ],
         emphasis: true,
       },
       {
         cells: [
           { t: 'Pays-Bas' },
-          { v: 143500, d: 0, u: '€' },
-          { v: 257300, d: 0, u: '€' },
-          { v: 1.79, d: 2 },
-          { v: 56.6, d: 1, u: '%' },
+          { v: 105600, d: 0, u: '€' },
+          { v: 219600, d: 0, u: '€' },
+          { v: 2.08, d: 2 },
+          { v: 56.9, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'Zone euro' },
-          { v: 140100, d: 0, u: '€' },
-          { v: 312000, d: 0, u: '€' },
-          { v: 2.23, d: 2 },
-          { v: 60.1, d: 1, u: '%' },
+          { v: 123500, d: 0, u: '€' },
+          { v: 292100, d: 0, u: '€' },
+          { v: 2.37, d: 2 },
+          { v: 61.7, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'Allemagne' },
-          { v: 103300, d: 0, u: '€' },
-          { v: 324000, d: 0, u: '€' },
-          { v: 3.14, d: 2, strong: true },
-          { v: 41.8, d: 1, u: '%', strong: true },
+          { v: 106700, d: 0, u: '€' },
+          { v: 315600, d: 0, u: '€' },
+          { v: 2.96, d: 2, strong: true },
+          { v: 44.5, d: 1, u: '%', strong: true },
         ],
         emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Luxembourg' },
+          { v: 717700, d: 0, u: '€' },
+          { v: 1269700, d: 0, u: '€' },
+          { v: 1.77, d: 2 },
+          { v: 65.6, d: 1, u: '%' },
+        ],
+        addition: true,
+      },
+      {
+        cells: [
+          { t: 'Malte' },
+          { v: 273600, d: 0, u: '€' },
+          { v: 413000, d: 0, u: '€' },
+          { v: 1.51, d: 2 },
+          { v: 79, d: 1, u: '%' },
+        ],
+        addition: true,
       },
     ],
   },
@@ -1786,6 +1806,51 @@ export const tables = {
       },
     ],
   },
+  'patrimoine-net-des-menages-americains-scf-2022': {
+    vintage: '2022',
+    sources: ['reserve-federale-scf-2022'],
+    columns: [
+      {
+        key: 'indicateur',
+        header: 'Patrimoine net des <em>families</em>, enquête SCF 2022',
+        type: 'text',
+      },
+      { key: 'valeur', header: 'Dollars 2022', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Médian' },
+          { v: 192900, d: 0, u: '$' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Moyen' },
+          { v: 1063700, d: 0, u: '$' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Rapport moyen / médian' },
+          { v: 5.51, d: 2, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Progression réelle de la médiane, 2019-2022' },
+          { v: 37, d: 0, u: '%', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Progression réelle de la moyenne, 2019-2022' },
+          { v: 23, d: 0, u: '%', sign: true },
+        ],
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -1987,6 +2052,7 @@ export const questions = [
  */
 export const citedSources = [
   'acpr-acpr-analyses-syntheses-n-180-juin',
+  'bnb-revue-economique-2024-patrimoine-des-menages',
   'eurostat-france-insee-comptes-de-patrimoine-ba', 'eurostat-ilc-di12',
   'eurostat-insee-premiere-n-2081-comptes-de-patri',
   'insee-conseil-des-prelevements-obligatoires-et',
@@ -1998,5 +2064,5 @@ export const citedSources = [
   'insee-insee-enquete-histoire-de-vie-et-patrim-4',
   'insee-insee-et-drees-travaux-sur-les-depenses',
   'insee-insee-insee-focus-n-354-enquete-histo',
-  'insee-ocde-income-distribution-database-2022',
+  'insee-ocde-income-distribution-database-2022', 'reserve-federale-scf-2022',
 ] satisfies readonly SourceId[]

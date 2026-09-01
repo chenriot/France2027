@@ -753,6 +753,84 @@ export const tables = {
       },
     ],
   },
+  'd-ou-viennent-les-points-de-dette-1995-2025': {
+    vintage: '2025',
+    sources: ['eurostat-gov-10dd-edpt1'],
+    columns: [
+      { key: 'periode', header: 'Période', type: 'text' },
+      { key: 'contexte', header: 'Contexte', type: 'text' },
+      { key: 'points', header: 'Points de PIB', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '1995 → 2007' },
+          { t: 'Douze ans sans choc' },
+          { v: 7.7, d: 1, sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '2007 → 2009' },
+          { t: 'Crise financière' },
+          { v: 18.6, d: 1, sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '2009 → 2019' },
+          { t: 'Dix ans sans choc' },
+          { v: 14.1, d: 1, sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '2019 → 2020' },
+          { t: 'Crise sanitaire' },
+          { v: 16.7, d: 1, sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '2020 → 2023' },
+          { t: 'Sortie de crise, inflation forte — <em>seule décrue de la série</em>' },
+          { v: -5.4, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '2023 → 2025' },
+          { t: 'Aucun choc' },
+          { v: 6.1, d: 1, sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Les deux chocs</b>' },
+          { t: 'Trois années sur trente' },
+          { v: 35.3, d: 1, sign: true, strong: true },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: '<b>Les périodes sans choc</b>' },
+          { t: 'Vingt-sept années sur trente' },
+          { v: 22.5, d: 1, sign: true, strong: true },
+        ],
+      },
+    ],
+    footer: {
+      cells: [
+        { t: '1995 → 2025' },
+        { t: 'De 57,8 % à 115,6 % du PIB' },
+        { v: 57.8, d: 1, sign: true, strong: true },
+      ],
+      total: true,
+    },
+  },
 } satisfies Tables
 
 export const series = {
@@ -967,6 +1045,7 @@ export const questions = [
   { id: 's2-q7', title: 'Quelle part du déficit est structurelle ?' },
   { id: 's2-q8', title: 'Que faudrait-il faire pour revenir à 3 % de déficit ?' },
   { id: 's2-q9', title: 'Et si on maintenait 5 % de déficit pendant dix ans ?' },
+  { id: 's2-q10', title: 'Les crises expliquent-elles la dette, ou le déficit permanent ?' },
 ] satisfies readonly { id: string; title: string }[]
 
 /**
@@ -978,6 +1057,7 @@ export const citedSources = [
   'banque-de-france-banque-centrale-europeenne-geopolitics',
   'eurostat-eurostat-gov-10a-main-1995-2025-et-nas',
   'eurostat-eurostat-gov-10dd-edpt1-et-bop-iip6-q', 'eurostat-gov-10a-main-2',
-  'eurostat-gov-10dd-edpt1-2', 'haut-conseil-des-finances-publiques-haut-conseil-des-finan',
+  'eurostat-gov-10dd-edpt1', 'eurostat-gov-10dd-edpt1-2',
+  'haut-conseil-des-finances-publiques-haut-conseil-des-finan',
   'insee-calcul-par-nos-soins-a-partir-d-insee-i',
 ] satisfies readonly SourceId[]
