@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="fr" >
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiffres pour 2027 — proto d'accueil, design 1c</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+/* ------------------------------------------------------------------
+   Jetons repris verbatim de src/styles/tokens.css (CLAUDE.md, règle 6).
+   Le prototype n'introduit aucune couleur nouvelle.
+   ------------------------------------------------------------------ */
+:root{
+  --paper:#f4f5f3; --surface:#ffffff; --surface-2:#eceeeb;
+  --ink:#151b21; --ink-2:#3d4750; --muted:#6d7780;
+  --rule:#d5d9d6; --rule-2:#c2c8c4;
+  --accent:#1a4e63; --accent-2:#2a7492;
+  --caveat:#8a5320; --caveat-bg:#f6efe6;
+  --gap:#8f3a3a; --gap-bg:#f7ecec;
+  --note:#2c5c4a; --note-bg:#e9f1ed;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7; --s5:#e34948;
+  --shadow:0 1px 2px rgba(21,27,33,.05),0 8px 24px -18px rgba(21,27,33,.35);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#11161a; --surface:#171d22; --surface-2:#1d242a;
+    --ink:#e8ebe9; --ink-2:#bcc4c6; --muted:#8d979b;
+    --rule:#2a3238; --rule-2:#3a444b;
+    --accent:#7cc0d8; --accent-2:#9ad2e6;
+    --caveat:#d6a86a; --caveat-bg:#241d13;
+    --gap:#e08b8b; --gap-bg:#241616;
+    --note:#8fc9b0; --note-bg:#152220;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9; --s5:#e66767;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11161a; --surface:#171d22; --surface-2:#1d242a;
+  --ink:#e8ebe9; --ink-2:#bcc4c6; --muted:#8d979b;
+  --rule:#2a3238; --rule-2:#3a444b;
+  --accent:#7cc0d8; --accent-2:#9ad2e6;
+  --caveat:#d6a86a; --caveat-bg:#241d13;
+  --gap:#e08b8b; --gap-bg:#241616;
+  --note:#8fc9b0; --note-bg:#152220;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9; --s5:#e66767;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:.18em;text-decoration-thickness:.06em}
+a:hover{color:var(--accent-2)}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,48px) 96px}
+.mast{padding:clamp(38px,5vw,72px) 0 0;max-width:74ch}
+.kicker{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+h1{font-family:"Newsreader",Georgia,"Times New Roman",serif;font-weight:500;
+  font-size:clamp(2.4rem,5vw,3.7rem);line-height:1.03;letter-spacing:-.018em;
+  margin:0 0 .34em;text-wrap:balance}
+.standfirst{font-size:1.1rem;line-height:1.6;color:var(--ink-2);margin:0 0 26px;max-width:64ch}
+.standfirst strong{color:var(--ink);font-weight:600}
+
+/* -------- barre d'outils du tableau de bord -------- */
+.board-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 22px;
+  border-top:2px solid var(--ink);padding-top:14px;margin:38px 0 16px}
+.board-head h2{font-family:"Newsreader",Georgia,serif;font-weight:500;
+  font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.14;margin:0;letter-spacing:-.012em}
+.board-head .sub{color:var(--muted);font-size:.9rem;font-style:italic;margin:0;flex:1 1 240px}
+.ctl{display:flex;gap:8px;align-items:center}
+.ctl button{font:inherit;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-2);background:var(--surface);border:1px solid var(--rule-2);
+  border-radius:3px;padding:6px 11px;cursor:pointer}
+.ctl button:hover{color:var(--ink);border-color:var(--ink-2)}
+.ctl button[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+
+/* -------- mosaïque -------- */
+.board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:242px;gap:14px}
+.kpi{position:relative;perspective:1400px;min-width:0}
+.kpi.w2{grid-column:span 2} .kpi.h2{grid-row:span 2}
+.card{position:absolute;inset:0;background:var(--surface);border:1px solid var(--rule);
+  border-radius:5px;box-shadow:var(--shadow);overflow:hidden;
+  transform-style:preserve-3d;backface-visibility:hidden;
+  transition:transform .34s cubic-bezier(.4,0,.2,1),opacity .34s cubic-bezier(.4,0,.2,1)}
+.kpi:hover .card{border-color:var(--rule-2)}
+.face{position:absolute;inset:0;display:none;flex-direction:column;padding:16px 18px 22px}
+.face.on{display:flex}
+.kpi.h2 .face{padding:20px 22px 26px}
+
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 2px;display:flex;gap:8px;align-items:center}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;flex:none}
+.face h3{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.02rem;
+  line-height:1.28;margin:0 0 8px;color:var(--ink);letter-spacing:-.004em;text-wrap:pretty}
+.kpi.h2 .face h3{font-size:1.22rem;margin-bottom:10px}
+.big{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;
+  font-size:clamp(2rem,4.4vw,3.4rem);line-height:1;letter-spacing:-.03em;color:var(--ink);margin:2px 0 4px}
+.big .u{font-size:.36em;letter-spacing:.02em;color:var(--muted);margin-left:.35em;font-weight:400}
+.mid{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;
+  font-size:1.86rem;line-height:1;letter-spacing:-.025em;margin:2px 0 3px}
+.mid .u{font-size:.42em;color:var(--muted);margin-left:.3em;font-weight:400}
+.valrow{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;margin:1px 0 0}
+.valrow .mid{margin:0}
+.delta{font-family:"IBM Plex Mono",monospace;font-size:.755rem;font-variant-numeric:tabular-nums;
+  display:inline-flex;align-items:center;gap:6px;padding:1px 8px;border-radius:3px;
+  background:var(--surface-2);color:var(--ink-2)}
+.delta.up{background:var(--gap-bg);color:var(--gap)}
+.delta.down{background:var(--note-bg);color:var(--note)}
+.say{font-size:.86rem;line-height:1.45;color:var(--ink-2);margin:8px 0 0;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.kpi.h2 .say{font-size:.93rem}
+.say b{color:var(--ink);font-weight:600}
+.grow{position:relative;flex:1 1 auto;min-height:52px;overflow:hidden;margin:6px 0 2px;
+  display:flex;flex-direction:column;justify-content:center}
+.grow.top{justify-content:flex-start}
+.grow > svg.cv{width:100%;height:100%;display:block}
+.src{font-family:"IBM Plex Mono",monospace;font-size:.66rem;line-height:1.4;color:var(--muted);
+  margin:7px 56px 0 0;padding-left:9px;border-left:2px solid var(--rule-2);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* -------- graphiques -------- */
+svg.cv{width:100%;height:auto;display:block;overflow:hidden}
+.face{overflow:hidden}
+.cv .grid{stroke:var(--rule);stroke-width:1}
+.cv .ax{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:var(--muted)}
+.cv .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.cv .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:500}
+.cv .bar{rx:3}
+.s1s{stroke:var(--s1)} .s2s{stroke:var(--s2)} .s3s{stroke:var(--s3)} .s4s{stroke:var(--s4)} .s5s{stroke:var(--s5)}
+.s1f{fill:var(--s1)} .s2f{fill:var(--s2)} .s3f{fill:var(--s3)} .s4f{fill:var(--s4)} .s5f{fill:var(--s5)}
+.s1t{fill:var(--s1)} .s2t{fill:var(--s2)} .s3t{fill:var(--s3)} .s4t{fill:var(--s4)} .s5t{fill:var(--s5)}
+.mut{fill:var(--muted)} .inkt{fill:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px}
+.legend span{font-family:"IBM Plex Mono",monospace;font-size:.66rem;color:var(--muted);
+  display:flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:2px;flex:none;display:block}
+
+/* -------- carte de chaleur -------- */
+.hm{width:100%;border-collapse:separate;border-spacing:2px;
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-variant-numeric:tabular-nums}
+.hm th{font-weight:500;color:var(--muted);font-size:.6rem;line-height:1.3;letter-spacing:.09em;
+  text-transform:uppercase;padding:0 0 3px;text-align:right;white-space:nowrap}
+.hm th.l{text-align:left}
+.hm td{padding:1.5px 7px;line-height:1.34;border-radius:3px;text-align:right;
+  color:var(--ink);white-space:nowrap}
+.hm td.l{text-align:left;padding-left:0;color:var(--ink-2);font-family:"IBM Plex Sans",sans-serif;
+  font-size:.76rem;width:1%;white-space:nowrap}
+.hm td.hi{outline:1px solid var(--rule-2)}
+.hm-scale{display:flex;align-items:center;gap:8px;margin-top:9px;
+  font-family:"IBM Plex Mono",monospace;font-size:.63rem;color:var(--muted)}
+.hm-scale .ramp{height:8px;flex:1 1 auto;border-radius:2px;max-width:180px}
+
+/* -------- rangs -------- */
+.ranks{display:grid;gap:12px;margin-top:4px}
+.rank{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}
+.rank .pos{font-family:"IBM Plex Mono",monospace;font-size:2.1rem;font-weight:500;
+  line-height:1;letter-spacing:-.03em}
+.rank .pos sup{font-size:.42em;letter-spacing:0}
+.rank .lab{font-size:.8rem;color:var(--ink-2);line-height:1.35}
+.rank .strip{max-width:300px}
+.rank .lab b{color:var(--ink)}
+.strip{display:flex;gap:2px;margin-top:5px}
+.strip i{height:6px;flex:1 1 auto;border-radius:1px;background:var(--surface-2);display:block}
+.strip i.on{background:var(--s1)}
+.strip i.on.warn{background:var(--s5)}
+
+/* -------- mini-tuiles -------- */
+.mini-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+  grid-auto-rows:128px;margin-top:14px}
+.mini .face{padding:14px 16px}
+.mini .mid{font-size:1.72rem}
+.mini .say{font-size:.775rem;line-height:1.4;margin-top:5px}
+
+/* -------- pied de tuile : pastilles + jauge de rotation -------- */
+.tick{position:absolute;left:0;right:0;bottom:0;height:2px;background:transparent}
+.tick i{display:block;height:100%;width:0;background:var(--accent);opacity:.5}
+.pips{position:absolute;right:12px;bottom:9px;display:flex;gap:5px}
+.pips button{width:6px;height:6px;padding:0;border-radius:50%;border:none;cursor:pointer;
+  background:var(--rule-2);transition:background .2s,transform .2s}
+.pips button[aria-current="true"]{background:var(--accent);transform:scale(1.35)}
+.pips button:hover{background:var(--accent-2)}
+
+/* -------- suite de page -------- */
+.after{margin-top:56px;border-top:1px solid var(--rule);padding-top:26px;max-width:78ch}
+.after h2{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:1.5rem;margin:0 0 10px}
+.after p{color:var(--ink-2);font-size:.95rem;margin:0 0 12px}
+.after .note{font-size:.85rem;color:var(--muted);font-style:italic}
+
+@media (max-width:1080px){
+  .board{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:196px}
+  .kpi.w2{grid-column:span 2}
+  .mini-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:620px){
+  .board{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}
+  .kpi{grid-column:span 1 !important;grid-row:span 1 !important;height:246px}
+  .kpi.h2{height:472px}
+  .mini-row{grid-template-columns:minmax(0,1fr);grid-auto-rows:152px}
+}
+@media (prefers-reduced-motion:reduce){
+  .card{transition:none}
+  .tick{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <p class="kicker">Chiffres pour 2027 · édition 2026 · 21 chapitres, 299 tableaux, 202 sources</p>
+    <h1>L'état de la France, en chiffres vérifiables</h1>
+    <p class="standfirst">Un dossier factuel, sans thèse préalable. Chaque chiffre porte sa source et son millésime&nbsp;; chaque écart est daté. <strong>Les quinze indicateurs ci-dessous tournent d'eux-mêmes</strong> — ils donnent la mesure du dossier avant d'y entrer.</p>
+  </header>
+
+  <div class="board-head">
+    <h2>Le dossier en un coup d'œil</h2>
+    <p class="sub">Chaque tuile alterne entre plusieurs indicateurs. Survolez pour figer, cliquez pour passer au suivant.</p>
+    <div class="ctl">
+      <button id="btn-pause" type="button" aria-pressed="false">Suspendre</button>
+      <button id="btn-theme" type="button">Thème</button>
+    </div>
+  </div>
+
+  <div class="board" id="board"></div>
+  <div class="mini-row" id="mini"></div>
+
+  <section class="after">
+    <h2>Puis le dossier lui-même</h2>
+    <p>Sous le tableau de bord vient le sommaire habituel&nbsp;: les 18 thèmes, la synthèse, la grille de lecture des promesses et le dossier expliqué simplement. Les tuiles ne remplacent rien — elles sont une porte d'entrée, et chacune renvoie au chapitre qui l'établit.</p>
+    <p class="note">Prototype d'accueil, design 1c. Les données sont celles du dossier&nbsp;; la mise en page est une proposition, pas une décision.</p>
+  </section>
+
+</div>
+
+<script>
+/* =====================================================================
+   Formatage français — même convention que src/lib/format.ts :
+   virgule décimale, espace ordinaire pour les milliers dans le texte,
+   espace fine insécable (U+202F) dans les SVG, − (U+2212) pour le moins.
+   ===================================================================== */
+const NNBSP = ' ', MINUS = '−';
+const fr = (n, d = 0, thin = false) => {
+  const s = Math.abs(n).toFixed(d).replace('.', ',');
+  const [i, dec] = s.split(',');
+  const grouped = i.replace(/\B(?=(\d{3})+(?!\d))/g, thin ? NNBSP : ' ');
+  return (n < 0 ? MINUS : '') + grouped + (dec ? ',' + dec : '');
+};
+const signed = (n, d = 1) => (n > 0 ? '+' : MINUS) + fr(Math.abs(n), d);
+
+/* =====================================================================
+   Données — toutes reprises des data.ts du dossier, avec leur millésime.
+   ===================================================================== */
+const D = {
+  dette: {
+    x: [1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+    y: [57.805,60.597,61.993,62.102,61.39,59.693,59.31,61.308,65.414,66.892,68.206,65.414,65.496,69.793,84.108,86.298,88.707,91.69,94.591,96.206,97,98.095,98.807,98.506,98.204,114.901,112.793,111.397,109.509,112.602,115.612],
+  },
+  ges: {
+    x: [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+    y: [546.869,572.486,561.48,539.943,531.689,538.046,556.357,548.577,562.429,557.116,551.803,556.926,550.569,554.649,554.269,555.503,544.877,535.104,530.266,509.108,513.093,487.951,490.702,490.133,457.4,460.721,463.662,466.034,446.49,437.666,398.008,422.391,405.787,378.178,366.983,359.488],
+  },
+  pib: {
+    x: [1995,2000,2005,2008,2010,2015,2019,2022,2024],
+    s: [
+      { k: 's2', l: 'PIB par heure travaillée', v: [133.996,135,131.901,127.694,126.197,124.507,125.299,113.908,114.296] },
+      { k: 's4', l: 'PIB par personne en emploi', v: [122.394,121.796,119.208,116.408,116.408,114.701,116.197,106.092,107.394] },
+      { k: 's1', l: 'PIB par habitant', v: [116.496,117.606,113.099,111.004,108.803,106.197,104.894,97.306,98.292] },
+    ],
+  },
+  pisa: {
+    x: [2003,2006,2009,2012,2015,2018,2022],
+    s: [
+      { k: 's4', l: 'Singapour', v: [null,null,562.002,573.482,564.184,568.975,574.715] },
+      { k: 's3', l: 'Japon', v: [534.108,523.102,528.985,536.385,532.4,526.992,535.579] },
+      { k: 's2', l: 'Estonie', v: [null,514.611,512.097,520.493,519.497,523.387,509.915] },
+      { k: 's5', l: 'Allemagne', v: [502.989,503.795,512.808,513.52,506.025,500,474.81] },
+      { k: 's1', l: 'France', v: [510.816,495.493,496.822,495.019,492.884,495.398,473.909] },
+    ],
+  },
+  logement: {
+    x: [2000,2005,2010,2015,2020,2024],
+    s: [
+      { k: 's3', l: 'Portugal', v: [134.783,114.983,106.89,100,123.98,147.291] },
+      { k: 's4', l: 'Pays-Bas', v: [107.793,115.987,120.1,100,115.987,130.502] },
+      { k: 's1', l: 'France', v: [67.5,86,103.7,100,97,93.6] },
+    ],
+  },
+  crime: {
+    x: [2008,2010,2012,2013,2014,2016,2018,2019,2020,2022,2024],
+    s: [
+      { k: 's2', l: 'Tentatives, France', v: [1.819,1.869,2.39,null,2.54,3.39,3.719,null,4.631,5.281,6.25] },
+      { k: 's4', l: 'Tentatives, Allemagne', v: [1.96,1.981,null,1.981,null,2.14,null,2.181,null,2.069,2.06] },
+      { k: 's1', l: 'Homicides, France', v: [1.519,1.231,1.25,null,1.16,1.169,1.04,null,1.031,1.21,1.281] },
+      { k: 's5', l: 'Homicides, Allemagne', v: [0.8,0.85,null,0.769,null,0.91,null,0.71,null,0.74,0.831] },
+    ],
+  },
+  fonctions: {
+    rows: ['Protection sociale','Santé','Services généraux','Affaires économiques','Enseignement','Défense','Ordre et sécurité','Loisirs, culture','Logement','Environnement'],
+    cols: ['UE-27','Allemagne','France'],
+    v: [
+      [7865,10575,10077],[2957,3942,3797],[2434,3327,2633],[2119,2808,2415],[1910,2330,2161],
+      [592,701,788],[697,846,758],[473,551,626],[296,245,613],[330,294,440],
+    ],
+  },
+  ageEmploi: {
+    rows: ['15-24 ans','25-54 ans','55-64 ans','60-64 ans'],
+    cols: ['France','Allemagne','Écart'],
+    v: [[34.4,51.0,-16.6],[82.9,85.0,-2.1],[60.3,75.0,-14.7],[42.4,66.6,-24.2]],
+  },
+};
+
+/* =====================================================================
+   Générateurs de graphiques. Aucune coordonnée n'est écrite à la main
+   (CLAUDE.md, règle 3) : chaque tracé est calculé depuis les valeurs, à
+   la taille réelle de la zone qui l'accueille — mesurée au montage puis
+   à chaque redimensionnement.
+   ===================================================================== */
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const svgWrap = (w, h, body, label) =>
+  `<svg class="cv" viewBox="0 0 ${w.toFixed(1)} ${h.toFixed(1)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${esc(label)}">${body}</svg>`;
+
+function sparkline(ys, color, w, h) {
+  const n = ys.length, lo = Math.min(...ys), hi = Math.max(...ys), span = hi - lo || 1;
+  const px = (i) => (i / (n - 1)) * w;
+  const py = (v) => h - 5 - ((v - lo) / span) * (h - 14);
+  const pts = ys.map((v, i) => px(i).toFixed(1) + ' ' + py(v).toFixed(1));
+  const body =
+    `<path d="M0,${h} L${pts.join(' L')} L${w.toFixed(1)},${h} Z" fill="var(--${color})" opacity=".10"></path>` +
+    `<polyline class="ln ${color}s" points="${pts.join(' ')}"></polyline>` +
+    `<circle cx="${px(n - 1).toFixed(1)}" cy="${py(ys[n - 1]).toFixed(1)}" r="3.4" class="${color}f"></circle>`;
+  return svgWrap(w, h, body, 'évolution');
+}
+
+function multiline(d, w, h, yMin, yMax) {
+  const all = d.s.flatMap((s) => s.v).filter((v) => v !== null);
+  const lo = yMin ?? Math.min(...all), hi = yMax ?? Math.max(...all), span = hi - lo || 1;
+  const L = 2, R = w - 44, B = h - 15, T = 8;
+  const px = (xv) => L + ((xv - d.x[0]) / (d.x[d.x.length - 1] - d.x[0])) * (R - L);
+  const py = (v) => B - ((v - lo) / span) * (B - T);
+  let body = `<line class="grid" x1="${L}" y1="${B.toFixed(1)}" x2="${R.toFixed(1)}" y2="${B.toFixed(1)}"></line>`;
+  body += `<text class="ax" x="${L}" y="${h - 3}">${d.x[0]}</text>`;
+  body += `<text class="ax" x="${R.toFixed(1)}" y="${h - 3}" text-anchor="end">${d.x[d.x.length - 1]}</text>`;
+  const ends = [];
+  for (const s of d.s) {
+    const seg = []; let cur = [];
+    s.v.forEach((v, i) => {
+      if (v === null) { if (cur.length) seg.push(cur); cur = []; return; }
+      cur.push(px(d.x[i]).toFixed(1) + ' ' + py(v).toFixed(1));
+    });
+    if (cur.length) seg.push(cur);
+    for (const g of seg) body += `<polyline class="ln ${s.k}s" points="${g.join(' ')}"></polyline>`;
+    const li = s.v.reduce((a, v, i) => (v !== null ? i : a), -1);
+    if (li >= 0) ends.push({ k: s.k, x: px(d.x[li]), y: py(s.v[li]), v: s.v[li] });
+  }
+  /* deux courbes qui finissent au même niveau ne doivent pas superposer
+     leurs étiquettes : on les écarte du strict nécessaire. */
+  ends.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < ends.length; i++) {
+    if (ends[i].y - ends[i - 1].y < 11) ends[i].y = ends[i - 1].y + 11;
+  }
+  for (const e of ends) {
+    body += `<circle cx="${e.x.toFixed(1)}" cy="${(py(e.v)).toFixed(1)}" r="2.6" class="${e.k}f"></circle>`;
+    body += `<text class="lbl ${e.k}t" x="${(e.x + 6).toFixed(1)}" y="${(e.y + 3.5).toFixed(1)}">${fr(e.v, e.v < 20 ? 2 : 0, true)}</text>`;
+  }
+  return svgWrap(w, h, body, 'séries comparées');
+}
+
+function bars(items, w, h, { max, unit = '', decimals = 1, labelW } = {}) {
+  const M = max ?? Math.max(...items.map((i) => i.v)) * 1.2;
+  const L = labelW ?? Math.min(124, Math.max(66, w * 0.36));
+  const pitch = Math.min(40, h / items.length);
+  const barH = Math.max(9, Math.min(15, pitch * 0.44));
+  const top = (h - pitch * items.length) / 2 + pitch / 2;
+  const track = w - L - 54;
+  let body = '';
+  items.forEach((it, i) => {
+    const y = top + i * pitch;
+    const bw = Math.max(2, (it.v / M) * track);
+    body += `<text class="ax" x="${(L - 9).toFixed(1)}" y="${(y + 3.4).toFixed(1)}" text-anchor="end">${esc(it.l)}</text>`;
+    body += `<rect class="bar ${it.k}f" x="${L.toFixed(1)}" y="${(y - barH / 2).toFixed(1)}" width="${bw.toFixed(1)}" height="${barH.toFixed(1)}" rx="3"></rect>`;
+    body += `<text class="lbl ${it.k}t" x="${(L + bw + 7).toFixed(1)}" y="${(y + 3.6).toFixed(1)}">${fr(it.v, it.d ?? decimals, true)}${unit}</text>`;
+  });
+  return svgWrap(w, h, body, 'comparaison');
+}
+
+function gauge(value, w, h, { min = 0, max = 100, ref, color = 's4', label = '', refLabel = '' } = {}) {
+  const r = Math.max(20, Math.min(w / 2 - 34, h - 26));
+  const cx = w / 2, cy = h - 8;
+  const pol = (t, rad) => [cx + rad * Math.cos(Math.PI * (1 - t)), cy - rad * Math.sin(Math.PI * (1 - t))];
+  const arc = (t0, t1, stroke, sw) => {
+    const [x0, y0] = pol(t0, r), [x1, y1] = pol(t1, r);
+    return `<path d="M${x0.toFixed(1)},${y0.toFixed(1)} A${r.toFixed(1)},${r.toFixed(1)} 0 0 1 ${x1.toFixed(1)},${y1.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linecap="round"></path>`;
+  };
+  const t = Math.min(1, Math.max(0, (value - min) / (max - min)));
+  let body = arc(0, 1, 'var(--surface-2)', 13) + arc(0, Math.max(t, 0.005), `var(--${color})`, 13);
+  if (ref !== undefined) {
+    const tr = (ref - min) / (max - min);
+    const [rx, ry] = pol(tr, r + 5), [ix, iy] = pol(tr, r - 9);
+    const [lx, ly] = pol(tr, r + 15);
+    body += `<line x1="${ix.toFixed(1)}" y1="${iy.toFixed(1)}" x2="${rx.toFixed(1)}" y2="${ry.toFixed(1)}" stroke="var(--ink-2)" stroke-width="2"></line>`;
+    body += `<text class="ax" x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" text-anchor="${tr > 0.62 ? 'start' : tr < 0.38 ? 'end' : 'middle'}">${esc(refLabel)}</text>`;
+  }
+  body += `<text class="lbl inkt" x="${cx.toFixed(1)}" y="${(cy - 4).toFixed(1)}" text-anchor="middle" style="font-size:${Math.min(30, r * 0.44).toFixed(0)}px;letter-spacing:-.02em">${esc(label)}</text>`;
+  return svgWrap(w, h, body, 'jauge');
+}
+
+function donut(pct, w, h, { color = 's5', label } = {}) {
+  const sw = 14, r = Math.max(14, Math.min(w, h) / 2 - sw), c = 2 * Math.PI * r;
+  const cx = w / 2, cy = h / 2;
+  const body =
+    `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="none" stroke="var(--surface-2)" stroke-width="${sw}"></circle>` +
+    `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="none" stroke="var(--${color})" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${(c * pct / 100).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 ${cx.toFixed(1)} ${cy.toFixed(1)})"></circle>` +
+    `<text class="lbl inkt" x="${cx.toFixed(1)}" y="${(cy + r * 0.22).toFixed(1)}" text-anchor="middle" style="font-size:${(r * 0.58).toFixed(0)}px;letter-spacing:-.02em">${esc(label ?? fr(pct) + NNBSP + '%')}</text>`;
+  return svgWrap(w, h, body, 'part');
+}
+
+function heatmap(d, { decimals = 0, unit = '', diverging = false, highlight = 2, heatCols } = {}) {
+  const inHeat = (ci) => !heatCols || heatCols.includes(ci);
+  const flat = d.v.flatMap((r) => r.filter((v, ci) => v !== null && inHeat(ci)));
+  const hi = Math.max(...flat.map(Math.abs));
+  const cell = (v, ci) => {
+    if (v === null) return '<td>—</td>';
+    const bg = inHeat(ci)
+      ? `color-mix(in srgb, ${diverging ? (v < 0 ? 'var(--s5)' : 'var(--s3)') : (ci === highlight ? 'var(--s1)' : 'var(--s4)')} ${(7 + (Math.abs(v) / hi) * 42).toFixed(0)}%, var(--surface))`
+      : 'var(--surface-2)';
+    return `<td${ci === highlight ? ' class="hi"' : ''} style="background:${bg}">${fr(v, decimals, true)}${unit}</td>`;
+  };
+  return `<table class="hm"><tr><th class="l">&nbsp;</th>${d.cols.map((c) => `<th>${esc(c)}</th>`).join('')}</tr>` +
+    d.rows.map((r, ri) => `<tr><td class="l">${esc(r)}</td>${d.v[ri].map((v, ci) => cell(v, ci)).join('')}</tr>`).join('') + '</table>';
+}
+
+/* Les tracés sont déclarés ici et dessinés à la demande, à la taille de
+   leur tuile : une face n'écrit qu'un emplacement `data-c`. */
+const CHARTS = {
+  detteSpark: (w, h) => sparkline(D.dette.y, 's5', w, h),
+  gesSpark: (w, h) => sparkline(D.ges.y, 's3', w, h),
+  pisaSpark: (w, h) => sparkline(D.pisa.s[4].v, 's5', w, h),
+  logementSpark: (w, h) => sparkline(D.logement.s[2].v, 's1', w, h),
+  pibLines: (w, h) => multiline(D.pib, w, h, 90, 140),
+  crimeLines: (w, h) => multiline(D.crime, w, h, 0, 7),
+  pisaLines: (w, h) => multiline(D.pisa, w, h, 460, 590),
+  eurBars: (w, h) => bars([
+    { l: 'Danemark', v: 31073, k: 's4', d: 0 }, { l: 'Pays-Bas', v: 27705, k: 's4', d: 0 },
+    { l: 'Allemagne', v: 25620, k: 's4', d: 0 }, { l: 'France', v: 24308, k: 's1', d: 0 },
+  ], w, h, { unit: NNBSP + '€' }),
+  ageBars: (w, h) => bars([{ l: 'Allemagne', v: 66.6, k: 's1' }, { l: 'France', v: 42.4, k: 's5' }], w, h, { max: 80, unit: NNBSP + '%' }),
+  encadrementBars: (w, h) => bars([{ l: 'Enseignant', v: 17.9, k: 's5' }, { l: 'Classe', v: 21.6, k: 's4' }], w, h, { max: 26 }),
+  retraitesBars: (w, h) => bars([{ l: 'France', v: 29272, k: 's3', d: 0 }, { l: 'Allemagne', v: 27157, k: 's4', d: 0 }], w, h, { max: 34000, unit: NNBSP + '€' }),
+  eleveBars: (w, h) => bars([{ l: 'Allemagne', v: 10363, k: 's4', d: 0 }, { l: 'France', v: 8151, k: 's2', d: 0 }], w, h, { max: 12500 }),
+  gaugePrestations: (w, h) => gauge(25.5, w, h, { max: 30, ref: 17.2, color: 's4', label: fr(25.5, 1) + NNBSP + '%', refLabel: '1975' }),
+  gaugeEmploi: (w, h) => gauge(69.8, w, h, { max: 100, ref: 86, color: 's1', label: fr(69.8, 1) + NNBSP + '%', refLabel: 'P.-Bas' }),
+  donut76: (w, h) => donut(76, w, h, { color: 's4' }),
+  hmFonctions: () => heatmap(D.fonctions, { unit: NNBSP + '€', highlight: 2 }),
+  hmAge: () => heatmap(D.ageEmploi, { decimals: 1, unit: NNBSP + '%', diverging: true, highlight: -1, heatCols: [2] }),
+};
+
+/* =====================================================================
+   Les tuiles. Chaque face est un indicateur autonome, avec sa source et
+   son millésime.
+   ===================================================================== */
+const eyebrow = (color, txt) => `<p class="eyebrow"><i class="dot" style="background:var(--${color})"></i>${esc(txt)}</p>`;
+const src = (t) => `<p class="src">${esc(t)}</p>`;
+const zone = (name, mod = '') => `<div class="grow${mod ? ' ' + mod : ''}" data-c="${name}"></div>`;
+const legendOf = (d) => `<div class="legend">${d.s.map((s) => `<span><i style="background:var(--${s.k})"></i>${esc(s.l)}</span>`).join('')}</div>`;
+
+const TILES = [
+  /* ---------- 1. tuile maîtresse, 2 × 2 ---------- */
+  { cls: 'w2 h2', every: 11000, axis: 'y', faces: [
+    () => `${eyebrow('s5', 'Thème 02 · Dette et déficit')}
+      <h3>Deux marches d'escalier, jamais redescendues</h3>
+      <p class="big">${fr(115.612, 1)}<span class="u">% du PIB · 2025</span></p>
+      <p><span class="delta up">${signed(115.612 - 65.496)} points depuis 2007</span></p>
+      ${zone('detteSpark')}
+      <p class="say">Le point bas d'après-crise est <b>98,2 %</b> en 2019, contre 65,5 % en 2007. Depuis 2023, la dette remonte de <b>6,1 points en deux ans, sans choc macroéconomique</b>.</p>
+      ${src('Eurostat gov_10dd_edpt1 · 2025')}`,
+    () => `${eyebrow('s1', 'Thème 01 · Dépenses publiques et niveau de vie')}
+      <h3>Le PIB par habitant est passé sous la moyenne européenne</h3>
+      <p class="big">${fr(98.292, 1)}<span class="u">indice, UE-27 = 100 · 2024</span></p>
+      <p><span class="delta up">${signed(98.292 - 116.496)} points depuis 1995</span></p>
+      ${zone('pibLines')}
+      ${legendOf(D.pib)}
+      <p class="say">L'écart entre les trois courbes, c'est <b>le taux d'emploi et la durée du travail</b>. La productivité horaire, elle, ne décroche qu'après 2019 — <b>−11 points en trois ans</b>.</p>
+      ${src('Eurostat nama_10_lp_ulc · 2024')}`,
+    () => `${eyebrow('s4', 'Synthèse · proposition n° 3')}
+      <h3>Deuxième d'Europe en part du PIB, huitième par habitant</h3>
+      <div style="display:flex;gap:38px;flex-wrap:wrap;margin-top:4px">
+        <div><p class="mid s5t">${fr(57.3, 1)}<span class="u">% du PIB</span></p><p class="say" style="margin-top:0">2ᵉ d'Europe</p></div>
+        <div><p class="mid s1t">${fr(24308)}<span class="u">€ / habitant</span></p><p class="say" style="margin-top:0">8ᵉ d'Europe</p></div>
+      </div>
+      ${zone('eurBars')}
+      <p class="say">Le résultat le plus contre-intuitif du dossier. Corrigé du pouvoir d'achat, l'écart à l'UE-27 tombe de <b>+23,6 % à +13,5 %</b>.</p>
+      ${src('Eurostat gov_10a_exp · 2024')}`,
+  ]},
+
+  /* ---------- 2. carte de chaleur, 2 × 2 ---------- */
+  { cls: 'w2 h2', every: 13000, axis: 'x', faces: [
+    () => `${eyebrow('s1', 'Synthèse · dépense comparée')}
+      <h3>Dépense publique par fonction, en euros par habitant</h3>
+      ${zone('hmFonctions', 'top')}
+      <div class="hm-scale"><span>faible</span><span class="ramp" style="background:linear-gradient(90deg,color-mix(in srgb,var(--s1) 7%,var(--surface)),var(--s1))"></span><span>élevée</span></div>
+      <p class="say">L'Allemagne dépense plus que la France sur <b>huit fonctions sur dix</b>. Les exceptions sont le logement (613 € contre 245) et la culture.</p>
+      ${src('Eurostat gov_10a_exp · 2024')}`,
+    () => `${eyebrow('s5', 'Thème 03 · Retraites et durée de travail')}
+      <h3>Taux d'emploi par tranche d'âge, France et Allemagne</h3>
+      ${zone('hmAge', 'top')}
+      <div class="hm-scale"><span>France en retrait</span><span class="ramp" style="background:linear-gradient(90deg,var(--s5),var(--surface-2),var(--s3))"></span><span>France en avance</span></div>
+      <p class="say">Sur le cœur de carrière, les deux pays sont à égalité — <b>2,1 points</b>. L'écart se fait aux deux bouts : 16,6 points chez les jeunes, <b>24,2 points sur les 60-64 ans</b>.</p>
+      ${src('Eurostat, forces de travail · 2024')}`,
+  ]},
+
+  /* ---------- 3. séries comparées, 2 × 2 ---------- */
+  { cls: 'w2 h2', every: 12000, axis: 'y', faces: [
+    () => `${eyebrow('s2', 'Thème 12 · Sécurité et justice')}
+      <h3>Homicides et tentatives, France et Allemagne</h3>
+      ${zone('crimeLines')}
+      ${legendOf(D.crime)}
+      ${src('Eurostat crim_off_cat · pour 100 000 hab. · 2024')}`,
+    () => `${eyebrow('s1', 'Thème 14 · Éducation')}
+      <h3>PISA mathématiques, cinq pays, 2003-2022</h3>
+      ${zone('pisaLines')}
+      ${legendOf(D.pisa)}
+      ${src('OCDE PISA via Our World in Data · 2022')}`,
+  ]},
+
+  /* ---------- 4. valeur, écart et courbe, 1 × 1 ---------- */
+  { cls: '', every: 8000, axis: 'y', faces: [
+    () => `${eyebrow('s3', 'Thème 10 · Écologie et climat')}
+      <h3>Émissions de gaz à effet de serre</h3>
+      <div class="valrow"><p class="mid s3t">${fr(359.488, 1)}<span class="u">MtCO₂e</span></p>
+        <span class="delta down">${signed(-34.3)} % depuis 1990</span></div>
+      ${zone('gesSpark')}
+      ${src('Eurostat sdg_13_10 · Citepa 2026')}`,
+    () => `${eyebrow('s5', 'Thème 14 · Éducation')}
+      <h3>PISA mathématiques, France</h3>
+      <div class="valrow"><p class="mid s5t">${fr(473.909, 1)}<span class="u">score</span></p>
+        <span class="delta up">${signed(-36.9)} pts depuis 2003</span></div>
+      ${zone('pisaSpark')}
+      ${src('OCDE PISA via Our World in Data · 2022')}`,
+    () => `${eyebrow('s1', 'Thème 15 · Logement')}
+      <h3>Prix des logements sur revenu</h3>
+      <div class="valrow"><p class="mid s1t">${fr(93.6, 1)}<span class="u">indice 2015</span></p>
+        <span class="delta down">${signed(-9.7)} % depuis 2010</span></div>
+      ${zone('logementSpark')}
+      ${src('OCDE, prix de l\'immobilier · 2024')}`,
+  ]},
+
+  /* ---------- 5. jauge, 1 × 1 ---------- */
+  { cls: '', every: 9500, axis: 'x', faces: [
+    () => `${eyebrow('s4', 'Synthèse · proposition n° 1')}
+      <h3>Prestations sociales, en % du PIB</h3>
+      ${zone('gaugePrestations')}
+      <p class="say" style="font-size:.79rem">En 2024, contre <b>17,2 % en 1975</b>.</p>
+      ${src('Eurostat gov_10a_main · 2024')}`,
+    () => `${eyebrow('s1', 'Thème 04 · Emploi et chômage')}
+      <h3>Taux d'emploi des 15-64 ans</h3>
+      ${zone('gaugeEmploi')}
+      <p class="say" style="font-size:.79rem">Contre <b>86,0 % aux Pays-Bas</b>.</p>
+      ${src('Eurostat, forces de travail · 2024')}`,
+  ]},
+
+  /* ---------- 6. barres, 1 × 1 ---------- */
+  { cls: '', every: 10500, axis: 'x', faces: [
+    () => `${eyebrow('s5', 'Thème 03 · Retraites')}
+      <h3>Emploi des 60-64 ans</h3>
+      ${zone('ageBars')}
+      <p class="say" style="font-size:.79rem"><b>24,2 points</b> d'écart — le plus large du dossier.</p>
+      ${src('Eurostat, forces de travail · 2024')}`,
+    () => `${eyebrow('s5', 'Thème 14 · Éducation')}
+      <h3>Encadrement au primaire</h3>
+      ${zone('encadrementBars')}
+      <p class="say" style="font-size:.79rem">Contre <b>14,0 et 20,0</b> en moyenne OCDE.</p>
+      ${src('OCDE, Regards sur l\'éducation 2025')}`,
+  ]},
+
+  /* ---------- 7. part, 1 × 1 ---------- */
+  { cls: '', every: 9000, axis: 'y', faces: [
+    () => `${eyebrow('s4', 'Synthèse · proposition n° 1')}
+      <h3>La marge budgétaire, absorbée</h3>
+      ${zone('donut76')}
+      <p class="say" style="font-size:.79rem">De la hausse de la dépense depuis 1975 vient des <b>prestations sociales</b>.</p>
+      ${src('Eurostat gov_10a_main · 2024')}`,
+    () => `${eyebrow('s5', 'Thème 12 · Sécurité et justice')}
+      <h3>Juges, face à l'Allemagne</h3>
+      <div class="grow" style="justify-content:center"><p class="big s5t" style="margin:0;text-align:center">${MINUS}50<span class="u">%</span></p></div>
+      <p class="say" style="font-size:.79rem">La France a <b>moitié moins de juges</b>, et se situe sous la médiane européenne.</p>
+      ${src('CEPEJ ; thème 12 du dossier')}`,
+  ]},
+
+  /* ---------- 8. arbitrage interne, 2 × 1 ---------- */
+  { cls: 'w2', every: 10000, axis: 'y', faces: [
+    () => `${eyebrow('s3', 'Synthèse · composition')}
+      <h3>Retraites, par personne de 65 ans et plus</h3>
+      ${zone('retraitesBars')}
+      <p class="say" style="font-size:.79rem">Sur ce poste, la France dépense <b>plus</b> que l'Allemagne.</p>
+      ${src('Eurostat gov_10a_exp · 2024')}`,
+    () => `${eyebrow('s2', 'Synthèse · composition')}
+      <h3>Dépense par élève, en pouvoir d'achat</h3>
+      ${zone('eleveBars')}
+      <p class="say" style="font-size:.79rem">Sur celui-là, <b>21 % de moins</b> — et 10 % de l'écart reste masqué par les pensions.</p>
+      ${src('OCDE, Regards sur l\'éducation 2025')}`,
+  ]},
+
+  /* ---------- 9. rangs, 2 × 1 ---------- */
+  { cls: 'w2', every: 11500, axis: 'x', faces: [
+    () => `${eyebrow('s1', 'Thème 01 · Dépenses publiques')}
+      <h3>La même dépense, deux classements</h3>
+      <div class="ranks">
+        <div class="rank"><span class="pos s5t">2<sup>e</sup></span>
+          <span class="lab"><b>En % du PIB</b> — 57,3 %
+          <span class="strip">${Array.from({ length: 10 }, (_, i) => `<i class="${i === 1 ? 'on warn' : ''}"></i>`).join('')}</span></span></div>
+        <div class="rank"><span class="pos s1t">8<sup>e</sup></span>
+          <span class="lab"><b>Par habitant</b> — 24 308 €
+          <span class="strip">${Array.from({ length: 10 }, (_, i) => `<i class="${i === 7 ? 'on' : ''}"></i>`).join('')}</span></span></div>
+      </div>
+      <p class="say" style="font-size:.79rem">Le classement dépend entièrement du dénominateur choisi.</p>
+      ${src('Eurostat gov_10a_exp · 2024')}`,
+    () => `${eyebrow('s3', 'Thème 13 · Santé')}
+      <h3>Reste à charge des ménages</h3>
+      <div class="ranks">
+        <div class="rank"><span class="pos s3t">1<sup>er</sup></span>
+          <span class="lab"><b>Le plus faible des quatre pays comparés</b>, en part comme en montant
+          <span class="strip">${Array.from({ length: 4 }, (_, i) => `<i class="${i === 0 ? 'on' : ''}"></i>`).join('')}</span></span></div>
+      </div>
+      <p class="say" style="font-size:.79rem">Mais les besoins de soins non satisfaits ont <b>triplé depuis 2019</b>.</p>
+      ${src('OCDE, comptes de la santé ; Eurostat')}`,
+  ]},
+];
+
+/* ---------- mini-tuiles ---------- */
+const MINIS = [
+  { every: 7000, axis: 'y', faces: [
+    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${signed(16.7)}<span class="u">points</span></p><p class="say">De dette publique sur la <b>seule année 2020</b>.</p>`,
+    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${signed(6.1)}<span class="u">points</span></p><p class="say">Entre 2023 et 2025, <b>sans choc macroéconomique</b>.</p>`,
+    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${fr(98.2, 1)}<span class="u">%</span></p><p class="say">Le point bas d'après-crise, en 2019, contre <b>65,5 % en 2007</b>.</p>`,
+  ]},
+  { every: 7600, axis: 'x', faces: [
+    () => `${eyebrow('s2', 'Santé')}<p class="mid s2t">${fr(4.1, 1)}<span class="u">%</span></p><p class="say">De besoins de soins non satisfaits, contre <b>1,2 % en 2019</b>.</p>`,
+    () => `${eyebrow('s2', 'Santé')}<p class="mid s2t">${fr(30)}<span class="u">%</span></p><p class="say">De la population vit dans un <b>désert médical</b>.</p>`,
+    () => `${eyebrow('s2', 'État')}<p class="mid s2t">${signed(-21, 0)}<span class="u">%</span></p><p class="say">De personnels administratifs à l'Éducation, <b>2007-2022</b>.</p>`,
+  ]},
+  { every: 8300, axis: 'y', faces: [
+    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">3,0<span class="u">×</span></p><p class="say">Le taux allemand de tentatives d'homicide, en 2024. <b>Égalité en 2008.</b></p>`,
+    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">${fr(6.25, 2)}</p><p class="say">Tentatives pour 100 000 habitants en France ; <b>1,82 en 2008</b>.</p>`,
+    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">${fr(2.06, 2)}</p><p class="say">En Allemagne — <b>stable sur dix-sept ans</b>.</p>`,
+  ]},
+  { every: 6800, axis: 'x', faces: [
+    () => `${eyebrow('s3', 'Efficacité de l\'État')}<p class="mid s3t">${fr(623)}<span class="u">€</span></p><p class="say">D'administration générale par habitant ; <b>759 € en Europe, 1 070 en Allemagne</b>.</p>`,
+    () => `${eyebrow('s3', 'Industrie')}<p class="mid s3t">17<span class="u">mois</span></p><p class="say">Pour implanter un site industriel, dont <b>8 mois d'écart entre théorie et réalité</b>.</p>`,
+    () => `${eyebrow('s3', 'Éducation')}<p class="mid s3t">${fr(1.2, 2)}</p><p class="say">Enseignant rémunéré par groupe-classe au primaire ; <b>1,43 en moyenne OCDE</b>.</p>`,
+  ]},
+];
+
+/* =====================================================================
+   Le moteur de rotation. Une tuile = une pile de faces ; on tourne la
+   carte de 90°, on change de face à mi-course, on la ramène à plat.
+   ===================================================================== */
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+let paused = false;
+
+function mountTile(spec, host, isMini, offset) {
+  const el = document.createElement('div');
+  el.className = 'kpi ' + (spec.cls || '') + (isMini ? ' mini' : '');
+  const card = document.createElement('div');
+  card.className = 'card';
+  const n = spec.faces.length;
+
+  spec.faces.forEach((render, i) => {
+    const f = document.createElement('div');
+    f.className = 'face' + (i === 0 ? ' on' : '');
+    f.innerHTML = render();
+    card.appendChild(f);
+  });
+
+  const tick = document.createElement('div');
+  tick.className = 'tick';
+  tick.innerHTML = '<i></i>';
+  card.appendChild(tick);
+
+  const pips = document.createElement('div');
+  pips.className = 'pips';
+  pips.setAttribute('role', 'tablist');
+  for (let i = 0; i < n; i++) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Indicateur ' + (i + 1) + ' sur ' + n);
+    b.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+    b.addEventListener('click', (e) => { e.stopPropagation(); go(i); });
+    pips.appendChild(b);
+  }
+  card.appendChild(pips);
+  el.appendChild(card);
+  host.appendChild(el);
+
+  const faces = [...card.querySelectorAll('.face')];
+  const dots = [...pips.querySelectorAll('button')];
+  const bar = tick.querySelector('i');
+  const axis = spec.axis === 'x' ? 'X' : 'Y';
+  let cur = 0, elapsed = -(offset || 0), last = performance.now(), hover = false, busy = false;
+
+  /* Un tracé n'est calculé qu'une fois sa zone visible et mesurée : la
+     taille du dessin est celle de la tuile, jamais une valeur devinée. */
+  function draw(face) {
+    for (const box of face.querySelectorAll('.grow[data-c]')) {
+      const gen = CHARTS[box.dataset.c];
+      if (!gen) continue;
+      const w = box.clientWidth, h = box.clientHeight;
+      if (w < 8 || h < 8) continue;
+      const sig = w + 'x' + h;
+      if (box.dataset.sig === sig) continue;
+      box.dataset.sig = sig;
+      box.innerHTML = gen(w, h);
+    }
+  }
+
+  function paint(i) {
+    faces.forEach((f, k) => f.classList.toggle('on', k === i));
+    dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    draw(faces[i]);
+  }
+
+  function go(i) {
+    if (busy || i === cur) { elapsed = 0; return; }
+    elapsed = 0;
+    if (reduce.matches) { cur = i; paint(i); return; }
+    busy = true;
+    card.style.transform = `rotate${axis}(90deg)`;
+    card.style.opacity = '0.35';
+    setTimeout(() => {
+      cur = i; paint(i);
+      card.style.transition = 'none';
+      card.style.transform = `rotate${axis}(-90deg)`;
+      requestAnimationFrame(() => {
+        card.style.transition = '';
+        card.style.transform = `rotate${axis}(0deg)`;
+        card.style.opacity = '1';
+        setTimeout(() => { busy = false; }, 340);
+      });
+    }, 340);
+  }
+
+  paint(0);
+  new ResizeObserver(() => {
+    for (const f of faces) f.querySelectorAll('.grow[data-c]').forEach((b) => delete b.dataset.sig);
+    draw(faces[cur]);
+  }).observe(card);
+
+  el.addEventListener('mouseenter', () => { hover = true; });
+  el.addEventListener('mouseleave', () => { hover = false; });
+  card.addEventListener('click', () => go((cur + 1) % n));
+
+  return {
+    step(now) {
+      const dt = Math.min(now - last, 250);
+      last = now;
+      if (paused || hover || busy) return;
+      elapsed += dt;
+      const p = elapsed / spec.every;
+      bar.style.width = Math.max(0, Math.min(100, p * 100)).toFixed(1) + '%';
+      if (p >= 1) go((cur + 1) % n);
+    },
+  };
+}
+
+const board = document.getElementById('board');
+const mini = document.getElementById('mini');
+/* Décalage initial : les tuiles ne basculent jamais toutes en même temps. */
+const tiles = [
+  ...TILES.map((s, i) => mountTile(s, board, false, 1200 + i * 950)),
+  ...MINIS.map((s, i) => mountTile(s, mini, true, 2400 + i * 750)),
+];
+
+(function loop(now) {
+  for (const t of tiles) t.step(now || performance.now());
+  requestAnimationFrame(loop);
+})(performance.now());
+
+/* ---------- commandes ---------- */
+const btnPause = document.getElementById('btn-pause');
+btnPause.addEventListener('click', () => {
+  paused = !paused;
+  btnPause.setAttribute('aria-pressed', String(paused));
+  btnPause.textContent = paused ? 'Reprendre' : 'Suspendre';
+});
+if (reduce.matches) {
+  paused = true;
+  btnPause.setAttribute('aria-pressed', 'true');
+  btnPause.textContent = 'Reprendre';
+}
+
+const btnTheme = document.getElementById('btn-theme');
+btnTheme.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  const dark = cur ? cur === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+</script>
+</body>
+</html>
