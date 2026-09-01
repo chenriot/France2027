@@ -214,7 +214,7 @@ export const tables = {
   },
   'pour-100-000-habitants-2': {
     vintage: 'à confirmer',
-    sources: ['eurostat-crim-just-job-2'],
+    sources: ['eurostat-crim-just-job-3'],
     columns: [
       {
         key: 'pour-100-000-habitants',
@@ -331,7 +331,7 @@ export const tables = {
       {
         cells: [
           { t: '<strong>Sécurité</strong>' },
-          { v: 361, d: 0, u: 'policiers/100 000, plus que l\'Allemagne' },
+          { v: 361, d: 0, u: 'policiers/100 000, plus que l\'Allemagne — sous réserve de périmètre' },
           {
             t: 'Moyens comparativement élevés. Taux d\'élucidation des vols ≤ 8 %. <strong>Question d\'efficacité et d\'organisation</strong> plus que de volume — mais la donnée comparative manque.',
           },
@@ -360,7 +360,7 @@ export const series = {
       { color: 's4', label: '2005' },
       { color: 's1', label: '2024' },
     ],
-    svg: '<svg viewBox="0 0 720 200" class="cv" role="img" aria-labelledby="cfp-t">\n<title id="cfp-t">agents pour 100 000 habitants</title>\n<line class="grid" x1="228.0" y1="16" x2="228.0" y2="152"></line>\n<text class="ax" x="228.0" y="174" text-anchor="middle">0</text>\n<line class="grid" x1="412.7" y1="16" x2="412.7" y2="152"></line>\n<text class="ax" x="412.7" y="174" text-anchor="middle">2 000</text>\n<line class="grid" x1="597.5" y1="16" x2="597.5" y2="152"></line>\n<text class="ax" x="597.5" y="174" text-anchor="middle">4 000</text>\n<text class="ax al" x="214" y="43">Fonction publique d\'État</text>\n<rect class="bar s4f" x="228" y="24" width="388.7" height="13" rx="3"></rect>\n<rect class="bar s1f" x="228" y="41" width="348.6" height="13" rx="3"></rect>\n<text class="lbl mut" x="624.7" y="35">4 208</text>\n<text class="lbl s1t" x="584.6" y="52">3 774</text>\n<text class="ax al" x="214" y="89">Fonction publique territoriale</text>\n<rect class="bar s4f" x="228" y="70" width="228.5" height="13" rx="3"></rect>\n<rect class="bar s1f" x="228" y="87" width="274.8" height="13" rx="3"></rect>\n<text class="lbl mut" x="464.5" y="81">2 474</text>\n<text class="lbl s1t" x="510.8" y="98">2 975</text>\n<text class="ax al" x="214" y="135">Fonction publique hospitalière</text>\n<rect class="bar s4f" x="228" y="116" width="153.9" height="13" rx="3"></rect>\n<rect class="bar s1f" x="228" y="133" width="168.4" height="13" rx="3"></rect>\n<text class="lbl mut" x="389.9" y="127">1 666</text>\n<text class="lbl s1t" x="404.4" y="144">1 823</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 200" class="cv" role="img" aria-labelledby="cfp-t">\r\n<title id="cfp-t">agents pour 100 000 habitants</title>\r\n<line class="grid" x1="228.0" y1="16" x2="228.0" y2="152"></line>\r\n<text class="ax" x="228.0" y="174" text-anchor="middle">0</text>\r\n<line class="grid" x1="412.7" y1="16" x2="412.7" y2="152"></line>\r\n<text class="ax" x="412.7" y="174" text-anchor="middle">2 000</text>\r\n<line class="grid" x1="597.5" y1="16" x2="597.5" y2="152"></line>\r\n<text class="ax" x="597.5" y="174" text-anchor="middle">4 000</text>\r\n<text class="ax al" x="214" y="43">Fonction publique d\'État</text>\r\n<rect class="bar s4f" x="228" y="24" width="388.7" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="228" y="41" width="348.6" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="624.7" y="35">4 208</text>\r\n<text class="lbl s1t" x="584.6" y="52">3 774</text>\r\n<text class="ax al" x="214" y="89">Fonction publique territoriale</text>\r\n<rect class="bar s4f" x="228" y="70" width="228.5" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="228" y="87" width="274.8" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="464.5" y="81">2 474</text>\r\n<text class="lbl s1t" x="510.8" y="98">2 975</text>\r\n<text class="ax al" x="214" y="135">Fonction publique hospitalière</text>\r\n<rect class="bar s4f" x="228" y="116" width="153.9" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="228" y="133" width="168.4" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="389.9" y="127">1 666</text>\r\n<text class="lbl s1t" x="404.4" y="144">1 823</text>\r\n</svg>',
     sources: ['eurostat-demo-gind'],
     vintage: 'à confirmer',
     values: {
@@ -431,6 +431,6 @@ export const questions = [
  * citée en prose reste une source du dossier.
  */
 export const citedSources = [
-  'eurostat-crim-just-job-2', 'insee-dgafp-rapport-annuel-sur-l-etat-de-la-f',
+  'eurostat-crim-just-job-3', 'insee-dgafp-rapport-annuel-sur-l-etat-de-la-f',
   'tableau-de-synthese-tableau-de-synthese-chaque-ligne-renvo',
 ] satisfies readonly SourceId[]

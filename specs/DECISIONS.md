@@ -5,7 +5,9 @@ motivés et ce qu'ils coûtent. La spécification (`site-chiffres-2027.md`) dit 
 qu'on veut ; ce document dit ce qu'on a fait quand la réalité du document
 d'origine ne correspondait pas à ce qui était prévu.
 
-Date : 2026-09-01 · État : mise en œuvre complète, premiers amendements au fond (§D14).
+Date : 2026-09-01 · État : mise en œuvre complète. Le contenu nouveau s’écrit dans le
+document d’origine (§D14) ; les corrections de fond et les ajouts en mode page
+passent par les amendements (§D17).
 
 ---
 
@@ -14,11 +16,11 @@ Date : 2026-09-01 · État : mise en œuvre complète, premiers amendements au f
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **291** (286 migrés + 5 ajoutés, §D14) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 079 sur 6 404 (64 %) | extraction |
-| Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D14) · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
-| Sources | 197 blocs → **200 entrées** (192 migrées + 8 ajoutées), 200 citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **55 891 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Tableaux | **304** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 165 sur 6 558 (64 %) | extraction |
+| Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
+| Sources | **212 entrées** (202 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **57 752 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -186,10 +188,8 @@ compléments là où ils lisent réellement.
 `npm run check:render`), puis se referme sur une bibliographie **générée**
 depuis les données, là où le document d'origine en avait une tenue à la main.
 
-C'est une différence voulue — c'est l'objectif O3 — et elle est restée la seule
-jusqu'aux corrections de fond décrites en **§D14**, qui sont, elles, déclarées
-une par une. Le script de comparaison exclut explicitement la bibliographie de
-son périmètre, et le dit.
+C'est une différence voulue — c'est l'objectif O3 — et c'est la seule. Le
+script de comparaison l'exclut explicitement de son périmètre, et le dit.
 
 ---
 
@@ -292,7 +292,101 @@ sont deux étapes distinctes, et seule la seconde est visible du lecteur.
 
 ---
 
-## D14 — Le dossier peut désormais corriger son document d'origine, et doit le déclarer
+## D14 — Ajouter du contenu : on écrit dans le document d'origine
+
+**Le problème.** La règle 8 de `CLAUDE.md` interdit de modifier à la main les
+`content.tsx` et `data.ts` des chapitres : ils sont générés. Mais le contenu
+rédactionnel nouveau doit bien être écrit quelque part, et `scripts/extract.ts`
+est un traducteur, pas un lieu d'écriture.
+
+**Ce qu'on a fait.** `Temp/chiffres2027 (3).html` devient la surface d'écriture
+du contenu, pas seulement l'archive dont on est parti. On y ajoute la fiche au
+balisage maison (`div.q`, `div.tw`, `p.src`, `div.lim`, `div.hole`,
+`div.take`), puis `npm run extract` la propage.
+
+**Pourquoi ça ne casse pas la garantie de rendu.** `check:render` compare le
+site à ce fichier : les deux bougent ensemble, la comparaison reste exacte et
+reste une preuve — elle prouve que l'extraction est fidèle, ce qui est bien ce
+qu'elle a toujours prouvé. Ce qu'elle ne prouve plus, c'est que le site est
+identique au document livré le 31 août 2026 ; cette version-là est dans
+l'historique Git, qui est le bon endroit pour elle.
+
+**Deux pièges rencontrés à l'écriture**, tous deux détectés par `check:render` :
+
+- `&nbsp;` avant un `?` casse la comparaison — l'entité et le caractère U+00A0
+  ne se sérialisent pas pareil de part et d'autre. Le document utilise une
+  espace ordinaire avant `?` (245 occurrences) : s'y tenir ;
+- `<span class="num">` sert à déclarer un **identifiant de jeu de données** :
+  l'extracteur en fait le champ `datasets` de la source. L'écrire autour d'un
+  mot qui n'est pas un code de base (« Siret ») crée une fausse entrée dans le
+  registre.
+
+**Première application : `s4-q24`**, sur l'emploi et le salaire des femmes,
+en fin de partie 1 du chapitre « Emploi, chômage et coût du travail ».
+Quatorze tableaux, neuf sources, aucune dette de migration ajoutée. Cinq encadrés
+`hole` y signalent ce que la statistique publique ne permet pas d'établir :
+l'écart de salaire à poste comparable par tranche d'âge, les tranches d'âge
+intermédiaires, la ventilation sectorielle à métier constant, le taux de
+promotion comparé à poste et ancienneté identiques, et l'ancienneté par sexe. Ces trous ne sont pas des lacunes de
+recherche à combler plus tard : ce sont des données qui ne sont pas publiées,
+et c'est un résultat en soi.
+
+---
+
+## D15 — Les URL de sources vivent dans l'extracteur, pas dans le document
+
+**Le problème.** Le document d'origine cite ses sources en clair — « Insee
+Focus n° 377 », « Eurostat, `lfsi_emp_a` » — sans jamais donner de lien. Le
+lecteur ne peut pas vérifier sans chercher. Mais ajouter des `<a href>` dans
+les blocs `p.src` changerait le rendu des pages de chapitre, qui doit rester
+identique au document.
+
+**Ce qu'on a fait.** L'URL est portée **à côté** du texte, dans le champ `url`
+du registre, et affichée **seulement dans la bibliographie** — la seule surface
+que `check:render` n'inspecte pas (§D8). Les pages de chapitre sont donc
+inchangées, et `/sources` gagne un lien « Consulter la source » par entrée
+renseignée.
+
+La table `SOURCE_URLS` est dans `scripts/extract.ts`, clé par identifiant de
+source. C'est le bon endroit au regard de la règle 8 : `src/data/sources.ts`
+est généré, on n'y écrit pas à la main.
+
+**Le piège, et son garde-fou.** Les identifiants de source sont dérivés du
+texte du bloc : reformuler un `p.src` change son identifiant et laisserait son
+URL orpheline, en silence. `npm run extract` recense donc les clés qui ne
+correspondent à aucune source, et affiche le compte d'URL renseignées sur le
+total. Aujourd'hui : **10 sur 202**, aucune orpheline. Le reste est le chantier
+listé en §D10 — la mécanique est en place, le remplissage ne l'est pas.
+
+---
+
+## D16 — Un bloc source ajouté peut fausser le millésime des tableaux voisins
+
+**Ce qui s'est passé.** L'extracteur déduit le millésime d'un tableau de la
+plus récente année plausible trouvée dans son en-tête, puis, à défaut, dans
+**tous les blocs `p.src` de la fiche** qui le contient (§D9). Ajouter une
+section sourcée à l'intérieur d'une fiche existante a donc converti un
+`vintage: 'à confirmer'` honnête, sur le tableau des effectifs de police, en
+un `2025` faux — l'année d'un rapport que ce tableau ne cite pas.
+
+Le symptôme était trompeur : la dette de migration **baissait** de 52 à 51
+points. Une dette qui diminue sans qu'on ait rien corrigé est un signal
+d'alerte, pas un progrès.
+
+**Ce qu'on en tire, deux règles.**
+
+1. **Une section nouvelle va dans sa propre fiche `div.q`**, pas au milieu
+   d'une fiche existante. Les `p.src` sont partagés à l'échelle de la fiche :
+   c'est l'unité d'isolement des sources et des millésimes. Ici, la section sur
+   les effectifs de police est devenue `s12-q14`.
+2. **Un tableau dont les données sont pluriannuelles porte ses bornes dans son
+   en-tête** — « Trois éléments français, 2016-2022, … » — sinon le millésime
+   est deviné sur la source la plus récente citée dans la fiche, qui n'est pas
+   forcément celle de la donnée.
+
+---
+
+## D17 — Le dossier peut aussi corriger son document d'origine, et doit le déclarer
 
 Jusqu'ici, le dépôt savait faire une seule chose : reproduire
 `Temp/chiffres2027 (3).html`. Deux besoins l'ont mis en défaut le même jour.
@@ -402,18 +496,20 @@ manière de produire les 21 répertoires.
 
 ---
 
+---
+
 ## D10 — Ce qui reste à faire
 
 | Chantier | Volume | Où le voir |
 |---|---|---|
-| URL des sources | 192 entrées sans `url` | `src/data/sources.ts` |
+| URL des sources | 192 entrées sans `url`, 10 renseignées | `npm run extract` |
 | Millésimes à confirmer | 26 | `.artifacts/audit.json` |
 | Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
 | Figures non converties | 4 | `.artifacts/audit.json` |
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
-| Commentaire éditorial à réécrire après correction | 1 (tableau BCE) | D14 ci-dessus |
-| Autres tableaux à confronter à leur source | 287 non vérifiés | D14 ci-dessus |
-| Cellules encore en texte | 2 325 | extraction |
+| Commentaire éditorial à réécrire après correction | 1 (tableau BCE) | D17 ci-dessus |
+| Autres tableaux à confronter à leur source | non vérifiés | D17 ci-dessus |
+| Cellules encore en texte | 2 393 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 | Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |
 

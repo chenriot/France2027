@@ -116,7 +116,7 @@ d'acceptation de la spec.
    et doit être déclarée — `check:render` n'accepte que les substitutions
    déclarées, et échoue aussi si l'une d'elles n'est jamais rencontrée ; un
    **ajout** (contenu nouveau) est rendu en `mode="page"` seulement. Voir
-   `DECISIONS.md` §D14.
+   `DECISIONS.md` §D17.
 
 ## Simple, mais construit pour grandir
 
@@ -135,7 +135,7 @@ année à une série doit se faire en éditant un seul fichier.
 C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
 donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
 prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
-55 891 éléments, 29 corrections déclarées, aucun écart non déclaré.
+57 752 éléments, 29 corrections déclarées, aucun écart non déclaré.
 
 Ce que ça implique au quotidien :
 
@@ -161,13 +161,21 @@ doit être conditionné au mode, sinon il casse la vérification.
 
 ## Ajouter ou corriger
 
+- **Ajouter du contenu rédactionnel** : l'écrire dans
+  `Temp/chiffres2027 (3).html`, au balisage du document, puis `npm run extract`
+  et `npm run verify`. **C'est la voie normale** : le document d'origine est la
+  surface d'écriture, les chapitres en sont la traduction, et le contenu
+  apparaît aussi sur `/tout`. Voir `DECISIONS.md` §D14.
 - **Corriger un chiffre faux** : déclarer la correction dans
   `scripts/amendments.ts` — avec `was`, le texte que rend le document
   d'origine — puis `npm run extract` et `npm run verify`. Ne jamais éditer un
   `data.ts` : il sera réécrit.
-- **Ajouter une fiche, un tableau, un encadré** : `scripts/amendments.ts`,
+- **Ajouter un commentaire *sur* le document** — un encadré qui signale une
+  correction, une partie, une figure de lecture : `scripts/amendments.ts`,
   section des ajouts, puis `npm run extract`. Le contenu n'apparaît que sur la
-  page de chapitre — c'est voulu, sinon `check:render` n'a plus de sens.
+  page de chapitre, jamais sur `/tout`. À réserver à ce qui n'a pas sa place
+  dans le document d'origine ; pour du contenu rédactionnel ordinaire, la voie
+  ci-dessus est meilleure.
 - **Ajouter un chapitre** : l'inscrire dans `CHAPTERS` en tête de
   `scripts/extract.ts`, puis régénérer.
 - **Ajouter une figure** : `addedFigures` dans `scripts/amendments.ts`. Elle
@@ -180,18 +188,19 @@ doit être conditionné au mode, sinon il casse la vérification.
 
 ## État actuel
 
-Le site est construit et vérifié : 21 chapitres, 291 tableaux, 58 figures,
-202 sources, 25 routes prérendues. `/tout` rend 55 891 éléments avec
+Le site est construit et vérifié : 21 chapitres, 304 tableaux, 58 figures,
+212 sources, 25 routes prérendues. `/tout` rend 57 752 éléments avec
 **29 corrections déclarées et aucun écart non déclaré**. Le JavaScript par page
 est de 170 Ko pour 120 visés : dette mesurée, expliquée et cliquetée
 (`DECISIONS.md` §D11).
 
-Le dossier a commencé à corriger son document d'origine : le tableau du
-patrimoine européen ne se reconstituait pas depuis l'enquête BCE qu'il cite, et
-un mécanisme d'amendements a été construit pour ça (`DECISIONS.md` §D14).
+Deux voies coexistent pour faire évoluer le fond. Le contenu rédactionnel
+s'écrit dans le document d'origine (`DECISIONS.md` §D14) ; les corrections de
+valeurs fausses et les commentaires qui ne doivent pas entrer dans `/tout`
+passent par les amendements (`DECISIONS.md` §D17).
 
 Ce qui reste ouvert est listé et chiffré dans `specs/DECISIONS.md` §D10 :
-URL des sources, millésimes à confirmer, 26 figures dont le tracé n'est pas
+URL des sources (10 renseignées sur 212), millésimes à confirmer, 26 figures dont le tracé n'est pas
 encore régénéré, un axe incohérent du document d'origine à arbitrer, un
-commentaire éditorial à réécrire après correction, les 287 autres tableaux
+commentaire éditorial à réécrire après correction, les autres tableaux
 jamais confrontés à leur source, et les captures Playwright clair/sombre.

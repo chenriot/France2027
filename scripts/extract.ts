@@ -161,6 +161,28 @@ const report = {
 
 // ----------------------------------------------------------------- sources
 
+/**
+ * URL de consultation, par identifiant de source.
+ *
+ * Le document d'origine cite ses sources en clair, sans lien : le registre
+ * porte donc l'URL à part, et la bibliographie l'affiche. La table est
+ * volontairement partielle — chantier `DECISIONS.md` §D10 — et chaque clé qui
+ * ne correspond à aucune source est signalée en fin d'exécution, pour qu'une
+ * reformulation de bloc source ne laisse pas une URL orpheline en silence.
+ */
+const SOURCE_URLS: Record<string, string> = {
+  'insee-insee-enquetes-emploi-series-longues-d': 'https://www.insee.fr/fr/statistiques/8391807',
+  'ined-ined-population-societes-apres-plu': 'https://shs.cairn.info/revue-population-et-societes-2022-11-page-1',
+  'eurostat-lfsi-emp-a-6': 'https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260303-1',
+  'insee-insee-focus-n-377-ecart-de-salaire-e': 'https://www.insee.fr/fr/statistiques/8743657',
+  'insee-insee-decomposition-de-blinder-oaxaca-s': 'https://www.insee.fr/fr/statistiques/2128979',
+  'insee-insee-premiere-n-1803-ecarts-de-remu': 'https://www.insee.fr/fr/statistiques/4514861',
+  'insee-insee-focus-n-320-pour-2022-n-349-pou': 'https://www.insee.fr/fr/statistiques/7766515',
+  'insee-insee-focus-n-320-ecart-de-salaire-e': 'https://www.insee.fr/fr/statistiques/7766515',
+  'eurostat-earn-gr-gpgr2': 'https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Gender_pay_gap_statistics',
+  'eurostat-crim-just-job-2': 'https://www.ccomptes.fr/sites/default/files/2025-01/20250113-La-repartition-des-zones-de-competence-entre-la-police-et-la-gendarmerie-nationales.pdf',
+}
+
 interface SourceEntry {
   producer: string
   kind: 'database' | 'report' | 'press' | 'other'
@@ -169,6 +191,7 @@ interface SourceEntry {
   theme: string
   engaged?: true
   accessed: string
+  url?: string
 }
 
 const sourceById = new Map<string, SourceEntry>()
@@ -196,6 +219,7 @@ function registerSource(el: HTMLElement, theme: string): string {
     theme,
     ...(engaged ? { engaged: true as const } : {}),
     accessed: UPDATED,
+    ...(SOURCE_URLS[id] ? { url: SOURCE_URLS[id] } : {}),
   })
   return id
 }
@@ -1476,6 +1500,13 @@ if (report.axisInconsistent.length > 0) {
   for (const t of report.axisInconsistent) console.log(`  - ${t}`)
 }
 console.log(`\nmillésime à confirmer : ${report.vintageMissing.length}`)
+
+const orphanUrls = Object.keys(SOURCE_URLS).filter((id) => !sourceById.has(id))
+if (orphanUrls.length > 0) {
+  console.log(`\nURL sans source correspondante (${orphanUrls.length}) :`)
+  for (const id of orphanUrls) console.log(`  - ${id}`)
+}
+console.log(`URL de consultation : ${[...sourceById.values()].filter((s) => s.url).length} sur ${sourceById.size}`)
 
 // index de recherche, chargé à la demande côté client
 mkdirSync(join(ROOT, 'public'), { recursive: true })

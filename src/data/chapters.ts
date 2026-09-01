@@ -125,7 +125,7 @@ export const chapters: readonly ChapterEntry[] = [
     legacyAnchor: 's4',
     kind: 'theme',
     family: 'produire',
-    counts: { questions: 23, tables: 55, figures: 10 },
+    counts: { questions: 24, tables: 67, figures: 10 },
   },
   {
     slug: 'industrie',
@@ -227,7 +227,7 @@ export const chapters: readonly ChapterEntry[] = [
     legacyAnchor: 's12',
     kind: 'theme',
     family: 'vivre',
-    counts: { questions: 13, tables: 16, figures: 1 },
+    counts: { questions: 14, tables: 17, figures: 1 },
   },
   {
     slug: 'logement',

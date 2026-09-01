@@ -24,7 +24,7 @@
  * d'origine. L'extracteur le vérifie et échoue s'il ne le trouve pas. Le jour
  * où le document source change, on l'apprend au lieu de le découvrir.
  *
- * Voir `specs/DECISIONS.md` §D14.
+ * Voir `specs/DECISIONS.md` §D17.
  */
 import { formatValue, isNumCell } from '../src/lib/format'
 import type { Cell, Row, Series, Table } from '../src/lib/types'

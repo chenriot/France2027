@@ -1142,6 +1142,52 @@ export const tables = {
       },
     ],
   },
+  'trois-elements-francais-2016-2022-rapportes-a-68-millions': {
+    vintage: '2022',
+    sources: ['eurostat-crim-just-job-2'],
+    columns: [
+      {
+        key: 'trois-elements-francais-2016-2022-rapportes-a-68-millions',
+        header: 'Trois éléments français, 2016-2022, rapportés à 68 millions d’habitants',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'effectif', header: 'Effectif', type: 'number', headerNumeric: true },
+      { key: 'pour-100-000', header: 'Pour 100 000', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Policiers municipaux (2022)</b>' },
+          { v: 27131, d: 0 },
+          { v: 40, d: 0, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'CRS et gendarmerie mobile (2022)' },
+          { v: 23666, d: 0 },
+          { v: 35, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Tâches indues, police et gendarmerie (2016)' },
+          { v: 6000, d: 0 },
+          { v: 9, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<em>Rappel : l’écart France − Allemagne à expliquer</em>' },
+          null,
+          { v: 50, d: 0 },
+        ],
+        total: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -1235,6 +1281,7 @@ export const questions = [
     title: 'Les violences ont-elles augmenté, ou est-ce l\'enregistrement qui a changé ?',
   },
   { id: 's12-q10', title: 'Élucidation, effectifs, justice' },
+  { id: 's12-q14', title: 'Pourquoi la France compte-t-elle plus de policiers que l’Allemagne ?' },
   { id: 's12-q11', title: 'Combien de détenus, et dans quelles conditions ?' },
   { id: 's12-q12', title: 'Construire des prisons réduit-il la criminalité ?' },
   { id: 's12-q13', title: 'Combien de contrôles d\'identité ?' },
@@ -1247,7 +1294,7 @@ export const questions = [
  */
 export const citedSources = [
   'basta-cilip-compilation-des-statistiques-offi', 'eurostat-crim-just-job',
-  'eurostat-eurostat-crim-off-cat-iccs0101-et-iccs0',
+  'eurostat-crim-just-job-2', 'eurostat-eurostat-crim-off-cat-iccs0101-et-iccs0',
   'eurostat-onudc-via-banque-mondiale-serie-1990-20',
   'insee-ssmsi-bases-departementales-et-regional',
   'ssmsi-deux-instruments-distincts-qu-il-ne-fau',

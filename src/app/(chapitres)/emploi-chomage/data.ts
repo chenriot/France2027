@@ -1479,6 +1479,681 @@ export const tables = {
       },
     ],
   },
+  'ecart-hommes-femmes-de-taux-d-activite-france-15-64-ans': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-hommes-femmes-de-taux-d-activite-france-15-64-ans',
+        header: 'Écart hommes − femmes de taux d’activité, France, 15-64 ans',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '1984', header: '1984', type: 'number', headerNumeric: true },
+      { key: '2004', header: '2004', type: 'number', headerNumeric: true },
+      { key: '2024', header: '2024', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>En points de pourcentage</b>' },
+          { v: 20.6, d: 1, strong: true },
+          { v: 9.8, d: 1, strong: true },
+          { v: 6, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Réduction sur les vingt années écoulées' },
+          null,
+          { v: 10.8, d: 1 },
+          { v: 3.8, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'ecart-hommes-femmes-de-taux-d-emploi-20-64-ans': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-hommes-femmes-de-taux-d-emploi-20-64-ans',
+        header: 'Écart hommes − femmes de taux d’emploi, 20-64 ans',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'annee', header: 'Année', type: 'number', headerNumeric: true },
+      { key: 'points', header: 'Points', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Finlande' },
+          { v: 2024, d: 0, g: false },
+          { v: 0.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Lituanie' },
+          { v: 2024, d: 0, g: false },
+          { v: 1.4, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Estonie' },
+          { v: 2024, d: 0, g: false },
+          { v: 1.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Lettonie' },
+          { v: 2024, d: 0, g: false },
+          { v: 3.3, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>France</b>' },
+          { v: 2023, d: 0, g: false },
+          { v: 5.5, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Union européenne</b>' },
+          { v: 2024, d: 0, g: false },
+          { v: 10, d: 1, strong: true },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Roumanie' },
+          { v: 2024, d: 0, g: false },
+          { v: 18.1, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Grèce' },
+          { v: 2024, d: 0, g: false },
+          { v: 18.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Italie' },
+          { v: 2024, d: 0, g: false },
+          { v: 19.4, d: 1 },
+        ],
+      },
+    ],
+  },
+  'ecart-de-salaire-femmes-hommes-secteur-prive-france': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-de-salaire-femmes-hommes-secteur-prive-france',
+        header: 'Écart de salaire femmes-hommes, secteur privé, France',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '2023', header: '2023', type: 'number', headerNumeric: true },
+      { key: '2024', header: '2024', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Revenu salarial</b>' },
+          { v: 22.2, d: 1, u: '%', strong: true },
+          { v: 21.8, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Salaire net en équivalent temps plein' },
+          { v: 14.2, d: 1, u: '%' },
+          { v: 14, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '— dont champ privé strict, hors activité secondaire publique' },
+          null,
+          { v: 13, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>À poste comparable : même emploi, même établissement</b>' },
+          { v: 3.8, d: 1, u: '%', strong: true },
+          { v: 3.6, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'ce-que-neutralise-chaque-etage': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ce-que-neutralise-chaque-etage',
+        header: 'Ce que neutralise chaque étage',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'ecart-restant', header: 'Écart restant', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Rien : revenu salarial brut de comparaison, 2024' },
+          { v: 21.8, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '+ la durée du travail : temps partiel et mois hors emploi' },
+          { v: 14, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>+ le métier, le niveau du poste et l’employeur</b>' },
+          { v: 3.6, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'quelques-metiers-et-la-part-des-femmes-qui-les-exercent': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'quelques-metiers-et-la-part-des-femmes-qui-les-exercent',
+        header: 'Quelques métiers, et la part des femmes qui les exercent',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'part-des-femmes', header: 'Part des femmes', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Assistantes maternelles</b>' },
+          { v: 98, d: 0, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Secrétaires de direction' },
+          { v: 95, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Aides à domicile et aides ménagères' },
+          { v: 93, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Aides-soignantes' },
+          { v: 92, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Conducteurs routiers' },
+          { v: 3.2, d: 1, u: '%' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: '<b>Maçons qualifiés</b>' },
+          { v: 0.6, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'decomposition-de-l-ecart-de-salaire-nomenclature-pcs-2013': {
+    vintage: '2013',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'decomposition-de-l-ecart-de-salaire-nomenclature-pcs-2013',
+        header: 'Décomposition de l’écart de salaire, nomenclature PCS, 2013',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'points', header: 'Points', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Écart interprofessionnel — la ségrégation entre métiers</b>' },
+          { v: 6.7, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          {
+            t: 'Écart intraprofessionnel expliqué — structure de l’emploi par sexe à l’intérieur de chaque métier',
+          },
+          { v: 3.2, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Écart intraprofessionnel inexpliqué' },
+          { v: 6.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Écart total</b>' },
+          { v: 16.7, d: 1, strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'salaire-net-mensuel-median-selon-la-taille-de-l-entreprise': {
+    vintage: '2023',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'salaire-net-mensuel-median-selon-la-taille-de-l-entreprise',
+        header: 'Salaire net mensuel médian selon la taille de l’entreprise, secteur privé, 2023',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'c2', header: '€', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Moins de 10 salariés' },
+          { v: 1865, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'De 50 à 249 salariés' },
+          { v: 2238, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { v: 5000, d: 0, u: 'salariés ou plus', strong: true },
+          { v: 2689, d: 0, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Écart entre les très grandes et les très petites' },
+          { v: 824, d: 0 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'part-des-femmes-selon-le-niveau-de-remuneration-secteur-pr': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'part-des-femmes-selon-le-niveau-de-remuneration-secteur-pr',
+        header: 'Part des femmes selon le niveau de rémunération, secteur privé',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'part-des-femmes', header: 'Part des femmes', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Bénéficiaires de la revalorisation du Smic, novembre 2024</b>' },
+          { v: 59.2, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Ensemble des salariés en équivalent temps plein, 2023</b>' },
+          { v: 41.9, d: 1, u: '%', strong: true },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Au-dessus du 9<sup>e</sup> décile, soit 4 302 € nets par mois' },
+          { v: 34, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Top 1 %, au-dessus de 10 222 € nets par mois' },
+          { v: 23.5, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Top 100 des rémunérations</b>' },
+          { v: 10, d: 0, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<em>Pour comparaison — fonction publique : 65 % des emplois, mais…</em>' },
+          { v: 39, d: 0, u: '%' },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'ecart-de-salaire-femmes-hommes-en-eqtp-par-categorie-2024': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-de-salaire-femmes-hommes-en-eqtp-par-categorie-2024',
+        header: 'Écart de salaire femmes-hommes en EQTP, par catégorie, 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+      {
+        key: 'part-des-femmes-dans-la-categorie-2019',
+        header: 'Part des femmes dans la catégorie (2019)',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Cadres</b>' },
+          { v: 14.8, d: 1, u: '%', strong: true },
+          { v: 41, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Ouvriers' },
+          { v: 11.7, d: 1, u: '%' },
+          null,
+        ],
+      },
+      {
+        cells: [
+          { t: 'Professions intermédiaires' },
+          { v: 11.2, d: 1, u: '%' },
+          { v: 57, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Employés</b>' },
+          { v: 1.9, d: 1, u: '%', strong: true },
+          { v: 70, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'ecart-de-salaire-net-en-eqtp-secteur-prive-par-age': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-de-salaire-net-en-eqtp-secteur-prive-par-age',
+        header: 'Écart de salaire net en EQTP, secteur privé, par âge',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '2022', header: '2022', type: 'number', headerNumeric: true },
+      { key: '2023', header: '2023', type: 'number', headerNumeric: true },
+      { key: '2024', header: '2024', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Moins de 25 ans' },
+          { v: 4.7, d: 1, u: '%' },
+          { v: 4.3, d: 1, u: '%' },
+          { v: 3.2, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 55, d: 0, u: 'ans ou plus' },
+          { v: 22.7, d: 1, u: '%' },
+          null,
+          null,
+        ],
+      },
+      {
+        cells: [
+          { v: 60, d: 0, u: 'ans ou plus', strong: true },
+          null,
+          { v: 24.9, d: 1, u: '%', strong: true },
+          { v: 24.1, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Ensemble' },
+          null,
+          null,
+          { v: 13, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Rapport borne haute / borne basse' },
+          { v: 4.8, d: 1 },
+          { v: 5.8, d: 1 },
+          { v: 7.5, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'ecart-femmes-hommes-selon-les-enfants-secteur-prive-2022': {
+    vintage: '2022',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-femmes-hommes-selon-les-enfants-secteur-prive-2022',
+        header: 'Écart femmes-hommes selon les enfants, secteur privé, 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'c2', header: '%', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Salariés sans enfant — écart de salaire net en EQTP' },
+          { v: 5.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Mères et pères de trois enfants ou plus — écart en EQTP</b>' },
+          { v: 28.2, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Mères et pères, tous effets cumulés — écart de revenu salarial' },
+          { v: 29.9, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'ce-qui-produit-l-ecart-et-ce-que-la-mesure-en-dit': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ce-qui-produit-l-ecart-et-ce-que-la-mesure-en-dit',
+        header: 'Ce qui produit l’écart, et ce que la mesure en dit',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'mesure', header: 'Mesure', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>1. La durée du travail</b> — temps partiel et mois passés hors emploi' },
+          { v: 7.8, d: 1, u: 'points sur 21,8', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '2. Le métier — la ségrégation entre professions, nomenclature PCS' },
+          { v: 6.7, d: 1, u: 'points sur 16,7' },
+        ],
+      },
+      {
+        cells: [
+          { t: '3. L’employeur — la répartition entre entreprises, à compétences égales' },
+          { v: 11, d: 0, u: '% de l’écart horaire' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>4. Les promotions et le niveau de poste</b>' },
+          { t: '<b>non chiffré</b>' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          {
+            t: '<em>Ce que révèle la parentalité</em> — écart entre salariés sans enfant, puis entre parents de trois enfants ou plus',
+          },
+          { t: 'de 5,8 % à 28,2 %' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: '<em>Ce que révèle l’âge</em> — écart avant 25 ans, puis à 60 ans ou plus' },
+          { t: 'de 3,2 % à 24,1 %' },
+        ],
+        total: true,
+      },
+    ],
+  },
   'population-des-15-64-ans-t2-2026': {
     vintage: '2026',
     sources: [
@@ -3462,7 +4137,7 @@ export const series = {
       { color: 's4', label: 'Écart avec l\'Allemagne (7,9 pts au total)' },
       { color: 's1', label: 'Écart avec les Pays-Bas (13,0 pts)' },
     ],
-    svg: '<svg viewBox="0 0 720 222" class="cv" role="img" aria-labelledby="cdecomp-t">\n<title id="cdecomp-t">contribution à l\'écart, en points de taux d\'emploi</title>\n<line class="grid" x1="140.0" y1="16" x2="140.0" y2="174"></line>\n<text class="ax" x="140.0" y="196" text-anchor="middle">0</text>\n<line class="grid" x1="286.4" y1="16" x2="286.4" y2="174"></line>\n<text class="ax" x="286.4" y="196" text-anchor="middle">2</text>\n<line class="grid" x1="432.7" y1="16" x2="432.7" y2="174"></line>\n<text class="ax" x="432.7" y="196" text-anchor="middle">5</text>\n<line class="grid" x1="579.1" y1="16" x2="579.1" y2="174"></line>\n<text class="ax" x="579.1" y="196" text-anchor="middle">8</text>\n<text class="ax al" x="126" y="40">15-24 ans</text>\n<rect class="bar s4f" x="140" y="22" width="182.7" height="12" rx="3"></rect>\n<text class="lbl mut" x="329.7" y="32">3,12</text>\n<rect class="bar s1f" x="140" y="37" width="466.0" height="12" rx="3"></rect>\n<text class="lbl s1t" x="613.0" y="48">7,96</text>\n<text class="ax al" x="126" y="80">60-64 ans</text>\n<rect class="bar s4f" x="140" y="62" width="139.9" height="12" rx="3"></rect>\n<text class="lbl mut" x="286.9" y="72">2,39</text>\n<rect class="bar s1f" x="140" y="77" width="151.1" height="12" rx="3"></rect>\n<text class="lbl s1t" x="298.1" y="88">2,58</text>\n<text class="ax al" x="126" y="120">25-54 ans</text>\n<rect class="bar s4f" x="140" y="102" width="66.7" height="12" rx="3"></rect>\n<text class="lbl mut" x="213.7" y="112">1,14</text>\n<rect class="bar s1f" x="140" y="117" width="130.0" height="12" rx="3"></rect>\n<text class="lbl s1t" x="277.0" y="128">2,22</text>\n<text class="ax al" x="126" y="160">55-59 ans</text>\n<rect class="bar s4f" x="140" y="142" width="26.3" height="12" rx="3"></rect>\n<text class="lbl mut" x="173.3" y="152">0,45</text>\n<rect class="bar s1f" x="140" y="157" width="19.3" height="12" rx="3"></rect>\n<text class="lbl s1t" x="166.3" y="168">0,33</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 222" class="cv" role="img" aria-labelledby="cdecomp-t">\r\n<title id="cdecomp-t">contribution à l\'écart, en points de taux d\'emploi</title>\r\n<line class="grid" x1="140.0" y1="16" x2="140.0" y2="174"></line>\r\n<text class="ax" x="140.0" y="196" text-anchor="middle">0</text>\r\n<line class="grid" x1="286.4" y1="16" x2="286.4" y2="174"></line>\r\n<text class="ax" x="286.4" y="196" text-anchor="middle">2</text>\r\n<line class="grid" x1="432.7" y1="16" x2="432.7" y2="174"></line>\r\n<text class="ax" x="432.7" y="196" text-anchor="middle">5</text>\r\n<line class="grid" x1="579.1" y1="16" x2="579.1" y2="174"></line>\r\n<text class="ax" x="579.1" y="196" text-anchor="middle">8</text>\r\n<text class="ax al" x="126" y="40">15-24 ans</text>\r\n<rect class="bar s4f" x="140" y="22" width="182.7" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="329.7" y="32">3,12</text>\r\n<rect class="bar s1f" x="140" y="37" width="466.0" height="12" rx="3"></rect>\r\n<text class="lbl s1t" x="613.0" y="48">7,96</text>\r\n<text class="ax al" x="126" y="80">60-64 ans</text>\r\n<rect class="bar s4f" x="140" y="62" width="139.9" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="286.9" y="72">2,39</text>\r\n<rect class="bar s1f" x="140" y="77" width="151.1" height="12" rx="3"></rect>\r\n<text class="lbl s1t" x="298.1" y="88">2,58</text>\r\n<text class="ax al" x="126" y="120">25-54 ans</text>\r\n<rect class="bar s4f" x="140" y="102" width="66.7" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="213.7" y="112">1,14</text>\r\n<rect class="bar s1f" x="140" y="117" width="130.0" height="12" rx="3"></rect>\r\n<text class="lbl s1t" x="277.0" y="128">2,22</text>\r\n<text class="ax al" x="126" y="160">55-59 ans</text>\r\n<rect class="bar s4f" x="140" y="142" width="26.3" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="173.3" y="152">0,45</text>\r\n<rect class="bar s1f" x="140" y="157" width="19.3" height="12" rx="3"></rect>\r\n<text class="lbl s1t" x="166.3" y="168">0,33</text>\r\n</svg>',
     sources: ['eurostat-lfsa-ergan'],
     vintage: 'à confirmer',
   },
@@ -3475,7 +4150,7 @@ export const series = {
       { color: 's4', label: 'En têtes' },
       { color: 's1', label: 'En équivalent temps plein' },
     ],
-    svg: '<svg viewBox="0 0 720 200" class="cv" role="img" aria-labelledby="ceqtp-t">\n<title id="ceqtp-t">taux d\'emploi des 15-64 ans, %, 2025</title>\n<line class="grid" x1="140.0" y1="16" x2="140.0" y2="152"></line>\n<text class="ax" x="140.0" y="174" text-anchor="middle">0</text>\n<line class="grid" x1="283.3" y1="16" x2="283.3" y2="152"></line>\n<text class="ax" x="283.3" y="174" text-anchor="middle">25</text>\n<line class="grid" x1="426.6" y1="16" x2="426.6" y2="152"></line>\n<text class="ax" x="426.6" y="174" text-anchor="middle">50</text>\n<line class="grid" x1="569.9" y1="16" x2="569.9" y2="152"></line>\n<text class="ax" x="569.9" y="174" text-anchor="middle">75</text>\n<text class="ax al" x="126" y="43">Pays-Bas</text>\n<rect class="bar s4f" x="140" y="24" width="471.7" height="13" rx="3"></rect>\n<rect class="bar s1f" x="140" y="41" width="371.4" height="13" rx="3"></rect>\n<text class="lbl mut" x="619.7" y="35">82,3</text>\n<text class="lbl s1t" x="519.4" y="52">64,8</text>\n<text class="ax al" x="126" y="89">Allemagne</text>\n<rect class="bar s4f" x="140" y="70" width="442.5" height="13" rx="3"></rect>\n<rect class="bar s1f" x="140" y="87" width="385.2" height="13" rx="3"></rect>\n<text class="lbl mut" x="590.5" y="81">77,2</text>\n<text class="lbl s1t" x="533.2" y="98">67,2</text>\n<text class="ax al" x="126" y="135">France</text>\n<rect class="bar s4f" x="140" y="116" width="397.2" height="13" rx="3"></rect>\n<rect class="bar s1f" x="140" y="133" width="367.4" height="13" rx="3"></rect>\n<text class="lbl mut" x="545.2" y="127">69,3</text>\n<text class="lbl s1t" x="515.4" y="144">64,1</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 200" class="cv" role="img" aria-labelledby="ceqtp-t">\r\n<title id="ceqtp-t">taux d\'emploi des 15-64 ans, %, 2025</title>\r\n<line class="grid" x1="140.0" y1="16" x2="140.0" y2="152"></line>\r\n<text class="ax" x="140.0" y="174" text-anchor="middle">0</text>\r\n<line class="grid" x1="283.3" y1="16" x2="283.3" y2="152"></line>\r\n<text class="ax" x="283.3" y="174" text-anchor="middle">25</text>\r\n<line class="grid" x1="426.6" y1="16" x2="426.6" y2="152"></line>\r\n<text class="ax" x="426.6" y="174" text-anchor="middle">50</text>\r\n<line class="grid" x1="569.9" y1="16" x2="569.9" y2="152"></line>\r\n<text class="ax" x="569.9" y="174" text-anchor="middle">75</text>\r\n<text class="ax al" x="126" y="43">Pays-Bas</text>\r\n<rect class="bar s4f" x="140" y="24" width="471.7" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="140" y="41" width="371.4" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="619.7" y="35">82,3</text>\r\n<text class="lbl s1t" x="519.4" y="52">64,8</text>\r\n<text class="ax al" x="126" y="89">Allemagne</text>\r\n<rect class="bar s4f" x="140" y="70" width="442.5" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="140" y="87" width="385.2" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="590.5" y="81">77,2</text>\r\n<text class="lbl s1t" x="533.2" y="98">67,2</text>\r\n<text class="ax al" x="126" y="135">France</text>\r\n<rect class="bar s4f" x="140" y="116" width="397.2" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="140" y="133" width="367.4" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="545.2" y="127">69,3</text>\r\n<text class="lbl s1t" x="515.4" y="144">64,1</text>\r\n</svg>',
     sources: ['eurostat-lfsi-emp-a-4'],
     vintage: 'à confirmer',
     values: {
@@ -3579,7 +4254,7 @@ export const series = {
     title: 'Heures travaillées par personne de 15 à 24 ans',
     subtitle: 'Par semaine, rapportées à toute la classe d\'âge et non aux seuls jeunes en emploi. 2025.',
     caption: '<b>Le renversement est complet.</b> En têtes, les Pays-Bas emploient <b>2,2 fois plus</b> de jeunes que la France (76,0 contre 34,5). En heures rapportées à toute la classe d\'âge, ils n\'en font travailler que <b>1,32 fois plus</b> — et <b>l\'Allemagne passe devant</b>. Un jeune Néerlandais en emploi travaille 19,7 heures par semaine, un Français 32,8, un Allemand 30,9.',
-    svg: '<svg viewBox="0 0 720 158" class="cv" role="img" aria-labelledby="cjeunh-t">\n<title id="cjeunh-t">heures travaillées par personne de 15-24 ans et par semaine</title>\n<line class="grid" x1="140.0" y1="16" x2="140.0" y2="110"></line>\n<text class="ax" x="140.0" y="132" text-anchor="middle">0</text>\n<line class="grid" x1="288.4" y1="16" x2="288.4" y2="110"></line>\n<text class="ax" x="288.4" y="132" text-anchor="middle">5</text>\n<line class="grid" x1="436.8" y1="16" x2="436.8" y2="110"></line>\n<text class="ax" x="436.8" y="132" text-anchor="middle">10</text>\n<line class="grid" x1="585.3" y1="16" x2="585.3" y2="110"></line>\n<text class="ax" x="585.3" y="132" text-anchor="middle">15</text>\n<text class="ax al" x="126" y="32">Allemagne</text>\n<rect class="bar s1f" x="140" y="22" width="466.0" height="12" rx="3"></rect>\n<text class="lbl s1t" x="613.0" y="32">15,7</text>\n<text class="ax al" x="126" y="64">Pays-Bas</text>\n<rect class="bar s1f" x="140" y="54" width="445.3" height="12" rx="3"></rect>\n<text class="lbl s1t" x="592.3" y="64">15,0</text>\n<text class="ax al" x="126" y="96">France</text>\n<rect class="bar s1f" x="140" y="86" width="335.4" height="12" rx="3"></rect>\n<text class="lbl s1t" x="482.4" y="96">11,3</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 158" class="cv" role="img" aria-labelledby="cjeunh-t">\r\n<title id="cjeunh-t">heures travaillées par personne de 15-24 ans et par semaine</title>\r\n<line class="grid" x1="140.0" y1="16" x2="140.0" y2="110"></line>\r\n<text class="ax" x="140.0" y="132" text-anchor="middle">0</text>\r\n<line class="grid" x1="288.4" y1="16" x2="288.4" y2="110"></line>\r\n<text class="ax" x="288.4" y="132" text-anchor="middle">5</text>\r\n<line class="grid" x1="436.8" y1="16" x2="436.8" y2="110"></line>\r\n<text class="ax" x="436.8" y="132" text-anchor="middle">10</text>\r\n<line class="grid" x1="585.3" y1="16" x2="585.3" y2="110"></line>\r\n<text class="ax" x="585.3" y="132" text-anchor="middle">15</text>\r\n<text class="ax al" x="126" y="32">Allemagne</text>\r\n<rect class="bar s1f" x="140" y="22" width="466.0" height="12" rx="3"></rect>\r\n<text class="lbl s1t" x="613.0" y="32">15,7</text>\r\n<text class="ax al" x="126" y="64">Pays-Bas</text>\r\n<rect class="bar s1f" x="140" y="54" width="445.3" height="12" rx="3"></rect>\r\n<text class="lbl s1t" x="592.3" y="64">15,0</text>\r\n<text class="ax al" x="126" y="96">France</text>\r\n<rect class="bar s1f" x="140" y="86" width="335.4" height="12" rx="3"></rect>\r\n<text class="lbl s1t" x="482.4" y="96">11,3</text>\r\n</svg>',
     sources: ['eurostat-lfsa-ergan-3'],
     vintage: 'à confirmer',
     values: {
@@ -3628,7 +4303,7 @@ export const series = {
       { color: 's2', label: 'NEET 15-24' },
       { color: 's5', label: 'NEET 20-24' },
     ],
-    svg: '<svg viewBox="0 0 720 342" class="cv" role="img" aria-labelledby="cjeunes-t">\n<title id="cjeunes-t">%, 2025</title>\n<line class="grid" x1="150.0" y1="16" x2="150.0" y2="294"></line>\n<text class="ax" x="150.0" y="316" text-anchor="middle">0</text>\n<line class="grid" x1="300.2" y1="16" x2="300.2" y2="294"></line>\n<text class="ax" x="300.2" y="316" text-anchor="middle">25</text>\n<line class="grid" x1="450.4" y1="16" x2="450.4" y2="294"></line>\n<text class="ax" x="450.4" y="316" text-anchor="middle">50</text>\n<line class="grid" x1="600.6" y1="16" x2="600.6" y2="294"></line>\n<text class="ax" x="600.6" y="316" text-anchor="middle">75</text>\n<text class="ax al" x="136" y="47">Pays-Bas</text>\n<rect class="bar s4f" x="150" y="22" width="456.6" height="12" rx="3"></rect>\n<text class="lbl mut" x="613.6" y="32">76,0</text>\n<rect class="bar s2f" x="150" y="37" width="23.4" height="12" rx="3"></rect>\n<text class="lbl mut" x="180.4" y="48">3,9</text>\n<rect class="bar s5f" x="150" y="52" width="33.6" height="12" rx="3"></rect>\n<text class="lbl s5t" x="190.6" y="62">5,6</text>\n<text class="ax al" x="136" y="103">Allemagne</text>\n<rect class="bar s4f" x="150" y="78" width="305.2" height="12" rx="3"></rect>\n<text class="lbl mut" x="462.2" y="88">50,8</text>\n<rect class="bar s2f" x="150" y="93" width="49.3" height="12" rx="3"></rect>\n<text class="lbl mut" x="206.3" y="104">8,2</text>\n<rect class="bar s5f" x="150" y="108" width="60.1" height="12" rx="3"></rect>\n<text class="lbl s5t" x="217.1" y="118">10,0</text>\n<text class="ax al" x="136" y="159">États-Unis *</text>\n<rect class="bar s4f" x="150" y="134" width="300.4" height="12" rx="3"></rect>\n<text class="lbl mut" x="457.4" y="144">50,0</text>\n<rect class="bar s2f" x="150" y="149" width="1.0" height="12" rx="3"></rect>\n<text class="lbl mut" x="157.0" y="160">0,0</text>\n<rect class="bar s5f" x="150" y="164" width="1.0" height="12" rx="3"></rect>\n<text class="lbl s5t" x="157.0" y="174">0,0</text>\n<text class="ax al" x="136" y="215">UE-27</text>\n<rect class="bar s4f" x="150" y="190" width="207.3" height="12" rx="3"></rect>\n<text class="lbl mut" x="364.3" y="200">34,5</text>\n<rect class="bar s2f" x="150" y="205" width="54.1" height="12" rx="3"></rect>\n<text class="lbl mut" x="211.1" y="216">9,0</text>\n<rect class="bar s5f" x="150" y="220" width="77.5" height="12" rx="3"></rect>\n<text class="lbl s5t" x="234.5" y="230">12,9</text>\n<text class="ax al" x="136" y="271">France</text>\n<rect class="bar s4f" x="150" y="246" width="207.3" height="12" rx="3"></rect>\n<text class="lbl mut" x="364.3" y="256">34,5</text>\n<rect class="bar s2f" x="150" y="261" width="66.1" height="12" rx="3"></rect>\n<text class="lbl mut" x="223.1" y="272">11,0</text>\n<rect class="bar s5f" x="150" y="276" width="97.3" height="12" rx="3"></rect>\n<text class="lbl s5t" x="254.3" y="286">16,2</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 342" class="cv" role="img" aria-labelledby="cjeunes-t">\r\n<title id="cjeunes-t">%, 2025</title>\r\n<line class="grid" x1="150.0" y1="16" x2="150.0" y2="294"></line>\r\n<text class="ax" x="150.0" y="316" text-anchor="middle">0</text>\r\n<line class="grid" x1="300.2" y1="16" x2="300.2" y2="294"></line>\r\n<text class="ax" x="300.2" y="316" text-anchor="middle">25</text>\r\n<line class="grid" x1="450.4" y1="16" x2="450.4" y2="294"></line>\r\n<text class="ax" x="450.4" y="316" text-anchor="middle">50</text>\r\n<line class="grid" x1="600.6" y1="16" x2="600.6" y2="294"></line>\r\n<text class="ax" x="600.6" y="316" text-anchor="middle">75</text>\r\n<text class="ax al" x="136" y="47">Pays-Bas</text>\r\n<rect class="bar s4f" x="150" y="22" width="456.6" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="613.6" y="32">76,0</text>\r\n<rect class="bar s2f" x="150" y="37" width="23.4" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="180.4" y="48">3,9</text>\r\n<rect class="bar s5f" x="150" y="52" width="33.6" height="12" rx="3"></rect>\r\n<text class="lbl s5t" x="190.6" y="62">5,6</text>\r\n<text class="ax al" x="136" y="103">Allemagne</text>\r\n<rect class="bar s4f" x="150" y="78" width="305.2" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="462.2" y="88">50,8</text>\r\n<rect class="bar s2f" x="150" y="93" width="49.3" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="206.3" y="104">8,2</text>\r\n<rect class="bar s5f" x="150" y="108" width="60.1" height="12" rx="3"></rect>\r\n<text class="lbl s5t" x="217.1" y="118">10,0</text>\r\n<text class="ax al" x="136" y="159">États-Unis *</text>\r\n<rect class="bar s4f" x="150" y="134" width="300.4" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="457.4" y="144">50,0</text>\r\n<rect class="bar s2f" x="150" y="149" width="1.0" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="157.0" y="160">0,0</text>\r\n<rect class="bar s5f" x="150" y="164" width="1.0" height="12" rx="3"></rect>\r\n<text class="lbl s5t" x="157.0" y="174">0,0</text>\r\n<text class="ax al" x="136" y="215">UE-27</text>\r\n<rect class="bar s4f" x="150" y="190" width="207.3" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="364.3" y="200">34,5</text>\r\n<rect class="bar s2f" x="150" y="205" width="54.1" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="211.1" y="216">9,0</text>\r\n<rect class="bar s5f" x="150" y="220" width="77.5" height="12" rx="3"></rect>\r\n<text class="lbl s5t" x="234.5" y="230">12,9</text>\r\n<text class="ax al" x="136" y="271">France</text>\r\n<rect class="bar s4f" x="150" y="246" width="207.3" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="364.3" y="256">34,5</text>\r\n<rect class="bar s2f" x="150" y="261" width="66.1" height="12" rx="3"></rect>\r\n<text class="lbl mut" x="223.1" y="272">11,0</text>\r\n<rect class="bar s5f" x="150" y="276" width="97.3" height="12" rx="3"></rect>\r\n<text class="lbl s5t" x="254.3" y="286">16,2</text>\r\n</svg>',
     sources: ['eurostat-eurostat-memes-jeux-que-le-tableau-ci-d'],
     vintage: 'à confirmer',
     values: {
@@ -3746,7 +4421,7 @@ export const series = {
       { color: 's2', label: 'Halo' },
       { color: 's4', label: 'Autres inactifs' },
     ],
-    svg: '<svg viewBox="0 0 720 98" class="cv" role="img" aria-labelledby="cchomdec-t">\n<title id="cchomdec-t">% des 15-64 ans, T2 2026</title>\n<line class="grid" x1="104.0" y1="16" x2="104.0" y2="48"></line>\n<text class="ax" x="104.0" y="72" text-anchor="middle">0</text>\n<line class="grid" x1="353.5" y1="16" x2="353.5" y2="48"></line>\n<text class="ax" x="353.5" y="72" text-anchor="middle">50</text>\n<line class="grid" x1="603.0" y1="16" x2="603.0" y2="48"></line>\n<text class="ax" x="603.0" y="72" text-anchor="middle">100</text>\n<text class="ax al" x="92" y="37">15-64 ans</text>\n<rect class="bar s3f" x="104.0" y="22" width="344.3" height="19" rx="2"></rect>\n<rect class="bar s5f" x="448.3" y="22" width="31.9" height="19" rx="2"></rect>\n<rect class="bar s2f" x="480.3" y="22" width="22.0" height="19" rx="2"></rect>\n<rect class="bar s4f" x="502.2" y="22" width="100.8" height="19" rx="2"></rect>\n</svg>',
+    svg: '<svg viewBox="0 0 720 98" class="cv" role="img" aria-labelledby="cchomdec-t">\r\n<title id="cchomdec-t">% des 15-64 ans, T2 2026</title>\r\n<line class="grid" x1="104.0" y1="16" x2="104.0" y2="48"></line>\r\n<text class="ax" x="104.0" y="72" text-anchor="middle">0</text>\r\n<line class="grid" x1="353.5" y1="16" x2="353.5" y2="48"></line>\r\n<text class="ax" x="353.5" y="72" text-anchor="middle">50</text>\r\n<line class="grid" x1="603.0" y1="16" x2="603.0" y2="48"></line>\r\n<text class="ax" x="603.0" y="72" text-anchor="middle">100</text>\r\n<text class="ax al" x="92" y="37">15-64 ans</text>\r\n<rect class="bar s3f" x="104.0" y="22" width="344.3" height="19" rx="2"></rect>\r\n<rect class="bar s5f" x="448.3" y="22" width="31.9" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="480.3" y="22" width="22.0" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="502.2" y="22" width="100.8" height="19" rx="2"></rect>\r\n</svg>',
     sources: ['insee-insee-informations-rapides-n-192-aout'],
     vintage: 'à confirmer',
     values: {
@@ -3800,7 +4475,7 @@ export const series = {
       { color: 's4', label: '12 mois et plus' },
       { color: 's1', label: '24 mois et plus' },
     ],
-    svg: '<svg viewBox="0 0 720 338" class="cv" role="img" aria-labelledby="cltu-t">\n<title id="cltu-t">% des chômeurs, 2025</title>\n<line class="grid" x1="150.0" y1="16" x2="150.0" y2="290"></line>\n<text class="ax" x="150.0" y="312" text-anchor="middle">0</text>\n<line class="grid" x1="333.8" y1="16" x2="333.8" y2="290"></line>\n<text class="ax" x="333.8" y="312" text-anchor="middle">20</text>\n<line class="grid" x1="517.6" y1="16" x2="517.6" y2="290"></line>\n<text class="ax" x="517.6" y="312" text-anchor="middle">40</text>\n<text class="ax al" x="136" y="43">Italie</text>\n<rect class="bar s4f" x="150" y="24" width="462.3" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="41" width="263.8" height="13" rx="3"></rect>\n<text class="lbl mut" x="620.3" y="35">50,3</text>\n<text class="lbl s1t" x="421.8" y="52">28,7</text>\n<text class="ax al" x="136" y="89">Espagne</text>\n<rect class="bar s4f" x="150" y="70" width="295.0" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="87" width="170.9" height="13" rx="3"></rect>\n<text class="lbl mut" x="453.0" y="81">32,1</text>\n<text class="lbl s1t" x="328.9" y="98">18,6</text>\n<text class="ax al" x="136" y="135">UE-27</text>\n<rect class="bar s4f" x="150" y="116" width="289.5" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="133" width="150.7" height="13" rx="3"></rect>\n<text class="lbl mut" x="447.5" y="127">31,5</text>\n<text class="lbl s1t" x="308.7" y="144">16,4</text>\n<text class="ax al" x="136" y="181">Allemagne</text>\n<rect class="bar s4f" x="150" y="162" width="256.4" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="179" width="127.7" height="13" rx="3"></rect>\n<text class="lbl mut" x="414.4" y="173">27,9</text>\n<text class="lbl s1t" x="285.7" y="190">13,9</text>\n<text class="ax al" x="136" y="227">France</text>\n<rect class="bar s4f" x="150" y="208" width="211.4" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="225" width="87.3" height="13" rx="3"></rect>\n<text class="lbl mut" x="369.4" y="219">23,0</text>\n<text class="lbl s1t" x="245.3" y="236">9,5</text>\n<text class="ax al" x="136" y="273">Pays-Bas</text>\n<rect class="bar s4f" x="150" y="254" width="125.9" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="271" width="68.0" height="13" rx="3"></rect>\n<text class="lbl mut" x="283.9" y="265">13,7</text>\n<text class="lbl s1t" x="226.0" y="282">7,4</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 338" class="cv" role="img" aria-labelledby="cltu-t">\r\n<title id="cltu-t">% des chômeurs, 2025</title>\r\n<line class="grid" x1="150.0" y1="16" x2="150.0" y2="290"></line>\r\n<text class="ax" x="150.0" y="312" text-anchor="middle">0</text>\r\n<line class="grid" x1="333.8" y1="16" x2="333.8" y2="290"></line>\r\n<text class="ax" x="333.8" y="312" text-anchor="middle">20</text>\r\n<line class="grid" x1="517.6" y1="16" x2="517.6" y2="290"></line>\r\n<text class="ax" x="517.6" y="312" text-anchor="middle">40</text>\r\n<text class="ax al" x="136" y="43">Italie</text>\r\n<rect class="bar s4f" x="150" y="24" width="462.3" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="41" width="263.8" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="620.3" y="35">50,3</text>\r\n<text class="lbl s1t" x="421.8" y="52">28,7</text>\r\n<text class="ax al" x="136" y="89">Espagne</text>\r\n<rect class="bar s4f" x="150" y="70" width="295.0" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="87" width="170.9" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="453.0" y="81">32,1</text>\r\n<text class="lbl s1t" x="328.9" y="98">18,6</text>\r\n<text class="ax al" x="136" y="135">UE-27</text>\r\n<rect class="bar s4f" x="150" y="116" width="289.5" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="133" width="150.7" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="447.5" y="127">31,5</text>\r\n<text class="lbl s1t" x="308.7" y="144">16,4</text>\r\n<text class="ax al" x="136" y="181">Allemagne</text>\r\n<rect class="bar s4f" x="150" y="162" width="256.4" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="179" width="127.7" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="414.4" y="173">27,9</text>\r\n<text class="lbl s1t" x="285.7" y="190">13,9</text>\r\n<text class="ax al" x="136" y="227">France</text>\r\n<rect class="bar s4f" x="150" y="208" width="211.4" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="225" width="87.3" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="369.4" y="219">23,0</text>\r\n<text class="lbl s1t" x="245.3" y="236">9,5</text>\r\n<text class="ax al" x="136" y="273">Pays-Bas</text>\r\n<rect class="bar s4f" x="150" y="254" width="125.9" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="271" width="68.0" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="283.9" y="265">13,7</text>\r\n<text class="lbl s1t" x="226.0" y="282">7,4</text>\r\n</svg>',
     sources: ['eurostat-une-ltu-a'],
     vintage: 'à confirmer',
     values: {
@@ -3897,7 +4572,7 @@ export const series = {
       { color: 's4', label: 'Indemnité' },
       { color: 's1', label: 'Préavis' },
     ],
-    svg: '<svg viewBox="0 0 720 246" class="cv" role="img" aria-labelledby="cseparr-t">\n<title id="cseparr-t">mois de salaire, 10 ans d\'ancienneté</title>\n<line class="grid" x1="150.0" y1="16" x2="150.0" y2="198"></line>\n<text class="ax" x="150.0" y="220" text-anchor="middle">0</text>\n<line class="grid" x1="334.9" y1="16" x2="334.9" y2="198"></line>\n<text class="ax" x="334.9" y="220" text-anchor="middle">2</text>\n<line class="grid" x1="519.8" y1="16" x2="519.8" y2="198"></line>\n<text class="ax" x="519.8" y="220" text-anchor="middle">4</text>\n<text class="ax al" x="136" y="43">Allemagne</text>\n<rect class="bar s4f" x="150" y="24" width="462.3" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="41" width="369.8" height="13" rx="3"></rect>\n<text class="lbl mut" x="620.3" y="35">5,0</text>\n<text class="lbl s1t" x="527.8" y="52">4,0</text>\n<text class="ax al" x="136" y="89">France</text>\n<rect class="bar s4f" x="150" y="70" width="231.1" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="87" width="184.9" height="13" rx="3"></rect>\n<text class="lbl mut" x="389.1" y="81">2,5</text>\n<text class="lbl s1t" x="342.9" y="98">2,0</text>\n<text class="ax al" x="136" y="135">Royaume-Uni</text>\n<rect class="bar s4f" x="150" y="116" width="213.6" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="133" width="212.6" height="13" rx="3"></rect>\n<text class="lbl mut" x="371.6" y="127">2,3</text>\n<text class="lbl s1t" x="370.6" y="144">2,3</text>\n<text class="ax al" x="136" y="181">États-Unis</text>\n<rect class="bar s4f" x="150" y="162" width="1.0" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="179" width="1.0" height="13" rx="3"></rect>\n<text class="lbl mut" x="158.0" y="173">0,0</text>\n<text class="lbl s1t" x="158.0" y="190">0,0</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 246" class="cv" role="img" aria-labelledby="cseparr-t">\r\n<title id="cseparr-t">mois de salaire, 10 ans d\'ancienneté</title>\r\n<line class="grid" x1="150.0" y1="16" x2="150.0" y2="198"></line>\r\n<text class="ax" x="150.0" y="220" text-anchor="middle">0</text>\r\n<line class="grid" x1="334.9" y1="16" x2="334.9" y2="198"></line>\r\n<text class="ax" x="334.9" y="220" text-anchor="middle">2</text>\r\n<line class="grid" x1="519.8" y1="16" x2="519.8" y2="198"></line>\r\n<text class="ax" x="519.8" y="220" text-anchor="middle">4</text>\r\n<text class="ax al" x="136" y="43">Allemagne</text>\r\n<rect class="bar s4f" x="150" y="24" width="462.3" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="41" width="369.8" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="620.3" y="35">5,0</text>\r\n<text class="lbl s1t" x="527.8" y="52">4,0</text>\r\n<text class="ax al" x="136" y="89">France</text>\r\n<rect class="bar s4f" x="150" y="70" width="231.1" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="87" width="184.9" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="389.1" y="81">2,5</text>\r\n<text class="lbl s1t" x="342.9" y="98">2,0</text>\r\n<text class="ax al" x="136" y="135">Royaume-Uni</text>\r\n<rect class="bar s4f" x="150" y="116" width="213.6" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="133" width="212.6" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="371.6" y="127">2,3</text>\r\n<text class="lbl s1t" x="370.6" y="144">2,3</text>\r\n<text class="ax al" x="136" y="181">États-Unis</text>\r\n<rect class="bar s4f" x="150" y="162" width="1.0" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="179" width="1.0" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="158.0" y="173">0,0</text>\r\n<text class="lbl s1t" x="158.0" y="190">0,0</text>\r\n</svg>',
     sources: ['france-france-art-l1234-9-et-l1234-1-du-code'],
     vintage: 'à confirmer',
     values: {
@@ -3955,6 +4630,10 @@ export const questions = [
   },
   { id: 's4-q7', title: 'Les dispositifs qui fonctionnent en Allemagne et aux Pays-Bas' },
   {
+    id: 's4-q24',
+    title: 'L’emploi des femmes : quarante ans de rattrapage, un écart de salaire qui grandit avec l’âge',
+  },
+  {
     id: 's4-q8',
     title: 'Taux d\'emploi, taux de chômage : ce que chaque mesure compte réellement',
   },
@@ -4001,12 +4680,20 @@ export const citedSources = [
   'dg-tresor-dg-tresor-tresor-eco-n-376-novembre-2',
   'dg-tresor-dg-tresor-tresor-economics-n-110-mars',
   'drees-drees-les-retraites-et-les-retraites-e',
-  'eurostat-dares-enquete-acemo-definition-eurosta',
+  'eurostat-dares-enquete-acemo-definition-eurosta', 'eurostat-earn-gr-gpgr2',
   'eurostat-eurostat-enquete-forces-de-travail-202', 'eurostat-lfsi-emp-a-5',
-  'eurostat-nama-10-a10-e', 'euwals-euwals-van-vuuren-wolthoff-de-econom',
+  'eurostat-lfsi-emp-a-6', 'eurostat-nama-10-a10-e',
+  'euwals-euwals-van-vuuren-wolthoff-de-econom',
   'france-france-ministere-de-la-justice-sdse',
   'goulart-oesch-goulart-oesch-job-tenure-in-western',
-  'insee-accompagnement-crepon-duflo-gurgand', 'insee-france-travail-dares-statistiques-du',
+  'ined-ined-population-societes-apres-plu', 'insee-accompagnement-crepon-duflo-gurgand',
+  'insee-france-travail-dares-statistiques-du',
+  'insee-insee-decomposition-de-blinder-oaxaca-s',
+  'insee-insee-enquetes-emploi-series-longues-d',
+  'insee-insee-focus-n-320-ecart-de-salaire-e',
+  'insee-insee-focus-n-320-pour-2022-n-349-pou',
+  'insee-insee-focus-n-377-ecart-de-salaire-e',
+  'insee-insee-premiere-n-1803-ecarts-de-remu',
   'ocde-ocde-taxing-wages-2026-donnees-2025-c',
   'unedic-france-unedic-convention-du-15-novemb',
   'unedic-ofce-revue-de-l-ofce-n-184-2024-ma',
