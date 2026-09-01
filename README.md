@@ -43,6 +43,19 @@ Le document intégral en un seul fichier HTML, styles compris : les liens
 internes deviennent des ancres, le sommaire latéral fonctionne, l'impression
 aussi. Pour partager, archiver, ou déposer le dossier là où un site ne va pas.
 
+## Un export Markdown
+
+```sh
+npm run build && npm run export:md      # .artifacts/md/
+```
+
+Un fichier par chapitre — `03-dette-deficit.md` — plus `README.md` en sommaire
+et `sources.md` pour la bibliographie. Les 55 figures partent dans
+`figures/` en SVG autonomes, motifs et couleurs de thème embarqués, et suivent
+le thème clair ou sombre du lecteur ; sous chacune, son tableau de valeurs.
+Pour relire hors ligne, déposer le dossier dans un dépôt Git, ou le passer à un
+outil qui lit du texte plutôt que du HTML.
+
 ## Lancer en local
 
 ```sh
@@ -107,4 +120,5 @@ commande à lancer avant de pousser.
 | `npm run check:render` | compare `/tout` au document d'origine |
 | `npm run check:bundle` | poids du JavaScript par page de chapitre |
 | `npm run export:html` | exporte le document en un fichier HTML autonome |
+| `npm run export:md` | exporte le dossier en Markdown, figures SVG comprises |
 | `npm test` | tests unitaires |
