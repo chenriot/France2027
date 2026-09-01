@@ -1,0 +1,909 @@
+/*
+ * « Chiffres pour 2027 » — page d'accueil à indicateurs, sous la charte de
+ * `/elections-2027` (direction 1c de la maquette « Élections 2027 »).
+ *
+ * Importée par la seule route `/accueil-2027`. Toutes les classes sont
+ * préfixées `a27-` : rien ne peut fuir sur le dossier.
+ *
+ * Trois choses à savoir avant d'y toucher.
+ *
+ * 1. **La palette est reprise en dur, comme dans `elections-2027.css`, et pour
+ *    la même raison.** La règle 6 de CLAUDE.md fait passer les couleurs par les
+ *    jetons de `tokens.css` afin que la bascule clair/sombre fonctionne ; elle
+ *    vaut pour les surfaces du dossier. Ici la page porte une identité
+ *    distincte — grille suisse, aplats, typographie massive — et la faire
+ *    suivre le thème détruirait ce qu'elle montre. Les variables sont locales à
+ *    `.a27` et ne masquent aucun jeton global.
+ *
+ *    Les valeurs sont copiées de `elections-2027.css`, qui reste la référence
+ *    de la charte : si la charte change, les deux fichiers changent ensemble.
+ *    On préfère cette redite à un troisième fichier partagé, pour que chaque
+ *    route reste lisible et démontable seule.
+ *
+ * 2. **Les graphiques n'ont que la palette de la charte.** Cinq tons suffisent
+ *    à toutes les séries : bleu, bleu clair, rouge, encre, gris. Le jaune est
+ *    réservé aux aplats sur fond bleu, où il passe le contraste ; sur blanc, il
+ *    ne le passe pas.
+ *
+ * 3. **Les tuiles ont une hauteur fixe et les tracés un `viewBox` fixe.** Les
+ *    faces d'une tuile sont superposées : sans hauteur définie, la tuile
+ *    sauterait à chaque basculement. Les SVG sont donc dimensionnés au gabarit
+ *    de leur emplacement et calés à gauche (`xMinYMid meet`).
+ */
+
+.a27 {
+  --a27-blue: #1b3fd8;
+  --a27-blue-2: #8fa2ee;
+  --a27-blue-3: #cdd6f7;
+  --a27-red: #e0323c;
+  --a27-red-2: #f2b8bc;
+  --a27-yellow: #ffd166;
+  --a27-ink: #111;
+  --a27-ink-2: #4a4a44;
+  --a27-grey: #8a8a84;
+  --a27-track: #eeeeeb;
+  --a27-pad: 40px;
+  --a27-cell: 24px;
+  --a27-row: 282px;
+
+  max-width: 1180px;
+  margin: 0 auto;
+  background: #fff;
+  color: var(--a27-ink);
+  font-family: "Libre Franklin", "IBM Plex Sans", sans-serif;
+}
+
+/* ------------------------------------------------------------- provenance */
+
+/*
+ * L'inverse du bandeau de `/elections-2027` : là-bas les chiffres venaient de
+ * la maquette et il fallait le dire ; ici chacun porte sa source et son
+ * millésime, et il faut le dire aussi.
+ */
+.a27-provenance {
+  background: var(--a27-ink);
+  color: #fff;
+  font:
+    500 13px/1.5 "IBM Plex Mono",
+    monospace;
+  padding: 10px var(--a27-pad);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.a27-provenance b {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.a27-provenance a {
+  color: #fff;
+}
+
+/* --------------------------------------------------------------- en-tête */
+
+.a27-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px var(--a27-pad);
+  border-bottom: 2px solid var(--a27-ink);
+}
+.a27-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.a27-compass {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid var(--a27-blue);
+  position: relative;
+  flex: none;
+}
+.a27-compass i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 11px;
+  background: var(--a27-red);
+  transform: translate(-50%, -85%) rotate(38deg);
+  transform-origin: bottom center;
+}
+.a27-wordmark {
+  font:
+    900 22px/1 "Archivo",
+    sans-serif;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.a27-nav {
+  display: flex;
+  gap: 26px;
+  font:
+    600 14px/1 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.a27-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+.a27-nav a:hover {
+  color: var(--a27-ink);
+}
+.a27-nav .on a {
+  color: var(--a27-ink);
+  border-bottom: 3px solid var(--a27-red);
+  padding-bottom: 5px;
+}
+
+/* ------------------------------------------------------------------ hero */
+
+.a27-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 2px solid var(--a27-ink);
+}
+.a27-hero-l {
+  padding: 46px var(--a27-pad);
+  border-right: 2px solid var(--a27-ink);
+}
+.a27-badge {
+  display: inline-block;
+  font:
+    700 12px/1 "Libre Franklin",
+    sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--a27-red);
+  color: #fff;
+  padding: 8px 12px;
+  margin: 0;
+}
+.a27-h1 {
+  font:
+    900 62px/0.95 "Archivo",
+    sans-serif;
+  letter-spacing: -0.045em;
+  margin: 22px 0 0;
+  text-wrap: balance;
+}
+.a27-lede {
+  font:
+    400 18px/1.55 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink-2);
+  margin: 18px 0 0;
+  max-width: 460px;
+}
+.a27-cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.a27-cta a {
+  text-decoration: none;
+  font:
+    700 15px/1 "Libre Franklin",
+    sans-serif;
+}
+.a27-cta .primary {
+  background: var(--a27-blue);
+  color: #fff;
+  padding: 17px 26px;
+}
+.a27-cta .primary:hover {
+  background: #142fa4;
+}
+.a27-cta .ghost {
+  border: 2px solid var(--a27-ink);
+  color: var(--a27-ink);
+  padding: 15px 24px;
+}
+.a27-cta .ghost:hover {
+  background: var(--a27-ink);
+  color: #fff;
+}
+
+/* La moitié droite du hero est une tuile comme les autres, sur aplat bleu. */
+.a27-hero-r {
+  background: var(--a27-blue);
+  color: #fff;
+  position: relative;
+  min-height: 470px;
+}
+.a27-hero-r .a27-tile {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+}
+
+/*
+ * Sur l'aplat bleu, les cinq tons de la charte ne tiennent plus : l'encre et
+ * le bleu y disparaissent. On les redéfinit pour la seule moitié droite du
+ * hero, en gardant cinq valeurs distinctes.
+ */
+/* Portées par la tuile, pas par l'aplat : sinon le fond bleu du panneau,
+   qui lit `--a27-blue`, virerait au jaune avec les tons. */
+.a27-hero-r .a27-tile {
+  --a27-ink: #fff;
+  --a27-blue: var(--a27-yellow);
+  --a27-blue-2: #cdd6f7;
+  --a27-red: var(--a27-yellow);
+  --a27-grey: rgb(255 255 255 / 60%);
+  --a27-track: rgb(255 255 255 / 25%);
+}
+
+/* --------------------------------------------------- barre de commandes */
+
+.a27-boardhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 22px var(--a27-pad);
+  border-bottom: 2px solid var(--a27-ink);
+}
+.a27-boardhead h2 {
+  font:
+    800 26px/1.2 "Archivo",
+    sans-serif;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.a27-boardhead p {
+  font:
+    400 14px/1.5 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink-2);
+  margin: 0;
+  flex: 1 1 260px;
+}
+.a27-ctl {
+  display: flex;
+  gap: 10px;
+}
+.a27-ctl button {
+  font:
+    700 12px/1 "Libre Franklin",
+    sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--a27-ink);
+  background: #fff;
+  border: 2px solid var(--a27-ink);
+  padding: 11px 15px;
+  cursor: pointer;
+}
+.a27-ctl button:hover {
+  background: var(--a27-ink);
+  color: #fff;
+}
+.a27-ctl button[aria-pressed="true"] {
+  background: var(--a27-blue);
+  border-color: var(--a27-blue);
+  color: #fff;
+}
+
+/* -------------------------------------------------------------- mosaïque */
+
+/*
+ * Les filets de 2 px sont le fond de la grille : chaque cellule est blanche et
+ * l'écart de 2 px laisse voir l'encre. C'est plus sûr qu'un jeu de bordures,
+ * qui se doublent aux jonctions.
+ */
+.a27-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: var(--a27-row);
+  gap: 2px;
+  background: var(--a27-ink);
+  border-bottom: 2px solid var(--a27-ink);
+}
+.a27-tile {
+  position: relative;
+  background: #fff;
+  perspective: 1600px;
+  min-width: 0;
+}
+.a27-tile.w2 {
+  grid-column: span 2;
+}
+.a27-tile.h2 {
+  grid-row: span 2;
+}
+
+.a27-card {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition:
+    transform 0.34s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.34s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.a27-face {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  padding: var(--a27-cell);
+  overflow: hidden;
+}
+.a27-face.on {
+  display: flex;
+}
+
+/* --------------------------------------------------- contenu d'une face */
+
+.a27-eyebrow {
+  font:
+    600 10.5px/1.3 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.a27-eyebrow i {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  display: block;
+}
+.a27-face h3 {
+  font:
+    800 17.5px/1.18 "Archivo",
+    sans-serif;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: pretty;
+}
+.a27-tile.h2 .a27-face h3 {
+  font-size: 25px;
+}
+.a27-tile:not(.h2) .a27-note {
+  -webkit-line-clamp: 2;
+}
+.a27-hero-r .a27-face {
+  padding: 46px var(--a27-pad);
+}
+.a27-hero-r .a27-face h3 {
+  font-size: 34px;
+  letter-spacing: -0.03em;
+}
+
+.a27-value {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 12px 0 0;
+}
+.a27-big {
+  font:
+    900 64px/0.9 "Archivo",
+    sans-serif;
+  letter-spacing: -0.045em;
+  margin: 0;
+}
+.a27-mid {
+  font:
+    900 38px/0.95 "Archivo",
+    sans-serif;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+.a27-unit {
+  font:
+    600 12px/1.3 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+}
+.a27-hero-r .a27-unit,
+.a27-hero-r .a27-eyebrow {
+  color: rgb(255 255 255 / 72%);
+}
+.a27-delta {
+  font:
+    700 12px/1 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.04em;
+  padding: 7px 10px;
+  background: var(--a27-track);
+  color: var(--a27-ink);
+  white-space: nowrap;
+}
+.a27-delta.up {
+  background: var(--a27-red);
+  color: #fff;
+}
+.a27-delta.down {
+  background: var(--a27-blue);
+  color: #fff;
+}
+.a27-hero-r .a27-delta.up {
+  background: var(--a27-yellow);
+  color: var(--a27-ink);
+}
+
+.a27-note {
+  font:
+    400 13.5px/1.5 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink-2);
+  margin: 10px 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.a27-tile.h2 .a27-note,
+.a27-hero-r .a27-note {
+  font-size: 15px;
+}
+.a27-hero-r .a27-note {
+  color: rgb(255 255 255 / 85%);
+}
+.a27-note b {
+  font-weight: 700;
+  color: var(--a27-ink);
+}
+.a27-hero-r .a27-note b {
+  color: #fff;
+}
+
+.a27-src {
+  font:
+    500 10.5px/1.4 "IBM Plex Mono",
+    monospace;
+  color: var(--a27-grey);
+  margin: 9px 62px 0 0;
+  padding-top: 7px;
+  border-top: 2px solid var(--a27-track);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.a27-hero-r .a27-src {
+  color: rgb(255 255 255 / 70%);
+  border-top-color: rgb(255 255 255 / 30%);
+}
+
+/* La zone de tracé prend ce qui reste ; le SVG s'y cale à gauche. */
+/*
+ * La zone de tracé prend ce qui reste de la face. Le SVG y est posé en
+ * absolu : sans cela, sa hauteur intrinsèque — celle de son `viewBox` —
+ * s'imposerait et pousserait la note et la source hors de la tuile.
+ */
+.a27-plot {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 44px;
+  margin: 12px 0 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+.a27-plot > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ------------------------------------------------------------ graphiques */
+
+.a27-plot .ln {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: butt;
+}
+.a27-plot .grid {
+  stroke: var(--a27-ink);
+  stroke-width: 2;
+}
+.a27-plot .ax {
+  font:
+    600 9.5px/1 "IBM Plex Mono",
+    monospace;
+  fill: var(--a27-grey);
+}
+.a27-plot .lbl {
+  font:
+    700 10.5px/1 "IBM Plex Mono",
+    monospace;
+}
+.a27-plot .bar {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.a27-plot .wipe {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.a27-hero-r .a27-plot .grid {
+  stroke: rgb(255 255 255 / 45%);
+}
+.a27-hero-r .a27-plot .ax {
+  fill: rgb(255 255 255 / 72%);
+}
+
+.a27-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 14px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.a27-legend li {
+  font:
+    600 10px/1.3 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.a27-legend i {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  display: block;
+}
+.a27-hero-r .a27-legend li {
+  color: rgb(255 255 255 / 75%);
+}
+
+/* ------------------------------------------------------------ barres HTML */
+
+/*
+ * La forme de la maquette : intitulé, piste, valeur. En HTML plutôt qu'en
+ * SVG, pour que la piste s'étire au lieu de laisser du vide à droite sur les
+ * petits écrans.
+ */
+.a27-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.a27-bar {
+  display: grid;
+  grid-template-columns: minmax(56px, 22%) 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+.a27-bar .k {
+  font:
+    600 10.5px/1.2 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+  text-align: right;
+}
+.a27-bar .t {
+  height: 16px;
+  background: var(--a27-track);
+  display: block;
+}
+.a27-bar .t > i {
+  display: block;
+  height: 100%;
+  transform-origin: left center;
+}
+.a27-bar .v {
+  font:
+    700 12px/1 "IBM Plex Mono",
+    monospace;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------ carte de chaleur */
+
+.a27-hm {
+  width: 100%;
+  min-width: 0;
+  border-collapse: collapse;
+  font:
+    600 11px/1.3 "IBM Plex Mono",
+    monospace;
+  font-variant-numeric: tabular-nums;
+}
+.a27-hm th,
+.a27-hm td {
+  border-bottom: none;
+}
+.a27-hm th {
+  font:
+    600 9.5px/1.3 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+  text-align: right;
+  padding: 0 6px 6px;
+  white-space: nowrap;
+}
+.a27-hm th.l {
+  text-align: left;
+  padding-left: 0;
+}
+.a27-hm td {
+  padding: 4px 6px;
+  text-align: right;
+  white-space: nowrap;
+  border-top: 1px solid var(--a27-track);
+}
+.a27-hm td.l {
+  text-align: left;
+  padding-left: 0;
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: 600;
+  font-size: 11.5px;
+  color: var(--a27-ink-2);
+  width: 1%;
+}
+.a27-hm .hc {
+  color: var(--a27-ink);
+}
+.a27-hm .hc.dark {
+  color: #fff;
+}
+.a27-ramp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 0;
+  font:
+    600 9.5px/1 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--a27-grey);
+}
+.a27-ramp i {
+  height: 8px;
+  flex: 1 1 auto;
+  max-width: 190px;
+  display: block;
+}
+
+/* ------------------------------------------------------------------ rangs */
+
+.a27-ranks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 14px 0 0;
+}
+.a27-rank {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+}
+.a27-rank .pos {
+  font:
+    900 40px/0.9 "Archivo",
+    sans-serif;
+  letter-spacing: -0.04em;
+}
+.a27-rank .pos sup {
+  font-size: 0.4em;
+  letter-spacing: 0;
+}
+.a27-rank .lab {
+  font:
+    400 13px/1.4 "Libre Franklin",
+    sans-serif;
+  color: var(--a27-ink-2);
+}
+.a27-rank .lab b {
+  color: var(--a27-ink);
+  font-weight: 700;
+}
+.a27-strip {
+  display: flex;
+  gap: 2px;
+  margin-top: 7px;
+}
+.a27-strip i {
+  height: 8px;
+  flex: 1 1 auto;
+  background: var(--a27-track);
+  display: block;
+  transform-box: border-box;
+  transform-origin: left center;
+}
+
+/* --------------------------------------------- pastilles et jauge de temps */
+
+.a27-tick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+}
+.a27-tick i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--a27-blue);
+}
+.a27-hero-r .a27-tick i {
+  background: var(--a27-yellow);
+}
+.a27-pips {
+  position: absolute;
+  right: var(--a27-cell);
+  bottom: 14px;
+  display: flex;
+  gap: 5px;
+}
+.a27-hero-r .a27-pips {
+  right: var(--a27-pad);
+  bottom: 22px;
+}
+.a27-pips button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  background: var(--a27-track);
+  cursor: pointer;
+}
+.a27-pips button[aria-current="true"] {
+  background: var(--a27-blue);
+}
+.a27-pips button:hover {
+  background: var(--a27-red);
+}
+.a27-hero-r .a27-pips button {
+  background: rgb(255 255 255 / 35%);
+}
+.a27-hero-r .a27-pips button[aria-current="true"] {
+  background: var(--a27-yellow);
+}
+
+/* ------------------------------------------------------------------ pied */
+
+/*
+ * `base.css` pose des règles sur les éléments nus — `footer`, `table`, `th`,
+ * `td`, `h1`, `a`. Elles visent le dossier ; ici elles fuiraient sur la
+ * planche. On les neutralise à l'entrée de chaque bloc concerné plutôt que de
+ * toucher à `base.css`, qui est repris verbatim du document d'origine.
+ */
+.a27-foot {
+  max-width: none;
+  margin-top: 0;
+  border-top: none;
+  padding-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px var(--a27-pad);
+  background: var(--a27-ink);
+  color: #fff;
+}
+.a27-foot h2 {
+  font:
+    800 20px/1.3 "Archivo",
+    sans-serif;
+  max-width: 620px;
+  margin: 0;
+}
+.a27-links {
+  display: flex;
+  gap: 22px;
+  font:
+    600 13px/1 "IBM Plex Mono",
+    monospace;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.a27-links a {
+  color: #c9c9c4;
+  text-decoration: none;
+}
+.a27-links a:hover {
+  color: #fff;
+}
+
+/* --------------------------------------------------------------- écrans */
+
+@media (max-width: 1000px) {
+  .a27 {
+    --a27-pad: 28px;
+    --a27-row: 250px;
+  }
+  .a27-h1 {
+    font-size: 48px;
+  }
+  .a27-hero {
+    grid-template-columns: 1fr;
+  }
+  .a27-hero-l {
+    border-right: none;
+    border-bottom: 2px solid var(--a27-ink);
+  }
+  .a27-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .a27-big {
+    font-size: 52px;
+  }
+}
+
+@media (max-width: 640px) {
+  .a27 {
+    --a27-pad: 20px;
+    --a27-cell: 18px;
+    --a27-row: 236px;
+  }
+  .a27-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .a27-nav {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .a27-h1 {
+    font-size: 38px;
+  }
+  .a27-board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .a27-tile.w2,
+  .a27-tile.h2 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .a27-tile.h2 {
+    grid-row: span 2;
+  }
+  .a27-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a27-card {
+    transition: none;
+  }
+  .a27-tick {
+    display: none;
+  }
+}

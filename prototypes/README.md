@@ -4,6 +4,11 @@ Maquettes autonomes, hors chaîne de build. Elles ne sont ni typées, ni testée
 ni couvertes par `npm run verify` : ce sont des propositions à regarder, pas du
 code de production.
 
+> **Ce prototype est maintenant construit.** La route `/accueil-2027`
+> (`src/app/accueil-2027/`) reprend le même contenu et les mêmes animations
+> sous la charte de `/elections-2027`. Le fichier ci-dessous reste la trace de
+> l'étude, avec la palette du dossier plutôt que celle de la charte.
+
 ## `accueil-kpi-1c.html` — accueil à indicateurs, design 1c
 
 Un fichier HTML autonome, à ouvrir directement dans un navigateur. Il propose
