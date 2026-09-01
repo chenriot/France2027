@@ -26,6 +26,21 @@ Le survol fige la tuile, le clic passe à la face suivante, les pastilles en bas
 arrête tout. Sous `prefers-reduced-motion`, la rotation automatique est à
 l'arrêt d'emblée et les pastilles deviennent le seul moyen de naviguer.
 
+**Les graphiques s'animent à l'entrée.** À chaque fois qu'une face devient
+visible — première apparition ou basculement —, elle repart de son état
+« avant » et se construit : les **courbes se tracent** par décalage du pointillé
+(`stroke-dashoffset`), l'aile colorée d'une courbe s'ouvre derrière elle au même
+rythme, l'**anneau et l'arc de jauge se dessinent** depuis leur origine, les
+**barres poussent** depuis leur base avec un léger décalage entre elles, les
+**cellules de la carte de chaleur apparaissent** ligne après ligne, et tous les
+**chiffres s'incrémentent** jusqu'à leur valeur. Repères, points et étiquettes
+d'axe n'arrivent qu'une fois le tracé posé.
+
+Le balisage porte toujours la valeur finale : une animation non jouée — tuile
+hors champ, mouvement réduit — laisse le bon chiffre à l'écran. La première
+animation d'une tuile attend qu'elle entre dans le champ, et sous
+`prefers-reduced-motion` aucune ne se déclenche.
+
 **Les données.** Toutes reprises des `data.ts` des chapitres, avec leur source
 et leur millésime affichés sur chaque face. Le formatage suit les conventions de
 `src/lib/format.ts` — virgule décimale, espace fine insécable dans les SVG,

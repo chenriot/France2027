@@ -131,7 +131,9 @@ svg.cv{width:100%;height:auto;display:block;overflow:hidden}
 .cv .ax{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:var(--muted)}
 .cv .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
 .cv .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:500}
-.cv .bar{rx:3}
+.cv .bar{rx:3;transform-box:fill-box;transform-origin:left center}
+.cv .wipe{transform-box:fill-box;transform-origin:left center}
+.strip i{transform-box:border-box;transform-origin:left center}
 .s1s{stroke:var(--s1)} .s2s{stroke:var(--s2)} .s3s{stroke:var(--s3)} .s4s{stroke:var(--s4)} .s5s{stroke:var(--s5)}
 .s1f{fill:var(--s1)} .s2f{fill:var(--s2)} .s3f{fill:var(--s3)} .s4f{fill:var(--s4)} .s5f{fill:var(--s5)}
 .s1t{fill:var(--s1)} .s2t{fill:var(--s2)} .s3t{fill:var(--s3)} .s4t{fill:var(--s4)} .s5t{fill:var(--s5)}
@@ -251,7 +253,6 @@ const fr = (n, d = 0, thin = false) => {
   const grouped = i.replace(/\B(?=(\d{3})+(?!\d))/g, thin ? NNBSP : ' ');
   return (n < 0 ? MINUS : '') + grouped + (dec ? ',' + dec : '');
 };
-const signed = (n, d = 1) => (n > 0 ? '+' : MINUS) + fr(Math.abs(n), d);
 
 /* =====================================================================
    Données — toutes reprises des data.ts du dossier, avec leur millésime.
@@ -322,6 +323,18 @@ const D = {
    à chaque redimensionnement.
    ===================================================================== */
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+/* Un nombre qui doit s'incrementer porte sa cible et son format ; le texte
+   rendu est deja la valeur finale, si bien qu'une animation non jouee —
+   mouvement reduit, tuile hors champ — laisse la bonne valeur a l'ecran. */
+const cnt = (v, d = 0, { thin = false, suffix = '', plus = false } = {}) =>
+  `data-count="${v}" data-d="${d}"${thin ? ' data-thin="1"' : ''}` +
+  `${suffix ? ` data-suffix="${esc(suffix)}"` : ''}${plus ? ' data-sign="+"' : ''}`;
+
+/* Meme chose pour un nombre isole dans une phrase ou un grand chiffre. */
+const n = (v, d = 0, o = {}) =>
+  `<span ${cnt(v, d, o)}>${(o.plus && v > 0 ? '+' : '') + fr(v, d, o.thin) + (o.suffix || '')}</span>`;
+
+let uid = 0;
 const svgWrap = (w, h, body, label) =>
   `<svg class="cv" viewBox="0 0 ${w.toFixed(1)} ${h.toFixed(1)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${esc(label)}">${body}</svg>`;
 
@@ -330,10 +343,14 @@ function sparkline(ys, color, w, h) {
   const px = (i) => (i / (n - 1)) * w;
   const py = (v) => h - 5 - ((v - lo) / span) * (h - 14);
   const pts = ys.map((v, i) => px(i).toFixed(1) + ' ' + py(v).toFixed(1));
+  /* L'aile colorée est découpée par un volet qui s'ouvre au même rythme que
+     le tracé : sans lui, elle serait pleine avant que la ligne n'arrive. */
+  const wipe = `w${++uid}`;
   const body =
-    `<path d="M0,${h} L${pts.join(' L')} L${w.toFixed(1)},${h} Z" fill="var(--${color})" opacity=".10"></path>` +
+    `<clipPath id="${wipe}"><rect class="wipe" x="0" y="0" width="${w.toFixed(1)}" height="${h.toFixed(1)}"></rect></clipPath>` +
+    `<path class="area" clip-path="url(#${wipe})" d="M0,${h} L${pts.join(' L')} L${w.toFixed(1)},${h} Z" fill="var(--${color})" opacity=".10"></path>` +
     `<polyline class="ln ${color}s" points="${pts.join(' ')}"></polyline>` +
-    `<circle cx="${px(n - 1).toFixed(1)}" cy="${py(ys[n - 1]).toFixed(1)}" r="3.4" class="${color}f"></circle>`;
+    `<circle class="mk ${color}f" cx="${px(n - 1).toFixed(1)}" cy="${py(ys[n - 1]).toFixed(1)}" r="3.4"></circle>`;
   return svgWrap(w, h, body, 'évolution');
 }
 
@@ -344,8 +361,8 @@ function multiline(d, w, h, yMin, yMax) {
   const px = (xv) => L + ((xv - d.x[0]) / (d.x[d.x.length - 1] - d.x[0])) * (R - L);
   const py = (v) => B - ((v - lo) / span) * (B - T);
   let body = `<line class="grid" x1="${L}" y1="${B.toFixed(1)}" x2="${R.toFixed(1)}" y2="${B.toFixed(1)}"></line>`;
-  body += `<text class="ax" x="${L}" y="${h - 3}">${d.x[0]}</text>`;
-  body += `<text class="ax" x="${R.toFixed(1)}" y="${h - 3}" text-anchor="end">${d.x[d.x.length - 1]}</text>`;
+  body += `<text class="ax mk" x="${L}" y="${h - 3}">${d.x[0]}</text>`;
+  body += `<text class="ax mk" x="${R.toFixed(1)}" y="${h - 3}" text-anchor="end">${d.x[d.x.length - 1]}</text>`;
   const ends = [];
   for (const s of d.s) {
     const seg = []; let cur = [];
@@ -365,8 +382,9 @@ function multiline(d, w, h, yMin, yMax) {
     if (ends[i].y - ends[i - 1].y < 11) ends[i].y = ends[i - 1].y + 11;
   }
   for (const e of ends) {
-    body += `<circle cx="${e.x.toFixed(1)}" cy="${(py(e.v)).toFixed(1)}" r="2.6" class="${e.k}f"></circle>`;
-    body += `<text class="lbl ${e.k}t" x="${(e.x + 6).toFixed(1)}" y="${(e.y + 3.5).toFixed(1)}">${fr(e.v, e.v < 20 ? 2 : 0, true)}</text>`;
+    const dec = e.v < 20 ? 2 : 0;
+    body += `<circle class="mk ${e.k}f" cx="${e.x.toFixed(1)}" cy="${(py(e.v)).toFixed(1)}" r="2.6"></circle>`;
+    body += `<text class="lbl mk ${e.k}t" x="${(e.x + 6).toFixed(1)}" y="${(e.y + 3.5).toFixed(1)}" ${cnt(e.v, dec, { thin: true })}>${fr(e.v, dec, true)}</text>`;
   }
   return svgWrap(w, h, body, 'séries comparées');
 }
@@ -382,41 +400,42 @@ function bars(items, w, h, { max, unit = '', decimals = 1, labelW } = {}) {
   items.forEach((it, i) => {
     const y = top + i * pitch;
     const bw = Math.max(2, (it.v / M) * track);
-    body += `<text class="ax" x="${(L - 9).toFixed(1)}" y="${(y + 3.4).toFixed(1)}" text-anchor="end">${esc(it.l)}</text>`;
+    const dec = it.d ?? decimals;
+    body += `<text class="ax mk" x="${(L - 9).toFixed(1)}" y="${(y + 3.4).toFixed(1)}" text-anchor="end">${esc(it.l)}</text>`;
     body += `<rect class="bar ${it.k}f" x="${L.toFixed(1)}" y="${(y - barH / 2).toFixed(1)}" width="${bw.toFixed(1)}" height="${barH.toFixed(1)}" rx="3"></rect>`;
-    body += `<text class="lbl ${it.k}t" x="${(L + bw + 7).toFixed(1)}" y="${(y + 3.6).toFixed(1)}">${fr(it.v, it.d ?? decimals, true)}${unit}</text>`;
+    body += `<text class="lbl mk ${it.k}t" x="${(L + bw + 7).toFixed(1)}" y="${(y + 3.6).toFixed(1)}" ${cnt(it.v, dec, { thin: true, suffix: unit })}>${fr(it.v, dec, true)}${unit}</text>`;
   });
   return svgWrap(w, h, body, 'comparaison');
 }
 
-function gauge(value, w, h, { min = 0, max = 100, ref, color = 's4', label = '', refLabel = '' } = {}) {
+function gauge(value, w, h, { min = 0, max = 100, ref, color = 's4', decimals = 1, suffix = NNBSP + '%', refLabel = '' } = {}) {
   const r = Math.max(20, Math.min(w / 2 - 34, h - 26));
   const cx = w / 2, cy = h - 8;
   const pol = (t, rad) => [cx + rad * Math.cos(Math.PI * (1 - t)), cy - rad * Math.sin(Math.PI * (1 - t))];
-  const arc = (t0, t1, stroke, sw) => {
+  const arc = (t0, t1, stroke, sw, cls) => {
     const [x0, y0] = pol(t0, r), [x1, y1] = pol(t1, r);
-    return `<path d="M${x0.toFixed(1)},${y0.toFixed(1)} A${r.toFixed(1)},${r.toFixed(1)} 0 0 1 ${x1.toFixed(1)},${y1.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linecap="round"></path>`;
+    return `<path class="${cls}" d="M${x0.toFixed(1)},${y0.toFixed(1)} A${r.toFixed(1)},${r.toFixed(1)} 0 0 1 ${x1.toFixed(1)},${y1.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linecap="round"></path>`;
   };
   const t = Math.min(1, Math.max(0, (value - min) / (max - min)));
-  let body = arc(0, 1, 'var(--surface-2)', 13) + arc(0, Math.max(t, 0.005), `var(--${color})`, 13);
+  let body = arc(0, 1, 'var(--surface-2)', 13, 'track') + arc(0, Math.max(t, 0.005), `var(--${color})`, 13, 'ln arc');
   if (ref !== undefined) {
     const tr = (ref - min) / (max - min);
     const [rx, ry] = pol(tr, r + 5), [ix, iy] = pol(tr, r - 9);
     const [lx, ly] = pol(tr, r + 15);
-    body += `<line x1="${ix.toFixed(1)}" y1="${iy.toFixed(1)}" x2="${rx.toFixed(1)}" y2="${ry.toFixed(1)}" stroke="var(--ink-2)" stroke-width="2"></line>`;
-    body += `<text class="ax" x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" text-anchor="${tr > 0.62 ? 'start' : tr < 0.38 ? 'end' : 'middle'}">${esc(refLabel)}</text>`;
+    body += `<line class="mk" x1="${ix.toFixed(1)}" y1="${iy.toFixed(1)}" x2="${rx.toFixed(1)}" y2="${ry.toFixed(1)}" stroke="var(--ink-2)" stroke-width="2"></line>`;
+    body += `<text class="ax mk" x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" text-anchor="${tr > 0.62 ? 'start' : tr < 0.38 ? 'end' : 'middle'}">${esc(refLabel)}</text>`;
   }
-  body += `<text class="lbl inkt" x="${cx.toFixed(1)}" y="${(cy - 4).toFixed(1)}" text-anchor="middle" style="font-size:${Math.min(30, r * 0.44).toFixed(0)}px;letter-spacing:-.02em">${esc(label)}</text>`;
+  body += `<text class="lbl inkt" x="${cx.toFixed(1)}" y="${(cy - 4).toFixed(1)}" text-anchor="middle" style="font-size:${Math.min(30, r * 0.44).toFixed(0)}px;letter-spacing:-.02em" ${cnt(value, decimals, { suffix })}>${fr(value, decimals) + suffix}</text>`;
   return svgWrap(w, h, body, 'jauge');
 }
 
-function donut(pct, w, h, { color = 's5', label } = {}) {
+function donut(pct, w, h, { color = 's5', suffix = NNBSP + '%' } = {}) {
   const sw = 14, r = Math.max(14, Math.min(w, h) / 2 - sw), c = 2 * Math.PI * r;
   const cx = w / 2, cy = h / 2;
   const body =
-    `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="none" stroke="var(--surface-2)" stroke-width="${sw}"></circle>` +
-    `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="none" stroke="var(--${color})" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${(c * pct / 100).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 ${cx.toFixed(1)} ${cy.toFixed(1)})"></circle>` +
-    `<text class="lbl inkt" x="${cx.toFixed(1)}" y="${(cy + r * 0.22).toFixed(1)}" text-anchor="middle" style="font-size:${(r * 0.58).toFixed(0)}px;letter-spacing:-.02em">${esc(label ?? fr(pct) + NNBSP + '%')}</text>`;
+    `<circle class="track" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="none" stroke="var(--surface-2)" stroke-width="${sw}"></circle>` +
+    `<circle class="ring" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="none" stroke="var(--${color})" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${(c * pct / 100).toFixed(1)} ${c.toFixed(1)}" data-arc="${(c * pct / 100).toFixed(1)}" transform="rotate(-90 ${cx.toFixed(1)} ${cy.toFixed(1)})"></circle>` +
+    `<text class="lbl inkt" x="${cx.toFixed(1)}" y="${(cy + r * 0.22).toFixed(1)}" text-anchor="middle" style="font-size:${(r * 0.58).toFixed(0)}px;letter-spacing:-.02em" ${cnt(pct, 0, { suffix })}>${fr(pct) + suffix}</text>`;
   return svgWrap(w, h, body, 'part');
 }
 
@@ -429,7 +448,7 @@ function heatmap(d, { decimals = 0, unit = '', diverging = false, highlight = 2,
     const bg = inHeat(ci)
       ? `color-mix(in srgb, ${diverging ? (v < 0 ? 'var(--s5)' : 'var(--s3)') : (ci === highlight ? 'var(--s1)' : 'var(--s4)')} ${(7 + (Math.abs(v) / hi) * 42).toFixed(0)}%, var(--surface))`
       : 'var(--surface-2)';
-    return `<td${ci === highlight ? ' class="hi"' : ''} style="background:${bg}">${fr(v, decimals, true)}${unit}</td>`;
+    return `<td class="hc${ci === highlight ? ' hi' : ''}" style="background:${bg}">${fr(v, decimals, true)}${unit}</td>`;
   };
   return `<table class="hm"><tr><th class="l">&nbsp;</th>${d.cols.map((c) => `<th>${esc(c)}</th>`).join('')}</tr>` +
     d.rows.map((r, ri) => `<tr><td class="l">${esc(r)}</td>${d.v[ri].map((v, ci) => cell(v, ci)).join('')}</tr>`).join('') + '</table>';
@@ -453,8 +472,8 @@ const CHARTS = {
   encadrementBars: (w, h) => bars([{ l: 'Enseignant', v: 17.9, k: 's5' }, { l: 'Classe', v: 21.6, k: 's4' }], w, h, { max: 26 }),
   retraitesBars: (w, h) => bars([{ l: 'France', v: 29272, k: 's3', d: 0 }, { l: 'Allemagne', v: 27157, k: 's4', d: 0 }], w, h, { max: 34000, unit: NNBSP + '€' }),
   eleveBars: (w, h) => bars([{ l: 'Allemagne', v: 10363, k: 's4', d: 0 }, { l: 'France', v: 8151, k: 's2', d: 0 }], w, h, { max: 12500 }),
-  gaugePrestations: (w, h) => gauge(25.5, w, h, { max: 30, ref: 17.2, color: 's4', label: fr(25.5, 1) + NNBSP + '%', refLabel: '1975' }),
-  gaugeEmploi: (w, h) => gauge(69.8, w, h, { max: 100, ref: 86, color: 's1', label: fr(69.8, 1) + NNBSP + '%', refLabel: 'P.-Bas' }),
+  gaugePrestations: (w, h) => gauge(25.5, w, h, { max: 30, ref: 17.2, color: 's4', refLabel: '1975' }),
+  gaugeEmploi: (w, h) => gauge(69.8, w, h, { max: 100, ref: 86, color: 's1', refLabel: 'P.-Bas' }),
   donut76: (w, h) => donut(76, w, h, { color: 's4' }),
   hmFonctions: () => heatmap(D.fonctions, { unit: NNBSP + '€', highlight: 2 }),
   hmAge: () => heatmap(D.ageEmploi, { decimals: 1, unit: NNBSP + '%', diverging: true, highlight: -1, heatCols: [2] }),
@@ -474,15 +493,15 @@ const TILES = [
   { cls: 'w2 h2', every: 11000, axis: 'y', faces: [
     () => `${eyebrow('s5', 'Thème 02 · Dette et déficit')}
       <h3>Deux marches d'escalier, jamais redescendues</h3>
-      <p class="big">${fr(115.612, 1)}<span class="u">% du PIB · 2025</span></p>
-      <p><span class="delta up">${signed(115.612 - 65.496)} points depuis 2007</span></p>
+      <p class="big">${n(115.612, 1)}<span class="u">% du PIB · 2025</span></p>
+      <p><span class="delta up">${n(115.612 - 65.496, 1, { plus: true })} points depuis 2007</span></p>
       ${zone('detteSpark')}
       <p class="say">Le point bas d'après-crise est <b>98,2 %</b> en 2019, contre 65,5 % en 2007. Depuis 2023, la dette remonte de <b>6,1 points en deux ans, sans choc macroéconomique</b>.</p>
       ${src('Eurostat gov_10dd_edpt1 · 2025')}`,
     () => `${eyebrow('s1', 'Thème 01 · Dépenses publiques et niveau de vie')}
       <h3>Le PIB par habitant est passé sous la moyenne européenne</h3>
-      <p class="big">${fr(98.292, 1)}<span class="u">indice, UE-27 = 100 · 2024</span></p>
-      <p><span class="delta up">${signed(98.292 - 116.496)} points depuis 1995</span></p>
+      <p class="big">${n(98.292, 1)}<span class="u">indice, UE-27 = 100 · 2024</span></p>
+      <p><span class="delta up">${n(98.292 - 116.496, 1, { plus: true })} points depuis 1995</span></p>
       ${zone('pibLines')}
       ${legendOf(D.pib)}
       <p class="say">L'écart entre les trois courbes, c'est <b>le taux d'emploi et la durée du travail</b>. La productivité horaire, elle, ne décroche qu'après 2019 — <b>−11 points en trois ans</b>.</p>
@@ -490,8 +509,8 @@ const TILES = [
     () => `${eyebrow('s4', 'Synthèse · proposition n° 3')}
       <h3>Deuxième d'Europe en part du PIB, huitième par habitant</h3>
       <div style="display:flex;gap:38px;flex-wrap:wrap;margin-top:4px">
-        <div><p class="mid s5t">${fr(57.3, 1)}<span class="u">% du PIB</span></p><p class="say" style="margin-top:0">2ᵉ d'Europe</p></div>
-        <div><p class="mid s1t">${fr(24308)}<span class="u">€ / habitant</span></p><p class="say" style="margin-top:0">8ᵉ d'Europe</p></div>
+        <div><p class="mid s5t">${n(57.3, 1)}<span class="u">% du PIB</span></p><p class="say" style="margin-top:0">2ᵉ d'Europe</p></div>
+        <div><p class="mid s1t">${n(24308)}<span class="u">€ / habitant</span></p><p class="say" style="margin-top:0">8ᵉ d'Europe</p></div>
       </div>
       ${zone('eurBars')}
       <p class="say">Le résultat le plus contre-intuitif du dossier. Corrigé du pouvoir d'achat, l'écart à l'UE-27 tombe de <b>+23,6 % à +13,5 %</b>.</p>
@@ -532,20 +551,20 @@ const TILES = [
   { cls: '', every: 8000, axis: 'y', faces: [
     () => `${eyebrow('s3', 'Thème 10 · Écologie et climat')}
       <h3>Émissions de gaz à effet de serre</h3>
-      <div class="valrow"><p class="mid s3t">${fr(359.488, 1)}<span class="u">MtCO₂e</span></p>
-        <span class="delta down">${signed(-34.3)} % depuis 1990</span></div>
+      <div class="valrow"><p class="mid s3t">${n(359.488, 1)}<span class="u">MtCO₂e</span></p>
+        <span class="delta down">${n(-34.3, 1)} % depuis 1990</span></div>
       ${zone('gesSpark')}
       ${src('Eurostat sdg_13_10 · Citepa 2026')}`,
     () => `${eyebrow('s5', 'Thème 14 · Éducation')}
       <h3>PISA mathématiques, France</h3>
-      <div class="valrow"><p class="mid s5t">${fr(473.909, 1)}<span class="u">score</span></p>
-        <span class="delta up">${signed(-36.9)} pts depuis 2003</span></div>
+      <div class="valrow"><p class="mid s5t">${n(473.909, 1)}<span class="u">score</span></p>
+        <span class="delta up">${n(-36.9, 1)} pts depuis 2003</span></div>
       ${zone('pisaSpark')}
       ${src('OCDE PISA via Our World in Data · 2022')}`,
     () => `${eyebrow('s1', 'Thème 15 · Logement')}
       <h3>Prix des logements sur revenu</h3>
-      <div class="valrow"><p class="mid s1t">${fr(93.6, 1)}<span class="u">indice 2015</span></p>
-        <span class="delta down">${signed(-9.7)} % depuis 2010</span></div>
+      <div class="valrow"><p class="mid s1t">${n(93.6, 1)}<span class="u">indice 2015</span></p>
+        <span class="delta down">${n(-9.7, 1)} % depuis 2010</span></div>
       ${zone('logementSpark')}
       ${src('OCDE, prix de l\'immobilier · 2024')}`,
   ]},
@@ -587,7 +606,7 @@ const TILES = [
       ${src('Eurostat gov_10a_main · 2024')}`,
     () => `${eyebrow('s5', 'Thème 12 · Sécurité et justice')}
       <h3>Juges, face à l'Allemagne</h3>
-      <div class="grow" style="justify-content:center"><p class="big s5t" style="margin:0;text-align:center">${MINUS}50<span class="u">%</span></p></div>
+      <div class="grow" style="justify-content:center"><p class="big s5t" style="margin:0;text-align:center">${n(-50)}<span class="u">%</span></p></div>
       <p class="say" style="font-size:.79rem">La France a <b>moitié moins de juges</b>, et se situe sous la médiane européenne.</p>
       ${src('CEPEJ ; thème 12 du dossier')}`,
   ]},
@@ -635,26 +654,131 @@ const TILES = [
 /* ---------- mini-tuiles ---------- */
 const MINIS = [
   { every: 7000, axis: 'y', faces: [
-    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${signed(16.7)}<span class="u">points</span></p><p class="say">De dette publique sur la <b>seule année 2020</b>.</p>`,
-    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${signed(6.1)}<span class="u">points</span></p><p class="say">Entre 2023 et 2025, <b>sans choc macroéconomique</b>.</p>`,
-    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${fr(98.2, 1)}<span class="u">%</span></p><p class="say">Le point bas d'après-crise, en 2019, contre <b>65,5 % en 2007</b>.</p>`,
+    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${n(16.7, 1, { plus: true })}<span class="u">points</span></p><p class="say">De dette publique sur la <b>seule année 2020</b>.</p>`,
+    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${n(6.1, 1, { plus: true })}<span class="u">points</span></p><p class="say">Entre 2023 et 2025, <b>sans choc macroéconomique</b>.</p>`,
+    () => `${eyebrow('s5', 'Dette')}<p class="mid s5t">${n(98.2, 1)}<span class="u">%</span></p><p class="say">Le point bas d'après-crise, en 2019, contre <b>65,5 % en 2007</b>.</p>`,
   ]},
   { every: 7600, axis: 'x', faces: [
-    () => `${eyebrow('s2', 'Santé')}<p class="mid s2t">${fr(4.1, 1)}<span class="u">%</span></p><p class="say">De besoins de soins non satisfaits, contre <b>1,2 % en 2019</b>.</p>`,
-    () => `${eyebrow('s2', 'Santé')}<p class="mid s2t">${fr(30)}<span class="u">%</span></p><p class="say">De la population vit dans un <b>désert médical</b>.</p>`,
-    () => `${eyebrow('s2', 'État')}<p class="mid s2t">${signed(-21, 0)}<span class="u">%</span></p><p class="say">De personnels administratifs à l'Éducation, <b>2007-2022</b>.</p>`,
+    () => `${eyebrow('s2', 'Santé')}<p class="mid s2t">${n(4.1, 1)}<span class="u">%</span></p><p class="say">De besoins de soins non satisfaits, contre <b>1,2 % en 2019</b>.</p>`,
+    () => `${eyebrow('s2', 'Santé')}<p class="mid s2t">${n(30)}<span class="u">%</span></p><p class="say">De la population vit dans un <b>désert médical</b>.</p>`,
+    () => `${eyebrow('s2', 'État')}<p class="mid s2t">${n(-21)}<span class="u">%</span></p><p class="say">De personnels administratifs à l'Éducation, <b>2007-2022</b>.</p>`,
   ]},
   { every: 8300, axis: 'y', faces: [
-    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">3,0<span class="u">×</span></p><p class="say">Le taux allemand de tentatives d'homicide, en 2024. <b>Égalité en 2008.</b></p>`,
-    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">${fr(6.25, 2)}</p><p class="say">Tentatives pour 100 000 habitants en France ; <b>1,82 en 2008</b>.</p>`,
-    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">${fr(2.06, 2)}</p><p class="say">En Allemagne — <b>stable sur dix-sept ans</b>.</p>`,
+    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">${n(3, 1)}<span class="u">×</span></p><p class="say">Le taux allemand de tentatives d'homicide, en 2024. <b>Égalité en 2008.</b></p>`,
+    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">${n(6.25, 2)}</p><p class="say">Tentatives pour 100 000 habitants en France ; <b>1,82 en 2008</b>.</p>`,
+    () => `${eyebrow('s4', 'Sécurité')}<p class="mid s4t">${n(2.06, 2)}</p><p class="say">En Allemagne — <b>stable sur dix-sept ans</b>.</p>`,
   ]},
   { every: 6800, axis: 'x', faces: [
-    () => `${eyebrow('s3', 'Efficacité de l\'État')}<p class="mid s3t">${fr(623)}<span class="u">€</span></p><p class="say">D'administration générale par habitant ; <b>759 € en Europe, 1 070 en Allemagne</b>.</p>`,
-    () => `${eyebrow('s3', 'Industrie')}<p class="mid s3t">17<span class="u">mois</span></p><p class="say">Pour implanter un site industriel, dont <b>8 mois d'écart entre théorie et réalité</b>.</p>`,
-    () => `${eyebrow('s3', 'Éducation')}<p class="mid s3t">${fr(1.2, 2)}</p><p class="say">Enseignant rémunéré par groupe-classe au primaire ; <b>1,43 en moyenne OCDE</b>.</p>`,
+    () => `${eyebrow('s3', 'Efficacité de l\'État')}<p class="mid s3t">${n(623)}<span class="u">€</span></p><p class="say">D'administration générale par habitant ; <b>759 € en Europe, 1 070 en Allemagne</b>.</p>`,
+    () => `${eyebrow('s3', 'Industrie')}<p class="mid s3t">${n(17)}<span class="u">mois</span></p><p class="say">Pour implanter un site industriel, dont <b>8 mois d'écart entre théorie et réalité</b>.</p>`,
+    () => `${eyebrow('s3', 'Éducation')}<p class="mid s3t">${n(1.2, 2)}</p><p class="say">Enseignant rémunéré par groupe-classe au primaire ; <b>1,43 en moyenne OCDE</b>.</p>`,
   ]},
 ];
+
+/* =====================================================================
+   L'animation d'entree. Chaque face rendue est d'abord ramenee a son etat
+   « avant » — courbes non tracees, barres a zero, arcs vides, compteurs a
+   zero — puis relachee. Le balisage, lui, porte toujours l'etat final :
+   sans JavaScript, ou sous `prefers-reduced-motion`, rien ne bouge et la
+   valeur juste reste affichee.
+   ===================================================================== */
+const EASE = 'cubic-bezier(.22,.61,.36,1)';
+const DUR = { line: 1000, bar: 720, arc: 950, count: 950, mark: 340, cell: 320 };
+
+function countUp(el, dur, delay) {
+  const target = +el.dataset.count;
+  const d = +(el.dataset.d || 0);
+  const thin = el.dataset.thin === '1';
+  const suffix = el.dataset.suffix || '';
+  const plus = el.dataset.sign === '+';
+  const show = (v) => { el.textContent = (plus && v > 0 ? '+' : '') + fr(v, d, thin) + suffix; };
+  const t0 = performance.now() + delay;
+  show(0);
+  const tick = (now) => {
+    if (now < t0) return requestAnimationFrame(tick);
+    const p = Math.min(1, (now - t0) / dur);
+    show(target * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(tick); else show(target);
+  };
+  requestAnimationFrame(tick);
+}
+
+/* Repart de l'etat initial sans transition, puis rend la main au navigateur. */
+function from(el, apply) {
+  el.style.transition = 'none';
+  apply();
+  void el.getBoundingClientRect();
+}
+const to = (el, prop, value, dur, delay) => {
+  /* `transition` veut le nom CSS (stroke-dashoffset), l'affectation veut le
+     nom JavaScript (strokeDashoffset) : les deux ne s'écrivent pas pareil. */
+  const css = prop.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
+  el.style.transition = `${css} ${dur}ms ${EASE} ${delay}ms`;
+  el.style[prop] = value;
+};
+
+function enter(face, lag = 0) {
+  if (reduce.matches) return;
+  const q = (sel) => [...face.querySelectorAll(sel)];
+
+  /* 1. Courbes et arcs : trace progressif par decalage du pointille. */
+  q('svg .ln').forEach((el, i) => {
+    let len = 0;
+    try { len = el.getTotalLength(); } catch { /* forme non mesurable */ }
+    if (!len) return;
+    from(el, () => {
+      el.style.strokeDasharray = `${len}`;
+      el.style.strokeDashoffset = `${len}`;
+    });
+    to(el, 'strokeDashoffset', '0', DUR.line, lag + i * 90);
+  });
+
+  /* 2. L'aile colorée s'ouvre derrière le tracé. */
+  q('svg .wipe').forEach((el) => {
+    from(el, () => { el.style.transform = 'scaleX(0)'; });
+    to(el, 'transform', 'scaleX(1)', DUR.line, lag);
+  });
+
+  /* 3. Anneau : la part se dessine depuis midi. */
+  q('svg .ring').forEach((el) => {
+    from(el, () => { el.style.strokeDashoffset = `${+el.dataset.arc}`; });
+    to(el, 'strokeDashoffset', '0', DUR.arc, lag + 80);
+  });
+
+  /* 4. Barres : elles poussent depuis leur origine. */
+  q('svg rect.bar').forEach((el, i) => {
+    from(el, () => { el.style.transform = 'scaleX(0)'; });
+    to(el, 'transform', 'scaleX(1)', DUR.bar, lag + i * 90);
+  });
+
+  /* 5. Cellules de la carte de chaleur, ligne apres ligne. */
+  q('.hm .hc').forEach((el, i) => {
+    const dl = lag + i * 22;
+    from(el, () => { el.style.opacity = '0'; el.style.transform = 'translateY(5px)'; });
+    el.style.transition = `opacity ${DUR.cell}ms ease ${dl}ms, transform ${DUR.cell}ms ${EASE} ${dl}ms`;
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+
+  /* 6. Rangs : la position se remplit. */
+  q('.strip i.on').forEach((el) => {
+    from(el, () => { el.style.transform = 'scaleX(0)'; });
+    to(el, 'transform', 'scaleX(1)', DUR.bar, lag + 260);
+  });
+
+  /* 7. Reperes, points et etiquettes d'axe : ils arrivent une fois le
+        trace pose, jamais avant. */
+  q('svg .mk').forEach((el) => {
+    from(el, () => { el.style.opacity = '0'; });
+    to(el, 'opacity', '1', DUR.mark, lag + DUR.line * 0.72);
+  });
+
+  /* 8. Chiffres : ils s'incrementent jusqu'a leur valeur. */
+  q('[data-count]').forEach((el, i) => {
+    const inSvg = !!el.closest('svg');
+    countUp(el, DUR.count, lag + (inSvg ? DUR.line * 0.55 : 0) + i * 45);
+  });
+}
 
 /* =====================================================================
    Le moteur de rotation. Une tuile = une pile de faces ; on tourne la
@@ -701,7 +825,7 @@ function mountTile(spec, host, isMini, offset) {
   const dots = [...pips.querySelectorAll('button')];
   const bar = tick.querySelector('i');
   const axis = spec.axis === 'x' ? 'X' : 'Y';
-  let cur = 0, elapsed = -(offset || 0), last = performance.now(), hover = false, busy = false;
+  let cur = 0, elapsed = -(offset || 0), last = performance.now(), hover = false, busy = false, seen = false;
 
   /* Un tracé n'est calculé qu'une fois sa zone visible et mesurée : la
      taille du dessin est celle de la tuile, jamais une valeur devinée. */
@@ -718,10 +842,13 @@ function mountTile(spec, host, isMini, offset) {
     }
   }
 
-  function paint(i) {
+  function paint(i, animate = true) {
     faces.forEach((f, k) => f.classList.toggle('on', k === i));
     dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
     draw(faces[i]);
+    /* On n'anime pas une tuile encore hors de l'écran : son animation
+       l'attendrait, jouée dans le vide. */
+    if (animate && seen) enter(faces[i], 180);
   }
 
   function go(i) {
@@ -744,11 +871,21 @@ function mountTile(spec, host, isMini, offset) {
     }, 340);
   }
 
-  paint(0);
+  paint(0, false);
   new ResizeObserver(() => {
     for (const f of faces) f.querySelectorAll('.grow[data-c]').forEach((b) => delete b.dataset.sig);
     draw(faces[cur]);
   }).observe(card);
+
+  /* Première apparition : l'animation se déclenche quand la tuile entre
+     dans le champ, pas au chargement de la page. */
+  const io = new IntersectionObserver((entries) => {
+    if (!entries.some((e) => e.isIntersecting)) return;
+    io.disconnect();
+    seen = true;
+    enter(faces[cur], 0);
+  }, { threshold: 0.35 });
+  io.observe(el);
 
   el.addEventListener('mouseenter', () => { hover = true; });
   el.addEventListener('mouseleave', () => { hover = false; });
