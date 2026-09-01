@@ -52,6 +52,14 @@ h1{font-family:"Newsreader",Georgia,"Times New Roman",serif;font-weight:500;
 .rail a:hover{background:var(--surface-2);color:var(--ink)}
 .rail a.on{background:var(--surface);color:var(--accent);font-weight:500;box-shadow:inset 2px 0 0 var(--accent)}
 .rail a.on::before{color:var(--accent)}
+.rail li.grp{counter-increment:none;margin:15px 0 5px}
+.rail ol > li.grp:first-child{margin-top:0}
+.rail li.grp > span{display:block;padding-left:4px;font-family:"IBM Plex Mono",monospace;
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.rail li.num a::before{content:none}
+.rail li.num a{grid-template-columns:24px 1fr}
+.rail .n-fam{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted)}
+.rail a.on .n-fam{color:var(--accent)}
 .rail .extra{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule)}
 .rail .extra a{grid-template-columns:1fr;padding-left:8px}
 .rail .extra a::before{content:none}

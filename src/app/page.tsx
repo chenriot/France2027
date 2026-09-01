@@ -1,7 +1,7 @@
 import { Masthead } from '@/components/Masthead'
 import { Rail } from '@/components/Rail'
 import { ScrollSpy } from '@/components/client/ScrollSpy'
-import { chapters } from '@/data/chapters'
+import { chapters, families } from '@/data/chapters'
 import { sources } from '@/data/sources'
 
 export default function Home() {
@@ -29,30 +29,47 @@ export default function Home() {
 
           <div className="q" id="chapitres">
             <h3>Thèmes</h3>
-            <div className="tw">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Thème</th>
-                    <th className="n">Fiches</th>
-                    <th className="n">Tableaux</th>
-                    <th className="n">Figures</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {themes.map((c) => (
-                    <tr key={c.slug}>
-                      <td>
-                        <a href={`/${c.slug}`}>{c.title}</a>
-                      </td>
-                      <td className="n">{c.counts.questions}</td>
-                      <td className="n">{c.counts.tables}</td>
-                      <td className="n">{c.counts.figures}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <p>
+              Les {themes.length} thèmes sont regroupés en {families.length} familles de lecture.
+              Le regroupement ne change ni l’ordre du dossier ni sa numérotation : le document
+              intégral suit l’ordre d’origine, et chaque thème garde son numéro.
+            </p>
+            {families.map((f) => {
+              const group = themes.filter((c) => c.family === f.id)
+              if (group.length === 0) return null
+              return (
+                <div key={f.id}>
+                  <h4>{f.label}</h4>
+                  <p>{f.lede}</p>
+                  <div className="tw">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th className="n">N°</th>
+                          <th>Thème</th>
+                          <th className="n">Fiches</th>
+                          <th className="n">Tableaux</th>
+                          <th className="n">Figures</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {group.map((c) => (
+                          <tr key={c.slug}>
+                            <td className="n">{c.num.replace(/^\D+/, '').trim()}</td>
+                            <td>
+                              <a href={`/${c.slug}`}>{c.title}</a>
+                            </td>
+                            <td className="n">{c.counts.questions}</td>
+                            <td className="n">{c.counts.tables}</td>
+                            <td className="n">{c.counts.figures}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )
+            })}
           </div>
 
           <div className="q" id="reste">
