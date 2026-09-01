@@ -1479,6 +1479,230 @@ export const tables = {
       },
     ],
   },
+  'ecart-hommes-femmes-de-taux-d-activite-france-15-64-ans': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-focus-n-377-ecart-de-salaire-e-2', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-hommes-femmes-de-taux-d-activite-france-15-64-ans',
+        header: 'Écart hommes − femmes de taux d’activité, France, 15-64 ans',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '1984', header: '1984', type: 'number', headerNumeric: true },
+      { key: '2004', header: '2004', type: 'number', headerNumeric: true },
+      { key: '2024', header: '2024', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>En points de pourcentage</b>' },
+          { v: 20.6, d: 1, strong: true },
+          { v: 9.8, d: 1, strong: true },
+          { v: 6, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Réduction sur les vingt années écoulées' },
+          null,
+          { v: 10.8, d: 1 },
+          { v: 3.8, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'ecart-hommes-femmes-de-taux-d-emploi-20-64-ans': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-focus-n-377-ecart-de-salaire-e-2', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-hommes-femmes-de-taux-d-emploi-20-64-ans',
+        header: 'Écart hommes − femmes de taux d’emploi, 20-64 ans',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'annee', header: 'Année', type: 'number', headerNumeric: true },
+      { key: 'points', header: 'Points', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Finlande' },
+          { v: 2024, d: 0, g: false },
+          { v: 0.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Lituanie' },
+          { v: 2024, d: 0, g: false },
+          { v: 1.4, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Estonie' },
+          { v: 2024, d: 0, g: false },
+          { v: 1.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Lettonie' },
+          { v: 2024, d: 0, g: false },
+          { v: 3.3, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>France</b>' },
+          { v: 2023, d: 0, g: false },
+          { v: 5.5, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Union européenne</b>' },
+          { v: 2024, d: 0, g: false },
+          { v: 10, d: 1, strong: true },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Roumanie' },
+          { v: 2024, d: 0, g: false },
+          { v: 18.1, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Grèce' },
+          { v: 2024, d: 0, g: false },
+          { v: 18.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Italie' },
+          { v: 2024, d: 0, g: false },
+          { v: 19.4, d: 1 },
+        ],
+      },
+    ],
+  },
+  'ecart-de-salaire-femmes-hommes-secteur-prive-france': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-focus-n-377-ecart-de-salaire-e-2', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-de-salaire-femmes-hommes-secteur-prive-france',
+        header: 'Écart de salaire femmes-hommes, secteur privé, France',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '2023', header: '2023', type: 'number', headerNumeric: true },
+      { key: '2024', header: '2024', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Revenu salarial</b>' },
+          { v: 22.2, d: 1, u: '%', strong: true },
+          { v: 21.8, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Salaire net en équivalent temps plein' },
+          { v: 14.2, d: 1, u: '%' },
+          { v: 14, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '— dont champ privé strict, hors activité secondaire publique' },
+          null,
+          { v: 13, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>À poste comparable : même emploi, même établissement</b>' },
+          { v: 3.8, d: 1, u: '%', strong: true },
+          { v: 3.6, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'ecart-de-salaire-net-en-eqtp-secteur-prive-par-age': {
+    vintage: '2024',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-focus-n-377-ecart-de-salaire-e-2', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ecart-de-salaire-net-en-eqtp-secteur-prive-par-age',
+        header: 'Écart de salaire net en EQTP, secteur privé, par âge',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '2023', header: '2023', type: 'number', headerNumeric: true },
+      { key: '2024', header: '2024', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Moins de 25 ans' },
+          { v: 4.3, d: 1, u: '%' },
+          { v: 3.2, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 60, d: 0, u: 'ans ou plus', strong: true },
+          { v: 24.9, d: 1, u: '%', strong: true },
+          { v: 24.1, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Ensemble' },
+          null,
+          { v: 13, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Rapport 60 ans ou plus / moins de 25 ans' },
+          { v: 5.8, d: 1 },
+          { v: 7.5, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
   'population-des-15-64-ans-t2-2026': {
     vintage: '2026',
     sources: [
@@ -3955,6 +4179,10 @@ export const questions = [
   },
   { id: 's4-q7', title: 'Les dispositifs qui fonctionnent en Allemagne et aux Pays-Bas' },
   {
+    id: 's4-q24',
+    title: 'L’emploi des femmes : quarante ans de rattrapage, un écart de salaire qui grandit avec l’âge',
+  },
+  {
     id: 's4-q8',
     title: 'Taux d\'emploi, taux de chômage : ce que chaque mesure compte réellement',
   },
@@ -4001,12 +4229,17 @@ export const citedSources = [
   'dg-tresor-dg-tresor-tresor-eco-n-376-novembre-2',
   'dg-tresor-dg-tresor-tresor-economics-n-110-mars',
   'drees-drees-les-retraites-et-les-retraites-e',
-  'eurostat-dares-enquete-acemo-definition-eurosta',
+  'eurostat-dares-enquete-acemo-definition-eurosta', 'eurostat-earn-gr-gpgr2',
   'eurostat-eurostat-enquete-forces-de-travail-202', 'eurostat-lfsi-emp-a-5',
-  'eurostat-nama-10-a10-e', 'euwals-euwals-van-vuuren-wolthoff-de-econom',
+  'eurostat-lfsi-emp-a-6', 'eurostat-nama-10-a10-e',
+  'euwals-euwals-van-vuuren-wolthoff-de-econom',
   'france-france-ministere-de-la-justice-sdse',
   'goulart-oesch-goulart-oesch-job-tenure-in-western',
-  'insee-accompagnement-crepon-duflo-gurgand', 'insee-france-travail-dares-statistiques-du',
+  'ined-ined-population-societes-apres-plu', 'insee-accompagnement-crepon-duflo-gurgand',
+  'insee-france-travail-dares-statistiques-du',
+  'insee-insee-enquetes-emploi-series-longues-d',
+  'insee-insee-focus-n-377-ecart-de-salaire-e',
+  'insee-insee-focus-n-377-ecart-de-salaire-e-2',
   'ocde-ocde-taxing-wages-2026-donnees-2025-c',
   'unedic-france-unedic-convention-du-15-novemb',
   'unedic-ofce-revue-de-l-ofce-n-184-2024-ma',

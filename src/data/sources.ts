@@ -297,6 +297,14 @@ const registry = {
     theme: 'depenses-publiques',
     accessed: '2026-08',
   },
+  'eurostat-earn-gr-gpgr2': {
+    producer: 'Eurostat',
+    kind: 'database',
+    datasets: ['earn_gr_gpgr2'],
+    text: 'Eurostat, écart de rémunération entre femmes et hommes sous forme non ajustée, salaire horaire brut, <span class="num">earn_gr_gpgr2</span>, 2023 : 12,0 % dans l’Union, 12,3 % en zone euro, de −0,9 % au Luxembourg à 19,0 % en Lettonie. L’écart de taux d’emploi italien est celui du tableau ci-dessus, Eurostat 2024. Le rapprochement des deux indicateurs, et sa lecture en termes de sélection, sont de notre fait.',
+    theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
   'eurostat-emissions-territoriales-citepa-euros': {
     producer: 'Eurostat',
     kind: 'report',
@@ -752,6 +760,14 @@ const registry = {
     theme: 'emploi-chomage',
     accessed: '2026-08',
   },
+  'eurostat-lfsi-emp-a-6': {
+    producer: 'Eurostat',
+    kind: 'database',
+    datasets: ['lfsi_emp_a'],
+    text: 'Eurostat, enquête sur les forces de travail, taux d’emploi des 20-64 ans par sexe, <span class="num">lfsi_emp_a</span>. Union européenne : femmes 70,2 %, hommes 80,4 %, soit 10,2 points en 2023 ; 10,0 points en 2024. France : femmes 71,7 %, hommes 77,2 %, soit 5,5 points en 2023. La valeur française 2024 par sexe n’a pas été reprise sur source primaire, d’où la ligne datée de 2023 : sur un an, l’écart de l’Union n’a bougé que de 0,2 point, mais la comparaison ligne à ligne perd cette précision.',
+    theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
   'eurostat-maddison-project-database-via-our-world': {
     producer: 'Eurostat',
     kind: 'other',
@@ -957,6 +973,13 @@ const registry = {
     theme: 'dette-deficit',
     accessed: '2026-08',
   },
+  'ined-ined-population-societes-apres-plu': {
+    producer: 'Ined',
+    kind: 'other',
+    text: 'Ined, <i>Population &amp; Sociétés</i>, « Après plusieurs décennies de forte progression, le taux d’emploi des femmes commence à stagner en France », novembre 2022. Analyse par génération, femmes et hommes de 25 à 50 ans.',
+    theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
   'insee-accompagnement-crepon-duflo-gurgand': {
     producer: 'Insee',
     kind: 'other',
@@ -1105,6 +1128,13 @@ const registry = {
     theme: 'niveau-de-vie',
     accessed: '2026-08',
   },
+  'insee-insee-enquetes-emploi-series-longues-d': {
+    producer: 'Insee',
+    kind: 'other',
+    text: 'Insee, enquêtes Emploi, séries longues du marché du travail, résultats 2024. Le taux d’activité masculin de 1984 n’est pas repris ici : seul l’écart est documenté à cette date. Pour 1975, l’Insee situe l’écart à « près de 30 points » sans en publier la décimale, et il n’est donc pas porté au tableau.',
+    theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
   'insee-insee-et-drees-travaux-sur-les-depenses': {
     producer: 'Insee',
     kind: 'other',
@@ -1117,6 +1147,20 @@ const registry = {
     kind: 'other',
     text: 'Insee et Ined, définitions officielles et estimations de population. Ces quatre catégories se recoupent partiellement : un immigré peut être français, un étranger peut être né en France. Aucune n\'est un sous-ensemble propre d\'une autre.',
     theme: 'immigration',
+    accessed: '2026-08',
+  },
+  'insee-insee-focus-n-377-ecart-de-salaire-e': {
+    producer: 'Insee',
+    kind: 'other',
+    text: 'Insee Focus n° 377, « Écart de salaire entre femmes et hommes en 2024 », et n° 349, même titre pour 2023. Base Tous salariés, déclarations sociales nominatives, secteur privé. L’écart à poste comparable est estimé par une régression du logarithme du salaire à effets fixes croisant le libellé d’emploi, la catégorie socioprofessionnelle et le numéro Siret de l’établissement. Depuis 1995, les inégalités de revenu salarial ont diminué d’un tiers.',
+    theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
+  'insee-insee-focus-n-377-ecart-de-salaire-e-2': {
+    producer: 'Insee',
+    kind: 'report',
+    text: 'Insee Focus n° 377, « Écart de salaire entre femmes et hommes en 2024 », et n° 349 pour 2023. Champ : salariés du privé, hors rémunérations tirées d’une activité secondaire publique. Le rapport de la dernière ligne est calculé par nos soins à partir des deux bornes publiées.',
+    theme: 'emploi-chomage',
     accessed: '2026-08',
   },
   'insee-insee-france-portrait-social-2025-fic': {
