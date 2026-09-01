@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { SITE } from '@/lib/metadata'
+import { SITE_URL } from '@/lib/site'
 import '@/styles/tokens.css'
 import '@/styles/base.css'
 import '@/styles/site.css'
 import '@/styles/print.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chiffres2027.fr'),
+  metadataBase: new URL(SITE_URL),
   title: { default: SITE.name, template: `%s` },
   description: SITE.description,
 }

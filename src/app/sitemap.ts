@@ -1,7 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { chapters } from '@/data/chapters'
+import { SITE_URL } from '@/lib/site'
 
-const BASE = 'https://chiffres2027.fr'
+const BASE = SITE_URL
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const updated = new Date('2026-08-31')
