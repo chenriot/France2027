@@ -5,7 +5,9 @@ motivés et ce qu'ils coûtent. La spécification (`site-chiffres-2027.md`) dit 
 qu'on veut ; ce document dit ce qu'on a fait quand la réalité du document
 d'origine ne correspondait pas à ce qui était prévu.
 
-Date : 2026-09-01 · État : première mise en œuvre complète, plus une fiche ajoutée (D11).
+Date : 2026-09-01 · État : mise en œuvre complète. Le contenu nouveau s’écrit dans le
+document d’origine (§D14) ; les corrections de fond et les ajouts en mode page
+passent par les amendements (§D17).
 
 ---
 
@@ -14,11 +16,11 @@ Date : 2026-09-01 · État : première mise en œuvre complète, plus une fiche 
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux migrés | 299 | `npm run check:data` |
+| Tableaux | **304** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
 | Cellules chiffrées typées en nombres | 4 165 sur 6 558 (64 %) | extraction |
-| Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
-| Sources | 211 blocs → **202 entrées**, 202 citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **identique au document d'origine, 57 752 éléments, aucun écart** | `npm run check:render` |
+| Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
+| Sources | **212 entrées** (202 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **57 752 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -180,7 +182,7 @@ compléments là où ils lisent réellement.
 
 ---
 
-## D8 — La bibliographie est la seule différence assumée de `/tout`
+## D8 — La bibliographie est la première différence assumée de `/tout`
 
 `/tout` reconstitue les 21 chapitres **à l'identique** (vérifié :
 `npm run check:render`), puis se referme sur une bibliographie **générée**
@@ -384,6 +386,118 @@ d'alerte, pas un progrès.
 
 ---
 
+## D17 — Le dossier peut aussi corriger son document d'origine, et doit le déclarer
+
+Jusqu'ici, le dépôt savait faire une seule chose : reproduire
+`Temp/chiffres2027 (3).html`. Deux besoins l'ont mis en défaut le même jour.
+
+**Le déclencheur.** Le tableau « Patrimoine net par ménage » du chapitre
+*Niveau de vie* cite l'enquête HFCS de la BCE. Vérification faite sur les
+tableaux statistiques publiés (vague 2021, tableaux A1 et A2, agrégat
+`DN3001`), **aucune de ses sept lignes ne s'y retrouve** :
+
+| | Document d'origine | BCE, vague 2021 | Écart |
+|---|--:|--:|--:|
+| Belgique, médian | 254 200 € | 242 400 € | +4,9 % |
+| Italie, médian | 162 800 € | 159 000 € | +2,4 % |
+| Espagne, médian | 151 600 € | 127 700 € | +18,7 % |
+| France, médian | 149 000 € | 125 700 € | +18,5 % |
+| Pays-Bas, médian | 143 500 € | 105 600 € | +35,9 % |
+| Zone euro, médian | 140 100 € | 123 500 € | +13,4 % |
+| Allemagne, médian | 103 300 € | 106 700 € | −3,2 % |
+
+Les écarts ne suivent aucune règle — les facteurs d'ajustement d'inflation
+publiés par la BCE (Belgique 1,0738, France 1,0612, Allemagne 1,0695) ne les
+reconstituent pas — alors que les taux de propriété de la même ligne sont
+justes à moins d'un point près. Le millésime est faux au passage : le registre
+annonçait « vague 2023 », or les vagues sont 2010, 2014, 2017 et 2021 ; 2023
+est l'année de publication de la quatrième.
+
+**Décision.** Un fichier non généré, `scripts/amendments.ts`, devient le seul
+endroit où le dossier s'écarte de son document d'origine. Il distingue deux
+régimes, qui ne coûtent pas la même chose :
+
+- **Correction** — une valeur fausse au regard de la source citée. Elle est
+  appliquée **partout**, `/tout` compris. Chaque correction porte `was`, le
+  texte exactement rendu par le document d'origine : l'extraction échoue si
+  elle ne le trouve pas, plutôt que d'écraser silencieusement autre chose.
+- **Ajout** — du contenu qui n'existait pas. Rendu en `mode="page"`
+  uniquement, jamais dans `/tout`. C'est le mécanisme de **§D7** appliqué au
+  fond : une insertion décalerait tous les éléments suivants et rendrait la
+  comparaison positionnelle inutilisable.
+
+**Ce que devient la garantie centrale.** Elle passe de « rendu identique » à
+**« rendu identique, hors corrections déclarées »** — et la déclaration est
+exécutable, pas déclarative : `check-render.ts` lit `divergences()`, n'accepte
+que ces substitutions-là, et **échoue aussi si une correction déclarée n'est
+jamais rencontrée**. On ne peut donc ni introduire une régression, ni laisser
+pourrir une correction devenue sans objet.
+
+```
+origine : 55891 éléments · site : 55891 éléments
+rendu identique au document d’origine : 21 chapitres, 29 corrections déclarées,
+aucun écart non déclaré
+```
+
+**Ce qui a été amendé.**
+
+| Amendement | Régime | Portée |
+|---|---|---|
+| 28 cellules du tableau BCE + son en-tête | correction | partout |
+| Millésime `2023` → `2021`, source BCE isolée du bloc composite | correction | métadonnée, sans effet de rendu |
+| Lignes Luxembourg et Malte | ajout | page de chapitre |
+| Encadré « brut / net », cas belge, comparaison américaine | ajout | page de chapitre |
+| Tableau du patrimoine américain (SCF 2022) | ajout | page de chapitre |
+| Fiche « taxe Zucman » et son tableau de chiffrages | ajout | page de chapitre |
+| 8 entrées de sources | ajout | registre |
+| Fiche « Les crises expliquent-elles la dette ? » et sa décomposition 1995-2025 | ajout | page de chapitre |
+| Conséquence de l'effet Rotterdam sur la lecture par zone | ajout | page de chapitre |
+| Trois figures de structure des prélèvements | ajout | page de chapitre |
+| Comparaison internationale des assiettes, et unités de compte | ajout | page de chapitre |
+
+**Le mécanisme couvre aussi les parties de chapitre.** `addedParts` insère un
+intertitre — le balisage `div.part` du document d'origine, qui en porte déjà sur
+deux chapitres — devant une fiche donnée. **Aucune fiche n'est déplacée** : on
+n'ajoute qu'un titre de section, en `mode="page"`, sur les quatre chapitres
+devenus trop longs pour être parcourus d'un bloc. L'ordre de `/tout` est
+inchangé, et `check:render` le vérifie.
+
+**Les familles de lecture ne passent pas par les amendements**, parce qu'elles ne
+touchent pas au contenu : elles vivent dans la table `CHAPTERS` de
+`scripts/extract.ts` et ne modifient que le sommaire et le rail. L'ordre des
+chapitres, lui, reste celui du document d'origine — il ne peut pas changer sans
+invalider la comparaison élément par élément. Conséquence à connaître : le rail
+n'affiche plus le compteur CSS, qui donnait la *position* dans la liste, mais le
+**numéro réel du thème**, seul correct une fois les thèmes regroupés.
+
+**Le mécanisme couvre désormais les figures.** `addedFigures` insère une figure
+neuve dans le registre du chapitre. Une figure ajoutée n'a pas de SVG d'origine
+à reproduire : elle s'écrit **en valeurs**, jamais en coordonnées, et
+`src/lib/chart.ts` la trace — le même code qui sert de preuve de non-régression
+aux 55 figures migrées. Elle est donc « prouvée » par construction, puisqu'il
+n'y a rien à quoi la comparer ; seules les constantes de `layout` et `frame`
+sont saisies, et ce sont des réglages de composant, pas des données. Comme tout
+ajout, elle n'est rendue qu'en `mode="page"`.
+
+**Limite assumée, et elle est réelle.** Le commentaire éditorial qui suit le
+tableau BCE **n'a pas été réécrit** : son point 2 affirme que le patrimoine
+moyen allemand est « presque identique » au français, ce qui était vrai des
+chiffres d'origine et ne l'est plus des chiffres publiés (315 600 € contre
+277 100 €, soit +14 %). Corriger un chiffre est une opération vérifiable ;
+réécrire la prose d'un auteur ne l'est pas. Un encadré orange le signale sur la
+page de chapitre — mais il est, comme tout ajout, absent de `/tout`. **À
+trancher avec l'auteur**, comme l'axe de §D2.
+
+**Ce que ça coûte.** `TableView` reçoit désormais `mode` et filtre les lignes
+portant `addition`. `Row` gagne un drapeau. L'extracteur gagne une centaine de
+lignes. En échange, ajouter une correction ou une fiche ne demande plus de
+toucher à quoi que ce soit de généré, et `npm run extract` reste la seule
+manière de produire les 21 répertoires.
+
+---
+
+---
+
 ## D10 — Ce qui reste à faire
 
 | Chantier | Volume | Où le voir |
@@ -393,6 +507,8 @@ d'alerte, pas un progrès.
 | Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
 | Figures non converties | 4 | `.artifacts/audit.json` |
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
+| Commentaire éditorial à réécrire après correction | 1 (tableau BCE) | D17 ci-dessus |
+| Autres tableaux à confronter à leur source | non vérifiés | D17 ci-dessus |
 | Cellules encore en texte | 2 393 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 | Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |

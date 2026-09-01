@@ -15,11 +15,18 @@
  *
  * La bibliographie est exclue de la comparaison : celle du site est générée
  * depuis les données, alors que celle du document d'origine était tenue à la
- * main. C'est la seule différence assumée, et elle est le but de la refonte.
+ * main. C'est une différence assumée, et elle est le but de la refonte.
+ *
+ * S'y ajoutent les **corrections déclarées** dans `scripts/amendments.ts` :
+ * des valeurs du document d'origine qui ne se reconstituaient pas depuis la
+ * source citée. Seules ces substitutions-là sont tolérées, et chacune doit
+ * être observée au moins une fois — une correction déclarée mais jamais
+ * appliquée est une erreur au même titre qu'un écart non déclaré.
  */
 import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { divergences } from './amendments'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const ORIGINAL = join(ROOT, 'Temp', 'chiffres2027 (3).html')
@@ -64,20 +71,47 @@ const built = tokens(chapters(readFileSync(BUILT, 'utf8')))
 
 console.log(`origine : ${original.length} éléments · site : ${built.length} éléments`)
 
+/** Corrections déclarées, comptées à mesure qu'on les rencontre. */
+const declared = new Map<string, number>(divergences().map(([was, now]) => [`${was}\u0000${now}`, 0]))
+
 const differences: string[] = []
+let corrected = 0
 const limit = Math.max(original.length, built.length)
-for (let i = 0; i < limit && differences.length < 10; i++) {
-  if (original[i] !== built[i]) {
+for (let i = 0; i < limit; i++) {
+  if (original[i] === built[i]) continue
+
+  const key = `${original[i]}\u0000${built[i]}`
+  const count = declared.get(key)
+  if (count !== undefined) {
+    declared.set(key, count + 1)
+    corrected++
+    continue
+  }
+  if (differences.length < 10) {
     differences.push(
       `élément ${i}\n    origine : ${(original[i] ?? '(absent)').slice(0, 160)}\n    site    : ${(built[i] ?? '(absent)').slice(0, 160)}`,
     )
   }
 }
 
-if (original.length !== built.length || differences.length > 0) {
-  console.error('\nle rendu a divergé du document d’origine :')
-  for (const d of differences) console.error(`  - ${d}`)
+const unused = [...declared].filter(([, n]) => n === 0).map(([k]) => k.split('\u0000').join(' → '))
+
+if (original.length !== built.length || differences.length > 0 || unused.length > 0) {
+  if (differences.length > 0) {
+    console.error('\nle rendu a divergé du document d’origine, hors corrections déclarées :')
+    for (const d of differences) console.error(`  - ${d}`)
+  }
+  if (unused.length > 0) {
+    console.error('\ncorrections déclarées mais jamais appliquées :')
+    for (const u of unused) console.error(`  - ${u}`)
+  }
+  if (original.length !== built.length) {
+    console.error(`\nnombre d’éléments : ${original.length} à l’origine, ${built.length} sur le site`)
+  }
   process.exit(1)
 }
 
-console.log('rendu identique au document d’origine : 21 chapitres, aucun écart')
+console.log(
+  `rendu identique au document d’origine : 21 chapitres, ` +
+    `${corrected} corrections déclarées, aucun écart non déclaré`,
+)

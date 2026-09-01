@@ -3489,6 +3489,144 @@ export const tables = {
       },
     ],
   },
+  'taxe-zucman-estimations-de-rendement': {
+    vintage: '2025',
+    sources: [
+      'zucman-impot-plancher-ultra-riches', 'tribune-sept-economistes-le-monde-taxe-zucman',
+      'bercy-pre-rapport-juin-2025-impot-plancher', 'collectif-trop-c-est-trop-taxe-zucman',
+    ],
+    columns: [
+      { key: 'auteur', header: 'Qui chiffre', type: 'text' },
+      { key: 'rendement', header: 'Rendement annuel', type: 'number', headerNumeric: true },
+      { key: 'deficit', header: 'Part des 152,5 Md€ de déficit', type: 'number', headerNumeric: true },
+      { key: 'hypothese', header: 'Hypothèse déterminante', type: 'text' },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Gabriel Zucman, fourchette haute' },
+          { v: 25, d: 0, u: 'Md€' },
+          { v: 16.4, d: 1, u: '%' },
+          { t: 'Assiette pleine, réaction des contribuables supposée faible' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Gabriel Zucman, chiffre le plus cité' },
+          { v: 20, d: 0, u: 'Md€', strong: true },
+          { v: 13.1, d: 1, u: '%', strong: true },
+          { t: '2 % sur le patrimoine au-delà de 100 M€, environ 1 800 foyers' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Gabriel Zucman, fourchette basse' },
+          { v: 15, d: 0, u: 'Md€' },
+          { v: 9.8, d: 1, u: '%' },
+          { t: 'Même assiette, évitement partiel' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Sept économistes, tribune <em>Le Monde</em>' },
+          { v: 5, d: 0, u: 'Md€', approx: true },
+          { v: 3.3, d: 1, u: '%' },
+          { t: '« Pour 1 € prélevé mécaniquement, seul 0,25 € se traduit en recettes »' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Ministère de l’Économie, pré-rapport de juin 2025' },
+          { v: 4, d: 0, u: 'Md€', approx: true },
+          { v: 2.6, d: 1, u: '%' },
+          { t: 'Assiette resserrée, comportements intégrés' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Variante gouvernementale : 0,5 % hors actifs professionnels' },
+          { v: 2, d: 0, u: 'Md€', approx: true },
+          { v: 1.3, d: 1, u: '%' },
+          { t: 'Taux quatre fois plus bas, outil de travail exclu' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Collectif « Trop c’est trop » <em>(acteur engagé)</em>' },
+          { t: '−10 à −20 Md€', n: true },
+          { t: 'perte nette', n: true },
+          { t: 'Exil fiscal coûtant 1,3 à 1,8 point de PIB' },
+        ],
+        missing: true,
+      },
+    ],
+    footer: {
+      cells: [
+        { t: 'Pour mémoire, charge annuelle de la dette' },
+        { v: 65, d: 0, u: 'Md€', approx: true },
+        { v: 42.6, d: 1, u: '%' },
+        { t: 'Le repère qui situe l’ordre de grandeur' },
+      ],
+      total: true,
+    },
+  },
+  'france-et-allemagne-meme-niveau-assiettes-opposees': {
+    vintage: '2024',
+    sources: ['eurostat-structure-des-prelevements-france-allemagne'],
+    columns: [
+      { key: 'preleve', header: 'Prélèvement, et sur quoi il est assis', type: 'text' },
+      { key: 'fr', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'de', header: 'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'ecart', header: 'Lecture', type: 'text' },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Cotisations employeurs</b> <em>(% du PIB)</em>' },
+          { v: 10, d: 1, u: '%', strong: true },
+          { v: 7, d: 1, u: '%' },
+          { t: 'La France prélève <b>43 % de plus</b> sur les salaires' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Impôts de production</b> <em>(% du PIB)</em>' },
+          { v: 4.4, d: 1, u: '%', strong: true },
+          { v: 1, d: 1, u: '%' },
+          { t: '<b>Rapport de 1 à 4,4</b> — et dus même à perte' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'TVA <em>(% du PIB)</em>' },
+          { v: 7.1, d: 1, u: '%' },
+          { v: 9.4, d: 1, u: '%', strong: true },
+          { t: 'La France prélève <b>2,3 points de moins</b> sur la consommation' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Impôts sur les bénéfices <em>(% de la valeur ajoutée des sociétés)</em>' },
+          { v: 4.31, d: 2, u: '%' },
+          { v: 4.33, d: 2, u: '%' },
+          { t: '<b>Quasiment identique</b>' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Total prélevé sur 100 € de coût employeur <em>(un salarié type)</em>' },
+          { v: 47.2, d: 1, u: '€' },
+          { v: 49.3, d: 1, u: '€', strong: true },
+          { t: 'L’Allemagne prélève <b>plus</b> au total' },
+        ],
+        separator: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -4033,7 +4171,7 @@ export const series = {
       { color: 's2', label: 'Dépenses' },
       { color: 's1', label: 'Recettes' },
     ],
-    svg: '<svg viewBox="0 0 720 330" class="cv" role="img" aria-labelledby="cbud2-t" preserveAspectRatio="xMidYMid meet">\n<title id="cbud2-t">% du PIB</title>\n<line class="mark" x1="206.0" y1="24" x2="206.0" y2="296"></line>\n<text class="mk" x="210.0" y="33">Sarkozy</text>\n<line class="mark" x1="316.0" y1="24" x2="316.0" y2="296"></line>\n<text class="mk" x="320.0" y="33">Hollande</text>\n<line class="mark" x1="426.0" y1="24" x2="426.0" y2="296"></line>\n<text class="mk" x="430.0" y="33">Macron</text>\n<line class="grid" x1="52" y1="259.5" x2="602" y2="259.5"></line>\n<text class="ax ar" x="43" y="263.5">50,0</text>\n<line class="grid" x1="52" y1="168.1" x2="602" y2="168.1"></line>\n<text class="ax ar" x="43" y="172.1">55,0</text>\n<line class="grid" x1="52" y1="76.8" x2="602" y2="76.8"></line>\n<text class="ax ar" x="43" y="80.8">60,0</text>\n<text class="ax" x="43" y="14" text-anchor="end">% du PIB</text>\n<text class="ax" x="52.0" y="314" text-anchor="start">2000</text>\n<text class="ax" x="162.0" y="314" text-anchor="middle">2005</text>\n<text class="ax" x="272.0" y="314" text-anchor="middle">2010</text>\n<text class="ax" x="382.0" y="314" text-anchor="middle">2015</text>\n<text class="ax" x="492.0" y="314" text-anchor="middle">2020</text>\n<text class="ax" x="602.0" y="314" text-anchor="end">2025</text>\n<line class="axis" x1="52" y1="296" x2="602" y2="296"></line>\n<polyline class="ln s2" points="52.0,212.0 74.0,208.3 96.0,188.2 118.0,179.1 140.0,186.4 162.0,180.9 184.0,190.1 206.0,193.7 228.0,180.9 250.0,113.3 272.0,118.8 294.0,131.6 316.0,115.2 338.0,102.4 360.0,106.0 382.0,120.6 404.0,124.3 426.0,118.8 448.0,142.6 470.0,162.7 492.0,45.7 514.0,85.9 536.0,106.0 558.0,135.3 580.0,131.6 602.0,127.9"></polyline>\n<polyline class="ln s1" points="52.0,235.7 74.0,233.9 96.0,246.7 118.0,254.0 140.0,252.2 162.0,244.9 184.0,239.4 206.0,248.5 228.0,244.9 250.0,248.5 272.0,248.5 294.0,228.4 316.0,210.1 338.0,191.9 360.0,190.1 382.0,191.9 404.0,193.7 426.0,180.9 448.0,186.4 470.0,204.7 492.0,213.8 514.0,212.0 536.0,191.9 558.0,241.2 580.0,237.5 602.0,221.1"></polyline>\n<circle class="dot s2" cx="602.0" cy="127.9" r="4"></circle>\n<text class="lbl s2t" x="610.0" y="131.9">Dépenses</text>\n<circle class="dot s1" cx="602.0" cy="221.1" r="4"></circle>\n<text class="lbl s1t" x="610.0" y="225.1">Recettes</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 330" class="cv" role="img" aria-labelledby="cbud2-t" preserveAspectRatio="xMidYMid meet">\r\n<title id="cbud2-t">% du PIB</title>\r\n<line class="mark" x1="206.0" y1="24" x2="206.0" y2="296"></line>\r\n<text class="mk" x="210.0" y="33">Sarkozy</text>\r\n<line class="mark" x1="316.0" y1="24" x2="316.0" y2="296"></line>\r\n<text class="mk" x="320.0" y="33">Hollande</text>\r\n<line class="mark" x1="426.0" y1="24" x2="426.0" y2="296"></line>\r\n<text class="mk" x="430.0" y="33">Macron</text>\r\n<line class="grid" x1="52" y1="259.5" x2="602" y2="259.5"></line>\r\n<text class="ax ar" x="43" y="263.5">50,0</text>\r\n<line class="grid" x1="52" y1="168.1" x2="602" y2="168.1"></line>\r\n<text class="ax ar" x="43" y="172.1">55,0</text>\r\n<line class="grid" x1="52" y1="76.8" x2="602" y2="76.8"></line>\r\n<text class="ax ar" x="43" y="80.8">60,0</text>\r\n<text class="ax" x="43" y="14" text-anchor="end">% du PIB</text>\r\n<text class="ax" x="52.0" y="314" text-anchor="start">2000</text>\r\n<text class="ax" x="162.0" y="314" text-anchor="middle">2005</text>\r\n<text class="ax" x="272.0" y="314" text-anchor="middle">2010</text>\r\n<text class="ax" x="382.0" y="314" text-anchor="middle">2015</text>\r\n<text class="ax" x="492.0" y="314" text-anchor="middle">2020</text>\r\n<text class="ax" x="602.0" y="314" text-anchor="end">2025</text>\r\n<line class="axis" x1="52" y1="296" x2="602" y2="296"></line>\r\n<polyline class="ln s2" points="52.0,212.0 74.0,208.3 96.0,188.2 118.0,179.1 140.0,186.4 162.0,180.9 184.0,190.1 206.0,193.7 228.0,180.9 250.0,113.3 272.0,118.8 294.0,131.6 316.0,115.2 338.0,102.4 360.0,106.0 382.0,120.6 404.0,124.3 426.0,118.8 448.0,142.6 470.0,162.7 492.0,45.7 514.0,85.9 536.0,106.0 558.0,135.3 580.0,131.6 602.0,127.9"></polyline>\r\n<polyline class="ln s1" points="52.0,235.7 74.0,233.9 96.0,246.7 118.0,254.0 140.0,252.2 162.0,244.9 184.0,239.4 206.0,248.5 228.0,244.9 250.0,248.5 272.0,248.5 294.0,228.4 316.0,210.1 338.0,191.9 360.0,190.1 382.0,191.9 404.0,193.7 426.0,180.9 448.0,186.4 470.0,204.7 492.0,213.8 514.0,212.0 536.0,191.9 558.0,241.2 580.0,237.5 602.0,221.1"></polyline>\r\n<circle class="dot s2" cx="602.0" cy="127.9" r="4"></circle>\r\n<text class="lbl s2t" x="610.0" y="131.9">Dépenses</text>\r\n<circle class="dot s1" cx="602.0" cy="221.1" r="4"></circle>\r\n<text class="lbl s1t" x="610.0" y="225.1">Recettes</text>\r\n</svg>',
     sources: ['eurostat-gov-10a-main'],
     vintage: '2025',
     values: {
@@ -4107,7 +4245,7 @@ export const series = {
     title: 'Taux effectif de cotisations patronales selon le salaire',
     subtitle: 'En % du salaire brut, barème 2026. Axe horizontal en multiples du SMIC.',
     caption: '<b>La courbe est en cloche.</b> Environ 3,5 % au SMIC, elle bondit de 29 points entre 1 et 1,6 SMIC sous l\'effet de la dégressivité des allègements, plafonne à 42 % vers 3,5 SMIC, retombe à 38 % au-delà de 4 plafonds de la Sécurité sociale (fin du chômage) puis à <b>23 % au-delà de 8 plafonds</b> (fin de l\'Agirc-Arrco). Et elle tombe à zéro pour un revenu de dividendes ou de plus-values, qui n\'est pas un salaire.',
-    svg: '<svg viewBox="0 0 720 300" class="cv" role="img" aria-labelledby="ccotpat-t" preserveAspectRatio="xMidYMid meet">\n<title id="ccotpat-t">Cotisations patronales effectives</title>\n<line class="grid" x1="52" y1="266.0" x2="602" y2="266.0"></line>\n<text class="ax ar" x="43" y="270.0">0,0</text>\n<line class="grid" x1="52" y1="215.2" x2="602" y2="215.2"></line>\n<text class="ax ar" x="43" y="219.2">10,0</text>\n<line class="grid" x1="52" y1="164.3" x2="602" y2="164.3"></line>\n<text class="ax ar" x="43" y="168.3">20,0</text>\n<line class="grid" x1="52" y1="113.5" x2="602" y2="113.5"></line>\n<text class="ax ar" x="43" y="117.5">30,0</text>\n<line class="grid" x1="52" y1="62.7" x2="602" y2="62.7"></line>\n<text class="ax ar" x="43" y="66.7">40,0</text>\n<text class="ax" x="43" y="14" text-anchor="end">% du salaire brut</text>\n<text class="ax" x="52.0" y="284" text-anchor="start">1</text>\n<text class="ax" x="156.8" y="284" text-anchor="middle">5</text>\n<text class="ax" x="287.7" y="284" text-anchor="middle">10</text>\n<text class="ax" x="418.7" y="284" text-anchor="middle">15</text>\n<text class="ax" x="549.6" y="284" text-anchor="middle">20</text>\n<line class="axis" x1="52" y1="266" x2="602" y2="266"></line>\n<polyline class="ln s2" points="52.0,248.2 57.2,162.3 65.1,111.5 67.7,100.3 78.2,75.9 91.3,57.6 104.4,54.0 117.5,51.0 183.0,51.0 256.0,51.0 256.3,72.8 484.1,72.8 486.8,148.1 602.0,148.1"></polyline>\n<circle class="dot s2" cx="602.0" cy="148.1" r="4"></circle>\n<text class="lbl s2t" x="610.0" y="152.1">Taux patronal effectif</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 300" class="cv" role="img" aria-labelledby="ccotpat-t" preserveAspectRatio="xMidYMid meet">\r\n<title id="ccotpat-t">Cotisations patronales effectives</title>\r\n<line class="grid" x1="52" y1="266.0" x2="602" y2="266.0"></line>\r\n<text class="ax ar" x="43" y="270.0">0,0</text>\r\n<line class="grid" x1="52" y1="215.2" x2="602" y2="215.2"></line>\r\n<text class="ax ar" x="43" y="219.2">10,0</text>\r\n<line class="grid" x1="52" y1="164.3" x2="602" y2="164.3"></line>\r\n<text class="ax ar" x="43" y="168.3">20,0</text>\r\n<line class="grid" x1="52" y1="113.5" x2="602" y2="113.5"></line>\r\n<text class="ax ar" x="43" y="117.5">30,0</text>\r\n<line class="grid" x1="52" y1="62.7" x2="602" y2="62.7"></line>\r\n<text class="ax ar" x="43" y="66.7">40,0</text>\r\n<text class="ax" x="43" y="14" text-anchor="end">% du salaire brut</text>\r\n<text class="ax" x="52.0" y="284" text-anchor="start">1</text>\r\n<text class="ax" x="156.8" y="284" text-anchor="middle">5</text>\r\n<text class="ax" x="287.7" y="284" text-anchor="middle">10</text>\r\n<text class="ax" x="418.7" y="284" text-anchor="middle">15</text>\r\n<text class="ax" x="549.6" y="284" text-anchor="middle">20</text>\r\n<line class="axis" x1="52" y1="266" x2="602" y2="266"></line>\r\n<polyline class="ln s2" points="52.0,248.2 57.2,162.3 65.1,111.5 67.7,100.3 78.2,75.9 91.3,57.6 104.4,54.0 117.5,51.0 183.0,51.0 256.0,51.0 256.3,72.8 484.1,72.8 486.8,148.1 602.0,148.1"></polyline>\r\n<circle class="dot s2" cx="602.0" cy="148.1" r="4"></circle>\r\n<text class="lbl s2t" x="610.0" y="152.1">Taux patronal effectif</text>\r\n</svg>',
     sources: ['urssaf-bareme-calcule-par-nos-soins-a-partir-de'],
     vintage: 'à confirmer',
     values: {
@@ -4161,7 +4299,7 @@ export const series = {
       { color: 's2', label: 'Impôts sur le revenu et le patrimoine' },
       { color: 's4', label: 'Impôts sur la production et la consommation' },
     ],
-    svg: '<svg viewBox="0 0 720 404" class="cv" role="img" aria-labelledby="cmasse-t">\n<title id="cmasse-t">milliards d\'euros prélevés, 2023</title>\n<line class="grid" x1="88.0" y1="16" x2="88.0" y2="354"></line>\n<text class="ax" x="88.0" y="378" text-anchor="middle">0</text>\n<line class="grid" x1="331.3" y1="16" x2="331.3" y2="354"></line>\n<text class="ax" x="331.3" y="378" text-anchor="middle">200</text>\n<line class="grid" x1="574.7" y1="16" x2="574.7" y2="354"></line>\n<text class="ax" x="574.7" y="378" text-anchor="middle">400</text>\n<text class="ax al" x="76" y="37">D1</text>\n<rect class="bar s1f" x="88.0" y="22" width="7.2" height="19" rx="2"></rect>\n<rect class="bar s2f" x="95.2" y="22" width="6.3" height="19" rx="2"></rect>\n<rect class="bar s4f" x="101.5" y="22" width="22.3" height="19" rx="2"></rect>\n<text class="lbl" x="131.8" y="37">29</text>\n<text class="ax al" x="76" y="71">D2</text>\n<rect class="bar s1f" x="88.0" y="56" width="18.1" height="19" rx="2"></rect>\n<rect class="bar s2f" x="106.1" y="56" width="5.7" height="19" rx="2"></rect>\n<rect class="bar s4f" x="111.8" y="56" width="25.9" height="19" rx="2"></rect>\n<text class="lbl" x="145.8" y="71">41</text>\n<text class="ax al" x="76" y="105">D3</text>\n<rect class="bar s1f" x="88.0" y="90" width="27.1" height="19" rx="2"></rect>\n<rect class="bar s2f" x="115.1" y="90" width="9.9" height="19" rx="2"></rect>\n<rect class="bar s4f" x="125.0" y="90" width="31.6" height="19" rx="2"></rect>\n<text class="lbl" x="164.6" y="105">56</text>\n<text class="ax al" x="76" y="139">D4</text>\n<rect class="bar s1f" x="88.0" y="124" width="37.7" height="19" rx="2"></rect>\n<rect class="bar s2f" x="125.7" y="124" width="13.7" height="19" rx="2"></rect>\n<rect class="bar s4f" x="139.5" y="124" width="36.3" height="19" rx="2"></rect>\n<text class="lbl" x="183.7" y="139">72</text>\n<text class="ax al" x="76" y="173">D5</text>\n<rect class="bar s1f" x="88.0" y="158" width="47.7" height="19" rx="2"></rect>\n<rect class="bar s2f" x="135.7" y="158" width="17.4" height="19" rx="2"></rect>\n<rect class="bar s4f" x="153.1" y="158" width="39.7" height="19" rx="2"></rect>\n<text class="lbl" x="200.8" y="173">86</text>\n<text class="ax al" x="76" y="207">D6</text>\n<rect class="bar s1f" x="88.0" y="192" width="55.1" height="19" rx="2"></rect>\n<rect class="bar s2f" x="143.1" y="192" width="22.6" height="19" rx="2"></rect>\n<rect class="bar s4f" x="165.7" y="192" width="45.0" height="19" rx="2"></rect>\n<text class="lbl" x="218.8" y="207">101</text>\n<text class="ax al" x="76" y="241">D7</text>\n<rect class="bar s1f" x="88.0" y="226" width="69.6" height="19" rx="2"></rect>\n<rect class="bar s2f" x="157.6" y="226" width="28.6" height="19" rx="2"></rect>\n<rect class="bar s4f" x="186.2" y="226" width="49.5" height="19" rx="2"></rect>\n<text class="lbl" x="243.7" y="241">121</text>\n<text class="ax al" x="76" y="275">D8</text>\n<rect class="bar s1f" x="88.0" y="260" width="86.5" height="19" rx="2"></rect>\n<rect class="bar s2f" x="174.5" y="260" width="39.5" height="19" rx="2"></rect>\n<rect class="bar s4f" x="214.0" y="260" width="55.7" height="19" rx="2"></rect>\n<text class="lbl" x="277.8" y="275">149</text>\n<text class="ax al" x="76" y="309">D9</text>\n<rect class="bar s1f" x="88.0" y="294" width="111.8" height="19" rx="2"></rect>\n<rect class="bar s2f" x="199.8" y="294" width="57.4" height="19" rx="2"></rect>\n<rect class="bar s4f" x="257.2" y="294" width="63.5" height="19" rx="2"></rect>\n<text class="lbl" x="328.7" y="309">191</text>\n<text class="ax al" x="76" y="343">D10</text>\n<rect class="bar s1f" x="88.0" y="328" width="199.8" height="19" rx="2"></rect>\n<rect class="bar s2f" x="287.8" y="328" width="225.9" height="19" rx="2"></rect>\n<rect class="bar s4f" x="513.7" y="328" width="88.6" height="19" rx="2"></rect>\n<text class="lbl" x="610.3" y="343">423</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 404" class="cv" role="img" aria-labelledby="cmasse-t">\r\n<title id="cmasse-t">milliards d\'euros prélevés, 2023</title>\r\n<line class="grid" x1="88.0" y1="16" x2="88.0" y2="354"></line>\r\n<text class="ax" x="88.0" y="378" text-anchor="middle">0</text>\r\n<line class="grid" x1="331.3" y1="16" x2="331.3" y2="354"></line>\r\n<text class="ax" x="331.3" y="378" text-anchor="middle">200</text>\r\n<line class="grid" x1="574.7" y1="16" x2="574.7" y2="354"></line>\r\n<text class="ax" x="574.7" y="378" text-anchor="middle">400</text>\r\n<text class="ax al" x="76" y="37">D1</text>\r\n<rect class="bar s1f" x="88.0" y="22" width="7.2" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="95.2" y="22" width="6.3" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="101.5" y="22" width="22.3" height="19" rx="2"></rect>\r\n<text class="lbl" x="131.8" y="37">29</text>\r\n<text class="ax al" x="76" y="71">D2</text>\r\n<rect class="bar s1f" x="88.0" y="56" width="18.1" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="106.1" y="56" width="5.7" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="111.8" y="56" width="25.9" height="19" rx="2"></rect>\r\n<text class="lbl" x="145.8" y="71">41</text>\r\n<text class="ax al" x="76" y="105">D3</text>\r\n<rect class="bar s1f" x="88.0" y="90" width="27.1" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="115.1" y="90" width="9.9" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="125.0" y="90" width="31.6" height="19" rx="2"></rect>\r\n<text class="lbl" x="164.6" y="105">56</text>\r\n<text class="ax al" x="76" y="139">D4</text>\r\n<rect class="bar s1f" x="88.0" y="124" width="37.7" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="125.7" y="124" width="13.7" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="139.5" y="124" width="36.3" height="19" rx="2"></rect>\r\n<text class="lbl" x="183.7" y="139">72</text>\r\n<text class="ax al" x="76" y="173">D5</text>\r\n<rect class="bar s1f" x="88.0" y="158" width="47.7" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="135.7" y="158" width="17.4" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="153.1" y="158" width="39.7" height="19" rx="2"></rect>\r\n<text class="lbl" x="200.8" y="173">86</text>\r\n<text class="ax al" x="76" y="207">D6</text>\r\n<rect class="bar s1f" x="88.0" y="192" width="55.1" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="143.1" y="192" width="22.6" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="165.7" y="192" width="45.0" height="19" rx="2"></rect>\r\n<text class="lbl" x="218.8" y="207">101</text>\r\n<text class="ax al" x="76" y="241">D7</text>\r\n<rect class="bar s1f" x="88.0" y="226" width="69.6" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="157.6" y="226" width="28.6" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="186.2" y="226" width="49.5" height="19" rx="2"></rect>\r\n<text class="lbl" x="243.7" y="241">121</text>\r\n<text class="ax al" x="76" y="275">D8</text>\r\n<rect class="bar s1f" x="88.0" y="260" width="86.5" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="174.5" y="260" width="39.5" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="214.0" y="260" width="55.7" height="19" rx="2"></rect>\r\n<text class="lbl" x="277.8" y="275">149</text>\r\n<text class="ax al" x="76" y="309">D9</text>\r\n<rect class="bar s1f" x="88.0" y="294" width="111.8" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="199.8" y="294" width="57.4" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="257.2" y="294" width="63.5" height="19" rx="2"></rect>\r\n<text class="lbl" x="328.7" y="309">191</text>\r\n<text class="ax al" x="76" y="343">D10</text>\r\n<rect class="bar s1f" x="88.0" y="328" width="199.8" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="287.8" y="328" width="225.9" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="513.7" y="328" width="88.6" height="19" rx="2"></rect>\r\n<text class="lbl" x="610.3" y="343">423</text>\r\n</svg>',
     sources: ['insee-calcul-par-nos-soins-a-partir-de-l-insee'],
     vintage: 'à confirmer',
     values: {
@@ -4228,7 +4366,7 @@ export const series = {
       { color: 's4', label: 'Cotisations sociales' },
       { color: 's1', label: 'Impôts sur la production et la consommation' },
     ],
-    svg: '<svg viewBox="0 0 720 522" class="cv" role="img" aria-labelledby="ctauxdec-t">\n<title id="ctauxdec-t">% du revenu primaire élargi, 2023</title>\n<line class="grid" x1="84.0" y1="16" x2="84.0" y2="474"></line>\n<text class="ax" x="84.0" y="496" text-anchor="middle">0</text>\n<line class="grid" x1="238.7" y1="16" x2="238.7" y2="474"></line>\n<text class="ax" x="238.7" y="496" text-anchor="middle">20</text>\n<line class="grid" x1="393.5" y1="16" x2="393.5" y2="474"></line>\n<text class="ax" x="393.5" y="496" text-anchor="middle">40</text>\n<line class="grid" x1="548.2" y1="16" x2="548.2" y2="474"></line>\n<text class="ax" x="548.2" y="496" text-anchor="middle">60</text>\n<text class="ax al" x="70" y="43">D1</text>\n<rect class="bar s4f" x="84" y="24" width="169.4" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="41" width="524.5" height="13" rx="3"></rect>\n<text class="lbl mut" x="261.4" y="35">21,9</text>\n<text class="lbl s1t" x="616.5" y="52">67,8</text>\n<text class="ax al" x="70" y="89">D2</text>\n<rect class="bar s4f" x="84" y="70" width="199.6" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="87" width="285.5" height="13" rx="3"></rect>\n<text class="lbl mut" x="291.6" y="81">25,8</text>\n<text class="lbl s1t" x="377.5" y="98">36,9</text>\n<text class="ax al" x="70" y="135">D3</text>\n<rect class="bar s4f" x="84" y="116" width="197.3" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="133" width="229.8" height="13" rx="3"></rect>\n<text class="lbl mut" x="289.3" y="127">25,5</text>\n<text class="lbl s1t" x="321.8" y="144">29,7</text>\n<text class="ax al" x="70" y="181">D4</text>\n<rect class="bar s4f" x="84" y="162" width="203.5" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="179" width="195.7" height="13" rx="3"></rect>\n<text class="lbl mut" x="295.5" y="173">26,3</text>\n<text class="lbl s1t" x="287.7" y="190">25,3</text>\n<text class="ax al" x="70" y="227">D5</text>\n<rect class="bar s4f" x="84" y="208" width="213.5" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="225" width="177.2" height="13" rx="3"></rect>\n<text class="lbl mut" x="305.5" y="219">27,6</text>\n<text class="lbl s1t" x="269.2" y="236">22,9</text>\n<text class="ax al" x="70" y="273">D6</text>\n<rect class="bar s4f" x="84" y="254" width="210.4" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="271" width="171.7" height="13" rx="3"></rect>\n<text class="lbl mut" x="302.4" y="265">27,2</text>\n<text class="lbl s1t" x="263.7" y="282">22,2</text>\n<text class="ax al" x="70" y="319">D7</text>\n<rect class="bar s4f" x="84" y="300" width="219.7" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="317" width="156.3" height="13" rx="3"></rect>\n<text class="lbl mut" x="311.7" y="311">28,4</text>\n<text class="lbl s1t" x="248.3" y="328">20,2</text>\n<text class="ax al" x="70" y="365">D8</text>\n<rect class="bar s4f" x="84" y="346" width="221.3" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="363" width="142.3" height="13" rx="3"></rect>\n<text class="lbl mut" x="313.3" y="357">28,6</text>\n<text class="lbl s1t" x="234.3" y="374">18,4</text>\n<text class="ax al" x="70" y="411">D9</text>\n<rect class="bar s4f" x="84" y="392" width="224.4" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="409" width="127.7" height="13" rx="3"></rect>\n<text class="lbl mut" x="316.4" y="403">29,0</text>\n<text class="lbl s1t" x="219.7" y="420">16,5</text>\n<text class="ax al" x="70" y="457">D10</text>\n<rect class="bar s4f" x="84" y="438" width="177.2" height="13" rx="3"></rect>\n<rect class="bar s1f" x="84" y="455" width="78.1" height="13" rx="3"></rect>\n<text class="lbl mut" x="269.2" y="449">22,9</text>\n<text class="lbl s1t" x="170.1" y="466">10,1</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 522" class="cv" role="img" aria-labelledby="ctauxdec-t">\r\n<title id="ctauxdec-t">% du revenu primaire élargi, 2023</title>\r\n<line class="grid" x1="84.0" y1="16" x2="84.0" y2="474"></line>\r\n<text class="ax" x="84.0" y="496" text-anchor="middle">0</text>\r\n<line class="grid" x1="238.7" y1="16" x2="238.7" y2="474"></line>\r\n<text class="ax" x="238.7" y="496" text-anchor="middle">20</text>\r\n<line class="grid" x1="393.5" y1="16" x2="393.5" y2="474"></line>\r\n<text class="ax" x="393.5" y="496" text-anchor="middle">40</text>\r\n<line class="grid" x1="548.2" y1="16" x2="548.2" y2="474"></line>\r\n<text class="ax" x="548.2" y="496" text-anchor="middle">60</text>\r\n<text class="ax al" x="70" y="43">D1</text>\r\n<rect class="bar s4f" x="84" y="24" width="169.4" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="41" width="524.5" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="261.4" y="35">21,9</text>\r\n<text class="lbl s1t" x="616.5" y="52">67,8</text>\r\n<text class="ax al" x="70" y="89">D2</text>\r\n<rect class="bar s4f" x="84" y="70" width="199.6" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="87" width="285.5" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="291.6" y="81">25,8</text>\r\n<text class="lbl s1t" x="377.5" y="98">36,9</text>\r\n<text class="ax al" x="70" y="135">D3</text>\r\n<rect class="bar s4f" x="84" y="116" width="197.3" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="133" width="229.8" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="289.3" y="127">25,5</text>\r\n<text class="lbl s1t" x="321.8" y="144">29,7</text>\r\n<text class="ax al" x="70" y="181">D4</text>\r\n<rect class="bar s4f" x="84" y="162" width="203.5" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="179" width="195.7" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="295.5" y="173">26,3</text>\r\n<text class="lbl s1t" x="287.7" y="190">25,3</text>\r\n<text class="ax al" x="70" y="227">D5</text>\r\n<rect class="bar s4f" x="84" y="208" width="213.5" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="225" width="177.2" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="305.5" y="219">27,6</text>\r\n<text class="lbl s1t" x="269.2" y="236">22,9</text>\r\n<text class="ax al" x="70" y="273">D6</text>\r\n<rect class="bar s4f" x="84" y="254" width="210.4" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="271" width="171.7" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="302.4" y="265">27,2</text>\r\n<text class="lbl s1t" x="263.7" y="282">22,2</text>\r\n<text class="ax al" x="70" y="319">D7</text>\r\n<rect class="bar s4f" x="84" y="300" width="219.7" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="317" width="156.3" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="311.7" y="311">28,4</text>\r\n<text class="lbl s1t" x="248.3" y="328">20,2</text>\r\n<text class="ax al" x="70" y="365">D8</text>\r\n<rect class="bar s4f" x="84" y="346" width="221.3" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="363" width="142.3" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="313.3" y="357">28,6</text>\r\n<text class="lbl s1t" x="234.3" y="374">18,4</text>\r\n<text class="ax al" x="70" y="411">D9</text>\r\n<rect class="bar s4f" x="84" y="392" width="224.4" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="409" width="127.7" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="316.4" y="403">29,0</text>\r\n<text class="lbl s1t" x="219.7" y="420">16,5</text>\r\n<text class="ax al" x="70" y="457">D10</text>\r\n<rect class="bar s4f" x="84" y="438" width="177.2" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="84" y="455" width="78.1" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="269.2" y="449">22,9</text>\r\n<text class="lbl s1t" x="170.1" y="466">10,1</text>\r\n</svg>',
     sources: ['insee-memes-sources-et-meme-perimetre-que-le-g'],
     vintage: 'à confirmer',
     values: {
@@ -4358,7 +4496,7 @@ export const series = {
     title: 'Les mêmes prestations, par habitant en parité de pouvoir d\'achat',
     subtitle: '2024. Le classement s\'inverse.',
     caption: '<b>La France est 2<sup>e</sup> de l\'UE en part du PIB mais derrière l\'Allemagne par habitant</b> — 13 620 € contre 16 000 €, soit 15 % de moins. L\'Allemagne dépense <b>moins en part de richesse</b> et <b>nettement plus par personne</b>, parce que son PIB par habitant est plus élevé. Dire « la France est championne des dépenses sociales » est vrai en % du PIB et faux en niveau de protection servi par habitant. <b>Le % du PIB mesure autant la faiblesse du dénominateur que la générosité du numérateur.</b>',
-    svg: '<svg viewBox="0 0 720 182" class="cv" role="img" aria-labelledby="cprestahab-t">\n<title id="cprestahab-t">prestations sociales, euros PPA par habitant, 2024</title>\n<line class="grid" x1="130.0" y1="16" x2="130.0" y2="134"></line>\n<text class="ax" x="130.0" y="156" text-anchor="middle">0</text>\n<line class="grid" x1="278.6" y1="16" x2="278.6" y2="134"></line>\n<text class="ax" x="278.6" y="156" text-anchor="middle">5 000</text>\n<line class="grid" x1="427.2" y1="16" x2="427.2" y2="134"></line>\n<text class="ax" x="427.2" y="156" text-anchor="middle">10 000</text>\n<line class="grid" x1="575.8" y1="16" x2="575.8" y2="134"></line>\n<text class="ax" x="575.8" y="156" text-anchor="middle">15 000</text>\n<text class="ax al" x="116" y="32">Allemagne</text>\n<rect class="bar s4f" x="130" y="22" width="475.5" height="12" rx="3"></rect>\n<text class="lbl s4t" x="612.5" y="32">16 000</text>\n<text class="ax al" x="116" y="62">France</text>\n<rect class="bar s4f" x="130" y="52" width="404.7" height="12" rx="3"></rect>\n<text class="lbl s4t" x="541.7" y="62">13 620</text>\n<text class="ax al" x="116" y="92">UE-27</text>\n<rect class="bar s4f" x="130" y="82" width="362.2" height="12" rx="3"></rect>\n<text class="lbl s4t" x="499.2" y="92">12 190</text>\n<text class="ax al" x="116" y="122">Italie</text>\n<rect class="bar s4f" x="130" y="112" width="358.3" height="12" rx="3"></rect>\n<text class="lbl s4t" x="495.3" y="122">12 056</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 182" class="cv" role="img" aria-labelledby="cprestahab-t">\r\n<title id="cprestahab-t">prestations sociales, euros PPA par habitant, 2024</title>\r\n<line class="grid" x1="130.0" y1="16" x2="130.0" y2="134"></line>\r\n<text class="ax" x="130.0" y="156" text-anchor="middle">0</text>\r\n<line class="grid" x1="278.6" y1="16" x2="278.6" y2="134"></line>\r\n<text class="ax" x="278.6" y="156" text-anchor="middle">5 000</text>\r\n<line class="grid" x1="427.2" y1="16" x2="427.2" y2="134"></line>\r\n<text class="ax" x="427.2" y="156" text-anchor="middle">10 000</text>\r\n<line class="grid" x1="575.8" y1="16" x2="575.8" y2="134"></line>\r\n<text class="ax" x="575.8" y="156" text-anchor="middle">15 000</text>\r\n<text class="ax al" x="116" y="32">Allemagne</text>\r\n<rect class="bar s4f" x="130" y="22" width="475.5" height="12" rx="3"></rect>\r\n<text class="lbl s4t" x="612.5" y="32">16 000</text>\r\n<text class="ax al" x="116" y="62">France</text>\r\n<rect class="bar s4f" x="130" y="52" width="404.7" height="12" rx="3"></rect>\r\n<text class="lbl s4t" x="541.7" y="62">13 620</text>\r\n<text class="ax al" x="116" y="92">UE-27</text>\r\n<rect class="bar s4f" x="130" y="82" width="362.2" height="12" rx="3"></rect>\r\n<text class="lbl s4t" x="499.2" y="92">12 190</text>\r\n<text class="ax al" x="116" y="122">Italie</text>\r\n<rect class="bar s4f" x="130" y="112" width="358.3" height="12" rx="3"></rect>\r\n<text class="lbl s4t" x="495.3" y="122">12 056</text>\r\n</svg>',
     sources: ['eurostat-drees-eurostat-base-sespros-donnees-2'],
     vintage: 'à confirmer',
     values: {
@@ -4396,6 +4534,153 @@ export const series = {
       ],
       frame: { width: 720, height: 182, left: 130, right: 575.8, top: 16, bottom: 134 },
     },
+  },
+  'd-ou-viennent-les-1-323-md-de-prelevements': {
+    svg: { viewBox: '0 0 720 360', titleId: 'cassiette-t', title: 'prélèvements par assiette, 2024' },
+    title: 'D’où viennent les 1 323 Md€ de prélèvements',
+    subtitle: 'En milliards d’euros, 2024. Les lignes publiées par Eurostat, regroupées par ce qu’elles taxent. Ce sont des masses nationales : ni par habitant, ni par ménage, ni par foyer fiscal.',
+    caption: '<b>Le premier bloc est le travail, et de loin.</b> Les cotisations sociales pèsent à elles seules <b>482,3 Md€, soit 36 % de tout ce que prélève la France</b> — davantage que la TVA et l’impôt sur les sociétés réunis. Et le bloc « revenus des ménages » en contient une part supplémentaire : il agrège l’impôt sur le revenu au barème et la <b>CSG</b>, prélevée à la source sur les salaires. <b>L’impôt sur le revenu au barème — celui qui a des tranches, un formulaire et un quotient familial — ne représente que 92 Md€, soit 7 % du total.</b> Le premier impôt sur le revenu du pays est celui dont personne ne parle.',
+    sources: ['eurostat-eurostat-gov-10a-taxag-secteurs-s13-s1'],
+    vintage: '2024',
+    caveat: 'Le regroupement par assiette est notre reconstruction : Eurostat publie les huit lignes, pas les sept blocs. La CSG n’est pas isolable en source primaire — elle reste ici dans « revenus des ménages », alors qu’elle est très majoritairement assise sur des salaires : la part réellement portée par le travail est donc supérieure aux 36 % du premier bloc.',
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 300,
+      tickLabelY: 322,
+      catLabelX: 236,
+      catLabelDy: 13,
+      barHeight: 18,
+      barPitch: 0,
+      groupPitch: 38,
+      firstBarY: 26,
+      valueLabelDx: 7,
+      valueLabelDy: 13,
+      valueClasses: ['lbl s1t'],
+      rx: 3,
+    },
+    x: [
+      'Travail (cotisations)', 'Revenus des ménages', 'Consommation (TVA, accises)',
+      'Production', 'Bénéfices des sociétés', 'Autres', 'Transmission du patrimoine',
+    ],
+    y: { min: 0, max: 500, ticks: [0, 100, 200, 300, 400, 500] },
+    series: [
+      {
+        key: 'assiette',
+        color: 's1',
+        values: [482.3, 275.1, 265.4, 129, 83.8, 66.4, 21.5],
+        decimals: 1,
+      },
+    ],
+    frame: { width: 720, height: 360, left: 250, right: 660, top: 16, bottom: 300 },
+  },
+  'sur-100-de-cout-employeur-ce-qui-est-preleve': {
+    svg: { viewBox: '0 0 720 330', titleId: 'ccoin-t', title: 'coin fiscalo-social, 2025' },
+    title: 'Sur 100 € de coût employeur, ce qui est prélevé',
+    subtitle: 'Célibataire sans enfant au salaire moyen, 2025. La longueur totale est le prélèvement ; les couleurs disent sur quoi il est assis. Unité de compte : <b>un salarié</b>, pas un ménage ni un foyer fiscal.',
+    caption: '<b>Le total français n’est pas le plus élevé — sa composition, oui.</b> La France prélève 47,2 € sur 100, moins que la Belgique et l’Allemagne. Mais <b>26,7 € passent par les cotisations patronales, le taux le plus élevé de l’OCDE et le double de la moyenne (13,5 €)</b>, quand l’impôt sur le revenu n’en prend que 12,2 — avant-dernier rang du panel de comparaison. <b>Le Danemark est le contre-exemple qui tranche</b> : 0,7 € de cotisations patronales, aucune cotisation salariale, 35,1 € d’impôt sur le revenu, pour un prélèvement total inférieur de 11 points au français et une protection sociale d’ampleur comparable. <b>Il n’existe donc aucun lien nécessaire entre le niveau de protection sociale et le niveau des charges assises sur les salaires : c’est un choix de plomberie, pas une contrainte.</b>',
+    sources: ['eurostat-ocde-taxing-wages-2026-donnees-2025'],
+    vintage: '2025',
+    caveat: 'La moyenne OCDE se reconstitue à 35,0 quand l’indicateur publié vaut 35,1 : l’écart est un arrondi des trois composantes, pas une divergence de mesure. Le coin fiscalo-social s’arrête au revenu net disponible — il n’inclut ni la TVA, ni les impôts sur le patrimoine, ni l’impôt sur les sociétés.',
+    legend: [
+      { color: 's1', label: 'Cotisations patronales' },
+      { color: 's4', label: 'Cotisations salariales' },
+      { color: 's5', label: 'Impôt sur le revenu' },
+    ],
+    type: 'stacked-bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 270,
+      tickLabelY: 292,
+      catLabelX: 196,
+      catLabelDy: 15,
+      barHeight: 22,
+      barPitch: 0,
+      groupPitch: 40,
+      firstBarY: 28,
+      valueLabelDx: 7,
+      valueLabelDy: 15,
+      valueClasses: ['lbl', 'lbl', 'lbl'],
+      rx: 2,
+      stacked: true,
+    },
+    x: ['Belgique', 'Allemagne', 'France', 'Danemark', 'Moyenne OCDE', 'États-Unis'],
+    y: { min: 0, max: 60, ticks: [0, 10, 20, 30, 40, 50, 60] },
+    series: [
+      {
+        key: 'patronales',
+        color: 's1',
+        label: 'Cotisations patronales',
+        values: [21.4, 17.3, 26.7, 0.7, 13.5, 7.5],
+        decimals: 1,
+      },
+      {
+        key: 'salariales',
+        color: 's4',
+        label: 'Cotisations salariales',
+        values: [11, 17.8, 8.3, 0, 8.1, 7.1],
+        decimals: 1,
+      },
+      {
+        key: 'impot',
+        color: 's5',
+        label: 'Impôt sur le revenu',
+        values: [20.1, 14.2, 12.2, 35.1, 13.4, 15.4],
+        decimals: 1,
+      },
+    ],
+    frame: { width: 720, height: 330, left: 210, right: 650, top: 16, bottom: 270 },
+  },
+  'ce-que-chaque-pays-preleve-en-part-de-sa-richesse': {
+    svg: { viewBox: '0 0 720 380', titleId: 'cpo-t', title: 'prélèvements obligatoires, 2025' },
+    title: 'Ce que chaque pays prélève, en part de sa richesse',
+    subtitle: 'Impôts et cotisations sociales, toutes administrations confondues, en % du PIB, 2025. Le dénominateur est la richesse produite : ce n’est ni un montant par habitant, ni par ménage.',
+    caption: '<b>La France est deuxième de l’Union, à un demi-point du Danemark.</b> Mais le classement dit seulement <em>combien</em>, pas <em>sur quoi</em> — et c’est là que les modèles divergent radicalement. Le Danemark prélève presque autant que la France en n’ayant quasiment <b>aucune cotisation sociale</b> : il finance sa protection sociale par l’impôt sur le revenu. L’Allemagne prélève 4,4 points de moins au total, mais <b>davantage sur un salaire</b> — 49,3 € contre 47,2 € sur 100 € de coût employeur. <b>Deux pays au même niveau de prélèvement peuvent donc taxer des choses entièrement différentes</b>, et c’est ce que le seul taux de prélèvements obligatoires ne dit jamais.',
+    sources: ['eurostat-taux-de-prelevements-obligatoires-2025'],
+    vintage: '2025',
+    caveat: 'Deux mesures coexistent pour la France et il ne faut jamais les mélanger : <b>43,6 %</b> en méthodologie française, <b>45,3 %</b> en méthodologie européenne — c’est cette dernière qui figure ici, la seule comparable entre pays. L’écart tient au traitement des crédits d’impôt et des cotisations imputées.',
+    legend: [
+      { color: 's1', label: 'France' },
+      { color: 's4', label: 'Autres pays et moyenne européenne' },
+    ],
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 320,
+      tickLabelY: 342,
+      catLabelX: 176,
+      catLabelDy: 13,
+      barHeight: 18,
+      barPitch: 0,
+      groupPitch: 37,
+      firstBarY: 26,
+      valueLabelDx: 7,
+      valueLabelDy: 13,
+      valueClasses: ['lbl mut', 'lbl s1t'],
+      rx: 3,
+    },
+    x: ['Danemark', 'France', 'Belgique', 'Autriche', 'Italie', 'Allemagne', 'UE-27', 'Espagne'],
+    y: { min: 0, max: 50, ticks: [0, 10, 20, 30, 40, 50] },
+    series: [
+      {
+        key: 'autres',
+        color: 's4',
+        label: 'Autres pays et moyenne européenne',
+        values: [45.8, null, 45.1, 43.8, 42.6, 40.9, 40.4, 37.3],
+        decimals: 1,
+      },
+      {
+        key: 'france',
+        color: 's1',
+        label: 'France',
+        values: [null, 45.3, null, null, null, null, null, null],
+        decimals: 1,
+      },
+    ],
+    frame: { width: 720, height: 380, left: 190, right: 660, top: 16, bottom: 320 },
   },
 } satisfies SeriesSet
 
@@ -4460,6 +4745,10 @@ export const questions = [
     id: 's1-q26',
     title: 'Les prestations sociales, poste par poste : retraites, santé, chômage, RSA',
   },
+  {
+    id: 's1-q27',
+    title: 'Que rapporterait la « taxe Zucman », et qu’est-ce que ça couvre du déficit ?',
+  },
 ] satisfies readonly { id: string; title: string }[]
 
 /**
@@ -4470,8 +4759,9 @@ export const questions = [
 export const citedSources = [
   'b-boutchenik-b-boutchenik-les-effets-redistributifs',
   'banque-mondiale-banque-mondiale-ny-gdp-pcap-pp-kd-doll',
+  'bercy-pre-rapport-juin-2025-impot-plancher',
   'code-de-commerce-code-de-commerce-art-l-241-3-et-l-24',
-  'dgfip-dgfip-statistiques-n-41-novembre-2025',
+  'collectif-trop-c-est-trop-taxe-zucman', 'dgfip-dgfip-statistiques-n-41-novembre-2025',
   'drees-drees-comptes-de-la-protection-sociale',
   'eurostat-eurostat-earn-nt-net-chaine-complete-en',
   'eurostat-eurostat-gov-10a-exp-s13-te-mio-eur',
@@ -4490,6 +4780,8 @@ export const citedSources = [
   'eurostat-maddison-project-database-via-our-world',
   'eurostat-ocde-panorama-des-pensions-2025-via-l',
   'eurostat-ocde-taxing-wages-2026-donnees-2025',
+  'eurostat-structure-des-prelevements-france-allemagne',
   'insee-insee-analyses-n-118-et-119-revenus-de',
-  'insee-insee-france-portrait-social-2025-fic',
+  'insee-insee-france-portrait-social-2025-fic', 'parlement-taxe-zucman-votes-2025-2026',
+  'tribune-sept-economistes-le-monde-taxe-zucman', 'zucman-impot-plancher-ultra-riches',
 ] satisfies readonly SourceId[]

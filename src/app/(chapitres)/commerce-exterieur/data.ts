@@ -1462,6 +1462,62 @@ export const tables = {
       },
     ],
   },
+  'ce-que-la-reaffectation-change-a-la-lecture-par-zone': {
+    vintage: '2025',
+    sources: ['eurostat-douanes-francaises-et-eurostat-comext-s'],
+    columns: [
+      { key: 'lecture', header: 'Solde des biens, 2025', type: 'text' },
+      { key: 'brut', header: 'Chiffre brut', type: 'number', headerNumeric: true },
+      { key: 'reaffecte', header: 'Après réaffectation', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Chine' },
+          { v: -22.5, d: 1, u: 'Md€' },
+          { v: -50, d: 0, u: 'Md€', approx: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Pays-Bas' },
+          { v: -39, d: 1, u: 'Md€' },
+          { v: -5.4, d: 1, u: 'Md€', approx: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Belgique' },
+          { v: -18.9, d: 1, u: 'Md€' },
+          { v: 0.3, d: 1, u: 'Md€', approx: true, sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Solde avec l’UE-27</b>' },
+          { v: -113.4, d: 1, u: 'Md€' },
+          { v: -60, d: 0, u: 'Md€', approx: true, strong: true },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: '<b>Solde avec le reste du monde</b>' },
+          { v: 19.4, d: 1, u: 'Md€', sign: true },
+          { v: -33, d: 0, u: 'Md€', approx: true, strong: true },
+        ],
+      },
+    ],
+    footer: {
+      cells: [
+        { t: 'Premier déficit bilatéral' },
+        { t: 'Pays-Bas', n: true },
+        { t: '<b>Chine</b>', n: true },
+      ],
+      total: true,
+    },
+  },
 } satisfies Tables
 
 export const series = {} satisfies SeriesSet

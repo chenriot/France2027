@@ -736,12 +736,12 @@ export const tables = {
     ],
   },
   'patrimoine-net-par-menage-enquete-bce-2023': {
-    vintage: '2023',
-    sources: ['eurostat-insee-premiere-n-2081-comptes-de-patri'],
+    vintage: '2021',
+    sources: ['bce-hfcs-vague-2021-tableaux-a1-a2', 'bnb-revue-economique-2024-patrimoine-des-menages'],
     columns: [
       {
         key: 'patrimoine-net-par-menage-enquete-bce-2023',
-        header: 'Patrimoine net par ménage, enquête BCE 2023',
+        header: 'Patrimoine net par ménage, enquête BCE vague 2021',
         type: 'text',
         headerNumeric: false,
       },
@@ -754,67 +754,87 @@ export const tables = {
       {
         cells: [
           { t: 'Belgique' },
-          { v: 254200, d: 0, u: '€' },
-          { v: 411500, d: 0, u: '€' },
-          { v: 1.62, d: 2 },
-          { v: 66.7, d: 1, u: '%' },
+          { v: 242400, d: 0, u: '€' },
+          { v: 408000, d: 0, u: '€' },
+          { v: 1.68, d: 2 },
+          { v: 72.4, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'Italie' },
-          { v: 162800, d: 0, u: '€' },
-          { v: 307300, d: 0, u: '€' },
-          { v: 1.89, d: 2 },
-          { v: 74.5, d: 1, u: '%' },
+          { v: 159000, d: 0, u: '€' },
+          { v: 350000, d: 0, u: '€' },
+          { v: 2.2, d: 2 },
+          { v: 77.5, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'Espagne' },
-          { v: 151600, d: 0, u: '€' },
-          { v: 321800, d: 0, u: '€' },
-          { v: 2.12, d: 2 },
-          { v: 72.1, d: 1, u: '%' },
+          { v: 127700, d: 0, u: '€' },
+          { v: 278700, d: 0, u: '€' },
+          { v: 2.18, d: 2 },
+          { v: 73.9, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'France' },
-          { v: 149000, d: 0, u: '€' },
-          { v: 330700, d: 0, u: '€' },
-          { v: 2.22, d: 2 },
-          { v: 57.2, d: 1, u: '%' },
+          { v: 125700, d: 0, u: '€' },
+          { v: 277100, d: 0, u: '€' },
+          { v: 2.2, d: 2 },
+          { v: 57.5, d: 1, u: '%' },
         ],
         emphasis: true,
       },
       {
         cells: [
           { t: 'Pays-Bas' },
-          { v: 143500, d: 0, u: '€' },
-          { v: 257300, d: 0, u: '€' },
-          { v: 1.79, d: 2 },
-          { v: 56.6, d: 1, u: '%' },
+          { v: 105600, d: 0, u: '€' },
+          { v: 219600, d: 0, u: '€' },
+          { v: 2.08, d: 2 },
+          { v: 56.9, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'Zone euro' },
-          { v: 140100, d: 0, u: '€' },
-          { v: 312000, d: 0, u: '€' },
-          { v: 2.23, d: 2 },
-          { v: 60.1, d: 1, u: '%' },
+          { v: 123500, d: 0, u: '€' },
+          { v: 292100, d: 0, u: '€' },
+          { v: 2.37, d: 2 },
+          { v: 61.7, d: 1, u: '%' },
         ],
       },
       {
         cells: [
           { t: 'Allemagne' },
-          { v: 103300, d: 0, u: '€' },
-          { v: 324000, d: 0, u: '€' },
-          { v: 3.14, d: 2, strong: true },
-          { v: 41.8, d: 1, u: '%', strong: true },
+          { v: 106700, d: 0, u: '€' },
+          { v: 315600, d: 0, u: '€' },
+          { v: 2.96, d: 2, strong: true },
+          { v: 44.5, d: 1, u: '%', strong: true },
         ],
         emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Luxembourg' },
+          { v: 717700, d: 0, u: '€' },
+          { v: 1269700, d: 0, u: '€' },
+          { v: 1.77, d: 2 },
+          { v: 65.6, d: 1, u: '%' },
+        ],
+        addition: true,
+      },
+      {
+        cells: [
+          { t: 'Malte' },
+          { v: 273600, d: 0, u: '€' },
+          { v: 413000, d: 0, u: '€' },
+          { v: 1.51, d: 2 },
+          { v: 79, d: 1, u: '%' },
+        ],
+        addition: true,
       },
     ],
   },
@@ -1786,6 +1806,51 @@ export const tables = {
       },
     ],
   },
+  'patrimoine-net-des-menages-americains-scf-2022': {
+    vintage: '2022',
+    sources: ['reserve-federale-scf-2022'],
+    columns: [
+      {
+        key: 'indicateur',
+        header: 'Patrimoine net des <em>families</em>, enquête SCF 2022',
+        type: 'text',
+      },
+      { key: 'valeur', header: 'Dollars 2022', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Médian' },
+          { v: 192900, d: 0, u: '$' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Moyen' },
+          { v: 1063700, d: 0, u: '$' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Rapport moyen / médian' },
+          { v: 5.51, d: 2, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Progression réelle de la médiane, 2019-2022' },
+          { v: 37, d: 0, u: '%', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Progression réelle de la moyenne, 2019-2022' },
+          { v: 23, d: 0, u: '%', sign: true },
+        ],
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -1838,7 +1903,7 @@ export const series = {
       { color: 's4', label: '% du revenu disponible' },
       { color: 's1', label: '% du PIB' },
     ],
-    svg: '<svg viewBox="0 0 720 384" class="cv" role="img" aria-labelledby="cdettmen-t">\n<title id="cdettmen-t">dette des ménages, % du revenu disponible puis % du PIB — fin 2025</title>\n<line class="grid" x1="150.0" y1="16" x2="150.0" y2="336"></line>\n<text class="ax" x="150.0" y="358" text-anchor="middle">0</text>\n<line class="grid" x1="339.1" y1="16" x2="339.1" y2="336"></line>\n<text class="ax" x="339.1" y="358" text-anchor="middle">50</text>\n<line class="grid" x1="528.3" y1="16" x2="528.3" y2="336"></line>\n<text class="ax" x="528.3" y="358" text-anchor="middle">100</text>\n<text class="ax al" x="136" y="43">États-Unis</text>\n<rect class="bar s4f" x="150" y="24" width="462.3" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="41" width="353.3" height="13" rx="3"></rect>\n<text class="lbl mut" x="620.3" y="35">122,2</text>\n<text class="lbl s1t" x="511.3" y="52">93,4</text>\n<text class="ax al" x="136" y="89">Royaume-Uni</text>\n<rect class="bar s4f" x="150" y="70" width="433.1" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="87" width="277.7" height="13" rx="3"></rect>\n<text class="lbl mut" x="591.1" y="81">114,5</text>\n<text class="lbl s1t" x="435.7" y="98">73,4</text>\n<text class="ax al" x="136" y="135">France</text>\n<rect class="bar s4f" x="150" y="116" width="340.5" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="133" width="223.6" height="13" rx="3"></rect>\n<text class="lbl mut" x="498.5" y="127">90,0</text>\n<text class="lbl s1t" x="381.6" y="144">59,1</text>\n<text class="ax al" x="136" y="181">Zone euro</text>\n<rect class="bar s4f" x="150" y="162" width="311.7" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="179" width="191.0" height="13" rx="3"></rect>\n<text class="lbl mut" x="469.7" y="173">82,4</text>\n<text class="lbl s1t" x="349.0" y="190">50,5</text>\n<text class="ax al" x="136" y="227">Allemagne</text>\n<rect class="bar s4f" x="150" y="208" width="287.5" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="225" width="185.4" height="13" rx="3"></rect>\n<text class="lbl mut" x="445.5" y="219">76,0</text>\n<text class="lbl s1t" x="343.4" y="236">49,0</text>\n<text class="ax al" x="136" y="273">Espagne</text>\n<rect class="bar s4f" x="150" y="254" width="256.9" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="271" width="161.9" height="13" rx="3"></rect>\n<text class="lbl mut" x="414.9" y="265">67,9</text>\n<text class="lbl s1t" x="319.9" y="282">42,8</text>\n<text class="ax al" x="136" y="319">Italie</text>\n<rect class="bar s4f" x="150" y="300" width="211.1" height="13" rx="3"></rect>\n<rect class="bar s1f" x="150" y="317" width="135.8" height="13" rx="3"></rect>\n<text class="lbl mut" x="369.1" y="311">55,8</text>\n<text class="lbl s1t" x="293.8" y="328">35,9</text>\n</svg>',
+    svg: '<svg viewBox="0 0 720 384" class="cv" role="img" aria-labelledby="cdettmen-t">\r\n<title id="cdettmen-t">dette des ménages, % du revenu disponible puis % du PIB — fin 2025</title>\r\n<line class="grid" x1="150.0" y1="16" x2="150.0" y2="336"></line>\r\n<text class="ax" x="150.0" y="358" text-anchor="middle">0</text>\r\n<line class="grid" x1="339.1" y1="16" x2="339.1" y2="336"></line>\r\n<text class="ax" x="339.1" y="358" text-anchor="middle">50</text>\r\n<line class="grid" x1="528.3" y1="16" x2="528.3" y2="336"></line>\r\n<text class="ax" x="528.3" y="358" text-anchor="middle">100</text>\r\n<text class="ax al" x="136" y="43">États-Unis</text>\r\n<rect class="bar s4f" x="150" y="24" width="462.3" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="41" width="353.3" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="620.3" y="35">122,2</text>\r\n<text class="lbl s1t" x="511.3" y="52">93,4</text>\r\n<text class="ax al" x="136" y="89">Royaume-Uni</text>\r\n<rect class="bar s4f" x="150" y="70" width="433.1" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="87" width="277.7" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="591.1" y="81">114,5</text>\r\n<text class="lbl s1t" x="435.7" y="98">73,4</text>\r\n<text class="ax al" x="136" y="135">France</text>\r\n<rect class="bar s4f" x="150" y="116" width="340.5" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="133" width="223.6" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="498.5" y="127">90,0</text>\r\n<text class="lbl s1t" x="381.6" y="144">59,1</text>\r\n<text class="ax al" x="136" y="181">Zone euro</text>\r\n<rect class="bar s4f" x="150" y="162" width="311.7" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="179" width="191.0" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="469.7" y="173">82,4</text>\r\n<text class="lbl s1t" x="349.0" y="190">50,5</text>\r\n<text class="ax al" x="136" y="227">Allemagne</text>\r\n<rect class="bar s4f" x="150" y="208" width="287.5" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="225" width="185.4" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="445.5" y="219">76,0</text>\r\n<text class="lbl s1t" x="343.4" y="236">49,0</text>\r\n<text class="ax al" x="136" y="273">Espagne</text>\r\n<rect class="bar s4f" x="150" y="254" width="256.9" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="271" width="161.9" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="414.9" y="265">67,9</text>\r\n<text class="lbl s1t" x="319.9" y="282">42,8</text>\r\n<text class="ax al" x="136" y="319">Italie</text>\r\n<rect class="bar s4f" x="150" y="300" width="211.1" height="13" rx="3"></rect>\r\n<rect class="bar s1f" x="150" y="317" width="135.8" height="13" rx="3"></rect>\r\n<text class="lbl mut" x="369.1" y="311">55,8</text>\r\n<text class="lbl s1t" x="293.8" y="328">35,9</text>\r\n</svg>',
     sources: ['eurostat-tec00104'],
     vintage: 'à confirmer',
     values: {
@@ -1946,7 +2011,7 @@ export const series = {
       { color: 's2', label: 'Professionnel' },
       { color: 's3', label: 'Biens durables' },
     ],
-    svg: '<svg viewBox="0 0 720 404" class="cv" role="img" aria-labelledby="cpatdec-t">\n<title id="cpatdec-t">composition du patrimoine brut, %, début 2024</title>\n<line class="grid" x1="120.0" y1="16" x2="120.0" y2="354"></line>\n<text class="ax" x="120.0" y="378" text-anchor="middle">0</text>\n<line class="grid" x1="361.7" y1="16" x2="361.7" y2="354"></line>\n<text class="ax" x="361.7" y="378" text-anchor="middle">50</text>\n<line class="grid" x1="603.3" y1="16" x2="603.3" y2="354"></line>\n<text class="ax" x="603.3" y="378" text-anchor="middle">100</text>\n<text class="ax al" x="108" y="37">10 % du haut</text>\n<rect class="bar s1f" x="120.0" y="22" width="257.6" height="19" rx="2"></rect>\n<rect class="bar s4f" x="377.6" y="22" width="116.0" height="19" rx="2"></rect>\n<rect class="bar s2f" x="493.6" y="22" width="90.9" height="19" rx="2"></rect>\n<rect class="bar s3f" x="584.5" y="22" width="18.8" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="71">D8 à D9</text>\n<rect class="bar s1f" x="120.0" y="56" width="334.9" height="19" rx="2"></rect>\n<rect class="bar s4f" x="454.9" y="56" width="95.7" height="19" rx="2"></rect>\n<rect class="bar s2f" x="550.6" y="56" width="23.7" height="19" rx="2"></rect>\n<rect class="bar s3f" x="574.3" y="56" width="28.5" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="105">D7 à D8</text>\n<rect class="bar s1f" x="120.0" y="90" width="350.4" height="19" rx="2"></rect>\n<rect class="bar s4f" x="470.4" y="90" width="86.5" height="19" rx="2"></rect>\n<rect class="bar s2f" x="556.9" y="90" width="13.5" height="19" rx="2"></rect>\n<rect class="bar s3f" x="570.5" y="90" width="32.9" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="139">D6 à D7</text>\n<rect class="bar s1f" x="120.0" y="124" width="363.0" height="19" rx="2"></rect>\n<rect class="bar s4f" x="483.0" y="124" width="74.9" height="19" rx="2"></rect>\n<rect class="bar s2f" x="557.9" y="124" width="8.7" height="19" rx="2"></rect>\n<rect class="bar s3f" x="566.6" y="124" width="37.2" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="173">D5 à D6</text>\n<rect class="bar s1f" x="120.0" y="158" width="362.5" height="19" rx="2"></rect>\n<rect class="bar s4f" x="482.5" y="158" width="72.0" height="19" rx="2"></rect>\n<rect class="bar s2f" x="554.5" y="158" width="5.8" height="19" rx="2"></rect>\n<rect class="bar s3f" x="560.3" y="158" width="43.0" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="207">D4 à D5</text>\n<rect class="bar s1f" x="120.0" y="192" width="323.8" height="19" rx="2"></rect>\n<rect class="bar s4f" x="443.8" y="192" width="100.5" height="19" rx="2"></rect>\n<rect class="bar s2f" x="544.4" y="192" width="8.7" height="19" rx="2"></rect>\n<rect class="bar s3f" x="553.1" y="192" width="50.3" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="241">D3 à D4</text>\n<rect class="bar s1f" x="120.0" y="226" width="128.6" height="19" rx="2"></rect>\n<rect class="bar s4f" x="248.6" y="226" width="232.5" height="19" rx="2"></rect>\n<rect class="bar s2f" x="481.0" y="226" width="14.0" height="19" rx="2"></rect>\n<rect class="bar s3f" x="495.1" y="226" width="108.3" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="275">D2 à D3</text>\n<rect class="bar s1f" x="120.0" y="260" width="9.2" height="19" rx="2"></rect>\n<rect class="bar s4f" x="129.2" y="260" width="229.1" height="19" rx="2"></rect>\n<rect class="bar s2f" x="358.3" y="260" width="7.7" height="19" rx="2"></rect>\n<rect class="bar s3f" x="366.0" y="260" width="237.3" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="309">D1 à D2</text>\n<rect class="bar s1f" x="120.0" y="294" width="2.9" height="19" rx="2"></rect>\n<rect class="bar s4f" x="122.9" y="294" width="182.7" height="19" rx="2"></rect>\n<rect class="bar s2f" x="305.6" y="294" width="4.3" height="19" rx="2"></rect>\n<rect class="bar s3f" x="309.9" y="294" width="293.4" height="19" rx="2"></rect>\n<text class="ax al" x="108" y="343">10 % du bas</text>\n<rect class="bar s1f" x="120.0" y="328" width="0.6" height="19" rx="2"></rect>\n<rect class="bar s4f" x="120.0" y="328" width="154.7" height="19" rx="2"></rect>\n<rect class="bar s2f" x="274.7" y="328" width="1.4" height="19" rx="2"></rect>\n<rect class="bar s3f" x="276.1" y="328" width="327.2" height="19" rx="2"></rect>\n</svg>',
+    svg: '<svg viewBox="0 0 720 404" class="cv" role="img" aria-labelledby="cpatdec-t">\r\n<title id="cpatdec-t">composition du patrimoine brut, %, début 2024</title>\r\n<line class="grid" x1="120.0" y1="16" x2="120.0" y2="354"></line>\r\n<text class="ax" x="120.0" y="378" text-anchor="middle">0</text>\r\n<line class="grid" x1="361.7" y1="16" x2="361.7" y2="354"></line>\r\n<text class="ax" x="361.7" y="378" text-anchor="middle">50</text>\r\n<line class="grid" x1="603.3" y1="16" x2="603.3" y2="354"></line>\r\n<text class="ax" x="603.3" y="378" text-anchor="middle">100</text>\r\n<text class="ax al" x="108" y="37">10 % du haut</text>\r\n<rect class="bar s1f" x="120.0" y="22" width="257.6" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="377.6" y="22" width="116.0" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="493.6" y="22" width="90.9" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="584.5" y="22" width="18.8" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="71">D8 à D9</text>\r\n<rect class="bar s1f" x="120.0" y="56" width="334.9" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="454.9" y="56" width="95.7" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="550.6" y="56" width="23.7" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="574.3" y="56" width="28.5" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="105">D7 à D8</text>\r\n<rect class="bar s1f" x="120.0" y="90" width="350.4" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="470.4" y="90" width="86.5" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="556.9" y="90" width="13.5" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="570.5" y="90" width="32.9" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="139">D6 à D7</text>\r\n<rect class="bar s1f" x="120.0" y="124" width="363.0" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="483.0" y="124" width="74.9" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="557.9" y="124" width="8.7" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="566.6" y="124" width="37.2" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="173">D5 à D6</text>\r\n<rect class="bar s1f" x="120.0" y="158" width="362.5" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="482.5" y="158" width="72.0" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="554.5" y="158" width="5.8" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="560.3" y="158" width="43.0" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="207">D4 à D5</text>\r\n<rect class="bar s1f" x="120.0" y="192" width="323.8" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="443.8" y="192" width="100.5" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="544.4" y="192" width="8.7" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="553.1" y="192" width="50.3" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="241">D3 à D4</text>\r\n<rect class="bar s1f" x="120.0" y="226" width="128.6" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="248.6" y="226" width="232.5" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="481.0" y="226" width="14.0" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="495.1" y="226" width="108.3" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="275">D2 à D3</text>\r\n<rect class="bar s1f" x="120.0" y="260" width="9.2" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="129.2" y="260" width="229.1" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="358.3" y="260" width="7.7" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="366.0" y="260" width="237.3" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="309">D1 à D2</text>\r\n<rect class="bar s1f" x="120.0" y="294" width="2.9" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="122.9" y="294" width="182.7" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="305.6" y="294" width="4.3" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="309.9" y="294" width="293.4" height="19" rx="2"></rect>\r\n<text class="ax al" x="108" y="343">10 % du bas</text>\r\n<rect class="bar s1f" x="120.0" y="328" width="0.6" height="19" rx="2"></rect>\r\n<rect class="bar s4f" x="120.0" y="328" width="154.7" height="19" rx="2"></rect>\r\n<rect class="bar s2f" x="274.7" y="328" width="1.4" height="19" rx="2"></rect>\r\n<rect class="bar s3f" x="276.1" y="328" width="327.2" height="19" rx="2"></rect>\r\n</svg>',
     sources: ['insee-insee-enquete-histoire-de-vie-et-patrim-5'],
     vintage: 'à confirmer',
   },
@@ -1987,6 +2052,7 @@ export const questions = [
  */
 export const citedSources = [
   'acpr-acpr-analyses-syntheses-n-180-juin',
+  'bnb-revue-economique-2024-patrimoine-des-menages',
   'eurostat-france-insee-comptes-de-patrimoine-ba', 'eurostat-ilc-di12',
   'eurostat-insee-premiere-n-2081-comptes-de-patri',
   'insee-conseil-des-prelevements-obligatoires-et',
@@ -1998,5 +2064,5 @@ export const citedSources = [
   'insee-insee-enquete-histoire-de-vie-et-patrim-4',
   'insee-insee-et-drees-travaux-sur-les-depenses',
   'insee-insee-insee-focus-n-354-enquete-histo',
-  'insee-ocde-income-distribution-database-2022',
+  'insee-ocde-income-distribution-database-2022', 'reserve-federale-scf-2022',
 ] satisfies readonly SourceId[]
