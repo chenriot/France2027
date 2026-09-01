@@ -107,7 +107,7 @@ année à une série doit se faire en éditant un seul fichier.
 C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
 donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
 prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
-55 891 éléments, aucun écart.
+56 550 éléments, aucun écart.
 
 Ce que ça implique au quotidien :
 
@@ -139,11 +139,15 @@ doit être conditionné au mode, sinon il casse la vérification.
   balisage dans un `content.tsx`.
 - **Régénérer depuis la source** : corriger `scripts/extract.ts`, lancer
   `npm run extract`, relire le diff, `npm run verify`.
+- **Ajouter du contenu rédactionnel** : l'écrire dans
+  `Temp/chiffres2027 (3).html`, au balisage du document, puis `npm run extract`
+  et `npm run verify`. Le document d'origine est la surface d'écriture ; les
+  chapitres en sont la traduction. Voir `specs/DECISIONS.md` §D11.
 
 ## État actuel
 
-Le site est construit et vérifié : 21 chapitres, 286 tableaux, 55 figures,
-192 sources, rendu identique au document d'origine sur `/tout`, 103 Ko de JS
+Le site est construit et vérifié : 21 chapitres, 290 tableaux, 55 figures,
+198 sources, rendu identique au document d'origine sur `/tout`, 103 Ko de JS
 par page, 25 routes prérendues.
 
 Ce qui reste ouvert est listé et chiffré dans `specs/DECISIONS.md` §D10 :

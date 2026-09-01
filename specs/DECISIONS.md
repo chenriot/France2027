@@ -5,7 +5,7 @@ motivés et ce qu'ils coûtent. La spécification (`site-chiffres-2027.md`) dit 
 qu'on veut ; ce document dit ce qu'on a fait quand la réalité du document
 d'origine ne correspondait pas à ce qui était prévu.
 
-Date : 2026-08-31 · État : première mise en œuvre complète.
+Date : 2026-09-01 · État : première mise en œuvre complète, plus une fiche ajoutée (D11).
 
 ---
 
@@ -14,11 +14,11 @@ Date : 2026-08-31 · État : première mise en œuvre complète.
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux migrés | 286 | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 079 sur 6 404 (64 %) | extraction |
+| Tableaux migrés | 290 | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 117 sur 6 468 (64 %) | extraction |
 | Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
-| Sources | 197 blocs → **192 entrées**, 192 citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **identique au document d'origine, 55 891 éléments, aucun écart** | `npm run check:render` |
+| Sources | 203 blocs → **198 entrées**, 198 citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **identique au document d'origine, 56 550 éléments, aucun écart** | `npm run check:render` |
 | JS par page | 103 Ko (budget : 120 Ko) | `next build` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -205,16 +205,56 @@ un schéma aurait été pire que d'en compter 26 à confirmer.
 
 ---
 
+## D11 — Ajouter du contenu : on écrit dans le document d'origine
+
+**Le problème.** La règle 8 de `CLAUDE.md` interdit de modifier à la main les
+`content.tsx` et `data.ts` des chapitres : ils sont générés. Mais le contenu
+rédactionnel nouveau doit bien être écrit quelque part, et `scripts/extract.ts`
+est un traducteur, pas un lieu d'écriture.
+
+**Ce qu'on a fait.** `Temp/chiffres2027 (3).html` devient la surface d'écriture
+du contenu, pas seulement l'archive dont on est parti. On y ajoute la fiche au
+balisage maison (`div.q`, `div.tw`, `p.src`, `div.lim`, `div.hole`,
+`div.take`), puis `npm run extract` la propage.
+
+**Pourquoi ça ne casse pas la garantie de rendu.** `check:render` compare le
+site à ce fichier : les deux bougent ensemble, la comparaison reste exacte et
+reste une preuve — elle prouve que l'extraction est fidèle, ce qui est bien ce
+qu'elle a toujours prouvé. Ce qu'elle ne prouve plus, c'est que le site est
+identique au document livré le 31 août 2026 ; cette version-là est dans
+l'historique Git, qui est le bon endroit pour elle.
+
+**Deux pièges rencontrés à l'écriture**, tous deux détectés par `check:render` :
+
+- `&nbsp;` avant un `?` casse la comparaison — l'entité et le caractère U+00A0
+  ne se sérialisent pas pareil de part et d'autre. Le document utilise une
+  espace ordinaire avant `?` (245 occurrences) : s'y tenir ;
+- `<span class="num">` sert à déclarer un **identifiant de jeu de données** :
+  l'extracteur en fait le champ `datasets` de la source. L'écrire autour d'un
+  mot qui n'est pas un code de base (« Siret ») crée une fausse entrée dans le
+  registre.
+
+**Première application : `s4-q24`**, sur l'emploi et le salaire des femmes,
+en fin de partie 1 du chapitre « Emploi, chômage et coût du travail ».
+Quatre tableaux, six sources, aucune dette de migration ajoutée. Trois encadrés
+`hole` y signalent ce que la statistique publique ne permet pas d'établir :
+l'écart de salaire à poste comparable par tranche d'âge, les tranches d'âge
+intermédiaires, et l'ancienneté par sexe. Ces trous ne sont pas des lacunes de
+recherche à combler plus tard : ce sont des données qui ne sont pas publiées,
+et c'est un résultat en soi.
+
+---
+
 ## D10 — Ce qui reste à faire
 
 | Chantier | Volume | Où le voir |
 |---|---|---|
-| URL des sources | 192 entrées sans `url` | `src/data/sources.ts` |
+| URL des sources | 198 entrées sans `url` | `src/data/sources.ts` |
 | Millésimes à confirmer | 26 | `.artifacts/audit.json` |
 | Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
 | Figures non converties | 4 | `.artifacts/audit.json` |
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
-| Cellules encore en texte | 2 325 | extraction |
+| Cellules encore en texte | 2 351 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 
 La comparaison de non-régression est aujourd'hui structurelle (HTML élément par
