@@ -40,6 +40,7 @@ s'étonner d'un choix : les écarts à la spec y sont justifiés et chiffrés.
 | `npm run extract` | régénère les 21 chapitres depuis `Temp/chiffres2027 (3).html` |
 | `npm run check:data` | audit des données ; écrit `.artifacts/audit.json` |
 | `npm run check:render` | compare `/tout` au document d'origine, élément par élément |
+| `npm run check:bundle` | poids du JavaScript par page de chapitre |
 | `npm test` | tests unitaires (formatage FR, échelles, graphiques) |
 
 **Avant de pousser : `npm run verify`.** C'est cette commande qui protège la
@@ -47,7 +48,7 @@ garantie centrale du projet — un rendu identique au document d'origine.
 
 ## Stack
 
-Next.js 15 (App Router) · TypeScript · CSS natif · Vitest.
+Next.js 16 (App Router) · TypeScript · CSS natif · Vitest.
 Hébergement et déploiement : **Vercel**.
 
 - **Ne pas utiliser `output: 'export'`.** Le site est déployé sur Vercel avec un
@@ -143,8 +144,9 @@ doit être conditionné au mode, sinon il casse la vérification.
 ## État actuel
 
 Le site est construit et vérifié : 21 chapitres, 286 tableaux, 55 figures,
-192 sources, rendu identique au document d'origine sur `/tout`, 103 Ko de JS
-par page, 25 routes prérendues.
+192 sources, rendu identique au document d'origine sur `/tout`, 25 routes
+prérendues. Le JavaScript par page est de 170 Ko pour 120 visés : dette
+mesurée, expliquée et cliquetée (`DECISIONS.md` §D11).
 
 Ce qui reste ouvert est listé et chiffré dans `specs/DECISIONS.md` §D10 :
 URL des sources, 26 millésimes à confirmer, 26 figures dont le tracé n'est pas

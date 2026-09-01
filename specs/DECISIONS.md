@@ -19,7 +19,7 @@ Date : 2026-08-31 · État : première mise en œuvre complète.
 | Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
 | Sources | 197 blocs → **192 entrées**, 192 citées, **0 orpheline** | `npm run check:data` |
 | **Rendu de `/tout`** | **identique au document d'origine, 55 891 éléments, aucun écart** | `npm run check:render` |
-| JS par page | 103 Ko (budget : 120 Ko) | `next build` |
+| JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
 ---
@@ -205,6 +205,69 @@ un schéma aurait été pire que d'en compter 26 à confirmer.
 
 ---
 
+## D11 — Le budget de JavaScript n'était pas tenu, et on ne le savait pas
+
+**Ce qu'on croyait.** 103 Ko par page, sous le budget de 120 Ko fixé par la
+spec (§9, critère 9). Ce chiffre venait de la ligne « First Load JS » de la
+sortie de build de Next 15.
+
+**Ce qu'on a mesuré.** Cette ligne ne compte qu'une partie des morceaux
+chargés. En additionnant les scripts réellement référencés par le HTML
+prérendu d'une page de chapitre, compressés comme un serveur les sert :
+
+| Version | Poids réel par page |
+|---|---:|
+| Next 15.5.25 | 140 Ko |
+| Next 16.3.4 | **170 Ko** |
+
+Le budget n'a donc jamais été tenu, et le passage à Next 16 — nécessaire pour
+clore les avis de sécurité (§D12) — ajoute 30 Ko.
+
+**Décision.** `scripts/check-bundle.ts` mesure ce poids et l'affiche à chaque
+`npm run verify`. Deux seuils, sur le modèle de §D9 : l'**objectif** de 120 Ko,
+signalé tant qu'il n'est pas atteint, et un **cliquet** à 172 Ko qui fait
+échouer la vérification si le poids augmente encore. La dette ne peut donc plus
+ni grandir ni se cacher.
+
+Next 16 n'affiche plus « First Load JS » du tout : sans ce script, le budget
+aurait cessé d'être vérifié sans que personne s'en aperçoive.
+
+**Le chemin pour y revenir.** Les pages de lecture n'ont besoin de React côté
+client pour rien : la bascule de thème, le scrollspy et la recherche sont trois
+comportements courts, sans état partagé, qui tiennent en JavaScript ordinaire.
+Les sortir de React retirerait le moteur client des pages de chapitre et
+ramènerait le poids très en dessous de l'objectif. C'est le chantier à ouvrir
+si la légèreté redevient prioritaire ; il ne touche ni les données, ni le rendu.
+
+**À retenir.** Un chiffre repris d'un outil n'est pas une mesure. Celui-ci a
+tenu lieu de preuve pendant toute la construction sans jamais mesurer ce qu'on
+croyait.
+
+---
+
+## D12 — Next.js 16 : imposé par la sécurité, validé par la preuve de rendu
+
+Le déploiement Vercel a signalé une version vulnérable. Next 15.5.4 est touchée
+par **CVE-2025-66478** (exécution de code à distance dans le protocole React
+Flight) et trois autres avis. La ligne 15.5.25 clôt ceux qui visent Next
+directement, mais laisse un avis modéré hérité du `postcss` embarqué, que seul
+Next 16 corrige.
+
+**Décision.** Passer à Next 16.3.4, la dernière version. `npm audit` est
+désormais entièrement vert — 0 vulnérabilité, toutes sévérités.
+
+**Ce qui rendait ce saut sûr.** Un changement de version majeure du cadre est
+exactement le type de modification qui casse un rendu sans qu'on le voie.
+`npm run check:render` a répondu en une commande : **55 891 éléments, aucun
+écart**. La vérification construite en §D1 a payé son coût dès son premier
+usage sérieux.
+
+Coût mesuré : +30 Ko de JavaScript par page (§D11). Vitest passe au passage de
+3.2.4 à 4.1.11, qui corrige une lecture de fichier arbitraire dans son serveur
+d'interface.
+
+---
+
 ## D10 — Ce qui reste à faire
 
 | Chantier | Volume | Où le voir |
@@ -216,6 +279,7 @@ un schéma aurait été pire que d'en compter 26 à confirmer.
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
 | Cellules encore en texte | 2 325 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
+| Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |
 
 La comparaison de non-régression est aujourd'hui structurelle (HTML élément par
 élément), ce qui est plus strict qu'une capture d'écran sur le balisage, mais

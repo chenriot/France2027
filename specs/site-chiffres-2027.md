@@ -57,7 +57,7 @@ Ses trois défauts structurels, qui motivent la refonte :
 
 | Choix | Motivation |
 |---|---|
-| **Next.js 15** (App Router) + TypeScript | Un répertoire = une route = un chapitre : la structure de fichiers demandée est exactement le modèle de routage de l'App Router. Composants serveur par défaut : le contenu est rendu au build, sans JS de rendu. |
+| **Next.js 16** (App Router) + TypeScript | Un répertoire = une route = un chapitre : la structure de fichiers demandée est exactement le modèle de routage de l'App Router. Composants serveur par défaut : le contenu est rendu au build, sans JS de rendu. |
 | **Vercel** | Hébergement et déploiement. Build Next.js standard, sans `output: 'export'` : les pages restent prérendues au build (§9), mais on garde la porte ouverte aux capacités serveur du cadre — revalidation, route handlers, images — le jour où le dossier en aura besoin. Se fermer cette porte aujourd'hui n'apporterait rien, puisque l'hébergement est de toute façon Vercel. |
 | **TSX pour le contenu** | Le texte reste du texte, mais les tableaux et figures sont des appels de composants typés : une faute de frappe dans un identifiant de tableau casse la compilation au lieu de produire un trou dans la page. |
 | **`data.ts` typé + Zod** | Le typage TypeScript attrape la plupart des erreurs à l'écriture ; Zod valide au build ce que le type ne peut pas dire (source inexistante au registre, longueur de série incohérente, millésime manquant). |
@@ -352,7 +352,7 @@ Ils sont la garantie de mise en forme cohérente : **c'est le composant, pas le 
 
 - **Toutes les routes sont prérendues au build.** Aucune page de lecture n'est rendue à la requête : pas de `dynamic = 'force-dynamic'`, pas de `cookies()` ni de `headers()` dans un chapitre. Sur Vercel, une page de chapitre est donc servie depuis le cache statique, exactement comme le ferait un export.
 - Chaque page de chapitre pèse moins de 150 Ko de HTML et n'embarque **aucun JS de rendu** : tableaux, figures et encadrés sont rendus au build par des composants serveur.
-- **Coût du choix Next.js, énoncé franchement.** Même sans composant client, l'App Router livre son runtime React et son routeur — de l'ordre de 90 à 110 Ko compressés. Le HTML est complet et la page se lit intégralement sans JavaScript, mais on ne tient pas la promesse « zéro JS » qu'aurait donnée un générateur statique pur. Budget fixé : **≤ 120 Ko de JS compressé** sur une page de chapitre, mesuré en intégration continue ; scrollspy, thème et recherche sont chargés dynamiquement, la recherche seulement à la première frappe.
+- **Coût du choix Next.js, énoncé franchement.** Même sans composant client, l'App Router livre son runtime React et son routeur. Le HTML est complet et la page se lit intégralement sans JavaScript, mais on ne tient pas la promesse « zéro JS » qu'aurait donnée un générateur statique pur. Objectif : **≤ 120 Ko de JS compressé** sur une page de chapitre. **Il n'est pas atteint** : 170 Ko mesurés sur Next 16. `npm run check:bundle` affiche le chiffre à chaque vérification et refuse toute aggravation ; `DECISIONS.md` §D11 explique pourquoi le chiffre annoncé jusqu'ici était faux et comment revenir sous l'objectif.
 - Contrastes vérifiés en clair et en sombre, y compris les cinq couleurs de série `--s1`…`--s5` et les couleurs d'encadré.
 - Chaque graphique a un `<title>` et **expose ses données en tableau repliable** (`<details>`) rendu depuis le même objet de série. Une courbe SVG n'est pas lisible au lecteur d'écran ; le tableau l'est, et il ne coûte rien puisque les données existent déjà.
 - Métadonnées Open Graph par chapitre via l'export `metadata` de chaque `page.tsx`, alimenté par `meta` du `data.ts`. `canonical`, `sitemap.ts`, flux RSS des mises à jour.
@@ -396,7 +396,7 @@ L'extraction est semi-automatique. `scripts/extract.ts` (Node + `node-html-parse
 6. La page `/sources` est générée ; zéro source orpheline ou fantôme.
 7. Chaque tableau et chaque série porte au moins une source et un millésime — garanti par le typage, revérifié par `check-data.ts`, et restitué dans `.artifacts/audit.json`. `check-data.ts` distingue les **invariants**, qui font échouer le build, de la **dette de migration** (millésimes à confirmer, figures au tracé d'origine), qui est comptée sans bloquer : écrire un faux millésime pour satisfaire un schéma serait pire que d'en compter 26 à confirmer.
 8. Chaque figure expose ses données en tableau alternatif.
-9. Les pages de lecture sont entièrement lisibles sans JavaScript, sommaire et navigation compris ; le JS embarqué d'une page de chapitre reste sous 120 Ko compressés.
+9. Les pages de lecture sont entièrement lisibles sans JavaScript, sommaire et navigation compris. Le JS embarqué d'une page de chapitre vise 120 Ko compressés ; il est aujourd'hui de 170 Ko, mesuré et cliqueté par `npm run check:bundle` (`DECISIONS.md` §D11).
 10. Lighthouse ≥ 95 sur les quatre axes pour une page de chapitre.
 11. Ajouter une ligne à un tableau ou une année à une série se fait en éditant **un seul fichier**, le `data.ts` du chapitre, sans toucher au balisage ni à une coordonnée.
 

@@ -95,5 +95,6 @@ commande à lancer avant de pousser.
 | `npm run extract` | régénère les 21 chapitres depuis le document d'origine |
 | `npm run check:data` | audit des données ; écrit `.artifacts/audit.json` |
 | `npm run check:render` | compare `/tout` au document d'origine |
+| `npm run check:bundle` | poids du JavaScript par page de chapitre |
 | `npm run export:html` | exporte le document en un fichier HTML autonome |
 | `npm test` | tests unitaires |

@@ -12,11 +12,12 @@
     "check:data": "tsx scripts/check-data.ts",
     "extract": "tsx scripts/extract.ts",
     "check:render": "tsx scripts/check-render.ts",
-    "verify": "npm run lint && npm run test && npm run check:data && next build && npm run check:render",
-    "export:html": "tsx scripts/export-html.ts"
+    "verify": "npm run lint && npm run test && npm run check:data && next build && npm run check:render && npm run check:bundle",
+    "export:html": "tsx scripts/export-html.ts",
+    "check:bundle": "tsx scripts/check-bundle.ts"
   },
   "dependencies": {
-    "next": "15.5.25",
+    "next": "16.3.4",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "zod": "3.25.76"
