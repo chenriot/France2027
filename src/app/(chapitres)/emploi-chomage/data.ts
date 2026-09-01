@@ -2090,6 +2090,70 @@ export const tables = {
       },
     ],
   },
+  'ce-qui-produit-l-ecart-et-ce-que-la-mesure-en-dit': {
+    vintage: '2025',
+    sources: [
+      'insee-insee-enquetes-emploi-series-longues-d', 'ined-ined-population-societes-apres-plu',
+      'eurostat-lfsi-emp-a-6', 'insee-insee-focus-n-377-ecart-de-salaire-e',
+      'insee-insee-decomposition-de-blinder-oaxaca-s',
+      'insee-insee-premiere-n-1803-ecarts-de-remu',
+      'insee-insee-focus-n-320-pour-2022-n-349-pou',
+      'insee-insee-focus-n-320-ecart-de-salaire-e', 'eurostat-earn-gr-gpgr2',
+    ],
+    columns: [
+      {
+        key: 'ce-qui-produit-l-ecart-et-ce-que-la-mesure-en-dit',
+        header: 'Ce qui produit l’écart, et ce que la mesure en dit',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'mesure', header: 'Mesure', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>1. La durée du travail</b> — temps partiel et mois passés hors emploi' },
+          { v: 7.8, d: 1, u: 'points sur 21,8', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '2. Le métier — la ségrégation entre professions, nomenclature PCS' },
+          { v: 6.7, d: 1, u: 'points sur 16,7' },
+        ],
+      },
+      {
+        cells: [
+          { t: '3. L’employeur — la répartition entre entreprises, à compétences égales' },
+          { v: 11, d: 0, u: '% de l’écart horaire' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>4. Les promotions et le niveau de poste</b>' },
+          { t: '<b>non chiffré</b>' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          {
+            t: '<em>Ce que révèle la parentalité</em> — écart entre salariés sans enfant, puis entre parents de trois enfants ou plus',
+          },
+          { t: 'de 5,8 % à 28,2 %' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: '<em>Ce que révèle l’âge</em> — écart avant 25 ans, puis à 60 ans ou plus' },
+          { t: 'de 3,2 % à 24,1 %' },
+        ],
+        total: true,
+      },
+    ],
+  },
   'population-des-15-64-ans-t2-2026': {
     vintage: '2026',
     sources: [

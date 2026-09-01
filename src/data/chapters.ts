@@ -82,7 +82,7 @@ export const chapters: readonly ChapterEntry[] = [
     ],
     legacyAnchor: 's4',
     kind: 'theme',
-    counts: { questions: 24, tables: 66, figures: 10 },
+    counts: { questions: 24, tables: 67, figures: 10 },
   },
   {
     slug: 'industrie',

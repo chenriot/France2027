@@ -55,6 +55,13 @@ export function Bibliography() {
             {ids.map((id) => (
               <li key={id}>
                 <span dangerouslySetInnerHTML={{ __html: sources[id].text }} />
+                {sources[id].url ? (
+                  <span className="cited">
+                    <a href={sources[id].url} rel="noreferrer">
+                      Consulter la source
+                    </a>
+                  </span>
+                ) : null}
                 {sources[id].engaged ? (
                   <span className="cited engaged">
                     Organisme engagé dans le débat public, cité à défaut de source publique.

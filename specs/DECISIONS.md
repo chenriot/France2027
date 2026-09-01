@@ -14,11 +14,11 @@ Date : 2026-09-01 · État : première mise en œuvre complète, plus une fiche 
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux migrés | 297 | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 155 sur 6 535 (64 %) | extraction |
+| Tableaux migrés | 298 | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 158 sur 6 547 (64 %) | extraction |
 | Figures | 29 régénérées et prouvées identiques · 22 valeurs lues, tracé d'origine conservé · 4 non converties | `npm run extract` |
 | Sources | 209 blocs → **201 entrées**, 201 citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **identique au document d'origine, 57 377 éléments, aucun écart** | `npm run check:render` |
+| **Rendu de `/tout`** | **identique au document d'origine, 57 473 éléments, aucun écart** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -321,7 +321,7 @@ l'historique Git, qui est le bon endroit pour elle.
 
 **Première application : `s4-q24`**, sur l'emploi et le salaire des femmes,
 en fin de partie 1 du chapitre « Emploi, chômage et coût du travail ».
-Douze tableaux, neuf sources, aucune dette de migration ajoutée. Cinq encadrés
+Quatorze tableaux, neuf sources, aucune dette de migration ajoutée. Cinq encadrés
 `hole` y signalent ce que la statistique publique ne permet pas d'établir :
 l'écart de salaire à poste comparable par tranche d'âge, les tranches d'âge
 intermédiaires, la ventilation sectorielle à métier constant, le taux de
@@ -331,16 +331,43 @@ et c'est un résultat en soi.
 
 ---
 
+## D15 — Les URL de sources vivent dans l'extracteur, pas dans le document
+
+**Le problème.** Le document d'origine cite ses sources en clair — « Insee
+Focus n° 377 », « Eurostat, `lfsi_emp_a` » — sans jamais donner de lien. Le
+lecteur ne peut pas vérifier sans chercher. Mais ajouter des `<a href>` dans
+les blocs `p.src` changerait le rendu des pages de chapitre, qui doit rester
+identique au document.
+
+**Ce qu'on a fait.** L'URL est portée **à côté** du texte, dans le champ `url`
+du registre, et affichée **seulement dans la bibliographie** — la seule surface
+que `check:render` n'inspecte pas (§D8). Les pages de chapitre sont donc
+inchangées, et `/sources` gagne un lien « Consulter la source » par entrée
+renseignée.
+
+La table `SOURCE_URLS` est dans `scripts/extract.ts`, clé par identifiant de
+source. C'est le bon endroit au regard de la règle 8 : `src/data/sources.ts`
+est généré, on n'y écrit pas à la main.
+
+**Le piège, et son garde-fou.** Les identifiants de source sont dérivés du
+texte du bloc : reformuler un `p.src` change son identifiant et laisserait son
+URL orpheline, en silence. `npm run extract` recense donc les clés qui ne
+correspondent à aucune source, et affiche le compte d'URL renseignées sur le
+total. Aujourd'hui : **9 sur 201**, aucune orpheline. Le reste est le chantier
+listé en §D10 — la mécanique est en place, le remplissage ne l'est pas.
+
+---
+
 ## D10 — Ce qui reste à faire
 
 | Chantier | Volume | Où le voir |
 |---|---|---|
-| URL des sources | 201 entrées sans `url` | `src/data/sources.ts` |
+| URL des sources | 192 entrées sans `url`, 9 renseignées | `npm run extract` |
 | Millésimes à confirmer | 26 | `.artifacts/audit.json` |
 | Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
 | Figures non converties | 4 | `.artifacts/audit.json` |
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
-| Cellules encore en texte | 2 380 | extraction |
+| Cellules encore en texte | 2 389 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 | Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |
 

@@ -304,6 +304,7 @@ const registry = {
     text: 'Eurostat, écart de rémunération entre femmes et hommes sous forme non ajustée, salaire horaire brut, <span class="num">earn_gr_gpgr2</span>, 2023 : 12,0 % dans l’Union, 12,3 % en zone euro, de −0,9 % au Luxembourg à 19,0 % en Lettonie. L’écart de taux d’emploi italien est celui du tableau ci-dessus, Eurostat 2024. Le rapprochement des deux indicateurs, et sa lecture en termes de sélection, sont de notre fait.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Gender_pay_gap_statistics',
   },
   'eurostat-emissions-territoriales-citepa-euros': {
     producer: 'Eurostat',
@@ -767,6 +768,7 @@ const registry = {
     text: 'Eurostat, enquête sur les forces de travail, taux d’emploi des 20-64 ans par sexe, <span class="num">lfsi_emp_a</span>. Union européenne : femmes 70,2 %, hommes 80,4 %, soit 10,2 points en 2023 ; 10,0 points en 2024. France : femmes 71,7 %, hommes 77,2 %, soit 5,5 points en 2023. La valeur française 2024 par sexe n’a pas été reprise sur source primaire, d’où la ligne datée de 2023 : sur un an, l’écart de l’Union n’a bougé que de 0,2 point, mais la comparaison ligne à ligne perd cette précision.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260303-1',
   },
   'eurostat-maddison-project-database-via-our-world': {
     producer: 'Eurostat',
@@ -979,6 +981,7 @@ const registry = {
     text: 'Ined, <i>Population &amp; Sociétés</i>, « Après plusieurs décennies de forte progression, le taux d’emploi des femmes commence à stagner en France », novembre 2022. Analyse par génération, femmes et hommes de 25 à 50 ans.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://shs.cairn.info/revue-population-et-societes-2022-11-page-1',
   },
   'insee-accompagnement-crepon-duflo-gurgand': {
     producer: 'Insee',
@@ -1092,6 +1095,7 @@ const registry = {
     text: 'Insee, décomposition de Blinder-Oaxaca sur la nomenclature PCS, données 2013, reprise dans les travaux régionaux de l’institut. Conseil d’analyse économique, note n° 17, « Réduire les inégalités de salaires entre femmes et hommes », 2014, Antoine Bozio, Brigitte Dormont et Cecilia García-Peñalosa : décomposition sur 1990, 2002 et 2012.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://www.insee.fr/fr/statistiques/2128979',
   },
   'insee-insee-enquete-emploi-en-continu-donnee': {
     producer: 'Insee',
@@ -1141,6 +1145,7 @@ const registry = {
     text: 'Insee, enquêtes Emploi, séries longues du marché du travail, résultats 2024. Le taux d’activité masculin de 1984 n’est pas repris ici : seul l’écart est documenté à cette date. Pour 1975, l’Insee situe l’écart à « près de 30 points » sans en publier la décimale, et il n’est donc pas porté au tableau.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://www.insee.fr/fr/statistiques/8391807',
   },
   'insee-insee-et-drees-travaux-sur-les-depenses': {
     producer: 'Insee',
@@ -1162,6 +1167,7 @@ const registry = {
     text: 'Insee Focus n° 320, « Écart de salaire entre femmes et hommes en 2022 » : écarts selon le nombre d’enfants. Insee Analyses n° 44, « Entreprises, enfants : quels rôles dans les inégalités salariales entre femmes et hommes ? » : effet causal de l’arrivée d’un enfant, estimé par comparaison à la trajectoire contrefactuelle.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://www.insee.fr/fr/statistiques/7766515',
   },
   'insee-insee-focus-n-320-pour-2022-n-349-pou': {
     producer: 'Insee',
@@ -1169,6 +1175,7 @@ const registry = {
     text: 'Insee Focus n° 320 pour 2022, n° 349 pour 2023 et n° 377 pour 2024. Champ : salariés du privé, hors rémunérations tirées d’une activité secondaire publique. La borne haute publiée change de définition entre 2022 et 2023 — « 55 ans ou plus » puis « 60 ans ou plus » — les deux colonnes ne sont donc pas comparables ligne à ligne, et les rapports de la dernière ligne, calculés par nos soins, portent chacun sur les bornes de leur propre millésime.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://www.insee.fr/fr/statistiques/7766515',
   },
   'insee-insee-focus-n-377-ecart-de-salaire-e': {
     producer: 'Insee',
@@ -1176,6 +1183,7 @@ const registry = {
     text: 'Insee Focus n° 377, « Écart de salaire entre femmes et hommes en 2024 », et n° 349, même titre pour 2023. Base Tous salariés, déclarations sociales nominatives, secteur privé. L’écart à poste comparable est estimé par une régression du logarithme du salaire à effets fixes croisant le libellé d’emploi, la catégorie socioprofessionnelle et le numéro Siret de l’établissement. Série longue 1995-2023 : blog de l’Insee, « Évolution des inégalités entre les femmes et les hommes », édition 2025.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://www.insee.fr/fr/statistiques/8743657',
   },
   'insee-insee-france-portrait-social-2025-fic': {
     producer: 'Insee',
@@ -1212,6 +1220,7 @@ const registry = {
     text: 'Insee Première n° 1803, « Écarts de rémunération femmes-hommes : surtout l’effet du temps de travail et de l’emploi occupé », juin 2020, données 2017 : part de 68 % et concentration professionnelle. Insee Analyses n° 44, « Entreprises, enfants : quels rôles dans les inégalités salariales entre femmes et hommes ? » : effet de répartition entre entreprises, panel du secteur privé, France métropolitaine, 16-65 ans, 1995-2015, 3 307 020 observations, effets employeurs identifiés par la mobilité des salariés. Insee Première n° 2020 et n° 2079, « Les salaires dans le secteur privé » en 2023 et 2024 : salaires par catégorie et par taille d’entreprise, déciles, part des femmes en haut de la distribution. Insee, <i>France, portrait social</i>, édition 2025, fiche sur les très hauts salaires. Dares, salariés au Smic au 1<sup>er</sup> novembre 2024. Écarts par catégorie socioprofessionnelle : Insee Focus n° 377. Part des femmes par catégorie : Insee, données 2019.',
     theme: 'emploi-chomage',
     accessed: '2026-08',
+    url: 'https://www.insee.fr/fr/statistiques/4514861',
   },
   'insee-memes-sources-et-meme-perimetre-que-le-g': {
     producer: 'Insee',
