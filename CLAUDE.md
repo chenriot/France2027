@@ -41,6 +41,8 @@ s'étonner d'un choix : les écarts à la spec y sont justifiés et chiffrés.
 | `npm run check:data` | audit des données ; écrit `.artifacts/audit.json` |
 | `npm run check:render` | compare `/tout` au document d'origine, élément par élément |
 | `npm run check:bundle` | poids du JavaScript par page de chapitre |
+| `npm run export:html` | exporte le dossier en un fichier HTML autonome |
+| `npm run export:md` | exporte le dossier en Markdown, figures SVG comprises |
 | `npm test` | tests unitaires (formatage FR, échelles, graphiques) |
 
 **Avant de pousser : `npm run verify`.** C'est cette commande qui protège la
@@ -79,17 +81,42 @@ d'acceptation de la spec.
    `<DataTable>`, `<Figure>`, `<Definition>` et les autres. Un besoin de mise en
    forme nouveau se règle en étendant un composant partagé, jamais en écrivant
    du balisage dans un chapitre.
-6. **Le CSS d'origine est repris verbatim**, noms de classes compris. Ni
-   Tailwind, ni CSS Modules, ni CSS-in-JS. Renommer une classe est une
-   régression visuelle potentielle pour zéro bénéfice.
+6. **Le balisage des chapitres est figé ; le reste du site est libre.** La
+   distinction est mécanique, pas doctrinale : `check:render` compare la chaîne
+   HTML de `/tout` au document d'origine **attributs compris**, et la
+   comparaison démarre à `<main class="main">`. Concrètement :
+   - **dans ce que rend `/tout`** — les 21 `content.tsx` et les composants
+     qu'ils appellent — le CSS d'origine reste repris verbatim, noms de classes
+     compris. Une classe ajoutée à un élément existant fait échouer la
+     vérification. Ce n'est pas une préférence, c'est le prix de la garantie ;
+   - **partout ailleurs** — routes nouvelles, sommaire, rail, masthead,
+     `/sources`, et les blocs ajoutés en `mode="page"` — **Tailwind, les CSS
+     Modules et le CSS-in-JS sont autorisés**, au même titre que le CSS natif.
+     Choisir l'outil qui convient à la surface qu'on construit.
+
+   Une seule contrainte demeure des deux côtés : les couleurs passent par les
+   jetons de `src/styles/tokens.css` (`--ink`, `--surface`, `--accent`,
+   `--s1`…) et non par des valeurs en dur, sans quoi la bascule clair/sombre
+   cesse de fonctionner sur la surface concernée.
 7. **Composants serveur par défaut.** `"use client"` est réservé à
    `src/components/client/` : bascule de thème, scrollspy, recherche. Un
    `"use client"` sur une page de lecture lui coûterait son prérendu.
 8. **Les fichiers générés ne se modifient pas à la main.** `data.ts`,
    `content.tsx` et `page.tsx` des 21 chapitres, ainsi que `src/data/sources.ts`
-   et `src/data/chapters.ts`, sont produits par `npm run extract`. Une
-   correction se fait dans `scripts/extract.ts`, puis on régénère. En-tête de
-   fichier : « Généré par `npm run extract` ».
+   et `src/data/chapters.ts`, sont produits par `npm run extract`, qui **efface
+   et réécrit tout le répertoire** : une saisie à la main disparaît à la
+   régénération suivante. Un défaut d'extraction se corrige dans
+   `scripts/extract.ts` ; un désaccord avec le **fond** du document d'origine
+   passe par `scripts/amendments.ts` (règle 9). En-tête de fichier :
+   « Généré par `npm run extract` ».
+9. **Corriger un chiffre ou ajouter du contenu passe par
+   `scripts/amendments.ts`**, le seul fichier non généré où le dossier s'écarte
+   de son document d'origine. Il distingue deux régimes : une **correction**
+   (valeur fausse au regard de sa source) s'applique partout, `/tout` compris,
+   et doit être déclarée — `check:render` n'accepte que les substitutions
+   déclarées, et échoue aussi si l'une d'elles n'est jamais rencontrée ; un
+   **ajout** (contenu nouveau) est rendu en `mode="page"` seulement. Voir
+   `DECISIONS.md` §D14.
 
 ## Simple, mais construit pour grandir
 
@@ -108,12 +135,14 @@ année à une série doit se faire en éditant un seul fichier.
 C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
 donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
 prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
-55 891 éléments, aucun écart.
+55 891 éléments, 29 corrections déclarées, aucun écart non déclaré.
 
 Ce que ça implique au quotidien :
 
 - **si `check:render` passe au rouge, c'est une régression**, pas un réglage
-  du script. Corriger le rendu, pas la mesure ;
+  du script. Corriger le rendu, pas la mesure. La seule exception est une
+  correction de fond assumée, qui se déclare dans `scripts/amendments.ts` et
+  se justifie dans `DECISIONS.md` — jamais en élargissant la tolérance ;
 - le formatage français passe par `src/lib/format.ts` et seulement par lui :
   virgule décimale, espace ordinaire pour les milliers dans les tableaux,
   **espace fine insécable (U+202F) dans les SVG**, `−` (U+2212) pour le signe
@@ -132,23 +161,37 @@ doit être conditionné au mode, sinon il casse la vérification.
 
 ## Ajouter ou corriger
 
-- **Corriger un chiffre** : éditer le `data.ts` du chapitre, puis
-  `npm run verify`. Un seul fichier, jamais de balisage.
-- **Ajouter un chapitre** : copier un répertoire existant, l'inscrire dans
-  `src/data/chapters.ts` et `src/data/all.ts`. Rien d'autre.
+- **Corriger un chiffre faux** : déclarer la correction dans
+  `scripts/amendments.ts` — avec `was`, le texte que rend le document
+  d'origine — puis `npm run extract` et `npm run verify`. Ne jamais éditer un
+  `data.ts` : il sera réécrit.
+- **Ajouter une fiche, un tableau, un encadré** : `scripts/amendments.ts`,
+  section des ajouts, puis `npm run extract`. Le contenu n'apparaît que sur la
+  page de chapitre — c'est voulu, sinon `check:render` n'a plus de sens.
+- **Ajouter un chapitre** : l'inscrire dans `CHAPTERS` en tête de
+  `scripts/extract.ts`, puis régénérer.
+- **Ajouter une figure** : `addedFigures` dans `scripts/amendments.ts`. Elle
+  s'écrit **en valeurs**, jamais en pixels — `src/lib/chart.ts` la trace, seules
+  les constantes de `layout` et `frame` sont saisies.
 - **Ajouter une mise en forme** : étendre un composant partagé. Jamais de
   balisage dans un `content.tsx`.
-- **Régénérer depuis la source** : corriger `scripts/extract.ts`, lancer
+- **Corriger un défaut d'extraction** : corriger `scripts/extract.ts`, lancer
   `npm run extract`, relire le diff, `npm run verify`.
 
 ## État actuel
 
-Le site est construit et vérifié : 21 chapitres, 286 tableaux, 55 figures,
-192 sources, rendu identique au document d'origine sur `/tout`, 25 routes
-prérendues. Le JavaScript par page est de 170 Ko pour 120 visés : dette
-mesurée, expliquée et cliquetée (`DECISIONS.md` §D11).
+Le site est construit et vérifié : 21 chapitres, 291 tableaux, 58 figures,
+202 sources, 25 routes prérendues. `/tout` rend 55 891 éléments avec
+**29 corrections déclarées et aucun écart non déclaré**. Le JavaScript par page
+est de 170 Ko pour 120 visés : dette mesurée, expliquée et cliquetée
+(`DECISIONS.md` §D11).
+
+Le dossier a commencé à corriger son document d'origine : le tableau du
+patrimoine européen ne se reconstituait pas depuis l'enquête BCE qu'il cite, et
+un mécanisme d'amendements a été construit pour ça (`DECISIONS.md` §D14).
 
 Ce qui reste ouvert est listé et chiffré dans `specs/DECISIONS.md` §D10 :
-URL des sources, 26 millésimes à confirmer, 26 figures dont le tracé n'est pas
-encore régénéré, un axe incohérent du document d'origine à arbitrer, et les
-captures Playwright clair/sombre.
+URL des sources, millésimes à confirmer, 26 figures dont le tracé n'est pas
+encore régénéré, un axe incohérent du document d'origine à arbitrer, un
+commentaire éditorial à réécrire après correction, les 287 autres tableaux
+jamais confrontés à leur source, et les captures Playwright clair/sombre.
