@@ -18,6 +18,7 @@ import { chapters } from '../src/data/chapters'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const BUILT = join(ROOT, '.next', 'server', 'app', 'tout.html')
+const HOME = join(ROOT, '.next', 'server', 'app', 'index.html')
 const OUT = join(ROOT, '.artifacts', 'chiffres-2027.html')
 
 const FONTS =
@@ -36,6 +37,18 @@ if (start < 0) throw new Error('rendu de /tout introuvable — lancer `next buil
 
 let body = page.slice(start, end)
 
+// Le sommaire de l'accueil ouvre le fichier : sans lui, on tombe directement
+// dans la synthèse sans savoir ce que contient le dossier ni où aller.
+const home = readFileSync(HOME, 'utf8')
+const tocStart = home.indexOf('<section class="sec" id="sommaire">')
+if (tocStart < 0) throw new Error('sommaire introuvable dans le rendu de /')
+const tocEnd = home.indexOf('</section>', tocStart) + '</section>'.length
+const contents = home.slice(tocStart, tocEnd)
+
+const afterMasthead = body.indexOf('</header>') + '</header>'.length
+if (afterMasthead <= '</header>'.length) throw new Error('en-tête introuvable dans le rendu de /tout')
+body = body.slice(0, afterMasthead) + contents + body.slice(afterMasthead)
+
 // Commandes client, inertes dans un fichier figé : mieux vaut les retirer
 // qu'afficher un champ de recherche qui ne cherche rien.
 body = body
@@ -49,6 +62,8 @@ for (const chapter of chapters) {
   body = body.split(`href="/${chapter.slug}"`).join(`href="#${chapter.legacyAnchor}"`)
 }
 body = body.split('href="/sources"').join('href="#sources"')
+// « Document intégral » : c'est le fichier lui-même, donc son début.
+body = body.split('href="/tout"').join('href="#top"')
 
 const remaining = body.match(/href="\/[a-z][^"]*"/g)
 if (remaining) {
@@ -56,6 +71,7 @@ if (remaining) {
 }
 
 const html = `<title>Chiffres pour 2027</title>
+<span id="top"></span>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
@@ -70,7 +86,7 @@ ${body}
 mkdirSync(dirname(OUT), { recursive: true })
 writeFileSync(OUT, html)
 
-const sections = (html.match(/<section class="sec"/g) ?? []).length
+const sections = (html.match(/<section class="sec"/g) ?? []).length - 1 // hors sommaire
 const questions = (html.match(/<div class="q"/g) ?? []).length
 console.log(`écrit ${OUT}`)
 console.log(`${sections} sections · ${questions} fiches · ${Math.round(html.length / 1024)} Ko`)
