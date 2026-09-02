@@ -2479,63 +2479,83 @@ export const tables = {
       },
     ],
   },
-  'ce-que-declarent-les-eleves-cours-de-mathematiques': {
+  'climat-de-discipline-en-cours-de-mathematiques': {
     vintage: '2025',
     sources: ['ocde-depp-note-d-information-n-23-48-decem', 'ocde-ocde-resultats-du-pisa-2022-volume-ii'],
     columns: [
       {
-        key: 'ce-que-declarent-les-eleves-cours-de-mathematiques',
-        header: 'Ce que déclarent les élèves, cours de mathématiques',
+        key: 'climat-de-discipline-en-cours-de-mathematiques',
+        header: 'Climat de discipline en cours de mathématiques',
         type: 'text',
         headerNumeric: false,
       },
-      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
-      { key: 'moyenne-ocde', header: 'Moyenne OCDE', type: 'number', headerNumeric: true },
+      { key: 'indice', header: 'Indice', type: 'number', headerNumeric: true },
+      {
+        key: 'eleves-n-ecoutant-pas-le-professeur',
+        header: 'Élèves n\'écoutant pas le professeur',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'bruit-et-agitation', header: 'Bruit et agitation', type: 'number', headerNumeric: true },
+      { key: 'score-pisa', header: 'Score PISA', type: 'number', headerNumeric: true },
     ],
     rows: [
       {
         cells: [
-          { t: 'Les élèves ne commencent à travailler que bien après le début du cours' },
-          { v: 21.9, d: 1, u: '%', strong: true },
-          { v: 10.6, d: 1, u: '%' },
+          { t: '<b>Japon</b>' },
+          { v: 1.09, d: 2, sign: true, strong: true },
+          { v: 1, d: 1, u: '%' },
+          { v: 4.7, d: 1, u: '%' },
+          { v: 535.6, d: 1 },
         ],
         emphasis: true,
       },
       {
         cells: [
-          { t: 'Les élèves sont distraits par leur propre usage du numérique' },
-          { v: 27.8, d: 1, u: '%' },
-          { v: 19.7, d: 1, u: '%' },
+          { t: '<b>Corée du Sud</b>' },
+          { v: 0.84, d: 2, sign: true, strong: true },
+          { v: 1.7, d: 1, u: '%' },
+          { v: 5.6, d: 1, u: '%' },
+          { v: 527.3, d: 1 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Estonie' },
+          { v: 0.14, d: 2, sign: true },
+          { v: 8.1, d: 1, u: '%' },
+          { v: 19, d: 1, u: '%' },
+          { v: 510, d: 1 },
         ],
       },
       {
         cells: [
-          { t: 'Les élèves n\'écoutent pas ce que dit le professeur' },
-          { v: 16.5, d: 1, u: '%' },
+          { t: 'Suisse' },
+          { v: 0.11, d: 2, sign: true },
+          { v: 12.3, d: 1, u: '%' },
+          { v: 18.7, d: 1, u: '%' },
+          { v: 508, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Moyenne OCDE' },
+          { v: 0.02, d: 2, sign: true },
           { v: 10.5, d: 1, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Il y a du bruit et de l\'agitation' },
-          { v: 26, d: 1, u: '%' },
           { v: 19.9, d: 1, u: '%' },
+          { v: 472.4, d: 1 },
         ],
       },
       {
         cells: [
-          { t: 'Le professeur doit attendre longtemps que les élèves se calment' },
-          { v: 44.2, d: 1, u: '%' },
-          { v: 47.6, d: 1, u: '%' },
+          { t: '<b>France</b>' },
+          { v: -0.23, d: 2, strong: true },
+          { v: 16.5, d: 1, u: '%', strong: true },
+          { v: 26, d: 1, u: '%', strong: true },
+          { v: 473.9, d: 1, strong: true },
         ],
-        separator: true,
-      },
-      {
-        cells: [
-          { t: 'Les élèves ne peuvent pas bien travailler' },
-          { v: 13.3, d: 1, u: '%' },
-          { v: 22.1, d: 1, u: '%' },
-        ],
+        total: true,
       },
     ],
   },
@@ -2596,6 +2616,8 @@ export const tables = {
   'eleves-par-enseignant-au-primaire-et-resultats': {
     vintage: '2025',
     sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
       'ocde-ocde-regards-sur-l-education-2025-tabl',
       'depp-depp-note-d-information-n-24-47-decem',
       'ocde-depp-note-d-information-n-23-48-decem',
@@ -2730,6 +2752,8 @@ export const tables = {
   'heures-declarees-en-cm1-par-annee-scolaire': {
     vintage: '2023',
     sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
       'ocde-ocde-regards-sur-l-education-2025-tabl',
       'depp-depp-note-d-information-n-24-47-decem',
       'ocde-depp-note-d-information-n-23-48-decem',
@@ -2776,6 +2800,8 @@ export const tables = {
   'eleves-dont-l-enseignant-n-a-suivi-aucune-formation-en-deu': {
     vintage: '2023',
     sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
       'ocde-ocde-regards-sur-l-education-2025-tabl',
       'depp-depp-note-d-information-n-24-47-decem',
       'ocde-depp-note-d-information-n-23-48-decem',
@@ -2848,6 +2874,8 @@ export const tables = {
   'enseignants-se-declarant-tres-ou-plutot-assures-mathematiq': {
     vintage: '2023',
     sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
       'ocde-ocde-regards-sur-l-education-2025-tabl',
       'depp-depp-note-d-information-n-24-47-decem',
       'ocde-depp-note-d-information-n-23-48-decem',
@@ -2910,6 +2938,8 @@ export const tables = {
   'enseignants-eprouvant-tres-souvent-ce-sentiment': {
     vintage: '2023',
     sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
       'ocde-ocde-regards-sur-l-education-2025-tabl',
       'depp-depp-note-d-information-n-24-47-decem',
       'ocde-depp-note-d-information-n-23-48-decem',
@@ -2964,6 +2994,225 @@ export const tables = {
           null,
           { v: 4, d: 0, u: '%', strong: true },
           { v: 22, d: 0, u: '%', strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'comparaison-aux-systemes-performants': {
+    vintage: '2025',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+      'ocde-ocde-regards-sur-l-education-2025-tabl',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-depp-note-d-information-n-23-48-decem',
+    ],
+    columns: [
+      {
+        key: 'comparaison-aux-systemes-performants',
+        header: 'Comparaison aux systèmes performants',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'japon', header: 'Japon', type: 'number', headerNumeric: true },
+      { key: 'coree-du-sud', header: 'Corée du Sud', type: 'number', headerNumeric: true },
+      { key: 'estonie', header: 'Estonie', type: 'number', headerNumeric: true },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Score PISA mathématiques' },
+          { v: 535.6, d: 1 },
+          { v: 527.3, d: 1 },
+          { v: 510, d: 1 },
+          { v: 473.9, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Score Timss CM1' },
+          { v: 590.7, d: 1 },
+          { v: 594.4, d: 1 },
+          null,
+          { v: 484.1, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Climat de discipline (indice)</b>' },
+          { v: 1.09, d: 2, sign: true, strong: true },
+          { v: 0.84, d: 2, sign: true, strong: true },
+          { v: 0.14, d: 2, sign: true, strong: true },
+          { v: -0.23, d: 2, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Élèves par enseignant, primaire' },
+          { v: 14.7, d: 1 },
+          { v: 16.1, d: 1 },
+          { v: 11.9, d: 1 },
+          { v: 17.9, d: 1 },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Élèves par classe, primaire' },
+          { v: 26.4, d: 1 },
+          { v: 20.9, d: 1 },
+          null,
+          { v: 21.6, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Enseignants payés par groupe-classe</b>' },
+          { v: 1.8, d: 2, strong: true },
+          { v: 1.3, d: 2 },
+          null,
+          { v: 1.2, d: 2, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Heures d\'enseignement dues, primaire' },
+          { v: 742, d: 0 },
+          null,
+          null,
+          { v: 900, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Manque d\'enseignants déclaré' },
+          { v: 63.7, d: 1, u: '%' },
+          { v: 50.9, d: 1, u: '%' },
+          { v: 72.9, d: 1, u: '%' },
+          { v: 67, d: 1, u: '%' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Enseignants jugés inadéquats ou peu qualifiés' },
+          { v: 42.9, d: 1, u: '%' },
+          { v: 15.7, d: 1, u: '%' },
+          { v: 51.3, d: 1, u: '%' },
+          { v: 30.4, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Tutorat mutuel entre élèves</b>' },
+          { v: 47.1, d: 1, u: '%' },
+          { v: 78.8, d: 1, u: '%', strong: true },
+          { v: 53.3, d: 1, u: '%' },
+          { v: 45.2, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Anxiété en mathématiques (indice)' },
+          { v: 0.33, d: 2, sign: true },
+          { v: -0.05, d: 2 },
+          { v: 0.01, d: 2, sign: true },
+          { v: 0.13, d: 2, sign: true },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Pente sociale, points par unité de SESC' },
+          { v: 44.7, d: 1 },
+          { v: 45.3, d: 1 },
+          { v: 39.4, d: 1 },
+          { v: 45.5, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Établissements fermés au plus trois mois' },
+          { v: 84.5, d: 1, u: '%' },
+          { v: 79.2, d: 1, u: '%' },
+          { v: 45, d: 1, u: '%' },
+          { v: 64.2, d: 1, u: '%' },
+        ],
+      },
+    ],
+  },
+  'distribution-des-scores-pisa-mathematiques-2022': {
+    vintage: '2022',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+      'ocde-ocde-regards-sur-l-education-2025-tabl',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-depp-note-d-information-n-23-48-decem',
+    ],
+    columns: [
+      {
+        key: 'distribution-des-scores-pisa-mathematiques-2022',
+        header: 'Distribution des scores, PISA mathématiques 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '1er-decile', header: '1<sup>er</sup> décile', type: 'number', headerNumeric: true },
+      { key: '9e-decile', header: '9<sup>e</sup> décile', type: 'number', headerNumeric: true },
+      { key: 'ecart-interdecile', header: 'Écart interdécile', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Corée du Sud' },
+          { v: 387.8, d: 1 },
+          { v: 659.7, d: 1 },
+          { v: 271.9, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Japon' },
+          { v: 409.9, d: 1 },
+          { v: 652.5, d: 1 },
+          { v: 242.5, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Suisse' },
+          { v: 379.4, d: 1 },
+          { v: 632.2, d: 1 },
+          { v: 252.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Estonie' },
+          { v: 401.2, d: 1 },
+          { v: 620.3, d: 1 },
+          { v: 219.1, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Moyenne OCDE' },
+          { v: 354.7, d: 1 },
+          { v: 590, d: 1 },
+          { v: 235.3, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>France</b>' },
+          { v: 353.5, d: 1, strong: true },
+          { v: 592.6, d: 1, strong: true },
+          { v: 239.2, d: 1 },
         ],
         total: true,
       },

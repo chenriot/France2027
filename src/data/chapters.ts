@@ -253,7 +253,7 @@ export const chapters: readonly ChapterEntry[] = [
     legacyAnchor: 's14',
     kind: 'theme',
     family: 'vivre',
-    counts: { questions: 13, tables: 42, figures: 2 },
+    counts: { questions: 13, tables: 44, figures: 2 },
   },
   {
     slug: 'niveau-de-vie',
