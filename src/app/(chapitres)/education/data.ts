@@ -1818,7 +1818,7 @@ export const tables = {
     sources: [
       'ocde-depp-note-d-information-n-23-48-decem',
       'depp-depp-note-d-information-n-24-47-decem',
-      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii', 'ocde-ocde-resultats-du-pisa-2022-volume-i',
     ],
     columns: [
       {
@@ -1865,7 +1865,7 @@ export const tables = {
     sources: [
       'ocde-depp-note-d-information-n-23-48-decem',
       'depp-depp-note-d-information-n-24-47-decem',
-      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii', 'ocde-ocde-resultats-du-pisa-2022-volume-i',
     ],
     columns: [
       {
@@ -1919,7 +1919,7 @@ export const tables = {
     sources: [
       'ocde-depp-note-d-information-n-23-48-decem',
       'depp-depp-note-d-information-n-24-47-decem',
-      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii', 'ocde-ocde-resultats-du-pisa-2022-volume-i',
     ],
     columns: [
       {
@@ -1983,7 +1983,7 @@ export const tables = {
     sources: [
       'ocde-depp-note-d-information-n-23-48-decem',
       'depp-depp-note-d-information-n-24-47-decem',
-      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii', 'ocde-ocde-resultats-du-pisa-2022-volume-i',
     ],
     columns: [
       {
@@ -2029,7 +2029,7 @@ export const tables = {
     sources: [
       'ocde-depp-note-d-information-n-23-48-decem',
       'depp-depp-note-d-information-n-24-47-decem',
-      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii', 'ocde-ocde-resultats-du-pisa-2022-volume-i',
     ],
     columns: [
       {
@@ -2082,6 +2082,72 @@ export const tables = {
           { v: 484.1, d: 1, strong: true },
           { v: 523.7, d: 1, strong: true },
           { v: -39.6, d: 1, strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'statut-au-regard-de-l-immigration-pisa-2022': {
+    vintage: '2022',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii', 'ocde-ocde-resultats-du-pisa-2022-volume-i',
+    ],
+    columns: [
+      {
+        key: 'statut-au-regard-de-l-immigration-pisa-2022',
+        header: 'Statut au regard de l\'immigration, PISA 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ocde', header: 'Moyenne OCDE', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Part d\'élèves issus de l\'immigration' },
+          { v: 16.5, d: 1, u: '%' },
+          { v: 12.9, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Élèves autochtones' },
+          { v: 485, d: 0 },
+          { v: 479, d: 0 },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Immigrés de <b>deuxième</b> génération' },
+          { v: 438, d: 0, strong: true },
+          { v: 459, d: 0, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Immigrés de première génération' },
+          { v: 425, d: 0 },
+          { v: 435, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Écart après contrôle du milieu socio-économique' },
+          { v: -17, d: 0 },
+          { v: -15, d: 0 },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: '<b>Écart après contrôle du milieu et de la langue parlée en famille</b>' },
+          { v: -9, d: 0, strong: true },
+          { v: -5, d: 0, strong: true },
         ],
         total: true,
       },
@@ -2258,5 +2324,5 @@ export const citedSources = [
   'ocde-ocde-education-at-a-glance-indicateurs',
   'ocde-ocde-enquete-pisa-score-moyen-en-mathe',
   'ocde-ocde-regards-sur-l-education-2025-depe',
-  'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+  'ocde-ocde-resultats-du-pisa-2022-volume-i', 'ocde-ocde-resultats-du-pisa-2022-volume-ii',
 ] satisfies readonly SourceId[]

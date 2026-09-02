@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **314** (migrés + 5 ajoutés §D17 + 10 écrits dans le document d’origine, §D14) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 310 sur 6 727 (64 %) | extraction |
+| Tableaux | **315** (migrés + 5 ajoutés §D17 + 11 écrits dans le document d’origine, §D14) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 322 sur 6 745 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **216 entrées** (202 migrées + 10 ajoutées §D17 + 4 écrites dans le document d’origine, §D14), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **59 335 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Sources | **217 entrées** (202 migrées + 10 ajoutées §D17 + 5 écrites dans le document d’origine, §D14), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **59 604 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 

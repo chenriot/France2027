@@ -1418,6 +1418,13 @@ const registry = {
     theme: 'synthese',
     accessed: '2026-08',
   },
+  'ocde-ocde-resultats-du-pisa-2022-volume-i': {
+    producer: 'OCDE',
+    kind: 'other',
+    text: 'OCDE, <em>Résultats du PISA 2022 (Volume I) — L\'état de l\'apprentissage et de l\'équité des chances</em>, 2025 : tableau I.4, aperçu des élèves issus de l\'immigration, et chapitre 7, écarts de performance selon le statut au regard de l\'immigration. Un élève immigré de deuxième génération est né dans le pays d\'évaluation de parents nés à l\'étranger ; un élève de première génération est né à l\'étranger de parents nés à l\'étranger.',
+    theme: 'education',
+    accessed: '2026-08',
+  },
   'ocde-ocde-resultats-du-pisa-2022-volume-ii': {
     producer: 'OCDE',
     kind: 'other',
