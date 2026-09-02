@@ -1813,6 +1813,280 @@ export const tables = {
       },
     ],
   },
+  'france-pisa-mathematiques': {
+    vintage: '2022',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+    ],
+    columns: [
+      {
+        key: 'france-pisa-mathematiques',
+        header: 'France, PISA mathématiques',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '2012', header: '2012', type: 'number', headerNumeric: true },
+      { key: '2022', header: '2022', type: 'number', headerNumeric: true },
+      { key: 'evolution', header: 'Évolution', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Élèves très défavorisés' },
+          { v: 440.4, d: 1 },
+          { v: 421.9, d: 1 },
+          { v: -18.5, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Élèves très favorisés</b>' },
+          { v: 561.3, d: 1, strong: true },
+          { v: 534.5, d: 1, strong: true },
+          { v: -26.8, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Écart d\'équité' },
+          { v: 120.9, d: 1 },
+          { v: 112.5, d: 1 },
+          { v: -7.4, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'repartition-des-eleves-france': {
+    vintage: '2025',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+    ],
+    columns: [
+      {
+        key: 'repartition-des-eleves-france',
+        header: 'Répartition des élèves, France',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'en-difficulte', header: 'En difficulté', type: 'number', headerNumeric: true },
+      {
+        key: 'les-plus-performants',
+        header: 'Les plus performants',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { v: 2003, d: 0, g: false },
+          { v: 17, d: 0, u: '%' },
+          { v: 15, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2012, d: 0, g: false },
+          { v: 22, d: 0, u: '%' },
+          { v: 13, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2018, d: 0, g: false },
+          { v: 21, d: 0, u: '%' },
+          { v: 11, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2022, d: 0, strong: true, g: false },
+          { v: 29, d: 0, u: '%', strong: true },
+          { v: 7, d: 0, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'quartile-social-pisa-2022': {
+    vintage: '2022',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+    ],
+    columns: [
+      {
+        key: 'quartile-social-pisa-2022',
+        header: 'Quartile social, PISA 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ue', header: 'Moyenne UE', type: 'number', headerNumeric: true },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Très défavorisés' },
+          { v: 421.9, d: 1 },
+          { v: 428.4, d: 1 },
+          { v: -6.5, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Défavorisés' },
+          { v: 456.7, d: 1 },
+          { v: 459.4, d: 1 },
+          { v: -2.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Favorisés' },
+          { v: 489.2, d: 1 },
+          { v: 488, d: 1 },
+          { v: 1.2, d: 1, sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Très favorisés' },
+          { v: 534.5, d: 1 },
+          { v: 526, d: 1 },
+          { v: 8.5, d: 1, sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Ensemble</b>' },
+          { v: 473.9, d: 1, strong: true },
+          { v: 474, d: 1, strong: true },
+          { v: -0.1, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'timss-cm1-mathematiques': {
+    vintage: '2025',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+    ],
+    columns: [
+      {
+        key: 'timss-cm1-mathematiques',
+        header: 'Timss CM1, mathématiques',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ue', header: 'Moyenne UE', type: 'number', headerNumeric: true },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { v: 2015, d: 0, g: false },
+          { v: 488.2, d: 1 },
+          { v: 525.1, d: 1 },
+          { v: -36.9, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { v: 2019, d: 0, g: false },
+          { v: 484.8, d: 1 },
+          { v: 523.3, d: 1 },
+          { v: -38.5, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { v: 2023, d: 0, strong: true, g: false },
+          { v: 484.1, d: 1, strong: true },
+          { v: 524.5, d: 1, strong: true },
+          { v: -40.4, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'quartile-social-timss-cm1-2023': {
+    vintage: '2023',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii',
+    ],
+    columns: [
+      {
+        key: 'quartile-social-timss-cm1-2023',
+        header: 'Quartile social, Timss CM1 2023',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ue', header: 'Moyenne UE', type: 'number', headerNumeric: true },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Très défavorisés' },
+          { v: 450.5, d: 1 },
+          { v: 491.5, d: 1 },
+          { v: -41, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Défavorisés' },
+          { v: 479.3, d: 1 },
+          { v: 527.3, d: 1 },
+          { v: -48, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Favorisés' },
+          { v: 508.7, d: 1 },
+          { v: 547.2, d: 1 },
+          { v: -38.5, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Très favorisés</b>' },
+          { v: 531.6, d: 1, strong: true },
+          { v: 563.8, d: 1, strong: true },
+          { v: -32.2, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Ensemble</b>' },
+          { v: 484.1, d: 1, strong: true },
+          { v: 523.7, d: 1, strong: true },
+          { v: -39.6, d: 1, strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -1960,6 +2234,10 @@ export const questions = [
   },
   { id: 's14-q8', title: 'Quel poids a l\'origine sociale ?' },
   { id: 's14-q8b', title: 'La pauvreté des élèves explique-t-elle la baisse des résultats ?' },
+  {
+    id: 's14-q8c',
+    title: 'Le niveau baisse-t-il parce que les élèves ont changé ? Le test par le haut de la distribution',
+  },
   { id: 's14-q9', title: 'Taille des classes, décrochage, insertion' },
 ] satisfies readonly { id: string; title: string }[]
 
@@ -1969,14 +2247,16 @@ export const questions = [
  * citée en prose reste une source du dossier.
  */
 export const citedSources = [
+  'depp-depp-note-d-information-n-24-47-decem',
   'depp-reponse-du-ministere-de-l-education-nati',
   'eurostat-eurostat-educ-uoe-fine09-depense-publiq',
   'eurostat-eurostat-educ-uoe-perp04-ratio-eleves-e',
   'insee-insee-dgfip-cnaf-cnav-ccmsa-enquetes-re',
   'ocde-calcul-a-partir-de-ocde-regards-sur-l-e',
-  'ocde-effectifs-depp-reperes-et-references',
+  'ocde-depp-note-d-information-n-23-48-decem', 'ocde-effectifs-depp-reperes-et-references',
   'ocde-ocde-base-uoe-fin-structure-dsd-eag-uo',
   'ocde-ocde-education-at-a-glance-indicateurs',
   'ocde-ocde-enquete-pisa-score-moyen-en-mathe',
   'ocde-ocde-regards-sur-l-education-2025-depe',
+  'ocde-ocde-resultats-du-pisa-2022-volume-ii',
 ] satisfies readonly SourceId[]

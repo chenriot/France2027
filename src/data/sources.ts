@@ -155,6 +155,13 @@ const registry = {
     theme: 'perception-realite',
     accessed: '2026-08',
   },
+  'depp-depp-note-d-information-n-24-47-decem': {
+    producer: 'DEPP',
+    kind: 'report',
+    text: 'DEPP, <em>Note d\'information</em> n° 24.47, décembre 2024, données de la publication : résultats de Timss 2023 en mathématiques au niveau CM1, par pays et par quartile de l\'indice de statut socio-économique, et évolution des scores depuis 2015. Source primaire : IEA-Timss. Fichier consulté, versionné dans le dépôt sous Temp/sources/.',
+    theme: 'education',
+    accessed: '2026-08',
+  },
   'depp-dg-tresor-tresor-eco-n-376-novembre-2': {
     producer: 'DEPP',
     kind: 'report',
@@ -1348,6 +1355,13 @@ const registry = {
     engaged: true,
     accessed: '2026-08',
   },
+  'ocde-depp-note-d-information-n-23-48-decem': {
+    producer: 'OCDE',
+    kind: 'report',
+    text: 'DEPP, <em>Note d\'information</em> n° 23.48, décembre 2023, données de la publication : résultats de PISA 2022 en culture mathématique, par pays, par sexe et par quartile de l\'indice de statut économique, social et culturel. Les quartiles sont calculés à l\'intérieur de chaque pays. Source primaire : OCDE-PISA. Fichier consulté, versionné dans le dépôt sous Temp/sources/.',
+    theme: 'education',
+    accessed: '2026-08',
+  },
   'ocde-effectifs-depp-reperes-et-references': {
     producer: 'OCDE',
     kind: 'report',
@@ -1402,6 +1416,13 @@ const registry = {
     kind: 'report',
     text: 'OCDE, <i>Regards sur l\'éducation 2025</i>, tableaux D2.1 (taille moyenne des classes) et D2.3 (ratio élèves-enseignant), enseignement primaire, année scolaire 2023-2024, public et privé confondus. <b>Les deux indicateurs ne viennent pas de la même collecte</b> : la taille de classe ne compte que les élèves suivant un programme commun et exclut l\'enseignement en sous-groupes, tandis que le ratio rapporte les effectifs à l\'ensemble du personnel enseignant en équivalent temps plein.',
     theme: 'synthese',
+    accessed: '2026-08',
+  },
+  'ocde-ocde-resultats-du-pisa-2022-volume-ii': {
+    producer: 'OCDE',
+    kind: 'other',
+    text: 'OCDE, <em>Résultats du PISA 2022 (Volume II) — Apprentissage en période de crise et résilience</em>, 2025 : chapitre 4, indices d\'isolement scolaire et encadré II.4.1 sur la réforme française du redoublement.',
+    theme: 'education',
     accessed: '2026-08',
   },
   'ocde-ocde-taxing-wages-2026-donnees-2025-c': {
