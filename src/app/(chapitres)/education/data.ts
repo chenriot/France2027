@@ -2336,13 +2336,12 @@ export const tables = {
       {
         cells: [
           {
-            t: '<b>Élèves dont le chef d\'établissement juge l\'enseignement affecté par le manque d\'enseignants</b>',
+            t: 'Élèves dont le chef d\'établissement juge l\'enseignement affecté par le manque d\'enseignants',
           },
-          { v: 67, d: 1, u: '%', strong: true },
+          { v: 67, d: 1, u: '%' },
           { v: 46.7, d: 1, u: '%' },
-          { v: 20.3, d: 1, sign: true, strong: true },
+          { v: 20.3, d: 1, sign: true },
         ],
-        emphasis: true,
       },
       {
         cells: [
@@ -2402,6 +2401,81 @@ export const tables = {
           { v: -0.04, d: 2 },
         ],
         total: true,
+      },
+    ],
+  },
+  'pays-declarant-plus-de-manque-d-enseignants-que-la-france': {
+    vintage: '2025',
+    sources: ['ocde-depp-note-d-information-n-23-48-decem', 'ocde-ocde-resultats-du-pisa-2022-volume-ii'],
+    columns: [
+      {
+        key: 'pays-declarant-plus-de-manque-d-enseignants-que-la-france',
+        header: 'Pays déclarant plus de manque d\'enseignants que la France',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'eleves-concernes', header: 'Élèves concernés', type: 'number', headerNumeric: true },
+      { key: 'score-pisa-maths', header: 'Score PISA maths', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Belgique' },
+          { v: 80.1, d: 1, u: '%' },
+          { v: 489.5, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Allemagne' },
+          { v: 73.2, d: 1, u: '%' },
+          { v: 474.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Estonie</b>' },
+          { v: 72.9, d: 1, u: '%', strong: true },
+          { v: 510, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Pays-Bas' },
+          { v: 71.8, d: 1, u: '%' },
+          { v: 492.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Irlande' },
+          { v: 67.8, d: 1, u: '%' },
+          { v: 491.6, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Lettonie' },
+          { v: 67.7, d: 1, u: '%' },
+          { v: 483.2, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>France</b>' },
+          { v: 67, d: 1, u: '%', strong: true },
+          { v: 473.9, d: 1, strong: true },
+        ],
+        total: true,
+      },
+      {
+        cells: [
+          { t: 'Moyenne OCDE' },
+          { v: 46.7, d: 1, u: '%' },
+          { v: 472.4, d: 1 },
+        ],
+        separator: true,
       },
     ],
   },
