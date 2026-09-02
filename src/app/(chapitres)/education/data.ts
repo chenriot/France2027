@@ -2153,6 +2153,171 @@ export const tables = {
       },
     ],
   },
+  'pays-dont-les-eleves-autochtones-depassent-les-francais': {
+    vintage: '2025',
+    sources: [
+      'ocde-depp-note-d-information-n-23-48-decem',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-ocde-resultats-du-pisa-2022-volume-ii', 'ocde-ocde-resultats-du-pisa-2022-volume-i',
+    ],
+    columns: [
+      {
+        key: 'pays-dont-les-eleves-autochtones-depassent-les-francais',
+        header: 'Pays dont les élèves autochtones dépassent les français',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'part-d-eleves-issus-de-l-immigration',
+        header: 'Part d\'élèves issus de l\'immigration',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'eleves-autochtones', header: 'Élèves autochtones', type: 'number', headerNumeric: true },
+      { key: '2-generation', header: '2ᵉ génération', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Singapour' },
+          { v: 28.6, d: 1, u: '%' },
+          { v: 568, d: 0 },
+          { v: 608, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Suisse</b>' },
+          { v: 34.9, d: 1, u: '%', strong: true },
+          { v: 528, d: 0, strong: true },
+          { v: 477, d: 0 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Estonie' },
+          { v: 8.7, d: 1, u: '%' },
+          { v: 514, d: 0 },
+          { v: 492, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Pays-Bas' },
+          { v: 13.6, d: 1, u: '%' },
+          { v: 508, d: 0 },
+          { v: 460, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Autriche' },
+          { v: 26.6, d: 1, u: '%' },
+          { v: 505, d: 0 },
+          { v: 451, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Belgique' },
+          { v: 20.5, d: 1, u: '%' },
+          { v: 504, d: 0 },
+          { v: 452, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Suède' },
+          { v: 21.3, d: 1, u: '%' },
+          { v: 499, d: 0 },
+          { v: 449, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Canada' },
+          { v: 34.4, d: 1, u: '%' },
+          { v: 497, d: 0 },
+          { v: 517, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Danemark' },
+          { v: 10.7, d: 1, u: '%' },
+          { v: 497, d: 0 },
+          { v: 445, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Allemagne' },
+          { v: 25.8, d: 1, u: '%' },
+          { v: 495, d: 0 },
+          { v: 457, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Irlande' },
+          { v: 17.4, d: 1, u: '%' },
+          { v: 495, d: 0 },
+          { v: 489, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Royaume-Uni' },
+          { v: 20.1, d: 1, u: '%' },
+          { v: 494, d: 0 },
+          { v: 507, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Slovénie' },
+          { v: 9.8, d: 1, u: '%' },
+          { v: 492, d: 0 },
+          { v: 447, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Finlande' },
+          { v: 6.8, d: 1, u: '%' },
+          { v: 491, d: 0 },
+          { v: 442, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Tchéquie' },
+          { v: 4.1, d: 1, u: '%' },
+          { v: 489, d: 0 },
+          { v: 484, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>France</b>' },
+          { v: 16.5, d: 1, u: '%', strong: true },
+          { v: 485, d: 0, strong: true },
+          { v: 438, d: 0, strong: true },
+        ],
+        total: true,
+      },
+      {
+        cells: [
+          { t: 'Moyenne OCDE' },
+          { v: 12.9, d: 1, u: '%' },
+          { v: 479, d: 0 },
+          { v: 459, d: 0 },
+        ],
+        separator: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
