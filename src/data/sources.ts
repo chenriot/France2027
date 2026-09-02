@@ -1152,6 +1152,13 @@ const registry = {
     accessed: '2026-08',
     url: 'https://www.insee.fr/fr/statistiques/2128979',
   },
+  'insee-insee-dgfip-cnaf-cnav-ccmsa-enquetes-re': {
+    producer: 'Insee',
+    kind: 'other',
+    text: 'Insee-DGFiP-Cnaf-Cnav-CCMSA, enquêtes Revenus fiscaux et sociaux 2005 à 2024, et Insee-DGI, enquêtes rétropolées de 1996 à 2004 : taux de pauvreté au seuil de 60 % du niveau de vie médian selon l\'âge. Champ : France métropolitaine, individus vivant dans un ménage en logement ordinaire dont le revenu déclaré est positif ou nul et dont la personne de référence n\'est pas étudiante. Détail 2021 : Insee, <em>Revenus et patrimoine des ménages</em>, édition 2024, fiche 13. Fichiers consultés, versionnés dans le dépôt sous Temp/sources/.',
+    theme: 'education',
+    accessed: '2026-08',
+  },
   'insee-insee-enquete-emploi-en-continu-donnee': {
     producer: 'Insee',
     kind: 'other',

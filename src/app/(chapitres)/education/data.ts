@@ -1562,6 +1562,257 @@ export const tables = {
       },
     ],
   },
+  'cycle-pisa': {
+    vintage: '2024',
+    sources: ['insee-insee-dgfip-cnaf-cnav-ccmsa-enquetes-re', 'ocde-ocde-enquete-pisa-score-moyen-en-mathe'],
+    columns: [
+      { key: 'cycle-pisa', header: 'Cycle PISA', type: 'text', headerNumeric: false },
+      {
+        key: 'score-mathematiques',
+        header: 'Score, mathématiques',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'pauvrete-des-moins-de-18-ans',
+        header: 'Pauvreté des moins de 18 ans',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'ensemble-de-la-population',
+        header: 'Ensemble de la population',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { v: 2003, d: 0, g: false },
+          { v: 510.8, d: 1 },
+          { v: 17.7, d: 1, u: '%' },
+          { v: 13, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2006, d: 0, g: false },
+          { v: 495.5, d: 1 },
+          { v: 17.7, d: 1, u: '%' },
+          { v: 13.1, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2009, d: 0, g: false },
+          { v: 496.8, d: 1 },
+          { v: 17.7, d: 1, u: '%' },
+          { v: 13.5, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2012, d: 0, g: false },
+          { v: 495, d: 1 },
+          { v: 19.6, d: 1, u: '%' },
+          { v: 13.9, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2015, d: 0, g: false },
+          { v: 492.9, d: 1 },
+          { v: 19.9, d: 1, u: '%' },
+          { v: 14.2, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2018, d: 0, g: false },
+          { v: 495.4, d: 1 },
+          { v: 21, d: 1, u: '%' },
+          { v: 14.8, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2022, d: 0, strong: true, g: false },
+          { v: 473.9, d: 1, strong: true },
+          { v: 20.4, d: 1, u: '%', strong: true },
+          { v: 14.4, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  periode: {
+    vintage: '2024',
+    sources: ['insee-insee-dgfip-cnaf-cnav-ccmsa-enquetes-re', 'ocde-ocde-enquete-pisa-score-moyen-en-mathe'],
+    columns: [
+      { key: 'periode', header: 'Période', type: 'text', headerNumeric: false },
+      { key: 'score-pisa', header: 'Score PISA', type: 'number', headerNumeric: true },
+      {
+        key: 'pauvrete-des-moins-de-18-ans',
+        header: 'Pauvreté des moins de 18 ans',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { v: 2003, d: 0, u: '→ 2006', g: false },
+          { v: -15.3, d: 1, strong: true },
+          { v: 0, d: 1, u: 'pt', sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { v: 2006, d: 0, u: '→ 2018', g: false },
+          { v: -0.1, d: 1, strong: true },
+          { v: 3.3, d: 1, u: 'pt', sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { v: 2018, d: 0, u: '→ 2022', g: false },
+          { v: -21.5, d: 1, strong: true },
+          { v: -0.6, d: 1, u: 'pt', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { v: 2003, d: 0, u: '→ 2022', strong: true, g: false },
+          { v: -36.9, d: 1, strong: true },
+          { v: 2.7, d: 1, u: 'pt', sign: true, strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'configuration-familiale-2021': {
+    vintage: '2021',
+    sources: ['insee-insee-dgfip-cnaf-cnav-ccmsa-enquetes-re', 'ocde-ocde-enquete-pisa-score-moyen-en-mathe'],
+    columns: [
+      {
+        key: 'configuration-familiale-2021',
+        header: 'Configuration familiale, 2021',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'taux-de-pauvrete-des-enfants',
+        header: 'Taux de pauvreté des enfants',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'enfants-pauvres', header: 'Enfants pauvres', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Deux adultes en emploi' },
+          { v: 4.3, d: 1, u: '%', strong: true },
+          { v: 303000, d: 0 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Un adulte en emploi, un au chômage ou inactif' },
+          { v: 32, d: 1, u: '%' },
+          { v: 886000, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Aucun adulte en emploi' },
+          { v: 70.5, d: 1, u: '%' },
+          { v: 458000, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Adulte isolé en emploi' },
+          { v: 21.1, d: 1, u: '%' },
+          { v: 368000, d: 0 },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Adulte isolé au chômage ou inactif' },
+          { v: 80.2, d: 1, u: '%', strong: true },
+          { v: 600000, d: 0 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Autres types de ménage' },
+          { v: 29.1, d: 1, u: '%' },
+          { v: 144000, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Ensemble</b>' },
+          { v: 20.6, d: 1, u: '%', strong: true },
+          { v: 2759000, d: 0 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  annee: {
+    vintage: '2024',
+    sources: ['insee-insee-dgfip-cnaf-cnav-ccmsa-enquetes-re', 'ocde-ocde-enquete-pisa-score-moyen-en-mathe'],
+    columns: [
+      { key: 'annee', header: 'Année', type: 'text', headerNumeric: false },
+      { key: 'moins-de-18-ans', header: 'Moins de 18 ans', type: 'number', headerNumeric: true },
+      {
+        key: 'ensemble-de-la-population',
+        header: 'Ensemble de la population',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { v: 2021, d: 0, g: false },
+          { v: 20.6, d: 1, u: '%' },
+          { v: 14.5, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2022, d: 0, g: false },
+          { v: 20.4, d: 1, u: '%' },
+          { v: 14.4, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2023, d: 0, g: false },
+          { v: 21.9, d: 1, u: '%' },
+          { v: 15.4, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2024, d: 0, strong: true, g: false },
+          { v: 22.4, d: 1, u: '%', strong: true },
+          { v: 15.4, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -1708,6 +1959,7 @@ export const questions = [
     title: 'Les enseignants sont-ils bien payés ? Et par rapport à quel temps de travail ?',
   },
   { id: 's14-q8', title: 'Quel poids a l\'origine sociale ?' },
+  { id: 's14-q8b', title: 'La pauvreté des élèves explique-t-elle la baisse des résultats ?' },
   { id: 's14-q9', title: 'Taille des classes, décrochage, insertion' },
 ] satisfies readonly { id: string; title: string }[]
 
@@ -1720,9 +1972,11 @@ export const citedSources = [
   'depp-reponse-du-ministere-de-l-education-nati',
   'eurostat-eurostat-educ-uoe-fine09-depense-publiq',
   'eurostat-eurostat-educ-uoe-perp04-ratio-eleves-e',
+  'insee-insee-dgfip-cnaf-cnav-ccmsa-enquetes-re',
   'ocde-calcul-a-partir-de-ocde-regards-sur-l-e',
   'ocde-effectifs-depp-reperes-et-references',
   'ocde-ocde-base-uoe-fin-structure-dsd-eag-uo',
   'ocde-ocde-education-at-a-glance-indicateurs',
+  'ocde-ocde-enquete-pisa-score-moyen-en-mathe',
   'ocde-ocde-regards-sur-l-education-2025-depe',
 ] satisfies readonly SourceId[]
