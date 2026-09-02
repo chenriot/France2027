@@ -20,7 +20,7 @@ passent par les amendements (§D17).
 | Cellules chiffrées typées en nombres | 4 322 sur 6 745 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
 | Sources | **217 entrées** (202 migrées + 10 ajoutées §D17 + 5 écrites dans le document d’origine, §D14), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **62 167 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| **Rendu de `/tout`** | **62 316 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 

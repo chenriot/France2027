@@ -142,7 +142,7 @@ année à une série doit se faire en éditant un seul fichier.
 C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
 donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
 prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
-62 167 éléments, 29 corrections déclarées, aucun écart non déclaré.
+62 316 éléments, 29 corrections déclarées, aucun écart non déclaré.
 
 Ce que ça implique au quotidien :
 
@@ -196,7 +196,7 @@ doit être conditionné au mode, sinon il casse la vérification.
 ## État actuel
 
 Le site est construit et vérifié : 21 chapitres, 327 tableaux, 58 figures,
-217 sources, 28 routes prérendues, toutes sous la charte (§D18). `/tout` rend 62 167 éléments avec
+217 sources, 28 routes prérendues, toutes sous la charte (§D18). `/tout` rend 62 316 éléments avec
 **29 corrections déclarées et aucun écart non déclaré**. Le JavaScript par page
 est de 170 Ko pour 120 visés : dette mesurée, expliquée et cliquetée
 (`DECISIONS.md` §D11).
