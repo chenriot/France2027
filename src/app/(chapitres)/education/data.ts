@@ -2593,6 +2593,382 @@ export const tables = {
       },
     ],
   },
+  'eleves-par-enseignant-au-primaire-et-resultats': {
+    vintage: '2025',
+    sources: [
+      'ocde-ocde-regards-sur-l-education-2025-tabl',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-depp-note-d-information-n-23-48-decem',
+    ],
+    columns: [
+      {
+        key: 'eleves-par-enseignant-au-primaire-et-resultats',
+        header: 'Élèves par enseignant au primaire, et résultats',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'eleves-par-enseignant',
+        header: 'Élèves par enseignant',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'timss-cm1', header: 'Timss CM1', type: 'number', headerNumeric: true },
+      { key: 'pisa-maths', header: 'PISA maths', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Italie' },
+          { v: 10.5, d: 1 },
+          { v: 513.1, d: 1 },
+          { v: 471.3, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Espagne' },
+          { v: 11.9, d: 1 },
+          { v: 498.3, d: 1 },
+          { v: 473.1, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Estonie' },
+          { v: 11.9, d: 1 },
+          null,
+          { v: 510, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Finlande' },
+          { v: 12, d: 1 },
+          { v: 529.3, d: 1 },
+          { v: 484.1, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Pologne' },
+          { v: 13, d: 1 },
+          { v: 546, d: 1 },
+          { v: 489, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'États-Unis' },
+          { v: 13.7, d: 1 },
+          { v: 516.9, d: 1 },
+          { v: 464.9, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Japon</b>' },
+          { v: 14.7, d: 1, strong: true },
+          { v: 590.7, d: 1, strong: true },
+          { v: 535.6, d: 1 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Singapour' },
+          { v: 15, d: 1 },
+          null,
+          { v: 574.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Allemagne' },
+          { v: 15.2, d: 1 },
+          { v: 523.8, d: 1 },
+          { v: 474.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Corée du Sud</b>' },
+          { v: 16.1, d: 1, strong: true },
+          { v: 594.4, d: 1, strong: true },
+          { v: 527.3, d: 1 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Pays-Bas' },
+          { v: 16.3, d: 1 },
+          { v: 537.1, d: 1 },
+          { v: 492.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>France</b>' },
+          { v: 17.9, d: 1, strong: true },
+          { v: 484.1, d: 1, strong: true },
+          { v: 473.9, d: 1, strong: true },
+        ],
+        total: true,
+      },
+      {
+        cells: [
+          { t: '<b>Royaume-Uni</b>' },
+          { v: 19.5, d: 1, strong: true },
+          { v: 552, d: 1, strong: true },
+          { v: 489, d: 1 },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'heures-declarees-en-cm1-par-annee-scolaire': {
+    vintage: '2023',
+    sources: [
+      'ocde-ocde-regards-sur-l-education-2025-tabl',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-depp-note-d-information-n-23-48-decem',
+    ],
+    columns: [
+      {
+        key: 'heures-declarees-en-cm1-par-annee-scolaire',
+        header: 'Heures déclarées en CM1, par année scolaire',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france-2019', header: 'France 2019', type: 'number', headerNumeric: true },
+      { key: 'france-2023', header: 'France 2023', type: 'number', headerNumeric: true },
+      {
+        key: 'programmes-francais',
+        header: 'Programmes français',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'moyenne-ue', header: 'Moyenne UE', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Mathématiques</b>' },
+          { v: 182, d: 0 },
+          { v: 169, d: 0, strong: true },
+          { v: 180, d: 0 },
+          { v: 149, d: 0, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Sciences' },
+          { v: 47, d: 0 },
+          { v: 47, d: 0 },
+          { v: 72, d: 0 },
+          { v: 58, d: 0 },
+        ],
+      },
+    ],
+  },
+  'eleves-dont-l-enseignant-n-a-suivi-aucune-formation-en-deu': {
+    vintage: '2023',
+    sources: [
+      'ocde-ocde-regards-sur-l-education-2025-tabl',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-depp-note-d-information-n-23-48-decem',
+    ],
+    columns: [
+      {
+        key: 'eleves-dont-l-enseignant-n-a-suivi-aucune-formation-en-deu',
+        header: 'Élèves dont l\'enseignant n\'a suivi aucune formation en deux ans',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france-2019', header: 'France 2019', type: 'number', headerNumeric: true },
+      { key: 'france-2023', header: 'France 2023', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ue', header: 'Moyenne UE', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Contenus mathématiques' },
+          { v: 36, d: 0, u: '%' },
+          { v: 48, d: 0, u: '%', strong: true },
+          { v: 61, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Pédagogie et didactique des mathématiques' },
+          { v: 32, d: 0, u: '%' },
+          { v: 42, d: 0, u: '%', strong: true },
+          { v: 59, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Résolution de problèmes et esprit critique' },
+          { v: 61, d: 0, u: '%' },
+          { v: 58, d: 0, u: '%' },
+          { v: 67, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Évaluation en mathématiques' },
+          { v: 94, d: 0, u: '%' },
+          { v: 93, d: 0, u: '%' },
+          { v: 78, d: 0, u: '%' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Répondre aux besoins individuels des élèves' },
+          { v: 79, d: 0, u: '%' },
+          { v: 78, d: 0, u: '%' },
+          { v: 65, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Usage de la technologie' },
+          { v: 88, d: 0, u: '%' },
+          { v: 89, d: 0, u: '%' },
+          { v: 66, d: 0, u: '%' },
+        ],
+      },
+    ],
+  },
+  'enseignants-se-declarant-tres-ou-plutot-assures-mathematiq': {
+    vintage: '2023',
+    sources: [
+      'ocde-ocde-regards-sur-l-education-2025-tabl',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-depp-note-d-information-n-23-48-decem',
+    ],
+    columns: [
+      {
+        key: 'enseignants-se-declarant-tres-ou-plutot-assures-mathematiq',
+        header: 'Enseignants se déclarant très ou plutôt assurés, mathématiques',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '2015', header: '2015', type: 'number', headerNumeric: true },
+      { key: '2023', header: '2023', type: 'number', headerNumeric: true },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Évaluer la compréhension des élèves' },
+          { v: 85, d: 0, u: '%' },
+          { v: 71, d: 0, u: '%' },
+          { v: -14, d: 0, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Montrer différentes stratégies de résolution de problèmes' },
+          { v: 80, d: 0, u: '%' },
+          { v: 72, d: 0, u: '%' },
+          { v: -8, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Inciter les élèves à une réflexion plus poussée' },
+          { v: 63, d: 0, u: '%' },
+          { v: 57, d: 0, u: '%' },
+          { v: -6, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Aider les élèves en difficulté à comprendre' },
+          { v: 61, d: 0, u: '%' },
+          { v: 60, d: 0, u: '%' },
+          { v: -1, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Proposer un travail plus complexe aux meilleurs' },
+          { v: 68, d: 0, u: '%' },
+          { v: 68, d: 0, u: '%' },
+          { v: 0, d: 0 },
+        ],
+      },
+    ],
+  },
+  'enseignants-eprouvant-tres-souvent-ce-sentiment': {
+    vintage: '2023',
+    sources: [
+      'ocde-ocde-regards-sur-l-education-2025-tabl',
+      'depp-depp-note-d-information-n-24-47-decem',
+      'ocde-depp-note-d-information-n-23-48-decem',
+    ],
+    columns: [
+      {
+        key: 'enseignants-eprouvant-tres-souvent-ce-sentiment',
+        header: 'Enseignants éprouvant « très souvent » ce sentiment',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france-2019', header: 'France 2019', type: 'number', headerNumeric: true },
+      { key: 'france-2023', header: 'France 2023', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ue', header: 'Moyenne UE', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Satisfait de ma profession d\'enseignant' },
+          { v: 28, d: 0, u: '%' },
+          { v: 22, d: 0, u: '%' },
+          { v: 41, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Mon travail est important et utile' },
+          { v: 48, d: 0, u: '%' },
+          { v: 45, d: 0, u: '%' },
+          { v: 59, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Enthousiaste à propos de mon travail' },
+          { v: 34, d: 0, u: '%' },
+          { v: 29, d: 0, u: '%' },
+          { v: 49, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Mon travail me motive' },
+          { v: 36, d: 0, u: '%' },
+          { v: 27, d: 0, u: '%' },
+          { v: 44, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Je me sens estimé en tant qu\'enseignant</b>' },
+          null,
+          { v: 4, d: 0, u: '%', strong: true },
+          { v: 22, d: 0, u: '%', strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -2748,6 +3124,10 @@ export const questions = [
     id: 's14-q8d',
     title: 'Alors d\'où vient le niveau français ? Ce que le rapport permet d\'écarter, et ce qu\'il désigne',
   },
+  {
+    id: 's14-q8e',
+    title: 'Le taux d\'encadrement au primaire explique-t-il les résultats ? Et sinon, quoi ?',
+  },
   { id: 's14-q9', title: 'Taille des classes, décrochage, insertion' },
 ] satisfies readonly { id: string; title: string }[]
 
@@ -2768,5 +3148,6 @@ export const citedSources = [
   'ocde-ocde-education-at-a-glance-indicateurs',
   'ocde-ocde-enquete-pisa-score-moyen-en-mathe',
   'ocde-ocde-regards-sur-l-education-2025-depe',
+  'ocde-ocde-regards-sur-l-education-2025-tabl',
   'ocde-ocde-resultats-du-pisa-2022-volume-i', 'ocde-ocde-resultats-du-pisa-2022-volume-ii',
 ] satisfies readonly SourceId[]
