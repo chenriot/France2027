@@ -2318,6 +2318,207 @@ export const tables = {
       },
     ],
   },
+  'contexte-scolaire-pisa-2022': {
+    vintage: '2022',
+    sources: ['ocde-depp-note-d-information-n-23-48-decem', 'ocde-ocde-resultats-du-pisa-2022-volume-ii'],
+    columns: [
+      {
+        key: 'contexte-scolaire-pisa-2022',
+        header: 'Contexte scolaire, PISA 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ocde', header: 'Moyenne OCDE', type: 'number', headerNumeric: true },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          {
+            t: '<b>Élèves dont le chef d\'établissement juge l\'enseignement affecté par le manque d\'enseignants</b>',
+          },
+          { v: 67, d: 1, u: '%', strong: true },
+          { v: 46.7, d: 1, u: '%' },
+          { v: 20.3, d: 1, sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '— par des enseignants inadéquats ou peu qualifiés' },
+          { v: 30.4, d: 1, u: '%' },
+          { v: 25.4, d: 1, u: '%' },
+          { v: 5, d: 1, sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Indice de climat de discipline en cours de mathématiques</b>' },
+          { v: -0.23, d: 2, strong: true },
+          { v: 0.02, d: 2, sign: true },
+          { v: -0.25, d: 2, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Établissements interdisant le téléphone portable' },
+          { v: 23.4, d: 1, u: '%' },
+          { v: 33.6, d: 1, u: '%' },
+          { v: -10.2, d: 1 },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Usage pédagogique du numérique, par jour' },
+          { v: 1.3, d: 1, u: 'h' },
+          { v: 2, d: 1, u: 'h' },
+          { v: -0.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Élèves admis selon leurs résultats scolaires antérieurs' },
+          { v: 55.7, d: 1, u: '%' },
+          null,
+          null,
+        ],
+      },
+      {
+        cells: [
+          { t: 'Élèves dont l\'établissement a fermé au plus trois mois pendant la pandémie' },
+          { v: 64.2, d: 1, u: '%' },
+          { v: 49.5, d: 1, u: '%' },
+          { v: 14.7, d: 1, sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Indice d\'anxiété en mathématiques' },
+          { v: 0.13, d: 2 },
+          { v: 0.17, d: 2 },
+          { v: -0.04, d: 2 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'ce-que-declarent-les-eleves-cours-de-mathematiques': {
+    vintage: '2025',
+    sources: ['ocde-depp-note-d-information-n-23-48-decem', 'ocde-ocde-resultats-du-pisa-2022-volume-ii'],
+    columns: [
+      {
+        key: 'ce-que-declarent-les-eleves-cours-de-mathematiques',
+        header: 'Ce que déclarent les élèves, cours de mathématiques',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ocde', header: 'Moyenne OCDE', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Les élèves ne commencent à travailler que bien après le début du cours' },
+          { v: 21.9, d: 1, u: '%', strong: true },
+          { v: 10.6, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Les élèves sont distraits par leur propre usage du numérique' },
+          { v: 27.8, d: 1, u: '%' },
+          { v: 19.7, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Les élèves n\'écoutent pas ce que dit le professeur' },
+          { v: 16.5, d: 1, u: '%' },
+          { v: 10.5, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Il y a du bruit et de l\'agitation' },
+          { v: 26, d: 1, u: '%' },
+          { v: 19.9, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Le professeur doit attendre longtemps que les élèves se calment' },
+          { v: 44.2, d: 1, u: '%' },
+          { v: 47.6, d: 1, u: '%' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Les élèves ne peuvent pas bien travailler' },
+          { v: 13.3, d: 1, u: '%' },
+          { v: 22.1, d: 1, u: '%' },
+        ],
+      },
+    ],
+  },
+  'dispersion-des-scores-pisa-2022': {
+    vintage: '2022',
+    sources: ['ocde-depp-note-d-information-n-23-48-decem', 'ocde-ocde-resultats-du-pisa-2022-volume-ii'],
+    columns: [
+      {
+        key: 'dispersion-des-scores-pisa-2022',
+        header: 'Dispersion des scores, PISA 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'moyenne-ocde', header: 'Moyenne OCDE', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '1<sup>er</sup> décile' },
+          { v: 353.5, d: 1 },
+          { v: 354.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '9<sup>e</sup> décile' },
+          { v: 592.6, d: 1 },
+          { v: 590, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Écart interdécile</b>' },
+          { v: 239.2, d: 1, strong: true },
+          { v: 235.3, d: 1 },
+        ],
+        total: true,
+      },
+      {
+        cells: [
+          { t: 'Élèves sous le niveau 2 de compétence' },
+          { v: 28.9, d: 1, u: '%' },
+          { v: 31.1, d: 1, u: '%' },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: '<b>Élèves au niveau 6, le plus élevé</b>' },
+          { v: 1.1, d: 1, u: '%', strong: true },
+          { v: 2, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -2468,6 +2669,10 @@ export const questions = [
   {
     id: 's14-q8c',
     title: 'Le niveau baisse-t-il parce que les élèves ont changé ? Le test par le haut de la distribution',
+  },
+  {
+    id: 's14-q8d',
+    title: 'Alors d\'où vient le niveau français ? Ce que le rapport permet d\'écarter, et ce qu\'il désigne',
   },
   { id: 's14-q9', title: 'Taille des classes, décrochage, insertion' },
 ] satisfies readonly { id: string; title: string }[]
