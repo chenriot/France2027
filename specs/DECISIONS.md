@@ -16,13 +16,13 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **304** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 165 sur 6 558 (64 %) | extraction |
+| Tableaux | **307** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 186 sur 6 589 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **212 entrées** (202 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **57 752 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Sources | **215 entrées** (202 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **58 103 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
-| Routes prérendues | 25 sur 25 | `next build` |
+| Routes prérendues | 28 sur 28 | `next build` |
 
 ---
 
@@ -331,6 +331,26 @@ promotion comparé à poste et ancienneté identiques, et l'ancienneté par sexe
 recherche à combler plus tard : ce sont des données qui ne sont pas publiées,
 et c'est un résultat en soi.
 
+**Deuxième application : `s12-q15`**, sur les policiers et gendarmes tués en
+mission, en fin de partie 1 du chapitre « Sécurité et justice ». Elle répond à
+la fiche voisine `s12-q6`, qui compte les personnes tuées lors d'interventions
+policières, et au ratio que le débat public forme à partir des deux nombres.
+Trois tableaux, trois sources, aucune dette de migration ajoutée. Deux
+résultats méritent d'être notés parce qu'ils ne se devinaient pas :
+
+- **la France a produit la donnée jusqu'en 2018, puis a cessé.** L'ONDRP
+  publiait une note annuelle « Les policiers et gendarmes tués et blessés » ;
+  l'observatoire a été supprimé en 2020 et rien n'a repris la série. Le dossier
+  documentait déjà l'absence du décompte des personnes tuées *par* la police :
+  l'absence est symétrique, et c'est le producteur qui manque, pas la donnée ;
+- **le ratio demandé ne discrimine pas.** États-Unis et Allemagne s'écartent
+  d'un facteur seize à trente-cinq sur chacun des deux termes pris isolément,
+  et tombent tous deux à ≈ 22 sur leur quotient. Un `take` le dit et une note
+  de limites explique pourquoi : le dénominateur est un très petit nombre — un
+  décès en Allemagne en 2024 — et les deux termes montent ensemble avec la
+  dangerosité des affrontements. La fiche conclut à lire les deux nombres
+  rapportés à la population plutôt que leur rapport.
+
 ---
 
 ## D15 — Les URL de sources vivent dans l'extracteur, pas dans le document
@@ -549,7 +569,8 @@ valides et redirigent vers les pages définitives (`next.config.mjs`).
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
 | Commentaire éditorial à réécrire après correction | 1 (tableau BCE) | D17 ci-dessus |
 | Autres tableaux à confronter à leur source | non vérifiés | D17 ci-dessus |
-| Cellules encore en texte | 2 393 | extraction |
+| Agents tués du fait d'un tiers hors États-Unis et Allemagne | Royaume-Uni, Italie, Espagne non établis | D14 ci-dessus |
+| Cellules encore en texte | 2 403 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 | Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |
 

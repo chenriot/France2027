@@ -665,6 +665,184 @@ export const tables = {
       },
     ],
   },
+  'agents-tues-en-service-2016-2018': {
+    vintage: '2018',
+    sources: [
+      'fbi-fbi-programme-law-enforcement-officers',
+      'ondrp-ondrp-observatoire-national-de-la-delin',
+      'basta-basta-media-engage-pour-le-decompte-f',
+    ],
+    columns: [
+      {
+        key: 'agents-tues-en-service-2016-2018',
+        header: 'Agents tués en service, 2016-2018',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'total', header: 'Total', type: 'number', headerNumeric: true },
+      { key: 'dont-en-mission', header: 'Dont en mission', type: 'number', headerNumeric: true },
+      { key: 'police-nationale', header: 'Police nationale', type: 'number', headerNumeric: true },
+      { key: 'gendarmerie', header: 'Gendarmerie', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { v: 2016, d: 0, g: false },
+          { v: 26, d: 0 },
+          { v: 16, d: 0 },
+          null,
+          null,
+        ],
+      },
+      {
+        cells: [
+          { v: 2017, d: 0, g: false },
+          { v: 15, d: 0 },
+          null,
+          null,
+          null,
+        ],
+      },
+      {
+        cells: [
+          { v: 2018, d: 0, g: false },
+          { v: 25, d: 0 },
+          { v: 13, d: 0 },
+          { v: 11, d: 0 },
+          { v: 14, d: 0 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Depuis 2019' },
+          null,
+          null,
+          null,
+          null,
+        ],
+        missing: true,
+      },
+    ],
+  },
+  'agents-tues-du-fait-d-un-tiers-2024': {
+    vintage: '2024',
+    sources: [
+      'fbi-fbi-programme-law-enforcement-officers',
+      'ondrp-ondrp-observatoire-national-de-la-delin',
+      'basta-basta-media-engage-pour-le-decompte-f',
+    ],
+    columns: [
+      {
+        key: 'agents-tues-du-fait-d-un-tiers-2024',
+        header: 'Agents tués du fait d\'un tiers, 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'nombre', header: 'Nombre', type: 'number', headerNumeric: true },
+      {
+        key: 'taux-par-million-d-habitants',
+        header: 'Taux par million d\'habitants',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'perimetre-et-producteur',
+        header: 'Périmètre et producteur',
+        type: 'text',
+        headerNumeric: false,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'États-Unis' },
+          { v: 64, d: 0 },
+          { v: 0.19, d: 2 },
+          {
+            t: 'FBI, programme <em>LEOKA</em> : agents tués par un acte criminel, dont 46 par arme à feu, sur 737 035 agents assermentés',
+          },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Allemagne' },
+          { v: 1, d: 0 },
+          { v: 0.012, d: 3 },
+          {
+            t: 'BKA, <em>Bundeslagebild</em> : 34 faits d\'homicide visant des policiers, dont 33 restés au stade de la tentative',
+          },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'France' },
+          null,
+          null,
+          { t: 'aucune statistique publique depuis 2018' },
+        ],
+      },
+    ],
+  },
+  'personnes-tuees-par-la-police-pour-un-agent-tue-2024': {
+    vintage: '2024',
+    sources: [
+      'fbi-fbi-programme-law-enforcement-officers',
+      'ondrp-ondrp-observatoire-national-de-la-delin',
+      'basta-basta-media-engage-pour-le-decompte-f',
+    ],
+    columns: [
+      {
+        key: 'personnes-tuees-par-la-police-pour-un-agent-tue-2024',
+        header: 'Personnes tuées par la police pour un agent tué, 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'personnes-tuees-par-la-police',
+        header: 'Personnes tuées par la police',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'agents-tues-du-fait-d-un-tiers',
+        header: 'Agents tués du fait d\'un tiers',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'ratio', header: 'Ratio', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'États-Unis' },
+          { v: 1406, d: 0 },
+          { v: 64, d: 0 },
+          { v: 22, d: 0, approx: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Allemagne' },
+          { v: 22, d: 0 },
+          { v: 1, d: 0 },
+          { v: 22, d: 0, approx: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'France' },
+          { v: 52, d: 0 },
+          null,
+          null,
+        ],
+      },
+    ],
+  },
   'circonstance-2024': {
     vintage: '2024',
     sources: ['ssmsi-memes-sources-que-le-tableau-precedent'],
@@ -1271,6 +1449,10 @@ export const questions = [
     id: 's12-q6',
     title: 'Personnes tuées lors d\'interventions policières : la comparaison internationale',
   },
+  {
+    id: 's12-q15',
+    title: 'Et les policiers tués en mission ? Le contrepoint, et ce que vaut le ratio',
+  },
   { id: 's12-q7', title: 'De quoi les homicides français relèvent-ils ?' },
   {
     id: 's12-q8',
@@ -1293,10 +1475,13 @@ export const questions = [
  * citée en prose reste une source du dossier.
  */
 export const citedSources = [
+  'basta-basta-media-engage-pour-le-decompte-f',
   'basta-cilip-compilation-des-statistiques-offi', 'eurostat-crim-just-job',
   'eurostat-crim-just-job-2', 'eurostat-eurostat-crim-off-cat-iccs0101-et-iccs0',
   'eurostat-onudc-via-banque-mondiale-serie-1990-20',
+  'fbi-fbi-programme-law-enforcement-officers',
   'insee-ssmsi-bases-departementales-et-regional',
+  'ondrp-ondrp-observatoire-national-de-la-delin',
   'ssmsi-deux-instruments-distincts-qu-il-ne-fau',
   'ssmsi-memes-sources-que-le-tableau-precedent',
   'ssmsi-ssmsi-statistiques-des-homicides-mini',

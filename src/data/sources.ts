@@ -54,6 +54,14 @@ const registry = {
     theme: 'depenses-publiques',
     accessed: '2026-08',
   },
+  'basta-basta-media-engage-pour-le-decompte-f': {
+    producer: 'Basta',
+    kind: 'other',
+    text: 'Basta! (média engagé) pour le décompte français des personnes tuées lors d\'interventions policières, repris de la fiche précédente.',
+    theme: 'securite-justice',
+    engaged: true,
+    accessed: '2026-08',
+  },
   'basta-cilip-compilation-des-statistiques-offi': {
     producer: 'Basta',
     kind: 'report',
@@ -995,6 +1003,13 @@ const registry = {
     theme: 'emploi-chomage',
     accessed: '2026-08',
   },
+  'fbi-fbi-programme-law-enforcement-officers': {
+    producer: 'FBI',
+    kind: 'report',
+    text: 'FBI, programme <em>Law Enforcement Officers Killed and Assaulted</em>, rapport spécial 2024, et <em>Law Enforcement Employee Counts</em> pour les effectifs assermentés ; BKA, <em>Bundeslagebild Gewalt gegen Polizeivollzugsbeamtinnen und Polizeivollzugsbeamte</em> 2024 ; CILIP pour les personnes tuées par la police en Allemagne ; Independent Office for Police Conduct pour le Royaume-Uni.',
+    theme: 'securite-justice',
+    accessed: '2026-08',
+  },
   'france-france-art-l1234-9-et-l1234-1-du-code': {
     producer: 'France',
     kind: 'report',
@@ -1402,6 +1417,13 @@ const registry = {
     kind: 'other',
     text: 'OCDE, <i>Taxing Wages 2026</i>, données 2025, célibataire sans enfant au salaire moyen. Les décompositions sont cohérentes avec les totaux à 0,1 point près.',
     theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
+  'ondrp-ondrp-observatoire-national-de-la-delin': {
+    producer: 'ONDRP',
+    kind: 'report',
+    text: 'ONDRP (Observatoire national de la délinquance et des réponses pénales), notes « Les policiers et gendarmes tués et blessés » pour 2016, 2017 et 2018 ; Inspection générale de la gendarmerie nationale, rapport d\'activité 2024.',
+    theme: 'securite-justice',
     accessed: '2026-08',
   },
   'our-world-in-data-global-carbon-budget-emissions-de-co-l': {
