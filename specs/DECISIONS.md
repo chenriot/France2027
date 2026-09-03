@@ -20,7 +20,7 @@ passent par les amendements (§D17).
 | Cellules chiffrées typées en nombres | 4 186 sur 6 589 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
 | Sources | **215 entrées** (202 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **58 103 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| **Rendu de `/tout`** | **58 141 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 28 sur 28 | `next build` |
 
@@ -343,13 +343,28 @@ résultats méritent d'être notés parce qu'ils ne se devinaient pas :
   l'observatoire a été supprimé en 2020 et rien n'a repris la série. Le dossier
   documentait déjà l'absence du décompte des personnes tuées *par* la police :
   l'absence est symétrique, et c'est le producteur qui manque, pas la donnée ;
-- **le ratio demandé ne discrimine pas.** États-Unis et Allemagne s'écartent
-  d'un facteur seize à trente-cinq sur chacun des deux termes pris isolément,
-  et tombent tous deux à ≈ 22 sur leur quotient. Un `take` le dit et une note
-  de limites explique pourquoi : le dénominateur est un très petit nombre — un
-  décès en Allemagne en 2024 — et les deux termes montent ensemble avec la
-  dangerosité des affrontements. La fiche conclut à lire les deux nombres
-  rapportés à la population plutôt que leur rapport.
+- **le ratio demandé écrase l'écart qu'il est censé décrire.** Sur une base
+  pluriannuelle et à périmètre homogène — tirs mortels rapportés aux agents
+  tués — il vaut ≈ 7 en France, ≈ 11 en Allemagne, ≈ 17 aux États-Unis, alors
+  que les tirs mortels par million d'habitants s'écartent d'un facteur dix à
+  vingt-quatre. Les deux termes montent ensemble avec la dangerosité des
+  affrontements, et le quotient les annule. La fiche conclut à lire les deux
+  nombres rapportés à la population plutôt que leur rapport.
+
+  **Une première rédaction concluait à l'inverse** — « le ratio ne sépare
+  pas » — sur la foi des seules valeurs 2024 : 1 406/64 aux États-Unis et 22/1
+  en Allemagne donnent tous deux ≈ 22. C'était un artefact de millésime, 2024
+  étant un record allemand des deux côtés. **Un dénominateur de un ou deux
+  décès interdit toute lecture annuelle** ; la règle retenue est de ne calculer
+  ce rapport que sur des ordres de grandeur pluriannuels, et de comparer des
+  tirs à des tirs puisque le décompte allemand ne porte que sur l'arme à feu.
+
+  La ligne française est reconstituée, pas mesurée : une vingtaine de personnes
+  tuées par un tir policier par an, de l'ordre de trois agents tués du fait
+  d'un tiers, soit un rapport tenant entre quatre et douze. Les deux termes
+  viennent de sources de qualité inégale — recensements de presse au
+  numérateur, ventilation partielle des décès de policiers au dénominateur —
+  et la fiche le dit avant de donner le chiffre.
 
 ---
 

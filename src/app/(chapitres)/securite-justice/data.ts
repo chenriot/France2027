@@ -786,7 +786,7 @@ export const tables = {
       },
     ],
   },
-  'personnes-tuees-par-la-police-pour-un-agent-tue-2024': {
+  'ordre-de-grandeur-annuel-tirs-mortels-rapportes-aux-agents': {
     vintage: '2024',
     sources: [
       'fbi-fbi-programme-law-enforcement-officers',
@@ -795,14 +795,14 @@ export const tables = {
     ],
     columns: [
       {
-        key: 'personnes-tuees-par-la-police-pour-un-agent-tue-2024',
-        header: 'Personnes tuées par la police pour un agent tué, 2024',
+        key: 'ordre-de-grandeur-annuel-tirs-mortels-rapportes-aux-agents',
+        header: 'Ordre de grandeur annuel, tirs mortels rapportés aux agents tués',
         type: 'text',
         headerNumeric: false,
       },
       {
-        key: 'personnes-tuees-par-la-police',
-        header: 'Personnes tuées par la police',
+        key: 'personnes-tuees-par-un-tir-policier',
+        header: 'Personnes tuées par un tir policier',
         type: 'number',
         headerNumeric: true,
       },
@@ -813,33 +813,43 @@ export const tables = {
         headerNumeric: true,
       },
       { key: 'ratio', header: 'Ratio', type: 'number', headerNumeric: true },
+      {
+        key: 'tirs-mortels-par-million-d-habitants',
+        header: 'Tirs mortels par million d\'habitants',
+        type: 'number',
+        headerNumeric: true,
+      },
     ],
     rows: [
       {
         cells: [
-          { t: 'États-Unis' },
-          { v: 1406, d: 0 },
-          { v: 64, d: 0 },
-          { v: 22, d: 0, approx: true },
+          { t: 'France' },
+          { v: 20, d: 0, approx: true },
+          { v: 3, d: 0, approx: true },
+          { v: 7, d: 0, approx: true },
+          { v: 0.29, d: 2 },
         ],
         emphasis: true,
       },
       {
         cells: [
           { t: 'Allemagne' },
-          { v: 22, d: 0 },
-          { v: 1, d: 0 },
-          { v: 22, d: 0, approx: true },
+          { v: 11, d: 0, approx: true },
+          { v: 1, d: 0, approx: true },
+          { v: 11, d: 0, approx: true },
+          { v: 0.13, d: 2 },
         ],
         emphasis: true,
       },
       {
         cells: [
-          { t: 'France' },
-          { v: 52, d: 0 },
-          null,
-          null,
+          { t: 'États-Unis' },
+          { v: 1000, d: 0, approx: true },
+          { v: 60, d: 0, approx: true },
+          { v: 17, d: 0, approx: true },
+          { v: 3, d: 1, approx: true },
         ],
+        emphasis: true,
       },
     ],
   },
