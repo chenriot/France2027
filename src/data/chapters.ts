@@ -90,7 +90,7 @@ export const chapters: readonly ChapterEntry[] = [
     legacyAnchor: 's2',
     kind: 'theme',
     family: 'argent',
-    counts: { questions: 11, tables: 16, figures: 2 },
+    counts: { questions: 12, tables: 20, figures: 2 },
   },
   {
     slug: 'retraites-travail',

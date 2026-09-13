@@ -1054,6 +1054,302 @@ export const tables = {
       },
     ],
   },
+  'd-ou-vient-l-ecart-2024': {
+    vintage: '2024',
+    sources: ['ocde-gdpvd-cap-2'],
+    columns: [
+      {
+        key: 'd-ou-vient-l-ecart-2024',
+        header: 'D\'où vient l\'écart, 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'pays-bas', header: 'Pays-Bas', type: 'number', headerNumeric: true },
+      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'royaume-uni', header: 'Royaume-Uni', type: 'number', headerNumeric: true },
+      { key: 'etats-unis', header: 'États-Unis', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>PIB par habitant</b> <em>(USD PPA 2021)</em>' },
+          { v: 70452, d: 0, strong: true },
+          { v: 62678, d: 0 },
+          { v: 54820, d: 0, strong: true },
+          { v: 53428, d: 0 },
+          { v: 75658, d: 0 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>PIB par heure travaillée</b>' },
+          { v: 88.9, d: 1, u: '$', strong: true },
+          { v: 92.2, d: 1, u: '$' },
+          { v: 85.9, d: 1, u: '$', strong: true },
+          { v: 66, d: 1, u: '$' },
+          { v: 88.8, d: 1, u: '$' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Heures travaillées par habitant et par an</b>' },
+          { v: 793, d: 0, strong: true },
+          { v: 680, d: 0 },
+          { v: 638, d: 0, strong: true },
+          { v: 810, d: 0 },
+          { v: 852, d: 0 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<em>dont</em> heures par personne en emploi' },
+          { v: 1456, d: 0 },
+          { v: 1336, d: 0 },
+          { v: 1511, d: 0 },
+          { v: 1667, d: 0 },
+          { v: 1796, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<em>dont</em> emploi rapporté à la population totale' },
+          { v: 54.5, d: 1, u: '%' },
+          { v: 50.9, d: 1, u: '%' },
+          { v: 42.3, d: 1, u: '%' },
+          { v: 48.6, d: 1, u: '%' },
+          { v: 47.4, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Chômage' },
+          { v: 3.7, d: 1, u: '%' },
+          { v: 3.4, d: 1, u: '%' },
+          { v: 7.4, d: 1, u: '%' },
+          { v: 4.3, d: 1, u: '%' },
+          { v: 4, d: 1, u: '%' },
+        ],
+      },
+    ],
+  },
+  'part-dans-la-valeur-ajoutee-2005-2024': {
+    vintage: '2024',
+    sources: ['ocde-gdpvd-cap-2'],
+    columns: [
+      {
+        key: 'part-dans-la-valeur-ajoutee-2005-2024',
+        header: 'Part dans la valeur ajoutée, 2005 → 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'pays-bas', header: 'Pays-Bas', type: 'number', headerNumeric: true },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Industrie manufacturière' },
+          { v: 13, d: 1, u: '→ 11,7' },
+          { v: 13.5, d: 1, u: '→ 11,4' },
+          { v: 21.9, d: 1, u: '→ 19,9' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Commerce, transport, hébergement et restauration' },
+          { v: 19.7, d: 1, u: '→ 19,7' },
+          { v: 17.4, d: 1, u: '→ 16,9' },
+          { v: 16.6, d: 1, u: '→ 16,8' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Services aux entreprises' },
+          { v: 13, d: 1, u: '→ 16,4' },
+          { v: 12.7, d: 1, u: '→ 14,4' },
+          { v: 10.8, d: 1, u: '→ 12,2' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Activités immobilières' },
+          { v: 7.2, d: 1, u: '→ 8,0' },
+          { v: 13.3, d: 1, u: '→ 14,5' },
+          { v: 11.1, d: 1, u: '→ 9,9' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Activités financières et d\'assurance' },
+          { v: 7.6, d: 1, u: '→ 4,9' },
+          { v: 3.7, d: 1, u: '→ 3,1' },
+          { v: 5.3, d: 1, u: '→ 3,9' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Administration, santé, éducation' },
+          { v: 20.3, d: 1, u: '→ 21,5' },
+          { v: 21.1, d: 1, u: '→ 21,5' },
+          { v: 18, d: 1, u: '→ 19,6' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Construction' },
+          { v: 5.4, d: 1, u: '→ 5,1' },
+          { v: 5.4, d: 1, u: '→ 5,5' },
+          { v: 3.8, d: 1, u: '→ 4,9' },
+        ],
+      },
+    ],
+  },
+  'fiscalite-et-ouverture-2024': {
+    vintage: '2024',
+    sources: ['ocde-gdpvd-cap-2'],
+    columns: [
+      {
+        key: 'fiscalite-et-ouverture-2024',
+        header: 'Fiscalité et ouverture, 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'pays-bas', header: 'Pays-Bas', type: 'number', headerNumeric: true },
+      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'royaume-uni', header: 'Royaume-Uni', type: 'number', headerNumeric: true },
+      { key: 'etats-unis', header: 'États-Unis', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Prélèvements obligatoires, % du PIB' },
+          { v: 38.8, d: 1, u: '%' },
+          { v: 40.5, d: 1, u: '%' },
+          { v: 44.7, d: 1, u: '%' },
+          { v: 36, d: 1, u: '%' },
+          { v: 25.9, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Impôt sur les bénéfices des sociétés, % du PIB</b>' },
+          { v: 4.3, d: 1, u: '%', strong: true },
+          { v: 2.2, d: 1, u: '%' },
+          { v: 2.3, d: 1, u: '%', strong: true },
+          { v: 3.5, d: 1, u: '%' },
+          { v: 2.2, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Dépense publique, % du PIB' },
+          { v: 44.3, d: 1, u: '%' },
+          { v: 49.4, d: 1, u: '%' },
+          { v: 57.3, d: 1, u: '%' },
+          { v: 46, d: 1, u: '%' },
+          { v: 39.7, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Exportations de biens et services, % du PIB' },
+          { v: 83, d: 0, u: '%', strong: true },
+          { v: 41, d: 0, u: '%' },
+          { v: 32, d: 0, u: '%' },
+          { v: 32, d: 0, u: '%' },
+          { v: 11, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Solde des revenus primaires avec l\'étranger, % du PIB</b>' },
+          { v: -0.9, d: 1, u: '%', strong: true },
+          { v: 3.5, d: 1, u: '%', sign: true },
+          { v: 1.9, d: 1, u: '%', sign: true, strong: true },
+          { v: -1.6, d: 1, u: '%' },
+          { v: -0.1, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'retraites-et-bilans': {
+    vintage: '2026',
+    sources: ['ocde-gdpvd-cap-2'],
+    columns: [
+      {
+        key: 'retraites-et-bilans',
+        header: 'Retraites et bilans',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'pays-bas', header: 'Pays-Bas', type: 'number', headerNumeric: true },
+      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'royaume-uni', header: 'Royaume-Uni', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Droits des ménages sur les retraites et assurances</b>, % du PIB <em>(2024)</em>' },
+          { v: 164, d: 0, u: '%', strong: true },
+          { v: 60, d: 0, u: '%' },
+          { v: 75, d: 0, u: '%', strong: true },
+          { v: 105, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Dépense publique de vieillesse et survie</b>, % du PIB <em>(2021)</em>' },
+          { v: 6.4, d: 1, u: '%', strong: true },
+          { v: 10.8, d: 1, u: '%' },
+          { v: 13.6, d: 1, u: '%', strong: true },
+          { v: 7.4, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Dette des ménages, % du PIB <em>(2025)</em>' },
+          { v: 93, d: 0, u: '%' },
+          { v: 49, d: 0, u: '%' },
+          { v: 60, d: 0, u: '%' },
+          { v: 74, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Dette des sociétés non financières, % du PIB <em>(2025)</em>' },
+          { v: 105, d: 0, u: '%' },
+          { v: 59, d: 0, u: '%' },
+          { v: 92, d: 0, u: '%' },
+          { v: 58, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Dette publique</b>, % du PIB <em>(2025, comptes financiers)</em>' },
+          { v: 42, d: 0, u: '%', strong: true },
+          { v: 59, d: 0, u: '%' },
+          { v: 107, d: 0, u: '%', strong: true },
+          { v: 80, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
   'd-ou-viennent-les-points-de-dette-1995-2025': {
     vintage: '2025',
     sources: ['eurostat-gov-10dd-edpt1'],
@@ -1347,6 +1643,10 @@ export const questions = [
   { id: 's2-q8', title: 'Que faudrait-il faire pour revenir à 3 % de déficit ?' },
   { id: 's2-q9', title: 'Et si on maintenait 5 % de déficit pendant dix ans ?' },
   { id: 's2-q11', title: 'La croissance a-t-elle été achetée à crédit ?' },
+  {
+    id: 's2-q12',
+    title: 'Pourquoi les Pays-Bas produisent-ils 28 % de plus par habitant que la France ?',
+  },
   { id: 's2-q10', title: 'Les crises expliquent-elles la dette, ou le déficit permanent ?' },
 ] satisfies readonly { id: string; title: string }[]
 
@@ -1361,5 +1661,5 @@ export const citedSources = [
   'eurostat-eurostat-gov-10dd-edpt1-et-bop-iip6-q', 'eurostat-gov-10a-main-2',
   'eurostat-gov-10dd-edpt1', 'eurostat-gov-10dd-edpt1-2',
   'haut-conseil-des-finances-publiques-haut-conseil-des-finan',
-  'insee-calcul-par-nos-soins-a-partir-d-insee-i', 'ocde-gdpvd-cap',
+  'insee-calcul-par-nos-soins-a-partir-d-insee-i', 'ocde-gdpvd-cap', 'ocde-gdpvd-cap-2',
 ] satisfies readonly SourceId[]

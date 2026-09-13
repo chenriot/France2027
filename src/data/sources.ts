@@ -1356,6 +1356,14 @@ const registry = {
     theme: 'dette-deficit',
     accessed: '2026-08',
   },
+  'ocde-gdpvd-cap-2': {
+    producer: 'OCDE',
+    kind: 'database',
+    datasets: ['GDPVD_CAP', 'HRS', 'ET', 'POP', 'UNR', 'XGSV', 'TAXQ', 'YPGTQ', 'BSII', '0710'],
+    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span>, <span class="num">HRS</span>, <span class="num">ET</span>, <span class="num">POP</span>, <span class="num">UNR</span>, <span class="num">XGSV</span>, <span class="num">TAXQ</span>, <span class="num">YPGTQ</span> et <span class="num">BSII</span> ; OCDE, <i>National Accounts at a Glance</i>, chapitre 4 (valeur ajoutée par branche) ; OCDE, <i>Social Expenditure Database</i>, dépenses publiques de vieillesse et survie en espèces ; OCDE, <i>Revenue Statistics</i>, tableaux comparatifs, poste 1200 ; OCDE, comptes financiers annuels, tableau <span class="num">0710</span> (droits sur assurances et retraites des ménages, dettes par secteur). Extraction par API SDMX le 13 septembre 2026. <b>Calcul par nos soins</b> : heures par habitant = heures par emploi × emploi ÷ population ; PIB par heure = PIB par habitant ÷ heures par habitant ; décomposition en parts logarithmiques.',
+    theme: 'dette-deficit',
+    accessed: '2026-08',
+  },
   'ocde-ocde-base-des-prix-de-l-immobilier-rat': {
     producer: 'OCDE',
     kind: 'other',
