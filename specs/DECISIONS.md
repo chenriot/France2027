@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **308** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 241 sur 6 657 (64 %) | extraction |
+| Tableaux | **312** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 337 sur 6 776 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **213 entrées** (203 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **58 417 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Sources | **214 entrées** (204 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **59 205 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -359,6 +359,31 @@ Trois points valent d'être notés pour la suite.
   n'étaient pas joignables depuis l'environnement d'extraction. Un encadré
   `hole` le dit et interdit la comparaison, plutôt qu'une estimation non
   sourcée.
+
+**Troisième application : `s2-q12`**, « Pourquoi les Pays-Bas produisent-ils
+28 % de plus par habitant que la France ? », qui prolonge la précédente dans le
+même chapitre. Quatre tableaux, une source, quatre bases de l'OCDE croisées
+(Perspectives économiques, *National Accounts at a Glance* chapitre 4,
+*Social Expenditure Database*, *Revenue Statistics*).
+
+Elle est placée dans « Dette et déficit » et non dans « Europe » ou « Emploi »
+pour une raison de lecture : **elle répond à une question que le tableau
+précédent laisse ouverte** — les Pays-Bas empruntent peu et produisent
+beaucoup — et la décomposition qu'elle emploie n'a de sens qu'à côté des séries
+de PIB par habitant de `s2-q11`. Une fiche qui explique un écart doit vivre là
+où l'écart est montré.
+
+Deux points de méthode qu'elle fixe.
+
+- **Les millésimes hétérogènes se déclarent ligne à ligne, pas en note.** La
+  décomposition est à 2024 (dernière année où les heures travaillées existent
+  pour les cinq pays), la dépense de vieillesse à 2021 (dernier millésime
+  homogène de SOCX), les dettes à fin 2025. Chaque ligne porte son année entre
+  parenthèses et l'encadré `lim` interdit de lire les trois tableaux comme une
+  photographie unique.
+- **Une décomposition multiplicative se donne en parts logarithmiques.** PIB par
+  habitant = heures par habitant × PIB par heure ; les contributions sont
+  `ln(rapport)/ln(rapport total)`, seule répartition qui somme à 100 %.
 
 ---
 

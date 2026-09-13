@@ -420,6 +420,58 @@ rien produire. C'est de la dette **brute**, sans compter ce qu'on a acheté avec
 de ces deux derniers tableaux : personne ne publie ses comptes financiers dans
 un format comparable.
 
+### Et les Pays-Bas, comment font-ils ?
+
+Ils produisent 28 % de plus par habitant que nous, en empruntant deux fois
+moins. On imagine qu'ils sont plus efficaces. **Ce n'est pas ça du tout.**
+
+| 2024 | Pays-Bas | France |
+|---|--:|--:|
+| PIB par habitant | 70 452 $ | 54 820 $ |
+| **Produit en une heure de travail** | **88,9 $** | **85,9 $** |
+| **Heures travaillées par habitant et par an** | **793** | **638** |
+| Heures par personne qui travaille | 1 456 | 1 511 |
+| Personnes en emploi / population totale | **54,5 %** | 42,3 % |
+
+Un Néerlandais produit **3,5 % de plus qu'un Français en une heure**. Pas 30 % :
+3,5 %. Tout le reste de l'écart vient d'une seule chose — **il y a beaucoup plus
+de gens qui travaillent**. Et le détail est savoureux : chaque Néerlandais qui
+travaille fait *moins* d'heures qu'un Français (1 456 contre 1 511, c'est le pays
+du temps partiel), mais ils sont douze points de population de plus à travailler.
+
+**La France n'a pas un problème de productivité, elle a un problème de volume de
+travail.** C'est l'inverse du Royaume-Uni, qui travaille plus que les Pays-Bas
+(810 heures par habitant) et produit un quart de moins, parce que son heure de
+travail vaut 66 $ au lieu de 89 $. Deux maladies opposées, deux remèdes opposés.
+
+**Et la structure de l'économie n'explique rien** : l'industrie pèse 11,7 % de la
+valeur ajoutée aux Pays-Bas et 11,4 % en France — les deux sont à dix points de
+l'Allemagne. Deux vraies différences seulement : le commerce et le transport
+(Rotterdam, la réexportation — les Pays-Bas exportent 83 % de leur PIB contre
+32 % pour nous), et l'immobilier, qui pèse presque deux fois plus en France
+parce que le logement y est cher.
+
+**L'impôt ? Pas dans le sens qu'on croit.** Les Pays-Bas prélèvent 38,8 % du PIB
+contre 44,7 % chez nous. Mais leur **impôt sur les sociétés rapporte 4,3 % du
+PIB, presque le double du nôtre (2,3 %)**. Leur attractivité ne consiste pas à
+taxer moins les bénéfices : elle consiste à en attirer beaucoup. Le prix à payer
+est visible : chaque année, l'équivalent de 1 à 2 points de PIB néerlandais
+repart en profits chez des propriétaires étrangers. Une partie de leur avance est
+comptable, pas vécue.
+
+**Et la retraite par capitalisation ?** Les ménages néerlandais possèdent
+**164 % du PIB en droits à la retraite**, contre 75 % en France. Résultat : leur
+dépense publique de retraite est de **6,4 % du PIB contre 13,6 % chez nous**.
+Sept points d'écart — voilà l'essentiel de la différence de dépense publique, et
+donc d'impôts, et donc de dette publique (42 % du PIB contre 107 %).
+
+Mais **ça ne rend personne plus productif** : 3,5 % de plus par heure, on l'a vu.
+Et ça a une contrepartie que l'on oublie toujours. Obligés d'épargner pour leur
+retraite, les Néerlandais empruntent pour se loger : **93 % du PIB de crédit
+immobilier, contre 60 % en France**. Le pays le moins endetté publiquement du
+panel est le plus endetté privément. **La capitalisation n'a pas supprimé la
+dette, elle l'a déplacée de l'État vers les ménages.**
+
 **Le mécanisme complet, en une phrase :** une dépense sociale qui augmente toute
 seule, financée d'abord en coupant la défense et l'investissement, puis par
 l'emprunt — et dont les intérêts viennent aujourd'hui prendre la place des
