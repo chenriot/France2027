@@ -1636,7 +1636,7 @@ contre 1 à 3 milliards pour la fraude aux prestations.
 
 ---
 
-# La chaîne, en treize chiffres
+# La chaîne, bout à bout
 
 *Les dix-huit thèmes disent chacun une chose. Mis bout à bout, ils racontent une
 seule histoire, et chaque maillon explique le suivant. Voici cette histoire, avec
@@ -1691,7 +1691,78 @@ part de richesse la plus élevée : 32,7 % contre 28,9 % en Allemagne. Mais
 
 **Un retraité allemand ne reçoit pas moins qu'un retraité français.** La France
 ne verse pas plus : elle produit moins pour verser autant. Ce qui la distingue
-n'est pas sa générosité, c'est son assiette.
+n'est pas ce qu'elle verse, c'est ce qu'elle produit pour le verser.
+
+### 5 bis. Ce que contient vraiment la protection sociale
+
+Avant de discuter de ce qu'il faudrait couper, il faut savoir de quoi l'on parle.
+Les 932,5 milliards de prestations versés en 2024 se répartissent ainsi :
+
+| 2024 | Montant | Part |
+|---|--:|--:|
+| **Vieillesse et survie** (retraites, réversions) | **426,7 Md€** | **46 %** |
+| **Santé, invalidité, accidents du travail** | **338,9 Md€** | **36 %** |
+| Famille | 65,8 Md€ | 7 % |
+| Emploi et chômage | 51,1 Md€ | 5 % |
+| Pauvreté et exclusion | 34,0 Md€ | 4 % |
+| Logement | 16,1 Md€ | 2 % |
+
+Trois intitulés méritent une traduction :
+
+- **Famille**, ce sont les allocations familiales, les aides à la garde des jeunes
+  enfants, l'allocation de rentrée scolaire, les congés de maternité et de
+  paternité payés.
+- **Pauvreté et exclusion**, c'est le RSA et les autres aides de dernier recours —
+  celles qui ne dépendent ni de la retraite ni du chômage. Le filet de sécurité.
+- **Logement**, ce sont pour l'essentiel les APL et leurs variantes, versées aux
+  locataires selon leurs revenus.
+
+Deux enseignements. **Les retraites sont le premier poste, et de loin** : un débat
+sur la dépense sociale qui n'en parle pas parle de la moitié du sujet. Et les
+postes qui font le plus parler — RSA, APL — pèsent ensemble 50 milliards, 5 % du
+total : les rogner ne règle rien et frappe les plus fragiles.
+
+D'où l'orientation que ce dossier assume, et qui est un jugement, pas un chiffre :
+**mieux vaut conserver le niveau de dépense et augmenter le travail que réduire
+les prestations.** Le système n'est pas plus généreux que l'allemand, il n'y a pas
+de gras évident à retirer ; et **la dépense de santé va augmenter**, parce que la
+population vieillit. Le modèle social ne coûtera pas moins demain : il coûtera
+plus. Y être attaché, c'est accepter de le financer.
+
+### 5 ter. Et ce système redistribue déjà beaucoup
+
+Avant de lui demander de redistribuer davantage, il faut mesurer ce qu'il fait
+déjà. Niveau de vie annuel moyen, en euros, 2024 :
+
+| | Avant redistribution | Après | Écart |
+|---|--:|--:|--:|
+| **Les 10 % les plus modestes** | **4 710** | **11 960** | **+7 250** |
+| Les 20 % les plus modestes | 9 090 | 14 100 | +5 010 |
+| Les 20 % les plus aisés | 74 980 | 58 690 | −16 290 |
+| **Les 10 % les plus aisés** | **99 300** | **74 410** | **−24 890** |
+| *Rapport haut / bas* | *×21,1* | *×6,2* | — |
+
+Le revenu des plus modestes est **multiplié par 2,5**, celui des plus aisés amputé
+d'un quart, et **l'écart entre le haut et le bas passe de 21 à 6**. Même en
+corrigeant l'effet des retraites, la France garde **la redistribution la plus
+forte des huit pays comparés**.
+
+Côté contributions : **les 10 % les plus aisés acquittent 423 milliards sur
+1 271, un tiers de tous les prélèvements — davantage que les cinq premiers
+déciles réunis (285 milliards).**
+
+Une réserve honnête, et une seule : le taux de prélèvement monte avec le revenu
+sur presque toute la distribution, puis **cesse de monter tout en haut** — environ
+46 % pour les 0,1 % les plus riches, environ 26 % pour les milliardaires, parce
+qu'à ce niveau le revenu prend la forme de bénéfices non distribués. **C'est une
+anomalie, et elle devrait être corrigée.** Mais les ordres de grandeur ne se
+confondent pas : ce qui est en jeu là se compte en quelques milliards, l'écart à
+combler en dizaines. Corriger le sommet est une question de justice ; financer le
+modèle est une question de volume de travail.
+
+L'indice de Gini, lui, atteint **0,302 en 2024, son plus haut depuis 1996** — il
+valait 0,274. Mais ce qui se dégrade se dégrade surtout *avant* redistribution :
+l'appareil social absorbe une part croissante d'un choc croissant.
 
 ### 6. Le déficit est un déficit d'heures travaillées
 
@@ -1784,6 +1855,15 @@ dossier n'en recommande aucune.
 décider.** Elle consiste à faire payer la génération suivante pour un niveau de
 travail que la génération actuelle a choisi.
 
+Et ne rien décider n'est pas neutre. Tant qu'on ne décide rien, la contrainte
+s'applique quand même — mais sur les postes qu'on peut couper vite : **la
+défense, la culture, l'éducation, la justice, la santé.** Ce sont exactement ceux
+où la France est déjà en dessous de ses voisins (voir le point 8). **Le vrai
+risque n'est pas l'ajustement : c'est qu'il soit subi plutôt que choisi.** Un
+ajustement progressif et décidé coûte toujours moins cher qu'un ajustement brutal
+imposé par les circonstances. Être attaché au modèle social suppose de le financer
+maintenant, pas de le défendre en refusant d'en parler.
+
 ### 13. On a plus d'enfants — et moins d'argent pour chacun
 
 La France fait encore plus d'enfants que ses voisins, même si l'écart se resserre
@@ -1802,13 +1882,15 @@ plus d'enfants.**
 ---
 
 **La chaîne en une phrase.** La France produit moins parce qu'elle travaille moins
-— pas moins vite, moins longtemps collectivement —, ce qui rétrécit l'assiette ;
-sur cette assiette étroite elle applique le taux d'impôt le plus élevé du groupe
-et obtient moins d'argent par habitant que l'Allemagne ; elle finance avec cet
-argent une protection sociale qui, par habitant, n'est pas plus généreuse que
-l'allemande ; l'écart se comble en rognant l'investissement et les services, puis
-par la dette. **Le maillon faible n'est ni la générosité du modèle, ni le coût de
-l'administration : c'est le volume de travail.**
+— pas moins vite, l'heure française vaut celle des voisins, mais moins longtemps
+collectivement, faute de jeunes et de seniors en emploi ; sur cette richesse plus
+petite elle applique le taux d'impôt le plus élevé du groupe et obtient quand même
+moins d'argent par habitant que l'Allemagne ; elle finance avec cet argent une
+protection sociale qui n'est pas plus généreuse que l'allemande, qui redistribue
+déjà beaucoup, et qui coûtera plus cher demain ; l'écart se comble en rognant
+l'investissement et les services, puis par la dette. **Le maillon faible n'est ni
+la générosité du modèle, ni le coût de l'administration : c'est le volume de
+travail.**
 
 ---
 

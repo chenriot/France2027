@@ -64,7 +64,7 @@ export const chapters: readonly ChapterEntry[] = [
     updated: '2026-08',
     legacyAnchor: 'synth',
     kind: 'synthese',
-    counts: { questions: 4, tables: 6, figures: 5 },
+    counts: { questions: 5, tables: 14, figures: 5 },
   },
   {
     slug: 'depenses-publiques',

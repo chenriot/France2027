@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **322** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Tableaux | **330** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
 | Cellules chiffrées typées en nombres | 4 387 sur 6 836 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
 | Sources | **215 entrées** (205 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **61 324 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| **Rendu de `/tout`** | **62 374 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -450,11 +450,32 @@ recomposent pas, c'est qu'ils viennent de définitions différentes.** Ses PPA
 sont celles de 2020 et non de 2021, d'où un écart de niveau avec le reste du
 dossier, déclaré dans l'encadré `lim` de la fiche.
 
-**Quatrième application : `synth-q5`**, « Treize constats, treize chiffres »,
-en fin de chapitre « Synthèse ». Trois tableaux, une source, et une contrainte
-de forme demandée : **un seul indicateur par constat**, celui qui le tranche.
-Le tableau d'ouverture porte les treize ; le corps ne développe que ce qui ne
-se lit pas dans le chiffre.
+**Quatrième application : `synth-q5`**, réécrite en « Dix constats, dix
+chiffres : la chaîne, expliquée simplement », en fin de chapitre « Synthèse ».
+Treize tableaux, une source, et une contrainte de forme demandée :
+**être lisible sans connaissance préalable en économie**. Concrètement, quatre
+règles tenues tout au long de la fiche :
+
+- **le vocabulaire se définit une fois, au début** — « PIB » y est traduit en
+  « richesse produite en un an », et les deux expressions sont ensuite
+  employées indifféremment ;
+- **le mot « assiette » est proscrit**, remplacé partout par « la richesse sur
+  laquelle on prélève ». Le terme est exact mais opaque, et la phrase qu'il
+  rend compacte se dit aussi bien en clair ;
+- **chaque intitulé administratif est traduit** : un encadré `defn` explique ce
+  que recouvrent « Famille », « Pauvreté et exclusion » et « Logement » dans
+  les comptes de la protection sociale, parce qu'aucun des trois ne se devine ;
+- **chaque constat se termine par la phrase qui appelle le suivant**, pour que
+  la fiche se lise d'un trait plutôt que comme une liste.
+
+Contrainte pratique découverte à cette occasion : **le premier `<th>` d'un
+tableau est son titre, et il est en `white-space: nowrap`**. Un titre long fixe
+donc la largeur de la première colonne et force les cellules chiffrées à passer
+à la ligne au milieu d'un nombre (« 48 376 $ » coupé en « 48 / 376 $ »). Les
+treize tableaux de la fiche ont été retitrés jusqu'à tenir dans les 742 px de
+la colonne de lecture, et l'unité déplacée du corps vers l'en-tête quand une
+colonne restait trop étroite (`PIB, en Md€` plutôt que `2 984 Md€`). La règle :
+**un en-tête de tableau est un gabarit autant qu'un titre.**
 
 C'est la première fiche du dossier qui **contredit explicitement deux
 formulations courantes du débat**, et elle le fait dans un encadré `lim` plutôt
@@ -480,6 +501,38 @@ déficit, l'équilibre en demande 66 — soit 147 heures par personne en emploi
 chemins sont arithmétiquement équivalents et la fiche le dit, parce que le
 débat public confond systématiquement « travailler plus » et « être plus
 nombreux à travailler ».
+
+**Deux bases horaires, et elles ne sont pas interchangeables.** L'écart de
+volume de travail entre la France et l'Allemagne vaut **6,1 % par personne de
+15 à 74 ans et 9,0 % par habitant toutes générations confondues** : le total
+d'heures est le même, c'est le dénominateur qui change, et la population
+française est plus jeune. La fiche utilise la première base pour comparer les
+pays et la seconde pour relier les heures au budget — et le dit à chaque fois,
+parce que citer l'une à la place de l'autre fait varier la conclusion de moitié.
+
+**La réécriture de 2026-09 a ajouté le volet redistribution**, absent de la
+version en treize constats et réclamé par la lecture : ce que contient la
+protection sociale risque par risque (les retraites en sont 46 %, le RSA et les
+APL 5 %), ce que la redistribution change (l'écart entre le dernier et le
+premier décile passe de 21 à 6), et qui l'acquitte (le dernier décile paie
+423 Md€ sur 1 271). Le régime de prélèvement qui **cesse d'être progressif tout
+en haut** — environ 46 % pour les 0,1 % les plus riches, environ 26 % pour les
+milliardaires — y figure dans un encadré `lim` qui dit les deux choses à la
+fois : que c'est une anomalie à corriger, et que ses ordres de grandeur (des
+milliards) ne sont pas ceux de l'écart à combler (des dizaines de milliards).
+Règle de rédaction retenue : **quand un fait sert deux camps, on publie les
+deux lectures dans le même encadré, pas l'une en texte et l'autre en note.**
+
+**Un défaut de balisage du document d'origine, révélé par la réécriture.** La
+fiche `synth-q4` ne fermait pas son `<div class="q">` et `synth-q5` portait un
+`</div>` en trop : les deux erreurs se compensaient, et le navigateur comme
+`node-html-parser` imbriquaient silencieusement q5 dans q4. La nouvelle q5
+étant équilibrée, la section « Synthèse » a cessé d'être trouvée par
+l'extracteur. Le `</div>` manquant a été rendu à `synth-q4`. Le rendu est
+inchangé — la référence de `check:render` est ce même fichier — mais la leçon
+vaut d'être notée : **un document dont les balises se compensent par paires
+n'est pas un document valide, il est un document qui n'a pas encore été
+modifié.**
 
 **Une erreur de clé, attrapée par le graphique et pas par le code.** La page
 publiée de cette synthèse a d'abord affiché 100,7 dollars de PIB horaire pour

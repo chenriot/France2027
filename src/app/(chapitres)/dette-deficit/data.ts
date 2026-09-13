@@ -755,7 +755,7 @@ export const tables = {
   },
   'pib-par-habitant-usd-a-parites-de-pouvoir-d-achat-constant': {
     vintage: '2025',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdpvd-cap'],
     columns: [
       {
         key: 'pib-par-habitant-usd-a-parites-de-pouvoir-d-achat-constant',
@@ -836,7 +836,7 @@ export const tables = {
   },
   'endettement-net-nouveau-moyenne-annuelle-2006-2025': {
     vintage: '2025',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdpvd-cap'],
     columns: [
       {
         key: 'endettement-net-nouveau-moyenne-annuelle-2006-2025',
@@ -913,7 +913,7 @@ export const tables = {
   },
   'stock-de-dette-non-financiere-par-habitant-2025': {
     vintage: '2025',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdpvd-cap'],
     columns: [
       {
         key: 'stock-de-dette-non-financiere-par-habitant-2025',
@@ -981,7 +981,7 @@ export const tables = {
   },
   'cumul-2006-2025-par-habitant-usd-a-parites-constantes-de-2': {
     vintage: '2025',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdpvd-cap'],
     columns: [
       {
         key: 'cumul-2006-2025-par-habitant-usd-a-parites-constantes-de-2',
@@ -1078,7 +1078,7 @@ export const tables = {
   },
   'evolution-2005-2024': {
     vintage: '2024',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdpvd-cap'],
     columns: [
       {
         key: 'evolution-2005-2024',
@@ -1147,7 +1147,7 @@ export const tables = {
   },
   'dette-par-dollar-produit-en-plus-selon-l-annee-de-referenc': {
     vintage: '2025',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdpvd-cap'],
     columns: [
       {
         key: 'dette-par-dollar-produit-en-plus-selon-l-annee-de-referenc',
@@ -1206,7 +1206,7 @@ export const tables = {
   },
   'ce-que-le-ratio-ne-voit-pas': {
     vintage: '2025',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdpvd-cap'],
     columns: [
       {
         key: 'ce-que-le-ratio-ne-voit-pas',
@@ -2109,5 +2109,5 @@ export const citedSources = [
   'eurostat-eurostat-gov-10dd-edpt1-et-bop-iip6-q', 'eurostat-gov-10a-main-2',
   'eurostat-gov-10dd-edpt1', 'eurostat-gov-10dd-edpt1-2',
   'haut-conseil-des-finances-publiques-haut-conseil-des-finan',
-  'insee-calcul-par-nos-soins-a-partir-d-insee-i', 'ocde-gdppop', 'ocde-gdpvd-cap-2',
+  'insee-calcul-par-nos-soins-a-partir-d-insee-i', 'ocde-gdppop', 'ocde-gdpvd-cap',
 ] satisfies readonly SourceId[]

@@ -643,6 +643,14 @@ const registry = {
     theme: 'securite-justice',
     accessed: '2026-08',
   },
+  'eurostat-gdpvd-cap': {
+    producer: 'Eurostat',
+    kind: 'database',
+    datasets: ['GDPVD_CAP', 'TAXQ', 'GDP', 'POP', 'GDPHRS', 'HRSPOP', 'ilc_di12'],
+    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span>, <span class="num">TAXQ</span>, <span class="num">GDP</span> et <span class="num">POP</span>, y compris l\'agrégat OCDE ; OCDE, base <i>Productivité</i>, séries <span class="num">GDPHRS</span> et <span class="num">HRSPOP</span> ; OCDE, <i>Social Expenditure Database</i>, agrégats publics et privés par habitant en parité de pouvoir d\'achat ; OCDE, base <i>Emploi</i>, taux d\'emploi par tranche d\'âge. Extraction par API SDMX le 13 septembre 2026. Insee, comptes nationaux, pour la dépense publique par nature depuis 1975 ; Insee, <i>La redistribution monétaire</i> (<i>France, portrait social</i> 2025) et <i>Insee Analyses</i> n° 88, données 2023, pour la masse prélevée par décile ; Insee, <i>Insee Analyses</i> n° 118 et 119, pour la redistribution avant et après ; Eurostat, <span class="num">ilc_di12</span>, pour l\'indice de Gini ; DREES, comptes de la protection sociale, édition 2025, données 2024, pour les prestations par risque ; IPP, « Quels impôts les milliardaires paient-ils ? », 2023, pour le sommet de la distribution. Les constats 4, 5, 9 et 10 et le tableau des thèmes reprennent les chapitres correspondants de ce dossier, où ils portent leurs propres sources.',
+    theme: 'synthese',
+    accessed: '2026-08',
+  },
   'eurostat-gov-10a-exp': {
     producer: 'Eurostat',
     kind: 'database',
@@ -1360,14 +1368,6 @@ const registry = {
     accessed: '2026-08',
   },
   'ocde-gdpvd-cap': {
-    producer: 'OCDE',
-    kind: 'database',
-    datasets: ['GDPVD_CAP', 'TAXQ', 'YRGTQ', 'YPGTQ', 'GDP', 'POP', 'GDPHRS', 'HRSPOP', 'HRSAV', 'EMP'],
-    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span>, <span class="num">TAXQ</span>, <span class="num">YRGTQ</span>, <span class="num">YPGTQ</span>, <span class="num">GDP</span> et <span class="num">POP</span>, y compris l\'agrégat OCDE ; OCDE, base <i>Productivité</i>, séries <span class="num">GDPHRS</span>, <span class="num">HRSPOP</span>, <span class="num">HRSAV</span> et <span class="num">EMP</span> ; OCDE, <i>Social Expenditure Database</i>, agrégats publics et privés par habitant en parité de pouvoir d\'achat. Extraction par API SDMX le 13 septembre 2026. Les constats 4, 7, 8, 9, 10, 11 et 13 reprennent les chapitres « Dépenses publiques », « Dette et déficit », « Santé », « Éducation » et « Démographie » de ce dossier, où ils portent leurs propres sources. <b>Calcul par nos soins</b> pour le constat 6, décrit dans l\'encadré qui le suit.',
-    theme: 'synthese',
-    accessed: '2026-08',
-  },
-  'ocde-gdpvd-cap-2': {
     producer: 'OCDE',
     kind: 'database',
     datasets: [
