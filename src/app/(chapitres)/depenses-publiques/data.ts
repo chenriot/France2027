@@ -408,7 +408,7 @@ export const tables = {
   },
   'fonction-cofog-2024': {
     vintage: '2024',
-    sources: ['eurostat-gov-10a-exp', 'eurostat-eurostat-gov-10a-exp-sector-s13-na-ite'],
+    sources: ['eurostat-gov-10a-exp-2', 'eurostat-eurostat-gov-10a-exp-sector-s13-na-ite'],
     columns: [
       {
         key: 'fonction-cofog-2024',
@@ -2844,7 +2844,7 @@ export const tables = {
   },
   '2024-4': {
     vintage: '2024',
-    sources: ['insee-insee-france-portrait-social-2025-fic'],
+    sources: ['insee-insee-france-portrait-social-2025-fic-2'],
     columns: [
       { key: '2024', header: '2024', type: 'text', headerNumeric: false },
       {
@@ -3635,7 +3635,7 @@ export const series = {
     title: 'Dépense publique par fonction, France et moyenne européenne',
     subtitle: 'En euros par habitant, 2024. Trois barres par fonction, dans l\'ordre : moyenne européenne, Allemagne, France.',
     caption: '<b>L\'Allemagne dépense plus que la France sur huit fonctions sur dix.</b> Les seules exceptions sont le <b>logement</b> (613 € contre 245, soit 2,5 fois plus) et les <b>loisirs et la culture</b> (626 contre 551), auxquelles s\'ajoute la défense (788 contre 701) depuis le réarmement français. Sur la protection sociale, la santé, l\'enseignement, les affaires économiques, l\'ordre et la sécurité et les services généraux, l\'Allemagne est devant. <b>Le basculement de dénominateur change le classement.</b> En % du PIB, la France est première du panel (57,3 %). <b>En euros par habitant, elle est cinquième sur sept</b> (24 308 €), derrière le Danemark (31 073), les Pays-Bas (27 705), la Suède (26 697) et l\'Allemagne (25 620). L\'écart avec l\'UE-27 tombe de +8,2 points de PIB à +23,6 % par habitant.',
-    sources: ['eurostat-gov-10a-exp'],
+    sources: ['eurostat-gov-10a-exp-2'],
     vintage: '2024',
     legend: [
       { color: 's4', label: 'UE-27' },
@@ -4092,7 +4092,7 @@ export const series = {
         decimals: 1,
       },
     ],
-    frame: { width: 720, height: 377, left: 150, right: 594.7000729088873, top: 16, bottom: 329 },
+    frame: { width: 720, height: 377, left: 150, right: 594.7, top: 16, bottom: 329 },
   },
   'pib-par-personne-en-emploi-1995-2024': {
     svg: {
@@ -4415,7 +4415,7 @@ export const series = {
           decimals: 1,
         },
       ],
-      frame: { width: 720, height: 522, left: 84, right: 548.2004145336175, top: 16, bottom: 474 },
+      frame: { width: 720, height: 522, left: 84, right: 548.2, top: 16, bottom: 474 },
     },
   },
   'les-prestations-sociales-par-risque': {
@@ -4489,7 +4489,7 @@ export const series = {
     series: [
       { key: 'b1', color: 's1', values: [32.502, 31.9, 29.802, 28.298, 27.3], decimals: 1 },
     ],
-    frame: { width: 720, height: 212, left: 130, right: 568.8992995750888, top: 16, bottom: 164 },
+    frame: { width: 720, height: 212, left: 130, right: 568.9, top: 16, bottom: 164 },
   },
   'les-memes-prestations-par-habitant-en-parite-de-pouvoir-d': {
     raw: true,
@@ -4782,6 +4782,6 @@ export const citedSources = [
   'eurostat-ocde-taxing-wages-2026-donnees-2025',
   'eurostat-structure-des-prelevements-france-allemagne',
   'insee-insee-analyses-n-118-et-119-revenus-de',
-  'insee-insee-france-portrait-social-2025-fic', 'parlement-taxe-zucman-votes-2025-2026',
+  'insee-insee-france-portrait-social-2025-fic-2', 'parlement-taxe-zucman-votes-2025-2026',
   'tribune-sept-economistes-le-monde-taxe-zucman', 'zucman-impot-plancher-ultra-riches',
 ] satisfies readonly SourceId[]

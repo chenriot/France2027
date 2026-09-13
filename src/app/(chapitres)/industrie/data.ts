@@ -1660,7 +1660,7 @@ export const series = {
           decimals: 2,
         },
       ],
-      frame: { width: 720, height: 200, left: 150, right: 591.681922649921, top: 16, bottom: 152 },
+      frame: { width: 720, height: 200, left: 150, right: 591.7, top: 16, bottom: 152 },
     },
   },
   'prix-de-l-electricite-pour-l-industrie': {
@@ -1696,7 +1696,7 @@ export const series = {
     series: [
       { key: 'b1', color: 's2', values: [193.214, 187.81, 163.998, 129.581], decimals: 1 },
     ],
-    frame: { width: 720, height: 182, left: 130, right: 622.2005008829851, top: 16, bottom: 134 },
+    frame: { width: 720, height: 182, left: 130, right: 622.2, top: 16, bottom: 134 },
   },
   'cout-salarial-unitaire-nominal-ensemble-de-l-economie': {
     svg: {

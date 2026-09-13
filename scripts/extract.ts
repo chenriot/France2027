@@ -780,29 +780,41 @@ function extractBars(
   // déterminent l'échelle qu'à 2 pour 10 000 près, ce qui suffit à faire basculer
   // une largeur de 148,3 à 148,4. On recalibre donc l'échelle par moindres
   // carrés sur les largeurs, puis on vérifie que la grille retombe bien juste.
-  const fitted = fitScale(groups.flat().map((b) => ({ v: b.value, w: b.width })), scale)
-  const calibrated: Frame = { ...frame, right: frame.left + fitted * (y.max - y.min) }
-  if (y.ticks.every((t) => px(calibrated.left + (t - y.min) * fitted) === px(frame.left + (t - y.min) * scale))) {
-    Object.assign(frame, calibrated)
-  }
-  const finalScale = (frame.right - frame.left) / (y.max - y.min)
-
-  // Vérification : reprojeter les valeurs doit redonner les largeurs d'origine.
-  // Une barre de valeur nulle est tracée 1 px de large dans le document source.
-  let drift = 0
-  for (const g of groups) {
-    let cursor = frame.left
-    for (const b of g) {
-      const expectedWidth = Math.max(px(b.value * finalScale), 1)
-      drift = Math.max(drift, Math.abs(expectedWidth - Math.max(b.width, 1)))
-      if (type === 'stacked-bar') {
-        drift = Math.max(drift, Math.abs(px(cursor) - b.x))
-        // Les segments s'enchaînent sur les largeurs rendues, pas sur les
-        // largeurs exactes : c'est ce que fait le document d'origine.
-        cursor += expectedWidth
+  // Reprojeter les valeurs doit redonner les largeurs d'origine. Une barre de
+  // valeur nulle est tracée 1 px de large dans le document source.
+  const driftOf = (f: Frame): number => {
+    const sc = (f.right - f.left) / (y.max - y.min)
+    let worst = 0
+    for (const g of groups) {
+      let cursor = f.left
+      for (const b of g) {
+        const expectedWidth = Math.max(px(b.value * sc), 1)
+        worst = Math.max(worst, Math.abs(expectedWidth - Math.max(b.width, 1)))
+        if (type === 'stacked-bar') {
+          worst = Math.max(worst, Math.abs(px(cursor) - b.x))
+          // Les segments s'enchaînent sur les largeurs rendues, pas sur les
+          // largeurs exactes : c'est ce que fait le document d'origine.
+          cursor += expectedWidth
+        }
       }
     }
+    return worst
   }
+
+  const fitted = fitScale(groups.flat().map((b) => ({ v: b.value, w: b.width })), scale)
+  const calibrated: Frame = { ...frame, right: frame.left + fitted * (y.max - y.min) }
+  // La recalibration corrige les grilles arrondies du document d'origine ; elle
+  // n'a rien à corriger sur une figure dont le SVG a été tracé depuis les
+  // valeurs, et l'y appliquer quand même décalerait une largeur d'un dixième.
+  // On ne la retient donc que si elle rapproche réellement la reprojection.
+  if (
+    y.ticks.every((t) => px(calibrated.left + (t - y.min) * fitted) === px(frame.left + (t - y.min) * scale)) &&
+    driftOf(calibrated) < driftOf(frame)
+  ) {
+    Object.assign(frame, calibrated)
+  }
+
+  const drift = driftOf(frame)
 
   const firstBar = groups[0][0]
   const valueLabelRef = labels.find(

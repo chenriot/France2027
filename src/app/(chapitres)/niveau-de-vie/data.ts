@@ -1892,7 +1892,7 @@ export const series = {
         decimals: 1,
       },
     ],
-    frame: { width: 720, height: 254, left: 140, right: 518.9029901119364, top: 16, bottom: 206 },
+    frame: { width: 720, height: 254, left: 140, right: 518.9, top: 16, bottom: 206 },
   },
   'l-endettement-des-menages-compare': {
     raw: true,
@@ -1998,7 +1998,7 @@ export const series = {
         decimals: 1,
       },
     ],
-    frame: { width: 720, height: 342, left: 238, right: 594.8115333692942, top: 16, bottom: 294 },
+    frame: { width: 720, height: 342, left: 238, right: 594.8, top: 16, bottom: 294 },
   },
   'trois-france-du-patrimoine': {
     raw: true,

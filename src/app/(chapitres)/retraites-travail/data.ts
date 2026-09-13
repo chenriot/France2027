@@ -597,7 +597,7 @@ export const series = {
           decimals: 1,
         },
       ],
-      frame: { width: 720, height: 292, left: 150, right: 557.900266652897, top: 16, bottom: 244 },
+      frame: { width: 720, height: 292, left: 150, right: 557.9, top: 16, bottom: 244 },
     },
   },
 } satisfies SeriesSet

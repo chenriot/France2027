@@ -1614,7 +1614,7 @@ export const series = {
         decimals: 1,
       },
     ],
-    frame: { width: 720, height: 518, left: 170, right: 501.59975229746584, top: 16, bottom: 470 },
+    frame: { width: 720, height: 518, left: 170, right: 501.6, top: 16, bottom: 470 },
   },
   'pisa-mathematiques-2003-2022': {
     svg: {

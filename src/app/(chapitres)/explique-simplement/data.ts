@@ -17,7 +17,7 @@ export const meta = {
 export const tables = {
   'sur-100-de-depense-publique': {
     vintage: '2024',
-    sources: ['eurostat-gov-10a-exp-2'],
+    sources: ['eurostat-gov-10a-exp-3'],
     columns: [
       {
         key: 'sur-100-de-depense-publique',
@@ -113,4 +113,4 @@ export const questions = [
  * tableaux et les figures. La bibliographie les recense aussi : une source
  * citée en prose reste une source du dossier.
  */
-export const citedSources = ['eurostat-gov-10a-exp-2'] satisfies readonly SourceId[]
+export const citedSources = ['eurostat-gov-10a-exp-3'] satisfies readonly SourceId[]

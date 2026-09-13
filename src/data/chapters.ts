@@ -57,14 +57,14 @@ export const chapters: readonly ChapterEntry[] = [
   {
     slug: 'synthese',
     num: 'Synthèse',
-    title: 'Ce que l\'ensemble de ces chiffres établit',
+    title: 'La France en dix graphiques',
     shortTitle: 'Synthèse',
     note: 'Dix constats qui s\'enchaînent, chacun avec le chiffre qui le tranche, écrits pour être lus sans connaissance préalable en économie. Les dix-huit thèmes du dossier portent le détail et les sources.',
     status: 'complete',
     updated: '2026-08',
     legacyAnchor: 'synth',
     kind: 'synthese',
-    counts: { questions: 1, tables: 13, figures: 0 },
+    counts: { questions: 1, tables: 4, figures: 11 },
   },
   {
     slug: 'depenses-publiques',

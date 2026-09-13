@@ -38,6 +38,7 @@ s'étonner d'un choix : les écarts à la spec y sont justifiés et chiffrés.
 | `npm run dev` | serveur de développement |
 | `npm run verify` | **la chaîne complète** : types, tests, audit des données, build, non-régression de rendu |
 | `npm run extract` | régénère les 21 chapitres depuis `Temp/chiffres2027 (3).html` |
+| `npx tsx scripts/figures-synthese.ts` | retrace les graphiques du chapitre « Synthèse » **depuis leurs valeurs**, dans le document d'origine |
 | `npm run check:data` | audit des données ; écrit `.artifacts/audit.json` |
 | `npm run check:render` | compare `/tout` au document d'origine, élément par élément |
 | `npm run check:bundle` | poids du JavaScript par page de chapitre |
@@ -142,7 +143,7 @@ année à une série doit se faire en éditant un seul fichier.
 C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
 donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
 prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
-60 724 éléments, 29 corrections déclarées, aucun écart non déclaré.
+60 770 éléments, 29 corrections déclarées, aucun écart non déclaré.
 
 Ce que ça implique au quotidien :
 
@@ -185,9 +186,16 @@ doit être conditionné au mode, sinon il casse la vérification.
   ci-dessus est meilleure.
 - **Ajouter un chapitre** : l'inscrire dans `CHAPTERS` en tête de
   `scripts/extract.ts`, puis régénérer.
-- **Ajouter une figure** : `addedFigures` dans `scripts/amendments.ts`. Elle
-  s'écrit **en valeurs**, jamais en pixels — `src/lib/chart.ts` la trace, seules
-  les constantes de `layout` et `frame` sont saisies.
+- **Ajouter une figure** : deux voies, et la différence est celle de la règle 9.
+  Un **commentaire graphique sur le document** passe par `addedFigures` dans
+  `scripts/amendments.ts` et ne se rend que sur la page de chapitre. Une figure
+  qui appartient au dossier — donc visible aussi sur `/tout` — s'écrit dans un
+  **générateur** sur le modèle de `scripts/figures-synthese.ts` : la figure y est
+  décrite **en valeurs**, `src/lib/chart.ts` la trace, et le SVG obtenu est
+  injecté dans le document d'origine. `npm run extract` le relit ensuite et
+  vérifie que la reprojection retombe au pixel près — le même `buildChart` écrit
+  et prouve. Dans les deux cas, **jamais de pixels saisis à la main** : seules
+  les constantes de `layout` et de `frame` le sont. Voir `DECISIONS.md` §D19.
 - **Ajouter une mise en forme** : étendre un composant partagé. Jamais de
   balisage dans un `content.tsx`.
 - **Corriger un défaut d'extraction** : corriger `scripts/extract.ts`, lancer
@@ -195,8 +203,8 @@ doit être conditionné au mode, sinon il casse la vérification.
 
 ## État actuel
 
-Le site est construit et vérifié : 21 chapitres, 329 tableaux, 53 figures,
-215 sources, 28 routes prérendues, toutes sous la charte (§D18). `/tout` rend 60 724 éléments avec
+Le site est construit et vérifié : 21 chapitres, 320 tableaux, 64 figures,
+223 sources, 28 routes prérendues, toutes sous la charte (§D18). `/tout` rend 60 770 éléments avec
 **29 corrections déclarées et aucun écart non déclaré**. Le JavaScript par page
 est de 170 Ko pour 120 visés : dette mesurée, expliquée et cliquetée
 (`DECISIONS.md` §D11).
@@ -207,7 +215,7 @@ valeurs fausses et les commentaires qui ne doivent pas entrer dans `/tout`
 passent par les amendements (`DECISIONS.md` §D17).
 
 Ce qui reste ouvert est listé et chiffré dans `specs/DECISIONS.md` §D10 :
-URL des sources (10 renseignées sur 215), millésimes à confirmer, 25 figures dont le tracé n'est pas
+URL des sources (10 renseignées sur 223), millésimes à confirmer, 23 figures dont le tracé n'est pas
 encore régénéré, un axe incohérent du document d'origine à arbitrer, un
 commentaire éditorial à réécrire après correction, les autres tableaux
 jamais confrontés à leur source, et les captures Playwright clair/sombre.

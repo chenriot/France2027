@@ -6,7 +6,7 @@ import type { ChapterMeta, SeriesSet, SourceId, Tables } from '@/lib/types'
 export const meta = {
   slug: 'synthese',
   num: 'Synthèse',
-  title: 'Ce que l\'ensemble de ces chiffres établit',
+  title: 'La France en dix graphiques',
   shortTitle: 'Synthèse',
   note: 'Dix constats qui s\'enchaînent, chacun avec le chiffre qui le tranche, écrits pour être lus sans connaissance préalable en économie. Les dix-huit thèmes du dossier portent le détail et les sources.',
   status: 'complete',
@@ -15,191 +15,17 @@ export const meta = {
 } satisfies ChapterMeta
 
 export const tables = {
-  'richesse-produite-par-habitant': {
-    vintage: '2025',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      {
-        key: 'richesse-produite-par-habitant',
-        header: 'Richesse produite par habitant',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: '2005', header: '2005', type: 'number', headerNumeric: true },
-      { key: '2025', header: '2025', type: 'number', headerNumeric: true },
-      { key: 'evolution', header: 'Évolution', type: 'number', headerNumeric: true },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: 'États-Unis' },
-          { v: 59501, d: 0, u: '$' },
-          { v: 76834, d: 0, u: '$' },
-          { v: 29, d: 0, u: '%', sign: true },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Pays-Bas' },
-          { v: 58352, d: 0, u: '$' },
-          { v: 71271, d: 0, u: '$' },
-          { v: 22, d: 0, u: '%', sign: true },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Allemagne' },
-          { v: 51901, d: 0, u: '$' },
-          { v: 62888, d: 0, u: '$' },
-          { v: 21, d: 0, u: '%', sign: true },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>France</b>' },
-          { v: 48376, d: 0, u: '$', strong: true },
-          { v: 55197, d: 0, u: '$', strong: true },
-          { v: 14, d: 0, u: '%', sign: true, strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: 'Royaume-Uni' },
-          { v: 48291, d: 0, u: '$' },
-          { v: 53832, d: 0, u: '$' },
-          { v: 11, d: 0, u: '%', sign: true },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Moyenne OCDE' },
-          { v: 43474, d: 0, u: '$' },
-          { v: 54450, d: 0, u: '$' },
-          { v: 25, d: 0, u: '%', sign: true },
-        ],
-      },
-    ],
-  },
-  'travail-et-production-2024': {
-    vintage: '2024',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      {
-        key: 'travail-et-production-2024',
-        header: 'Travail et production, 2024',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: 'produit-par-heure', header: 'Produit par heure', type: 'number', headerNumeric: true },
-      {
-        key: 'heures-par-habitant-15-74-ans',
-        header: 'Heures par habitant, 15-74 ans',
-        type: 'number',
-        headerNumeric: true,
-      },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: 'États-Unis' },
-          { v: 84.1, d: 1, u: '$' },
-          { v: 1145, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Allemagne' },
-          { v: 83, d: 1, u: '$' },
-          { v: 983, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Pays-Bas' },
-          { v: 82.1, d: 1, u: '$' },
-          { v: 1097, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>France</b>' },
-          { v: 81.6, d: 1, u: '$', strong: true },
-          { v: 927, d: 0, strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: 'Royaume-Uni' },
-          { v: 74, d: 1, u: '$' },
-          { v: 1002, d: 0 },
-        ],
-      },
-    ],
-  },
-  'part-des-personnes-en-emploi-2024': {
-    vintage: '2024',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      {
-        key: 'part-des-personnes-en-emploi-2024',
-        header: 'Part des personnes en emploi, 2024',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
-      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
-      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: '<b>15-24 ans</b>' },
-          { v: 34.4, d: 1, u: '%', strong: true },
-          { v: 51, d: 1, u: '%', strong: true },
-          { v: -16.6, d: 1, u: 'pts', strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: '25-54 ans' },
-          { v: 82.9, d: 1, u: '%' },
-          { v: 85, d: 1, u: '%' },
-          { v: -2.1, d: 1, u: 'pts' },
-        ],
-      },
-      {
-        cells: [
-          { t: '55-64 ans' },
-          { v: 60.3, d: 1, u: '%' },
-          { v: 75, d: 1, u: '%' },
-          { v: -14.7, d: 1, u: 'pts' },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>60-64 ans</b>' },
-          { v: 42.4, d: 1, u: '%', strong: true },
-          { v: 66.6, d: 1, u: '%', strong: true },
-          { v: -24.2, d: 1, u: 'pts', strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: '65-69 ans' },
-          { v: 11.1, d: 1, u: '%' },
-          { v: 21.2, d: 1, u: '%' },
-          { v: -10.1, d: 1, u: 'pts' },
-        ],
-      },
-    ],
-  },
   'france-2025': {
     vintage: '2025',
-    sources: ['eurostat-gdpvd-cap'],
+    sources: [
+      'ocde-gdpvd-cap', 'ocde-gdphrs', 'ocde-hrspop',
+      'ocde-ocde-base-emploi-taux-d-emploi-par-tra', 'ocde-taxq', 'eurostat-nasa-10-nf-tr',
+      'ocde-ocde-social-expenditure-database-depen',
+      'drees-drees-la-protection-sociale-en-france-e',
+      'insee-insee-france-portrait-social-2025-fic',
+      'insee-calcul-par-nos-soins-a-partir-de-l-insee', 'eurostat-gov-10a-exp',
+      'eurostat-gdpvd-cap',
+    ],
     columns: [
       { key: 'france-2025', header: 'France 2025', type: 'text', headerNumeric: false },
       {
@@ -264,7 +90,15 @@ export const tables = {
   },
   'les-deux-chemins-vers-l-equilibre-2025': {
     vintage: '2025',
-    sources: ['eurostat-gdpvd-cap'],
+    sources: [
+      'ocde-gdpvd-cap', 'ocde-gdphrs', 'ocde-hrspop',
+      'ocde-ocde-base-emploi-taux-d-emploi-par-tra', 'ocde-taxq', 'eurostat-nasa-10-nf-tr',
+      'ocde-ocde-social-expenditure-database-depen',
+      'drees-drees-la-protection-sociale-en-france-e',
+      'insee-insee-france-portrait-social-2025-fic',
+      'insee-calcul-par-nos-soins-a-partir-de-l-insee', 'eurostat-gov-10a-exp',
+      'eurostat-gdpvd-cap',
+    ],
     columns: [
       {
         key: 'les-deux-chemins-vers-l-equilibre-2025',
@@ -294,445 +128,17 @@ export const tables = {
       },
     ],
   },
-  'prelevements-obligatoires-2025': {
-    vintage: '2025',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      {
-        key: 'prelevements-obligatoires-2025',
-        header: 'Prélèvements obligatoires, 2025',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: 'en-du-pib', header: 'En % du PIB', type: 'number', headerNumeric: true },
-      {
-        key: 'dollars-par-habitant',
-        header: 'Dollars par habitant',
-        type: 'number',
-        headerNumeric: true,
-      },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: 'Pays-Bas' },
-          { v: 38.8, d: 1, u: '%' },
-          { v: 27355, d: 0, u: '$' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Allemagne' },
-          { v: 40.5, d: 1, u: '%' },
-          { v: 25369, d: 0, u: '$' },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>France</b>' },
-          { v: 44.7, d: 1, u: '%', strong: true },
-          { v: 24498, d: 0, u: '$', strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: 'États-Unis' },
-          { v: 25.9, d: 1, u: '%' },
-          { v: 19561, d: 0, u: '$' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Royaume-Uni' },
-          { v: 36, d: 1, u: '%' },
-          { v: 19227, d: 0, u: '$' },
-        ],
-      },
-    ],
-  },
-  'depense-publique-par-nature-en-du-pib': {
-    vintage: '2024',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      {
-        key: 'depense-publique-par-nature-en-du-pib',
-        header: 'Dépense publique par nature, en % du PIB',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: '1975', header: '1975', type: 'number', headerNumeric: true },
-      { key: '2024', header: '2024', type: 'number', headerNumeric: true },
-      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: '<b>Prestations sociales</b>' },
-          { v: 17.2, d: 1, u: '%', strong: true },
-          { v: 25.5, d: 1, u: '%', strong: true },
-          { v: 8.3, d: 1, u: 'pts', sign: true, strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: 'Charge de la dette' },
-          { v: 0.9, d: 1, u: '%' },
-          { v: 2, d: 1, u: '%' },
-          { v: 1.1, d: 1, u: 'pt', sign: true },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Rémunération des agents publics' },
-          { v: 11.7, d: 1, u: '%' },
-          { v: 12.4, d: 1, u: '%' },
-          { v: 0.7, d: 1, u: 'pt', sign: true },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Consommations intermédiaires' },
-          { v: 5.8, d: 1, u: '%' },
-          { v: 5.5, d: 1, u: '%' },
-          { v: -0.3, d: 1, u: 'pt' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Investissement public' },
-          { v: 5.3, d: 1, u: '%' },
-          { v: 4.3, d: 1, u: '%' },
-          { v: -1, d: 1, u: 'pt' },
-        ],
-      },
-    ],
-  },
-  'depense-sociale-par-habitant-2021': {
-    vintage: '2021',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      {
-        key: 'depense-sociale-par-habitant-2021',
-        header: 'Dépense sociale par habitant, 2021',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: 'publique', header: 'Publique', type: 'number', headerNumeric: true },
-      { key: 'privee', header: 'Privée', type: 'number', headerNumeric: true },
-      { key: 'total', header: 'Total', type: 'number', headerNumeric: true },
-      { key: 'en-du-pib', header: 'En % du PIB', type: 'number', headerNumeric: true },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: 'Pays-Bas' },
-          { v: 13694, d: 0, u: '$' },
-          { v: 7929, d: 0, u: '$' },
-          { v: 21623, d: 0, u: '$' },
-          { v: 19.8, d: 1, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'États-Unis' },
-          { v: 13377, d: 0, u: '$' },
-          { v: 7935, d: 0, u: '$' },
-          { v: 21312, d: 0, u: '$' },
-          { v: 21.6, d: 1, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Allemagne' },
-          { v: 18172, d: 0, u: '$' },
-          { v: 2268, d: 0, u: '$' },
-          { v: 20440, d: 0, u: '$' },
-          { v: 28.9, d: 1, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>France</b>' },
-          { v: 17628, d: 0, u: '$', strong: true },
-          { v: 1950, d: 0, u: '$', strong: true },
-          { v: 19578, d: 0, u: '$', strong: true },
-          { v: 32.7, d: 1, u: '%', strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: 'Royaume-Uni' },
-          { v: 13188, d: 0, u: '$' },
-          { v: 2200, d: 0, u: '$' },
-          { v: 15388, d: 0, u: '$' },
-          { v: 24.4, d: 1, u: '%' },
-        ],
-      },
-    ],
-  },
-  'les-prestations-sociales-par-risque-2024': {
-    vintage: '2024',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      {
-        key: 'les-prestations-sociales-par-risque-2024',
-        header: 'Les prestations sociales par risque, 2024',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: 'montant', header: 'Montant', type: 'number', headerNumeric: true },
-      { key: 'part-du-total', header: 'Part du total', type: 'number', headerNumeric: true },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: '<b>Vieillesse et survie</b> <em>(retraites, pensions de réversion)</em>' },
-          { v: 426.7, d: 1, u: 'Md€', strong: true },
-          { v: 45.8, d: 1, u: '%', strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: '<b>Santé, invalidité, accidents du travail</b>' },
-          { v: 338.9, d: 1, u: 'Md€', strong: true },
-          { v: 36.3, d: 1, u: '%', strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: 'Famille' },
-          { v: 65.8, d: 1, u: 'Md€' },
-          { v: 7.1, d: 1, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Emploi et chômage' },
-          { v: 51.1, d: 1, u: 'Md€' },
-          { v: 5.5, d: 1, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Pauvreté et exclusion' },
-          { v: 34, d: 1, u: 'Md€' },
-          { v: 3.6, d: 1, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Logement' },
-          { v: 16.1, d: 1, u: 'Md€' },
-          { v: 1.7, d: 1, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>Ensemble</b>' },
-          { v: 932.5, d: 1, u: 'Md€', strong: true },
-          { v: 100, d: 0, u: '%', strong: true },
-        ],
-        total: true,
-      },
-    ],
-  },
-  'niveau-de-vie-2024': {
-    vintage: '2024',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      { key: 'niveau-de-vie-2024', header: 'Niveau de vie, 2024', type: 'text', headerNumeric: false },
-      {
-        key: 'avant-redistribution',
-        header: 'Avant redistribution',
-        type: 'number',
-        headerNumeric: true,
-      },
-      {
-        key: 'apres-redistribution',
-        header: 'Après redistribution',
-        type: 'number',
-        headerNumeric: true,
-      },
-      { key: 'ecart-par-an', header: 'Écart, par an', type: 'number', headerNumeric: true },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: '<b>Les 10 % les plus modestes</b>' },
-          { v: 4710, d: 0, strong: true },
-          { v: 11960, d: 0, strong: true },
-          { v: 7250, d: 0, sign: true, strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: 'Les 20 % les plus modestes' },
-          { v: 9090, d: 0 },
-          { v: 14100, d: 0 },
-          { v: 5010, d: 0, sign: true },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Les 20 % les plus aisés' },
-          { v: 74980, d: 0 },
-          { v: 58690, d: 0 },
-          { v: -16290, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>Les 10 % les plus aisés</b>' },
-          { v: 99300, d: 0, strong: true },
-          { v: 74410, d: 0, strong: true },
-          { v: -24890, d: 0, strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: '<b>Rapport entre les 10 % du haut et les 10 % du bas</b>' },
-          { t: '<b>×21,1</b>' },
-          { t: '<b>×6,2</b>' },
-          null,
-        ],
-        total: true,
-      },
-    ],
-  },
-  'masse-prelevee-en-md-2023': {
-    vintage: '2023',
-    sources: ['eurostat-gdpvd-cap'],
-    columns: [
-      {
-        key: 'masse-prelevee-en-md-2023',
-        header: 'Masse prélevée, en Md€, 2023',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: 'cotisations', header: 'Cotisations', type: 'number', headerNumeric: true },
-      {
-        key: 'revenu-et-patrimoine',
-        header: 'Revenu et patrimoine',
-        type: 'number',
-        headerNumeric: true,
-      },
-      { key: 'indirects', header: 'Indirects', type: 'number', headerNumeric: true },
-      { key: 'total', header: 'Total', type: 'number', headerNumeric: true },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: 'D1 — les 10 % les plus modestes' },
-          { v: 5.9, d: 1 },
-          { v: 5.2, d: 1 },
-          { v: 18.3, d: 1 },
-          { v: 29, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'D2' },
-          { v: 14.9, d: 1 },
-          { v: 4.7, d: 1 },
-          { v: 21.3, d: 1 },
-          { v: 41, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'D3' },
-          { v: 22.3, d: 1 },
-          { v: 8.1, d: 1 },
-          { v: 26, d: 1 },
-          { v: 56, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'D4' },
-          { v: 31, d: 1 },
-          { v: 11.3, d: 1 },
-          { v: 29.8, d: 1 },
-          { v: 72, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'D5' },
-          { v: 39.2, d: 1 },
-          { v: 14.3, d: 1 },
-          { v: 32.6, d: 1 },
-          { v: 86, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'D6' },
-          { v: 45.3, d: 1 },
-          { v: 18.6, d: 1 },
-          { v: 37, d: 1 },
-          { v: 101, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'D7' },
-          { v: 57.2, d: 1 },
-          { v: 23.5, d: 1 },
-          { v: 40.7, d: 1 },
-          { v: 121, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'D8' },
-          { v: 71.1, d: 1 },
-          { v: 32.5, d: 1 },
-          { v: 45.8, d: 1 },
-          { v: 149, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: 'D9' },
-          { v: 91.9, d: 1 },
-          { v: 47.2, d: 1 },
-          { v: 52.2, d: 1 },
-          { v: 191, d: 0 },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>D10 — les 10 % les plus aisés</b>' },
-          { v: 164.2, d: 1, strong: true },
-          { v: 185.7, d: 1, strong: true },
-          { v: 72.8, d: 1, strong: true },
-          { v: 423, d: 0, strong: true },
-        ],
-        emphasis: true,
-      },
-      {
-        cells: [
-          { t: '<b>Ensemble</b>' },
-          { v: 543, d: 1, strong: true },
-          { v: 351.1, d: 1, strong: true },
-          { v: 376.5, d: 1, strong: true },
-          { v: 1271, d: 0, strong: true },
-        ],
-        total: true,
-      },
-    ],
-  },
   'moyens-des-services-publics-2021-2024': {
     vintage: '2024',
-    sources: ['eurostat-gdpvd-cap'],
+    sources: [
+      'ocde-gdpvd-cap', 'ocde-gdphrs', 'ocde-hrspop',
+      'ocde-ocde-base-emploi-taux-d-emploi-par-tra', 'ocde-taxq', 'eurostat-nasa-10-nf-tr',
+      'ocde-ocde-social-expenditure-database-depen',
+      'drees-drees-la-protection-sociale-en-france-e',
+      'insee-insee-france-portrait-social-2025-fic',
+      'insee-calcul-par-nos-soins-a-partir-de-l-insee', 'eurostat-gov-10a-exp',
+      'eurostat-gdpvd-cap',
+    ],
     columns: [
       {
         key: 'moyens-des-services-publics-2021-2024',
@@ -745,15 +151,6 @@ export const tables = {
       { key: 'repere', header: 'Repère', type: 'number', headerNumeric: true },
     ],
     rows: [
-      {
-        cells: [
-          { t: '<b>Coût de l\'administration générale, par habitant</b>' },
-          { v: 623, d: 0, u: '€', strong: true },
-          { v: 1070, d: 0, u: '€', strong: true },
-          { v: 759, d: 0, u: '€ en moyenne européenne' },
-        ],
-        emphasis: true,
-      },
       {
         cells: [
           { t: 'Infirmiers pour 1 000 habitants' },
@@ -782,7 +179,15 @@ export const tables = {
   },
   'theme-du-dossier-2023-2025': {
     vintage: '2025',
-    sources: ['eurostat-gdpvd-cap'],
+    sources: [
+      'ocde-gdpvd-cap', 'ocde-gdphrs', 'ocde-hrspop',
+      'ocde-ocde-base-emploi-taux-d-emploi-par-tra', 'ocde-taxq', 'eurostat-nasa-10-nf-tr',
+      'ocde-ocde-social-expenditure-database-depen',
+      'drees-drees-la-protection-sociale-en-france-e',
+      'insee-insee-france-portrait-social-2025-fic',
+      'insee-calcul-par-nos-soins-a-partir-de-l-insee', 'eurostat-gov-10a-exp',
+      'eurostat-gdpvd-cap',
+    ],
     columns: [
       {
         key: 'theme-du-dossier-2023-2025',
@@ -929,11 +334,633 @@ export const tables = {
   },
 } satisfies Tables
 
-export const series = {} satisfies SeriesSet
+export const series = {
+  'richesse-produite-par-habitant-2005-2025': {
+    svg: {
+      viewBox: '0 0 720 340',
+      titleId: 'csyn1-t',
+      title: 'dollars par habitant, parité de pouvoir d’achat',
+    },
+    title: 'Richesse produite par habitant, 2005-2025',
+    subtitle: 'En dollars à parité de pouvoir d’achat. <b>L’axe démarre à 40 000 $</b> : à 0, les cinq courbes se confondraient et l’écart serait invisible.',
+    caption: '<b>La France ne s’appauvrit pas : elle avance moins vite.</b> En vingt ans elle gagne 14 %, l’Allemagne 21 %, les Pays-Bas 22 %, les États-Unis 29 %. <b>L’écart avec l’Allemagne a plus que doublé</b> — 3 525 $ par habitant en 2005, 7 691 $ en 2025 — et la France, qui produisait 11,3 % de plus que la moyenne des pays de l’OCDE, n’en produit plus que 1,4 % de plus — la moyenne, absente du graphique, est passée de 43 474 $ à 54 450 $.',
+    sources: ['ocde-gdpvd-cap'],
+    vintage: '2025',
+    type: 'line',
+    layout: {
+      kind: 'line',
+      tickLabelX: 43,
+      tickLabelDy: 4,
+      axisLabel: { x: 43, y: 14, text: '$ par habitant', anchor: 'end' },
+      axisLineY: 306,
+      dotR: 4,
+      endLabelDx: 8,
+      endLabelDy: 4,
+      xLabelY: 324,
+    },
+    xAxis: { min: 2005, max: 2025, ticks: [2005, 2010, 2015, 2020, 2025] },
+    x: [
+      2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+      2020, 2021, 2022, 2023, 2024, 2025,
+    ],
+    y: { min: 40000, max: 80000, ticks: [40000, 50000, 60000, 70000, 80000], label: '$ par habitant' },
+    series: [
+      {
+        key: 's2',
+        color: 's2',
+        label: 'États-Unis',
+        values: [
+          59507.042, 60577.465, 61197.183, 60704.225, 58619.718, 59690.141, 60154.93, 61056.338,
+          61873.239, 62943.662, 64295.775, 64957.746, 66098.592, 67661.972, 69042.254, 67338.028,
+          71338.028, 72732.394, 74253.521, 75661.972, 76830.986,
+        ],
+      },
+      {
+        key: 's3',
+        color: 's3',
+        label: 'Pays-Bas',
+        values: [
+          58352.113, 60394.366, 62591.549, 63690.141, 61028.169, 61492.958, 62295.775, 61450.704,
+          61281.69, 62042.254, 63070.423, 64253.521, 65647.887, 66732.394, 67816.901, 64859.155,
+          68521.127, 71281.69, 70169.014, 70450.704, 71267.606,
+        ],
+      },
+      {
+        key: 's4',
+        color: 's4',
+        label: 'Allemagne',
+        values: [
+          51901.408, 54098.592, 55845.07, 56352.113, 53436.62, 55718.31, 57859.155, 58154.93,
+          58366.197, 59450.704, 59859.155, 60746.479, 62507.042, 63126.761, 63732.394, 60929.577,
+          63380.282, 64154.93, 63154.93, 62676.056, 62887.324,
+        ],
+      },
+      {
+        key: 's1',
+        color: 's1',
+        label: 'France',
+        values: [
+          48380.282, 49450.704, 50380.282, 50239.437, 48633.803, 49281.69, 50267.606, 50154.93,
+          50366.197, 50605.634, 50887.324, 51070.423, 52028.169, 52605.634, 53507.042, 49267.606,
+          52366.197, 53633.803, 54366.197, 54816.901, 55197.183,
+        ],
+      },
+      {
+        key: 's5',
+        color: 's5',
+        label: 'Royaume-Uni',
+        values: [
+          48295.775, 49014.085, 50042.254, 49605.634, 47000, 47676.056, 47690.141, 48098.592,
+          48591.549, 49760.563, 50464.789, 51169.014, 52422.535, 52971.831, 53366.197, 47929.577,
+          51830.986, 53971.831, 53422.535, 53422.535, 53830.986,
+        ],
+      },
+    ],
+    frame: { width: 720, height: 340, left: 52, right: 602, top: 22, bottom: 306 },
+  },
+  'ce-que-produit-une-heure-de-travail-2024': {
+    svg: { viewBox: '0 0 720 194', titleId: 'csyn2-t', title: 'dollars par heure travaillée, 2024' },
+    title: 'Ce que produit une heure de travail, 2024',
+    subtitle: 'PIB par heure travaillée, en dollars à parité de pouvoir d’achat.',
+    caption: '<b>Quatre pays dans un mouchoir de poche.</b> L’heure travaillée française vaut 81,6 $ contre 83,0 en Allemagne et 84,1 aux États-Unis : <b>moins de 3 % d’écart avec le mieux placé</b>, et dix points de mieux que le Royaume-Uni. Le travail français n’est ni lent ni mal outillé — l’écart de richesse ne vient pas de là.',
+    sources: ['ocde-gdphrs'],
+    vintage: '2024',
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 146,
+      tickLabelY: 168,
+      catLabelX: 182,
+      catLabelDy: 10,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 30,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10,
+      valueClasses: ['lbl mut'],
+      rx: 3,
+    },
+    x: ['États-Unis', 'Allemagne', 'Pays-Bas', 'France', 'Royaume-Uni'],
+    y: { min: 0, max: 90, ticks: [0, 30, 60, 90] },
+    series: [
+      { key: 'b1', color: 's1', values: [84.092, 83.008, 82.108, 81.6, 74.008], decimals: 1 },
+    ],
+    frame: { width: 720, height: 194, left: 196, right: 586, top: 16, bottom: 146 },
+  },
+  'heures-travaillees-par-habitant-de-15-a-74-ans-2024': {
+    svg: {
+      viewBox: '0 0 720 194',
+      titleId: 'csyn3-t',
+      title: 'heures par habitant de 15 à 74 ans, 2024',
+    },
+    title: 'Heures travaillées par habitant de 15 à 74 ans, 2024',
+    subtitle: 'Total des heures travaillées dans l’année, rapporté à la population en âge de travailler.',
+    caption: '<b>C’est ici que se joue l’écart.</b> 927 heures par habitant en âge de travailler contre 983 en Allemagne — <b>6 % de moins</b> — et un quart de moins qu’aux États-Unis. Rapprochées de la figure précédente, les deux mesures disent la même chose : <b>on ne travaille pas assez, au sens où trop peu de personnes travaillent</b>.',
+    sources: ['ocde-hrspop'],
+    vintage: '2024',
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 146,
+      tickLabelY: 168,
+      catLabelX: 182,
+      catLabelDy: 10,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 30,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10,
+      valueClasses: ['lbl s1t'],
+      rx: 3,
+    },
+    x: ['États-Unis', 'Pays-Bas', 'Royaume-Uni', 'Allemagne', 'France'],
+    y: { min: 0, max: 1200, ticks: [0, 400, 800, 1200] },
+    series: [
+      {
+        key: 'b1',
+        color: 's1',
+        values: [1144.923, 1096.923, 1002.154, 983.077, 927.077],
+        decimals: 0,
+      },
+    ],
+    frame: { width: 720, height: 194, left: 196, right: 586, top: 16, bottom: 146 },
+  },
+  'part-des-personnes-en-emploi-par-tranche-d-age-2024': {
+    svg: { viewBox: '0 0 720 274', titleId: 'csyn4-t', title: 'taux d’emploi par tranche d’âge, 2024' },
+    title: 'Part des personnes en emploi, par tranche d’âge, 2024',
+    subtitle: 'France et Allemagne, en % de la tranche d’âge.',
+    caption: '<b>Au cœur de la vie active, les deux pays sont à deux points l’un de l’autre.</b> L’écart est aux deux extrémités : <b>−16,6 points chez les 15-24 ans, −24,2 points entre 60 et 64 ans</b>. Les jeunes entrent tard, les seniors sortent tôt. Tout le reste de cette synthèse découle de ces deux trous.',
+    sources: ['ocde-ocde-base-emploi-taux-d-emploi-par-tra'],
+    vintage: '2024',
+    legend: [
+      { color: 's4', label: 'Allemagne' },
+      { color: 's1', label: 'France' },
+    ],
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 226,
+      tickLabelY: 248,
+      catLabelX: 182,
+      catLabelDy: 17.5,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 45,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10,
+      valueClasses: ['lbl mut', 'lbl s1t'],
+      rx: 3,
+    },
+    x: ['15-24 ans', '25-54 ans', '55-64 ans', '60-64 ans', '65-69 ans'],
+    y: { min: 0, max: 90, ticks: [0, 30, 60, 90] },
+    series: [
+      {
+        key: 'b1',
+        color: 's4',
+        label: 'Allemagne',
+        values: [51, 84.992, 75, 66.6, 21.208],
+        decimals: 1,
+      },
+      {
+        key: 'b2',
+        color: 's1',
+        label: 'France',
+        values: [34.408, 82.892, 60.3, 42.392, 11.1],
+        decimals: 1,
+      },
+    ],
+    frame: { width: 720, height: 274, left: 196, right: 586, top: 16, bottom: 226 },
+  },
+  'prelevements-obligatoires-par-habitant-2025': {
+    svg: { viewBox: '0 0 720 194', titleId: 'csyn5-t', title: 'dollars par habitant, 2025' },
+    title: 'Prélèvements obligatoires par habitant, 2025',
+    subtitle: 'En dollars à parité de pouvoir d’achat. Le taux appliqué figure dans le tableau qui suit.',
+    caption: '<b>Le taux le plus élevé du panel, et pourtant moins d’argent encaissé.</b> La France prélève 44,7 % de sa richesse, contre 40,5 % en Allemagne et 38,8 % aux Pays-Bas — et elle récolte moins que l’un et l’autre par habitant. Un taux plus élevé appliqué à une richesse plus petite peut très bien rapporter moins : <b>ce qui manque n’est pas la pression fiscale, c’est ce sur quoi elle s’applique</b>.',
+    sources: ['ocde-taxq'],
+    vintage: '2025',
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 146,
+      tickLabelY: 168,
+      catLabelX: 182,
+      catLabelDy: 10,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 30,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10,
+      valueClasses: ['lbl s1t'],
+      rx: 3,
+    },
+    x: ['Pays-Bas', 'Allemagne', 'France', 'États-Unis', 'Royaume-Uni'],
+    y: { min: 0, max: 30000, ticks: [0, 10000, 20000, 30000] },
+    series: [
+      { key: 'b1', color: 's1', values: [27355, 25369.231, 24498, 19561, 19227], decimals: 0 },
+    ],
+    frame: { width: 720, height: 194, left: 196, right: 586, top: 16, bottom: 146 },
+  },
+  'depense-publique-par-nature-1975-2024': {
+    raw: true,
+    title: 'Dépense publique par nature, 1975-2024',
+    subtitle: 'En % du PIB. Sous l\'axe, les mandats présidentiels ; hachures pendant les cohabitations.',
+    caption: '<b>Un seul poste porte la hausse, et il monte sous tous les gouvernements.</b> Les prestations sociales passent de 17,2 % à 25,5 % du PIB et expliquent <b>76 % de la hausse de la dépense publique depuis 1975</b> — 8,3 points sur 10,9. Les salaires des fonctionnaires ont bougé de sept dixièmes de point en un demi-siècle. Le seul poste qui recule vraiment est l\'investissement public. La courbe monte sous Giscard, Mitterrand, Chirac, Sarkozy, Hollande et Macron : <b>c\'est une dynamique longue — le nombre de retraités, la durée de la vie, le coût des soins —, pas une préférence qu\'on referait chaque année.</b>',
+    legend: [
+      { color: 's1', label: 'Prestations sociales' },
+      { color: 's4', label: 'Rémunération des agents' },
+      { color: 's3', label: 'Consommations intermédiaires' },
+      { color: 's5', label: 'Investissement' },
+      { color: 's2', label: 'Charge de la dette' },
+    ],
+    svg: '<svg viewBox="0 0 720 452" class="cv" role="img" aria-labelledby="csynnat-t" preserveAspectRatio="xMidYMid meet">\n<title id="csynnat-t">Dépense publique par nature</title>\n<defs><pattern id="coh" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="cohl" x1="0" y1="0" x2="0" y2="6"></line></pattern></defs>\n<line class="grid" x1="52" y1="372.0" x2="602" y2="372.0"></line>\n<text class="ax ar" x="43" y="376.0">0</text>\n<line class="grid" x1="52" y1="313.7" x2="602" y2="313.7"></line>\n<text class="ax ar" x="43" y="317.7">5</text>\n<line class="grid" x1="52" y1="255.3" x2="602" y2="255.3"></line>\n<text class="ax ar" x="43" y="259.3">10</text>\n<line class="grid" x1="52" y1="197.0" x2="602" y2="197.0"></line>\n<text class="ax ar" x="43" y="201.0">15</text>\n<line class="grid" x1="52" y1="138.7" x2="602" y2="138.7"></line>\n<text class="ax ar" x="43" y="142.7">20</text>\n<line class="grid" x1="52" y1="80.3" x2="602" y2="80.3"></line>\n<text class="ax ar" x="43" y="84.3">25</text>\n<line class="grid" x1="52" y1="22.0" x2="602" y2="22.0"></line>\n<text class="ax ar" x="43" y="26.0">30</text>\n<text class="ax" x="43" y="14" text-anchor="end">% du PIB</text>\n<line class="axis" x1="52" y1="372" x2="602" y2="372"></line>\n<polyline class="ln s1" points="52.0,171.0 63.2,172.0 74.4,169.3 85.7,162.0 96.9,161.9 108.1,157.1 119.3,144.7 130.6,136.1 141.8,134.7 153.0,130.8 164.2,127.2 175.5,128.6 186.7,131.7 197.9,135.4 209.1,137.6 220.4,134.0 231.6,127.1 242.8,120.7 254.0,109.0 265.3,110.2 276.5,110.7 287.7,108.3 298.9,107.2 310.2,111.8 321.4,111.8 332.6,118.8 343.8,116.5 355.1,110.7 366.3,104.8 377.5,103.7 388.7,102.5 400.0,102.5 411.2,103.7 422.4,100.2 433.6,79.2 444.9,78.0 456.1,80.3 467.3,73.3 478.5,71.0 489.8,68.7 501.0,69.8 512.2,68.7 523.4,71.0 534.7,73.3 545.9,74.5 557.1,36.0 568.3,55.8 579.6,71.0 590.8,80.3 602.0,74.5"></polyline>\n<polyline class="ln s4" points="52.0,235.4 63.2,231.8 74.4,227.7 85.7,224.6 96.9,225.2 108.1,222.4 119.3,218.8 130.6,215.3 141.8,215.1 153.0,214.4 164.2,214.5 175.5,215.9 186.7,219.1 197.9,224.9 209.1,228.6 220.4,229.0 231.6,227.0 242.8,223.6 254.0,217.3 265.3,216.8 276.5,214.5 287.7,212.2 298.9,214.5 310.2,216.8 321.4,216.8 332.6,218.0 343.8,219.2 355.1,216.8 366.3,216.8 377.5,219.2 388.7,220.3 400.0,222.7 411.2,226.2 422.4,226.2 433.6,216.8 444.9,218.0 456.1,220.3 467.3,219.2 478.5,219.2 489.8,219.2 501.0,220.3 512.2,221.5 523.4,221.5 534.7,225.0 545.9,227.3 557.1,216.8 568.3,225.0 579.6,226.2 590.8,229.7 602.0,227.3"></polyline>\n<polyline class="ln s3" points="52.0,304.9 63.2,305.0 74.4,307.8 85.7,306.0 96.9,307.4 108.1,303.5 119.3,301.6 130.6,301.1 141.8,299.2 153.0,299.7 164.2,298.3 175.5,304.8 186.7,303.6 197.9,302.9 209.1,307.8 220.4,308.5 231.6,307.1 242.8,305.0 254.0,300.7 265.3,305.7 276.5,307.8 287.7,305.5 298.9,305.5 310.2,312.5 321.4,312.5 332.6,312.5 343.8,313.7 355.1,311.3 366.3,312.5 377.5,312.5 388.7,312.5 400.0,313.7 411.2,314.8 422.4,314.8 433.6,309.0 444.9,309.0 456.1,310.2 467.3,309.0 478.5,309.0 489.8,310.2 501.0,310.2 512.2,311.3 523.4,310.2 534.7,311.3 545.9,311.3 557.1,307.8 568.3,309.0 579.6,307.8 590.8,306.7 602.0,307.8"></polyline>\n<polyline class="ln s5" points="52.0,310.2 63.2,311.1 74.4,316.7 85.7,319.3 96.9,318.9 108.1,317.3 119.3,315.5 130.6,313.7 141.8,316.6 153.0,317.1 164.2,315.4 175.5,316.0 186.7,314.8 197.9,312.0 209.1,312.3 220.4,311.4 231.6,309.6 242.8,310.6 254.0,313.1 265.3,314.7 276.5,318.3 287.7,318.3 298.9,323.0 310.2,324.2 321.4,324.2 332.6,321.8 343.8,323.0 355.1,324.2 366.3,321.8 377.5,321.8 388.7,320.7 400.0,320.7 411.2,320.7 422.4,320.7 433.6,316.0 444.9,316.0 456.1,319.5 467.3,318.3 478.5,318.3 489.8,321.8 501.0,326.5 512.2,326.5 523.4,327.7 534.7,326.5 545.9,323.0 557.1,323.0 568.3,324.2 579.6,323.0 590.8,323.0 602.0,321.8"></polyline>\n<polyline class="ln s2" points="52.0,361.3 63.2,362.3 74.4,360.9 85.7,359.9 96.9,358.7 108.1,357.6 119.3,351.9 130.6,351.4 141.8,345.9 153.0,344.5 164.2,342.2 175.5,341.9 186.7,342.9 197.9,344.1 209.1,343.2 220.4,340.6 231.6,339.1 242.8,337.0 254.0,334.4 265.3,333.0 276.5,331.2 287.7,330.0 298.9,330.0 310.2,332.3 321.4,335.8 332.6,337.0 343.8,335.8 355.1,337.0 366.3,338.2 377.5,339.3 388.7,340.5 400.0,341.7 411.2,340.5 422.4,338.2 433.6,342.8 444.9,342.8 456.1,340.5 467.3,341.7 478.5,345.2 489.8,346.3 501.0,348.7 512.2,349.8 523.4,351.0 534.7,351.0 545.9,354.5 557.1,356.8 568.3,355.7 579.6,349.8 590.8,349.8 602.0,348.7"></polyline>\n<circle class="dot s1" cx="602.0" cy="74.5" r="4"></circle>\n<text class="lbl s1t" x="610.0" y="78.5">Prestations sociales</text>\n<circle class="dot s4" cx="602.0" cy="227.3" r="4"></circle>\n<text class="lbl s4t" x="610.0" y="231.3">Rémunération des agents</text>\n<circle class="dot s3" cx="602.0" cy="307.8" r="4"></circle>\n<text class="lbl s3t" x="610.0" y="311.8">Consommations intermédiaires</text>\n<circle class="dot s5" cx="602.0" cy="321.8" r="4"></circle>\n<text class="lbl s5t" x="610.0" y="325.8">Investissement</text>\n<circle class="dot s2" cx="602.0" cy="348.7" r="4"></circle>\n<text class="lbl s2t" x="610.0" y="352.7">Charge de la dette</text>\n<rect class="pr pr-d" x="52.0" y="388" width="71.8" height="30" rx="2"></rect>\n<text class="prl" x="87.9" y="400" text-anchor="middle">Giscard d\'Estaing</text>\n<rect class="pr pr-g" x="123.8" y="388" width="157.1" height="30" rx="2"></rect>\n<text class="prl" x="202.4" y="400" text-anchor="middle">Mitterrand</text>\n<rect class="pr pr-d" x="281.0" y="388" width="134.7" height="30" rx="2"></rect>\n<text class="prl" x="348.3" y="400" text-anchor="middle">Chirac</text>\n<rect class="pr pr-d" x="415.7" y="388" width="56.1" height="30" rx="2"></rect>\n<text class="prl" x="443.7" y="400" text-anchor="middle">Sarkozy</text>\n<rect class="pr pr-g" x="471.8" y="388" width="56.1" height="30" rx="2"></rect>\n<text class="prl" x="499.9" y="400" text-anchor="middle">Hollande</text>\n<rect class="pr pr-c" x="527.9" y="388" width="80.8" height="30" rx="2"></rect>\n<text class="prl" x="568.3" y="400" text-anchor="middle">Macron</text>\n<rect class="coh" x="177.7" y="404" width="24.7" height="12" rx="1"></rect>\n<rect class="coh" x="256.3" y="404" width="24.7" height="12" rx="1"></rect>\n<rect class="coh" x="304.6" y="404" width="55.0" height="12" rx="1"></rect>\n<text class="prl mutp" x="245.1" y="416" text-anchor="middle">cohabitations</text>\n<text class="ax" x="52.0" y="434" text-anchor="start">1975</text>\n<text class="ax" x="164.2" y="434" text-anchor="middle">1985</text>\n<text class="ax" x="276.5" y="434" text-anchor="middle">1995</text>\n<text class="ax" x="388.7" y="434" text-anchor="middle">2005</text>\n<text class="ax" x="501.0" y="434" text-anchor="middle">2015</text>\n<text class="ax" x="602.0" y="434" text-anchor="end">2024</text>\n</svg>',
+    sources: ['eurostat-nasa-10-nf-tr'],
+    vintage: '2024',
+    values: {
+      svg: {
+        viewBox: '0 0 720 452',
+        titleId: 'csynnat-t',
+        title: 'Dépense publique par nature',
+        preserveAspectRatio: 'xMidYMid meet',
+      },
+      title: 'Dépense publique par nature, 1975-2024',
+      subtitle: 'En % du PIB. Sous l\'axe, les mandats présidentiels ; hachures pendant les cohabitations.',
+      caption: '<b>Un seul poste porte la hausse, et il monte sous tous les gouvernements.</b> Les prestations sociales passent de 17,2 % à 25,5 % du PIB et expliquent <b>76 % de la hausse de la dépense publique depuis 1975</b> — 8,3 points sur 10,9. Les salaires des fonctionnaires ont bougé de sept dixièmes de point en un demi-siècle. Le seul poste qui recule vraiment est l\'investissement public. La courbe monte sous Giscard, Mitterrand, Chirac, Sarkozy, Hollande et Macron : <b>c\'est une dynamique longue — le nombre de retraités, la durée de la vie, le coût des soins —, pas une préférence qu\'on referait chaque année.</b>',
+      sources: ['eurostat-nasa-10-nf-tr'],
+      vintage: '2024',
+      legend: [
+        { color: 's1', label: 'Prestations sociales' },
+        { color: 's4', label: 'Rémunération des agents' },
+        { color: 's3', label: 'Consommations intermédiaires' },
+        { color: 's5', label: 'Investissement' },
+        { color: 's2', label: 'Charge de la dette' },
+      ],
+      type: 'line',
+      layout: {
+        kind: 'line',
+        tickLabelX: 43,
+        tickLabelDy: 4,
+        axisLabel: { x: 43, y: 14, text: '% du PIB', anchor: 'end' },
+        axisLineY: 372,
+        dotR: 4,
+        endLabelDx: 8,
+        endLabelDy: 4,
+        xLabelY: 434,
+        xLabelsLast: true,
+        bands: { y: 388, height: 30, rx: 2, labelDy: 12, patternId: 'coh' },
+      },
+      xAxis: { min: 1975, max: 2024, ticks: [1975, 1985, 1995, 2005, 2015, 2024] },
+      x: [
+        1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989,
+        1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
+        2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+        2020, 2021, 2022, 2023, 2024,
+      ],
+      y: { min: 0, max: 30, ticks: [0, 5, 10, 15, 20, 25, 30], label: '% du PIB' },
+      series: [
+        {
+          key: 's1',
+          color: 's1',
+          label: 'Prestations sociales',
+          values: [
+            17.228, 17.143, 17.374, 18, 18.008, 18.42, 19.483, 20.22, 20.34, 20.674, 20.983, 20.863,
+            20.597, 20.28, 20.091, 20.4, 20.991, 21.54, 22.543, 22.44, 22.397, 22.603, 22.697, 22.303,
+            22.303, 21.703, 21.9, 22.397, 22.903, 22.997, 23.1, 23.1, 22.997, 23.297, 25.097, 25.2,
+            25.002, 25.602, 25.8, 25.997, 25.902, 25.997, 25.8, 25.602, 25.5, 28.799, 27.102, 25.8,
+            25.002, 25.5,
+          ],
+        },
+        {
+          key: 's4',
+          color: 's4',
+          label: 'Rémunération des agents',
+          values: [
+            11.709, 12.017, 12.369, 12.634, 12.583, 12.823, 13.132, 13.431, 13.449, 13.509, 13.5,
+            13.38, 13.106, 12.609, 12.292, 12.257, 12.429, 12.72, 13.26, 13.303, 13.5, 13.697, 13.5,
+            13.303, 13.303, 13.2, 13.097, 13.303, 13.303, 13.097, 13.003, 12.797, 12.497, 12.497,
+            13.303, 13.2, 13.003, 13.097, 13.097, 13.097, 13.003, 12.9, 12.9, 12.6, 12.403, 13.303,
+            12.6, 12.497, 12.197, 12.403,
+          ],
+        },
+        {
+          key: 's3',
+          color: 's3',
+          label: 'Consommations intermédiaires',
+          values: [
+            5.752, 5.743, 5.503, 5.658, 5.538, 5.872, 6.035, 6.078, 6.24, 6.198, 6.317, 5.76, 5.863,
+            5.923, 5.503, 5.443, 5.563, 5.743, 6.112, 5.683, 5.503, 5.7, 5.7, 5.1, 5.1, 5.1, 4.998,
+            5.203, 5.1, 5.1, 5.1, 4.998, 4.903, 4.903, 5.4, 5.4, 5.298, 5.4, 5.4, 5.298, 5.298, 5.203,
+            5.298, 5.203, 5.203, 5.503, 5.4, 5.503, 5.598, 5.503,
+          ],
+        },
+        {
+          key: 's5',
+          color: 's5',
+          label: 'Investissement',
+          values: [
+            5.298, 5.22, 4.74, 4.518, 4.552, 4.689, 4.843, 4.998, 4.749, 4.706, 4.852, 4.8, 4.903,
+            5.143, 5.118, 5.195, 5.349, 5.263, 5.049, 4.912, 4.603, 4.603, 4.2, 4.098, 4.098, 4.303,
+            4.2, 4.098, 4.303, 4.303, 4.398, 4.398, 4.398, 4.398, 4.8, 4.8, 4.5, 4.603, 4.603, 4.303,
+            3.9, 3.9, 3.798, 3.9, 4.2, 4.2, 4.098, 4.2, 4.2, 4.303,
+          ],
+        },
+        {
+          key: 's2',
+          color: 's2',
+          label: 'Charge de la dette',
+          values: [
+            0.918, 0.832, 0.952, 1.038, 1.141, 1.235, 1.723, 1.766, 2.238, 2.358, 2.555, 2.581, 2.495,
+            2.392, 2.469, 2.692, 2.82, 3, 3.223, 3.343, 3.498, 3.6, 3.6, 3.403, 3.103, 3, 3.103, 3,
+            2.898, 2.803, 2.701, 2.598, 2.701, 2.898, 2.503, 2.503, 2.701, 2.598, 2.298, 2.203, 1.998,
+            1.903, 1.801, 1.801, 1.501, 1.303, 1.398, 1.903, 1.903, 1.998,
+          ],
+        },
+      ],
+      frame: {
+        width: 720,
+        height: 452,
+        left: 52,
+        right: 602,
+        top: 21.99285714285716,
+        bottom: 372.00714285714287,
+      },
+      annotations: {
+        mandates: [
+          { label: 'Giscard d\'Estaing', from: 0, to: 6.3967, bloc: 'd' },
+          { label: 'Mitterrand', from: 6.3967, to: 20.3929, bloc: 'g' },
+          { label: 'Chirac', from: 20.4018, to: 32.4024, bloc: 'd' },
+          { label: 'Sarkozy', from: 32.4024, to: 37.4004, bloc: 'd' },
+          { label: 'Hollande', from: 37.4004, to: 42.3984, bloc: 'g' },
+          { label: 'Macron', from: 42.3984, to: 49.5969, bloc: 'c' },
+        ],
+        cohabitations: [
+          { from: 11.1987, to: 13.3993 },
+          { from: 18.2013, to: 20.4018 },
+          { from: 22.5044, to: 27.4044 },
+        ],
+      },
+    },
+  },
+  'depense-sociale-par-habitant-publique-et-privee-2021': {
+    svg: { viewBox: '0 0 720 274', titleId: 'csyn6-t', title: 'dollars par habitant, 2021' },
+    title: 'Dépense sociale par habitant, publique et privée, 2021',
+    subtitle: 'En dollars à parité de pouvoir d’achat ; le total figure à côté de chaque pays. La part privée — retraites par capitalisation, assurances santé, prévoyance — est payée par les ménages sans passer par la dépense publique.',
+    caption: '<b>La France y consacre la part de richesse la plus élevée du panel — 32,7 % — et, par habitant, moins d’argent que l’Allemagne, les Pays-Bas et les États-Unis.</b> Les deux affirmations sont vraies en même temps : le dénominateur français est plus petit. Le système n’est donc pas plus généreux en montant. <b>Ce qui distingue la France n’est pas ce qu’elle verse, c’est ce qu’elle produit pour le verser.</b>',
+    sources: ['ocde-ocde-social-expenditure-database-depen'],
+    vintage: '2021',
+    legend: [
+      { color: 's1', label: 'Dépense publique' },
+      { color: 's4', label: 'Dépense privée' },
+    ],
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 226,
+      tickLabelY: 248,
+      catLabelX: 182,
+      catLabelDy: 17.5,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 45,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10,
+      valueClasses: ['lbl s1t', 'lbl mut'],
+      rx: 3,
+    },
+    x: [
+      'Pays-Bas · 21 623 $', 'États-Unis · 21 312 $', 'Allemagne · 20 440 $',
+      'France · 19 578 $', 'Royaume-Uni · 15 388 $',
+    ],
+    y: { min: 0, max: 20000, ticks: [0, 10000, 20000] },
+    series: [
+      {
+        key: 'b1',
+        color: 's1',
+        label: 'Dépense publique',
+        values: [13694, 13377, 18172, 17628, 13188],
+        decimals: 0,
+      },
+      {
+        key: 'b2',
+        color: 's4',
+        label: 'Dépense privée',
+        values: [7929, 7935, 2268, 1950, 2200],
+        decimals: 0,
+      },
+    ],
+    frame: { width: 720, height: 274, left: 196, right: 586, top: 16, bottom: 226 },
+  },
+  'les-prestations-sociales-par-risque-2024': {
+    svg: { viewBox: '0 0 720 242', titleId: 'csynpre-t', title: 'milliards d\'euros, 2024' },
+    title: 'Les prestations sociales par risque, 2024',
+    subtitle: 'France, en milliards d\'euros. Six risques, dont deux font 82 % du total.',
+    caption: '<b>Les retraites sont le premier poste, et de très loin</b> — 426,7 Md€, 46 % du total, davantage que la santé. Un débat sur la dépense sociale qui n\'en parle pas parle de la moitié du sujet. À l\'inverse, les postes qui occupent le débat public — le RSA et les aides au logement — pèsent ensemble <b>50,1 Md€, soit 5 % du total</b> : les rogner ne règle rien, et cela frappe les personnes les plus fragiles.',
+    sources: ['drees-drees-la-protection-sociale-en-france-e'],
+    vintage: '2024',
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 194,
+      tickLabelY: 216,
+      catLabelX: 218,
+      catLabelDy: 10,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 30,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10,
+      valueClasses: ['lbl s1t'],
+      rx: 3,
+    },
+    x: [
+      'Vieillesse et survie', 'Santé (maladie, invalidité, AT-MP)', 'Famille',
+      'Emploi et chômage', 'Pauvreté et exclusion', 'Logement',
+    ],
+    y: { min: 0, max: 400, ticks: [0, 200, 400] },
+    series: [
+      {
+        key: 'b1',
+        color: 's1',
+        values: [426.667, 338.903, 65.823, 51.083, 33.98, 16.09],
+        decimals: 1,
+      },
+    ],
+    frame: { width: 720, height: 242, left: 232, right: 587.5, top: 16, bottom: 194 },
+  },
+  'niveau-de-vie-avant-et-apres-redistribution-2024': {
+    svg: {
+      viewBox: '0 0 720 229',
+      titleId: 'csyn7-t',
+      title: 'euros par an, avant et après redistribution, 2024',
+    },
+    title: 'Niveau de vie avant et après redistribution, 2024',
+    subtitle: 'Niveau de vie annuel moyen, en euros, avant puis après impôts et prestations.',
+    caption: '<b>Le revenu des 10 % les plus modestes est multiplié par 2,5 ; celui des 10 % les plus aisés est amputé d’un quart.</b> L’écart entre le haut et le bas passe de 21 à 6. Même en corrigeant l’effet des retraites, la France conserve <b>la redistribution la plus forte des huit pays comparés</b> : avant de lui demander de redistribuer davantage, il faut partir de ce qu’elle fait déjà.',
+    sources: ['insee-insee-france-portrait-social-2025-fic'],
+    vintage: '2024',
+    legend: [
+      { color: 's4', label: 'Avant redistribution' },
+      { color: 's1', label: 'Après impôts et prestations' },
+    ],
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 181,
+      tickLabelY: 203,
+      catLabelX: 240,
+      catLabelDy: 17.5,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 45,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10,
+      valueClasses: ['lbl mut', 'lbl s1t'],
+      rx: 3,
+    },
+    x: [
+      'Les 10 % les plus modestes', 'Les 20 % les plus modestes', 'Les 20 % les plus aisés',
+      'Les 10 % les plus aisés',
+    ],
+    y: { min: 0, max: 100000, ticks: [0, 50000, 100000] },
+    series: [
+      {
+        key: 'b1',
+        color: 's4',
+        label: 'Avant redistribution',
+        values: [4710, 9090, 74980, 99300],
+        decimals: 0,
+      },
+      {
+        key: 'b2',
+        color: 's1',
+        label: 'Après impôts et prestations',
+        values: [11960, 14100, 58690, 74410],
+        decimals: 0,
+      },
+    ],
+    frame: { width: 720, height: 229, left: 254, right: 586, top: 16, bottom: 181 },
+  },
+  'masse-prelevee-par-decile-de-niveau-de-vie-2023': {
+    raw: true,
+    title: 'Masse prélevée par décile de niveau de vie, 2023',
+    subtitle: 'En milliards d\'euros. Tous prélèvements confondus, cotisations et impôts indirects inclus.',
+    caption: '<b>Les 10 % les plus aisés acquittent 423 Md€ sur 1 271, soit un tiers du total — davantage que les cinq premiers déciles réunis (285 Md€).</b> Et la composition bascule en chemin : en bas, l\'essentiel de ce qu\'on paie passe par la TVA et les impôts indirects ; en haut, par l\'impôt sur le revenu et le patrimoine.',
+    legend: [
+      { color: 's1', label: 'Cotisations sociales' },
+      { color: 's2', label: 'Impôts sur le revenu et le patrimoine' },
+      { color: 's4', label: 'Impôts sur la production et la consommation' },
+    ],
+    svg: '<svg viewBox="0 0 720 404" class="cv" role="img" aria-labelledby="csynmas-t">\n<title id="csynmas-t">milliards d\'euros prélevés, 2023</title>\n<line class="grid" x1="88.0" y1="16" x2="88.0" y2="354"></line>\n<text class="ax" x="88.0" y="378" text-anchor="middle">0</text>\n<line class="grid" x1="331.3" y1="16" x2="331.3" y2="354"></line>\n<text class="ax" x="331.3" y="378" text-anchor="middle">200</text>\n<line class="grid" x1="574.7" y1="16" x2="574.7" y2="354"></line>\n<text class="ax" x="574.7" y="378" text-anchor="middle">400</text>\n<text class="ax al" x="76" y="37">D1</text>\n<rect class="bar s1f" x="88.0" y="22" width="7.2" height="19" rx="2"></rect>\n<rect class="bar s2f" x="95.2" y="22" width="6.3" height="19" rx="2"></rect>\n<rect class="bar s4f" x="101.5" y="22" width="22.3" height="19" rx="2"></rect>\n<text class="lbl" x="131.8" y="37">29</text>\n<text class="ax al" x="76" y="71">D2</text>\n<rect class="bar s1f" x="88.0" y="56" width="18.1" height="19" rx="2"></rect>\n<rect class="bar s2f" x="106.1" y="56" width="5.7" height="19" rx="2"></rect>\n<rect class="bar s4f" x="111.8" y="56" width="25.9" height="19" rx="2"></rect>\n<text class="lbl" x="145.8" y="71">41</text>\n<text class="ax al" x="76" y="105">D3</text>\n<rect class="bar s1f" x="88.0" y="90" width="27.1" height="19" rx="2"></rect>\n<rect class="bar s2f" x="115.1" y="90" width="9.9" height="19" rx="2"></rect>\n<rect class="bar s4f" x="125.0" y="90" width="31.6" height="19" rx="2"></rect>\n<text class="lbl" x="164.6" y="105">56</text>\n<text class="ax al" x="76" y="139">D4</text>\n<rect class="bar s1f" x="88.0" y="124" width="37.7" height="19" rx="2"></rect>\n<rect class="bar s2f" x="125.7" y="124" width="13.7" height="19" rx="2"></rect>\n<rect class="bar s4f" x="139.5" y="124" width="36.3" height="19" rx="2"></rect>\n<text class="lbl" x="183.7" y="139">72</text>\n<text class="ax al" x="76" y="173">D5</text>\n<rect class="bar s1f" x="88.0" y="158" width="47.7" height="19" rx="2"></rect>\n<rect class="bar s2f" x="135.7" y="158" width="17.4" height="19" rx="2"></rect>\n<rect class="bar s4f" x="153.1" y="158" width="39.7" height="19" rx="2"></rect>\n<text class="lbl" x="200.8" y="173">86</text>\n<text class="ax al" x="76" y="207">D6</text>\n<rect class="bar s1f" x="88.0" y="192" width="55.1" height="19" rx="2"></rect>\n<rect class="bar s2f" x="143.1" y="192" width="22.6" height="19" rx="2"></rect>\n<rect class="bar s4f" x="165.7" y="192" width="45.0" height="19" rx="2"></rect>\n<text class="lbl" x="218.8" y="207">101</text>\n<text class="ax al" x="76" y="241">D7</text>\n<rect class="bar s1f" x="88.0" y="226" width="69.6" height="19" rx="2"></rect>\n<rect class="bar s2f" x="157.6" y="226" width="28.6" height="19" rx="2"></rect>\n<rect class="bar s4f" x="186.2" y="226" width="49.5" height="19" rx="2"></rect>\n<text class="lbl" x="243.7" y="241">121</text>\n<text class="ax al" x="76" y="275">D8</text>\n<rect class="bar s1f" x="88.0" y="260" width="86.5" height="19" rx="2"></rect>\n<rect class="bar s2f" x="174.5" y="260" width="39.5" height="19" rx="2"></rect>\n<rect class="bar s4f" x="214.0" y="260" width="55.7" height="19" rx="2"></rect>\n<text class="lbl" x="277.8" y="275">149</text>\n<text class="ax al" x="76" y="309">D9</text>\n<rect class="bar s1f" x="88.0" y="294" width="111.8" height="19" rx="2"></rect>\n<rect class="bar s2f" x="199.8" y="294" width="57.4" height="19" rx="2"></rect>\n<rect class="bar s4f" x="257.2" y="294" width="63.5" height="19" rx="2"></rect>\n<text class="lbl" x="328.7" y="309">191</text>\n<text class="ax al" x="76" y="343">D10</text>\n<rect class="bar s1f" x="88.0" y="328" width="199.8" height="19" rx="2"></rect>\n<rect class="bar s2f" x="287.8" y="328" width="225.9" height="19" rx="2"></rect>\n<rect class="bar s4f" x="513.7" y="328" width="88.6" height="19" rx="2"></rect>\n<text class="lbl" x="610.3" y="343">423</text>\n</svg>',
+    sources: ['insee-calcul-par-nos-soins-a-partir-de-l-insee'],
+    vintage: '2023',
+    values: {
+      svg: { viewBox: '0 0 720 404', titleId: 'csynmas-t', title: 'milliards d\'euros prélevés, 2023' },
+      title: 'Masse prélevée par décile de niveau de vie, 2023',
+      subtitle: 'En milliards d\'euros. Tous prélèvements confondus, cotisations et impôts indirects inclus.',
+      caption: '<b>Les 10 % les plus aisés acquittent 423 Md€ sur 1 271, soit un tiers du total — davantage que les cinq premiers déciles réunis (285 Md€).</b> Et la composition bascule en chemin : en bas, l\'essentiel de ce qu\'on paie passe par la TVA et les impôts indirects ; en haut, par l\'impôt sur le revenu et le patrimoine.',
+      sources: ['insee-calcul-par-nos-soins-a-partir-de-l-insee'],
+      vintage: '2023',
+      legend: [
+        { color: 's1', label: 'Cotisations sociales' },
+        { color: 's2', label: 'Impôts sur le revenu et le patrimoine' },
+        { color: 's4', label: 'Impôts sur la production et la consommation' },
+      ],
+      type: 'stacked-bar',
+      layout: {
+        kind: 'bar',
+        gridTop: 16,
+        gridBottom: 354,
+        tickLabelY: 378,
+        catLabelX: 76,
+        catLabelDy: 15,
+        barHeight: 19,
+        barPitch: 22,
+        groupPitch: 34,
+        firstBarY: 22,
+        valueLabelDx: 36.6,
+        valueLabelDy: 15,
+        valueClasses: ['lbl', 'lbl', 'lbl'],
+        rx: 2,
+        stacked: true,
+      },
+      x: ['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10'],
+      y: { min: 0, max: 400, ticks: [0, 200, 400] },
+      series: [
+        {
+          key: 'b1',
+          color: 's1',
+          label: 'Cotisations sociales',
+          values: [5.917, 14.876, 22.272, 30.984, 39.203, 45.285, 57.202, 71.091, 91.884, 164.208],
+        },
+        {
+          key: 'b2',
+          color: 's2',
+          label: 'Impôts sur le revenu et le patrimoine',
+          values: [5.178, 4.685, 8.136, 11.26, 14.3, 18.574, 23.505, 32.464, 47.175, 185.659],
+        },
+        {
+          key: 'b3',
+          color: 's4',
+          label: 'Impôts sur la production et la consommation',
+          values: [18.328, 21.286, 25.971, 29.834, 32.628, 36.984, 40.682, 45.778, 52.188, 72.817],
+        },
+      ],
+      frame: { width: 720, height: 404, left: 88, right: 574.7, top: 16, bottom: 354 },
+    },
+  },
+  'cout-de-l-administration-generale-par-habitant-2023': {
+    svg: {
+      viewBox: '0 0 720 164',
+      titleId: 'csyn8-t',
+      title: 'euros par habitant, administration générale',
+    },
+    title: 'Coût de l’administration générale, par habitant, 2023',
+    subtitle: 'Fonction « services généraux des administrations publiques » hors charge de la dette, euros par habitant, 2023.',
+    caption: '<b>L’administration française est la moins chère du panel après l’Espagne</b> : 623 € par habitant, contre 759 en moyenne européenne et 1 070 en Allemagne. Le « problème de l’administration » n’existe pas dans les chiffres — et le tableau qui suit montre l’inverse : moins d’infirmiers, moins de juges, moins d’enseignants par élève que chez les voisins.',
+    sources: ['eurostat-gov-10a-exp'],
+    vintage: '2023',
+    type: 'bar',
+    layout: {
+      kind: 'bar',
+      gridTop: 16,
+      gridBottom: 116,
+      tickLabelY: 138,
+      catLabelX: 240,
+      catLabelDy: 10,
+      barHeight: 12,
+      barPitch: 15,
+      groupPitch: 30,
+      firstBarY: 22,
+      valueLabelDx: 7,
+      valueLabelDy: 10,
+      valueClasses: ['lbl s1t'],
+      rx: 3,
+    },
+    x: ['Pays-Bas', 'Allemagne', 'Moyenne européenne', 'France'],
+    y: { min: 0, max: 1400, ticks: [0, 700, 1400] },
+    series: [
+      { key: 'b1', color: 's1', values: [1268.012, 1069.819, 759.036, 622.831], decimals: 0 },
+    ],
+    frame: { width: 720, height: 164, left: 254, right: 586, top: 16, bottom: 116 },
+  },
+} satisfies SeriesSet
 
 /** Fiches du chapitre, dans l'ordre : alimente le rail et la recherche. */
 export const questions = [
-  { id: 'synth-q5', title: 'Dix constats, dix chiffres : la chaîne, expliquée simplement' },
+  { id: 'synth-q5', title: 'Dix constats qui s\'enchaînent, un graphique par constat' },
 ] satisfies readonly { id: string; title: string }[]
 
 /**

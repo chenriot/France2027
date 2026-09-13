@@ -400,7 +400,7 @@ export const series = {
         { key: 'b1', color: 's4', label: '2005', values: [4207.848, 2473.613, 1666.035], decimals: 0 },
         { key: 'b2', color: 's1', label: '2024', values: [3773.748, 2974.831, 1823.004], decimals: 0 },
       ],
-      frame: { width: 720, height: 200, left: 228, right: 597.5000207880995, top: 16, bottom: 152 },
+      frame: { width: 720, height: 200, left: 228, right: 597.5, top: 16, bottom: 152 },
     },
   },
 } satisfies SeriesSet

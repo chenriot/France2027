@@ -257,7 +257,7 @@ const registry = {
     producer: 'DREES',
     kind: 'other',
     text: 'DREES, <i>La protection sociale en France et en Europe</i>, comptes de la protection sociale, édition 2025, données 2024, fiches 05 à 11.',
-    theme: 'depenses-publiques',
+    theme: 'synthese',
     accessed: '2026-08',
   },
   'drees-drees-les-retraites-et-les-retraites-e': {
@@ -654,12 +654,20 @@ const registry = {
   'eurostat-gov-10a-exp': {
     producer: 'Eurostat',
     kind: 'database',
+    datasets: ['gov_10a_exp'],
+    text: 'Eurostat, <span class="num">gov_10a_exp</span>, fonction COFOG 01 « services généraux des administrations publiques » hors charge de la dette, données 2023.',
+    theme: 'synthese',
+    accessed: '2026-08',
+  },
+  'eurostat-gov-10a-exp-2': {
+    producer: 'Eurostat',
+    kind: 'database',
     datasets: ['gov_10a_exp', 'demo_gind'],
     text: 'Eurostat, <span class="num">gov_10a_exp</span> (COFOG, dépenses des administrations publiques par fonction) et <span class="num">demo_gind</span> (population), données 2024, euros courants par habitant. Rapport calculé par nos soins. <b>Les euros courants ne corrigent pas les écarts de niveau de prix</b> : la correction en pouvoir d\'achat réduit sensiblement les écarts, comme indiqué dans les limites de la fiche.',
     theme: 'depenses-publiques',
     accessed: '2026-08',
   },
-  'eurostat-gov-10a-exp-2': {
+  'eurostat-gov-10a-exp-3': {
     producer: 'Eurostat',
     kind: 'database',
     datasets: ['gov_10a_exp'],
@@ -878,7 +886,7 @@ const registry = {
     kind: 'database',
     datasets: ['nasa_10_nf_tr', 'gov_10a_main'],
     text: 'Séries reconstituées par nos soins à partir d\'Eurostat <span class="num">nasa_10_nf_tr</span> et <span class="num">gov_10a_main</span>, dépenses des administrations publiques par nature (prestations sociales D62, rémunérations D1, consommations intermédiaires P2, investissement P51g, charge d\'intérêts D41), rebasées sur la série 2020. <b>La ventilation COFOG par fonction n\'existe pas avant 1995</b> ; seule la ventilation par nature remonte à 1975, d\'où le point de départ. Rupture de série réelle en 1974-1975 (le PIB 1975 bondit de 21 %).',
-    theme: 'dette-deficit',
+    theme: 'synthese',
     accessed: '2026-08',
   },
   'eurostat-nasa-10-nf-tr-2': {
@@ -1071,7 +1079,7 @@ const registry = {
     producer: 'Insee',
     kind: 'report',
     text: 'Calcul par nos soins à partir de l\'Insee, <i>La redistribution monétaire</i> (<i>France, portrait social</i> 2025) et <i>Insee Analyses</i> n° 88 (<i>La redistribution élargie</i>), données 2023. Périmètre : ensemble des prélèvements — cotisations sociales, impôts directs, impôts sur la production et la consommation — rapportés au revenu primaire élargi de chaque décile. Les masses en milliards sont obtenues en appliquant les taux publiés aux revenus primaires élargis par décile.',
-    theme: 'depenses-publiques',
+    theme: 'synthese',
     accessed: '2026-08',
   },
   'insee-conseil-des-prelevements-obligatoires-et': {
@@ -1251,6 +1259,13 @@ const registry = {
   'insee-insee-france-portrait-social-2025-fic': {
     producer: 'Insee',
     kind: 'other',
+    text: 'Insee, <i>France, portrait social</i> 2025, fiche 20 ; <i>Insee Analyses</i> n° 88.',
+    theme: 'synthese',
+    accessed: '2026-08',
+  },
+  'insee-insee-france-portrait-social-2025-fic-2': {
+    producer: 'Insee',
+    kind: 'other',
     text: 'Insee, <em>France, portrait social</em> 2025, fiche 20 ; Insee Analyses n° 88.',
     theme: 'depenses-publiques',
     accessed: '2026-08',
@@ -1356,6 +1371,14 @@ const registry = {
     theme: 'education',
     accessed: '2026-08',
   },
+  'ocde-gdphrs': {
+    producer: 'OCDE',
+    kind: 'database',
+    datasets: ['GDPHRS'],
+    text: 'OCDE, base <i>Productivité</i>, série <span class="num">GDPHRS</span>, dollars à parité de pouvoir d’achat de 2020, données 2024. Extraction par API SDMX le 13 septembre 2026.',
+    theme: 'synthese',
+    accessed: '2026-08',
+  },
   'ocde-gdppop': {
     producer: 'OCDE',
     kind: 'database',
@@ -1370,6 +1393,14 @@ const registry = {
   'ocde-gdpvd-cap': {
     producer: 'OCDE',
     kind: 'database',
+    datasets: ['GDPVD_CAP'],
+    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), série <span class="num">GDPVD_CAP</span>, dollars à parité de pouvoir d’achat de 2021. Extraction par API SDMX le 13 septembre 2026.',
+    theme: 'synthese',
+    accessed: '2026-08',
+  },
+  'ocde-gdpvd-cap-2': {
+    producer: 'OCDE',
+    kind: 'database',
     datasets: [
       'GDPVD_CAP', 'GDP', 'POP', 'CBGDPR', 'IGV', 'NLGQ', 'GDPPOP', 'GDPHRS', 'HRSPOP', '0610',
       '0710',
@@ -1378,11 +1409,26 @@ const registry = {
     theme: 'dette-deficit',
     accessed: '2026-08',
   },
+  'ocde-hrspop': {
+    producer: 'OCDE',
+    kind: 'database',
+    datasets: ['HRSPOP'],
+    text: 'OCDE, base <i>Productivité</i>, série <span class="num">HRSPOP</span>, heures travaillées rapportées à la population de 15 à 74 ans, données 2024.',
+    theme: 'synthese',
+    accessed: '2026-08',
+  },
   'ocde-ocde-base-des-prix-de-l-immobilier-rat': {
     producer: 'OCDE',
     kind: 'other',
     text: 'OCDE, base des prix de l\'immobilier, ratio prix des logements sur revenu disponible par habitant, indice base 100 en 2015. <b>Il s\'agit d\'une évolution, pas d\'un niveau</b> : deux pays à 100 en 2015 peuvent avoir des niveaux d\'accessibilité très différents.',
     theme: 'logement',
+    accessed: '2026-08',
+  },
+  'ocde-ocde-base-emploi-taux-d-emploi-par-tra': {
+    producer: 'OCDE',
+    kind: 'other',
+    text: 'OCDE, base <i>Emploi</i>, taux d’emploi par tranche d’âge, données 2024.',
+    theme: 'synthese',
     accessed: '2026-08',
   },
   'ocde-ocde-base-uoe-fin-structure-dsd-eag-uo': {
@@ -1427,11 +1473,26 @@ const registry = {
     theme: 'education',
     accessed: '2026-08',
   },
+  'ocde-ocde-social-expenditure-database-depen': {
+    producer: 'OCDE',
+    kind: 'other',
+    text: 'OCDE, <i>Social Expenditure Database</i>, dépense sociale publique et privée par habitant en parité de pouvoir d’achat, données 2021.',
+    theme: 'synthese',
+    accessed: '2026-08',
+  },
   'ocde-ocde-taxing-wages-2026-donnees-2025-c': {
     producer: 'OCDE',
     kind: 'other',
     text: 'OCDE, <i>Taxing Wages 2026</i>, données 2025, célibataire sans enfant au salaire moyen. Les décompositions sont cohérentes avec les totaux à 0,1 point près.',
     theme: 'emploi-chomage',
+    accessed: '2026-08',
+  },
+  'ocde-taxq': {
+    producer: 'OCDE',
+    kind: 'database',
+    datasets: ['TAXQ', 'GDP', 'POP'],
+    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">TAXQ</span>, <span class="num">GDP</span> et <span class="num">POP</span>, données 2025.',
+    theme: 'synthese',
     accessed: '2026-08',
   },
   'our-world-in-data-global-carbon-budget-emissions-de-co-l': {

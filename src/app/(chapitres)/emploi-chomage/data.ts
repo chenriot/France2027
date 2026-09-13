@@ -4193,7 +4193,7 @@ export const series = {
           decimals: 1,
         },
       ],
-      frame: { width: 720, height: 200, left: 140, right: 569.9009340477326, top: 16, bottom: 152 },
+      frame: { width: 720, height: 200, left: 140, right: 569.9, top: 16, bottom: 152 },
     },
   },
   'taux-d-emploi-des-60-64-ans-france-et-pays-bas': {
@@ -4290,7 +4290,7 @@ export const series = {
       series: [
         { key: 'b1', color: 's1', values: [15.697, 15, 11.298], decimals: 1 },
       ],
-      frame: { width: 720, height: 158, left: 140, right: 585.3033103450032, top: 16, bottom: 110 },
+      frame: { width: 720, height: 158, left: 140, right: 585.3, top: 16, bottom: 110 },
     },
   },
   'trois-facons-de-mesurer-le-sous-emploi-des-jeunes': {
@@ -4360,7 +4360,7 @@ export const series = {
           decimals: 1,
         },
       ],
-      frame: { width: 720, height: 342, left: 150, right: 600.5991354203513, top: 16, bottom: 294 },
+      frame: { width: 720, height: 342, left: 150, right: 600.6, top: 16, bottom: 294 },
     },
   },
   'entrees-annuelles-en-apprentissage-par-niveau-prepare': {
@@ -4463,7 +4463,7 @@ export const series = {
         { key: 'b3', color: 's2', label: 'Halo', values: [4.409] },
         { key: 'b4', color: 's4', label: 'Autres inactifs', values: [20.2] },
       ],
-      frame: { width: 720, height: 98, left: 104, right: 603.000538667868, top: 16, bottom: 48 },
+      frame: { width: 720, height: 98, left: 104, right: 603, top: 16, bottom: 48 },
     },
   },
   'chomage-de-longue-et-de-tres-longue-duree-part-des-chomeur': {
@@ -4524,7 +4524,7 @@ export const series = {
           decimals: 1,
         },
       ],
-      frame: { width: 720, height: 338, left: 150, right: 517.599433114992, top: 16, bottom: 290 },
+      frame: { width: 720, height: 338, left: 150, right: 517.6, top: 16, bottom: 290 },
     },
   },
   'plafond-mensuel-de-l-allocation-chomage': {
@@ -4561,7 +4561,7 @@ export const series = {
         decimals: 0,
       },
     ],
-    frame: { width: 720, height: 272, left: 150, right: 538.0147243617905, top: 16, bottom: 224 },
+    frame: { width: 720, height: 272, left: 150, right: 538, top: 16, bottom: 224 },
   },
   'indemnite-legale-et-preavis-pour-10-ans-d-anciennete': {
     raw: true,
@@ -4609,7 +4609,7 @@ export const series = {
         { key: 'b1', color: 's4', label: 'Indemnité', values: [5.001, 2.5, 2.31, 0.011], decimals: 1 },
         { key: 'b2', color: 's1', label: 'Préavis', values: [4, 2, 2.3, 0.011], decimals: 1 },
       ],
-      frame: { width: 720, height: 246, left: 150, right: 519.7830826343381, top: 16, bottom: 198 },
+      frame: { width: 720, height: 246, left: 150, right: 519.8, top: 16, bottom: 198 },
     },
   },
 } satisfies SeriesSet

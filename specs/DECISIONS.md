@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **329** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 661 sur 7 221 (65 %) | extraction |
-| Figures | **53** — 28 migrées et prouvées identiques + 3 ajoutées (§D17) · 21 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **215 entrées** (205 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **60 724 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Tableaux | **320** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 500 sur 7 003 (64 %) | extraction |
+| Figures | **64** — 37 prouvées identiques (dont 8 tracées depuis leurs valeurs, §D19) + 3 ajoutées (§D17) · 23 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
+| Sources | **223 entrées** (205 migrées + 10 ajoutées, §D17 + 8 figures, §D19), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **60 770 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -768,14 +768,14 @@ valides et redirigent vers les pages définitives (`next.config.mjs`).
 
 | Chantier | Volume | Où le voir |
 |---|---|---|
-| URL des sources | 192 entrées sans `url`, 10 renseignées | `npm run extract` |
-| Millésimes à confirmer | 26 | `.artifacts/audit.json` |
-| Figures au tracé d'origine | 22 | `.artifacts/audit.json` |
+| URL des sources | 213 entrées sans `url`, 10 renseignées | `npm run extract` |
+| Millésimes à confirmer | 8 | `.artifacts/audit.json` |
+| Figures au tracé d'origine | 23 | `.artifacts/audit.json` |
 | Figures non converties | 4 | `.artifacts/audit.json` |
 | Axe incohérent à arbitrer | 1 | D2 ci-dessus |
 | Commentaire éditorial à réécrire après correction | 1 (tableau BCE) | D17 ci-dessus |
 | Autres tableaux à confronter à leur source | non vérifiés | D17 ci-dessus |
-| Cellules encore en texte | 2 393 | extraction |
+| Cellules encore en texte | 2 503 | extraction |
 | Captures Playwright clair/sombre | non faites | spec §12, critère 5 |
 | Budget JS non tenu | 170 Ko pour 120 visés | `npm run check:bundle`, §D11 |
 
@@ -783,3 +783,59 @@ La comparaison de non-régression est aujourd'hui structurelle (HTML élément p
 élément), ce qui est plus strict qu'une capture d'écran sur le balisage, mais
 ne dit rien du CSS appliqué. Les captures Playwright restent à ajouter pour
 couvrir les thèmes clair et sombre aux trois largeurs.
+
+---
+
+## D19 — Les graphiques de la synthèse s'écrivent en valeurs, pas en pixels
+
+**Le problème.** La synthèse devait devenir *La France en dix graphiques* :
+un chapitre où chaque constat tient dans une figure, et non dans un tableau.
+Or les deux voies existantes menaient chacune dans un mur.
+
+- Les **figures du document d'origine** sont du SVG écrit à la main. En ajouter
+  revenait à saisir des coordonnées de pixel — ce que la règle 3 interdit, et
+  pour une bonne raison : changer une valeur obligerait à recalculer une
+  quarantaine de nombres à la main.
+- Les **figures d'amendement** (`addedFigures`, §D17) s'écrivent bien en
+  valeurs, mais elles ne se rendent qu'en `mode="page"`. Le chapitre aurait
+  montré dix graphiques et `/tout` aucun : le dossier aurait cessé d'être le
+  même document selon la porte par laquelle on y entre.
+
+**Ce qu'on a fait.** Un troisième chemin, qui ferme la boucle :
+`scripts/figures-synthese.ts` décrit chaque figure **en valeurs**, appelle le
+`buildChart` du site pour la tracer, et **injecte le SVG obtenu dans le document
+d'origine** à la place du bloc portant le même `fig-title`. `npm run extract`
+relit ensuite ce SVG, en redéduit les valeurs, et vérifie que la reprojection
+retombe au pixel près.
+
+L'intérêt n'est pas d'avoir automatisé une corvée, c'est que **le même code
+écrit et prouve**. Une figure produite ainsi entre dans la catégorie
+« régénérée et prouvée identique » par construction, et le dossier garde une
+seule surface de rendu : ces huit graphiques sont sur la page de chapitre
+*et* sur `/tout`, au même titre que ceux du document d'origine.
+
+Trois autres figures du chapitre — la dépense publique par nature, les
+prestations par risque et la masse prélevée par décile — sont des **reprises
+verbatim** de leur exemplaire d'un autre chapitre, avec un `aria-labelledby`
+distinct pour ne pas dupliquer un identifiant sur `/tout`. Les retracer depuis
+leurs valeurs les aurait privées de ce que leur SVG d'origine porte en plus :
+les bandes de mandat présidentiel pour la première, l'étiquette de total pour
+la troisième.
+
+**Un défaut d'extraction découvert à cette occasion.** `extractBars`
+recalibrait systématiquement l'échelle par moindres carrés sur les largeurs de
+barre. C'est le bon geste sur un SVG écrit à la main, dont les lignes de grille
+sont arrondies au dixième de pixel et ne déterminent l'échelle qu'à deux pour
+dix mille près. Mais sur un SVG tracé depuis les valeurs, il n'y a rien à
+corriger, et la recalibration déplaçait une largeur d'un dixième — assez pour
+qu'une figure pourtant exacte soit déclarée non conforme. La recalibration
+n'est désormais retenue que **si elle rapproche réellement la reprojection**.
+Le compte des figures prouvées est passé de 36 à 37 sans qu'aucune autre ne
+bouge : la condition ne relâche rien, elle cesse de dégrader ce qui était déjà
+juste.
+
+**La conséquence pratique.** Modifier une valeur de ces graphiques, c'est
+éditer `scripts/figures-synthese.ts`, relancer le générateur, puis
+`npm run extract` et `npm run verify`. Trois commandes, aucune coordonnée
+saisie. Ajouter une figure au dossier — pas un commentaire sur le dossier —
+suit désormais ce modèle.
