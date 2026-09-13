@@ -338,6 +338,122 @@ export const tables = {
       },
     ],
   },
+  'france-2025-avec-davantage-d-heures-travaillees': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'france-2025-avec-davantage-d-heures-travaillees',
+        header: 'France 2025, avec davantage d\'heures travaillées',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'heures-par-habitant',
+        header: 'Heures par habitant',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'pib', header: 'PIB', type: 'number', headerNumeric: true },
+      { key: 'solde-public', header: 'Solde public', type: 'number', headerNumeric: true },
+      {
+        key: 'part-du-deficit-comblee',
+        header: 'Part du déficit comblée',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Aujourd\'hui' },
+          { v: 674, d: 0 },
+          { v: 2984, d: 0, u: 'Md€' },
+          { v: -153, d: 0, u: 'Md€' },
+          null,
+        ],
+      },
+      {
+        cells: [
+          { t: '+ 30 heures par an et par personne en emploi' },
+          { v: 687, d: 0 },
+          { v: 3044, d: 0, u: 'Md€' },
+          { v: -121, d: 0, u: 'Md€' },
+          { v: 20, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>+ 30 heures par an et par habitant</b>' },
+          { v: 704, d: 0 },
+          { v: 3117, d: 0, u: 'Md€' },
+          { v: -83, d: 0, u: 'Md€', strong: true },
+          { v: 46, d: 0, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Volume horaire allemand' },
+          { v: 735, d: 0 },
+          { v: 3252, d: 0, u: 'Md€' },
+          { v: -12, d: 0, u: 'Md€' },
+          { v: 92, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Équilibre du budget</b>' },
+          { v: 740, d: 0, strong: true },
+          { v: 3276, d: 0, u: 'Md€', strong: true },
+          { v: 0, d: 0, u: 'Md€', strong: true },
+          { v: 100, d: 0, u: '%', strong: true },
+        ],
+        total: true,
+      },
+      {
+        cells: [
+          { t: 'Volume horaire néerlandais' },
+          { v: 828, d: 0 },
+          { v: 3667, d: 0, u: 'Md€' },
+          { v: 205, d: 0, u: 'Md€', sign: true },
+          null,
+        ],
+      },
+    ],
+  },
+  'les-deux-chemins-vers-l-equilibre-2025': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'les-deux-chemins-vers-l-equilibre-2025',
+        header: 'Les deux chemins vers l\'équilibre, 2025',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'ce-qu-il-faudrait', header: 'Ce qu\'il faudrait', type: 'number', headerNumeric: true },
+      { key: 'repere', header: 'Repère', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Par la durée du travail</b>, à taux d\'emploi inchangé' },
+          { v: 147, d: 0, u: 'heures par an et par personne en emploi', sign: true, strong: true },
+          { v: 39, d: 0, u: 'min par jour ouvré' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Par le taux d\'emploi</b>, à durée du travail inchangée' },
+          { v: 3, d: 1, u: 'millions de personnes en emploi', sign: true, strong: true },
+          { v: 49, d: 1, u: '% au lieu de 44,7 %' },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {

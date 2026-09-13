@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **320** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Tableaux | **322** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
 | Cellules chiffrées typées en nombres | 4 387 sur 6 836 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
 | Sources | **215 entrées** (205 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **61 088 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| **Rendu de `/tout`** | **61 324 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -472,6 +472,25 @@ pas une mesure : appliquer à la France le volume horaire par habitant allemand,
 raisons d'y voir un plafond et non une prévision. Règle retenue : **un
 contrefactuel se publie avec ses réserves dans le même écran, jamais en note de
 bas de page.**
+
+La fiche a été complétée d'une seconde lecture du même calcul, en heures plutôt
+qu'en emplois : 30 heures de plus par habitant et par an comblent 46 % du
+déficit, l'équilibre en demande 66 — soit 147 heures par personne en emploi
+(39 minutes par jour ouvré) ou 3,0 millions d'emplois supplémentaires. Les deux
+chemins sont arithmétiquement équivalents et la fiche le dit, parce que le
+débat public confond systématiquement « travailler plus » et « être plus
+nombreux à travailler ».
+
+**Une erreur de clé, attrapée par le graphique et pas par le code.** La page
+publiée de cette synthèse a d'abord affiché 100,7 dollars de PIB horaire pour
+l'Allemagne et 63,2 pour la France. La série `GDPHRS` de la base Productivité
+existe en cinq variantes — deux unités × trois bases de prix — et le
+dictionnaire de chargement n'était indexé que par `(pays, mesure)` : la
+dernière ligne lue écrasait les autres. Corollaire de la règle précédente :
+**une clé SDMX incomplète ne produit pas d'erreur, elle produit un chiffre**.
+Indexer sur le tuple complet, et vérifier l'identité quand il en existe une —
+ici `PIB/habitant = PIB/heure × heures/habitant`, qui retombe juste à 0,1 %
+près sur les cinq pays une fois la clé corrigée.
 
 ---
 
