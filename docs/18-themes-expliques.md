@@ -357,6 +357,69 @@ qu'une fois les intérêts retirés elle tombe **exactement à la moyenne
 européenne**. Ce n'est pas un problème de bureaucratie, c'est un problème de
 dette.
 
+### « On s'endette, d'accord, mais est-ce que ça nous enrichit ? »
+
+C'est la bonne question, et elle a une réponse chiffrée. Produire un euro de
+richesse en empruntant un euro, ce n'est pas produire plus — c'est déplacer une
+dépense dans le temps. Alors regardons les deux côtés en même temps, sur vingt
+ans, dans six pays.
+
+D'abord ce qu'on a produit. Les montants sont en dollars « à parité de pouvoir
+d'achat », c'est-à-dire corrigés des différences de prix entre pays : 1 dollar
+achète la même chose partout.
+
+| PIB par habitant | 2005 | 2025 | En 20 ans |
+|---|--:|--:|--:|
+| États-Unis | 59 501 | **76 834** | **+29 %** |
+| Pays-Bas | 58 352 | 71 271 | +22 % |
+| Allemagne | 51 901 | 62 888 | +21 % |
+| **France** | 48 376 | **55 197** | **+14 %** |
+| Royaume-Uni | 48 291 | 53 832 | +11 % |
+| Chine | 6 280 | 25 147 | +300 % |
+
+Un Français produisait 81 % de ce que produisait un Américain en 2005. Il en
+produit **72 % aujourd'hui**. L'écart ne s'est pas résorbé, il s'est creusé.
+
+Ensuite ce qu'on a emprunté pour cela — **dette publique et dette privée
+ensemble**, parce qu'un crédit immobilier compte autant qu'un emprunt d'État
+dans la dépense d'un pays.
+
+| Emprunté chaque année, en % du PIB | Total | dont public | dont privé |
+|---|--:|--:|--:|
+| États-Unis | 12,9 | 7,0 | 6,0 |
+| Royaume-Uni | 11,2 | 5,8 | 5,5 |
+| **France** | **11,1** | 4,9 | 6,2 |
+| Pays-Bas | 8,2 | 1,7 | 6,6 |
+| **Allemagne** | **4,9** | 1,8 | 3,1 |
+
+**La France emprunte chaque année plus du double de l'Allemagne, pour une
+croissance deux fois plus faible.** Et la moitié de cet emprunt n'est pas celui
+de l'État : c'est celui des ménages et des entreprises.
+
+Maintenant, la division qui répond à la question. D'un côté, toute la richesse
+produite en plus depuis 2005, année après année, cumulée. De l'autre, tout ce
+qui a été emprunté pendant le même temps. Par habitant, dans la même monnaie.
+
+| Cumul 2006-2025, par habitant | Produit en plus | Emprunté | Dette par dollar produit en plus |
+|---|--:|--:|--:|
+| Royaume-Uni | 46 487 $ | 112 812 $ | **2,43 $** |
+| **France** | 61 621 $ | 113 195 $ | **1,84 $** |
+| États-Unis | 126 997 $ | 170 745 $ | 1,34 $ |
+| Pays-Bas | 133 302 $ | 105 726 $ | 0,79 $ |
+| **Allemagne** | 158 450 $ | 59 097 $ | **0,37 $** |
+
+**L'Allemagne a emprunté 37 centimes pour chaque dollar produit en plus. La
+France, 1,84 dollar.** Et le pays qui a le moins emprunté est aussi celui qui a
+accumulé le plus de production supplémentaire. Ce qui sépare ces pays, ce n'est
+donc pas le montant de la dette — c'est ce qu'elle rapporte.
+
+**Trois précautions, parce qu'elles comptent.** Tout emprunt ne finance pas de
+la production : un crédit qui achète un logement ancien gonfle la dette sans
+rien produire. C'est de la dette **brute**, sans compter ce qu'on a acheté avec
+— une usine et une dépense courante s'y ressemblent. Et la **Chine est absente**
+de ces deux derniers tableaux : personne ne publie ses comptes financiers dans
+un format comparable.
+
 **Le mécanisme complet, en une phrase :** une dépense sociale qui augmente toute
 seule, financée d'abord en coupant la défense et l'investissement, puis par
 l'emprunt — et dont les intérêts viennent aujourd'hui prendre la place des
