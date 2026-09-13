@@ -1076,6 +1076,75 @@ export const tables = {
       },
     ],
   },
+  'evolution-2005-2024': {
+    vintage: '2024',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'evolution-2005-2024',
+        header: 'Évolution 2005 → 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'pib-par-habitant', header: 'PIB par habitant', type: 'number', headerNumeric: true },
+      {
+        key: 'pib-par-heure-travaillee',
+        header: 'PIB par heure travaillée',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'heures-travaillees-par-habitant',
+        header: 'Heures travaillées par habitant',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>États-Unis</b>' },
+          { v: 27.2, d: 1, u: '%', sign: true, strong: true },
+          { v: 29.8, d: 1, u: '%', sign: true, strong: true },
+          { v: -2, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Pays-Bas' },
+          { v: 20.7, d: 1, u: '%', sign: true },
+          { v: 7.6, d: 1, u: '%', sign: true },
+          { v: 12.2, d: 1, u: '%', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Allemagne' },
+          { v: 20.5, d: 1, u: '%', sign: true },
+          { v: 13.6, d: 1, u: '%', sign: true },
+          { v: 6.1, d: 1, u: '%', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>France</b>' },
+          { v: 13.2, d: 1, u: '%', sign: true, strong: true },
+          { v: 6.9, d: 1, u: '%', sign: true, strong: true },
+          { v: 5.8, d: 1, u: '%', sign: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Royaume-Uni' },
+          { v: 10.6, d: 1, u: '%', sign: true },
+          { v: 9.8, d: 1, u: '%', sign: true },
+          { v: 0.7, d: 1, u: '%', sign: true },
+        ],
+      },
+    ],
+  },
   'dette-par-dollar-produit-en-plus-selon-l-annee-de-referenc': {
     vintage: '2025',
     sources: ['ocde-gdpvd-cap'],
@@ -1228,7 +1297,7 @@ export const tables = {
   },
   'd-ou-vient-l-ecart-2024': {
     vintage: '2024',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdppop'],
     columns: [
       {
         key: 'd-ou-vient-l-ecart-2024',
@@ -1245,55 +1314,55 @@ export const tables = {
     rows: [
       {
         cells: [
-          { t: '<b>PIB par habitant</b> <em>(USD PPA 2021)</em>' },
-          { v: 70452, d: 0, strong: true },
-          { v: 62678, d: 0 },
-          { v: 54820, d: 0, strong: true },
-          { v: 53428, d: 0 },
-          { v: 75658, d: 0 },
+          { t: '<b>PIB par habitant</b> <em>(USD PPA constantes de 2020)</em>' },
+          { v: 68030, d: 0, strong: true },
+          { v: 60997, d: 0 },
+          { v: 54989, d: 0, strong: true },
+          { v: 54292, d: 0 },
+          { v: 72375, d: 0 },
         ],
         emphasis: true,
       },
       {
         cells: [
           { t: '<b>PIB par heure travaillée</b>' },
-          { v: 88.9, d: 1, u: '$', strong: true },
-          { v: 92.2, d: 1, u: '$' },
-          { v: 85.9, d: 1, u: '$', strong: true },
-          { v: 66, d: 1, u: '$' },
-          { v: 88.8, d: 1, u: '$' },
+          { v: 82.1, d: 1, u: '$', strong: true },
+          { v: 83, d: 1, u: '$' },
+          { v: 81.6, d: 1, u: '$', strong: true },
+          { v: 74, d: 1, u: '$' },
+          { v: 84.1, d: 1, u: '$' },
         ],
         emphasis: true,
       },
       {
         cells: [
           { t: '<b>Heures travaillées par habitant et par an</b>' },
-          { v: 793, d: 0, strong: true },
-          { v: 680, d: 0 },
-          { v: 638, d: 0, strong: true },
-          { v: 810, d: 0 },
-          { v: 852, d: 0 },
+          { v: 828, d: 0, strong: true },
+          { v: 735, d: 0 },
+          { v: 674, d: 0, strong: true },
+          { v: 733, d: 0 },
+          { v: 860, d: 0 },
         ],
         emphasis: true,
       },
       {
         cells: [
           { t: '<em>dont</em> heures par personne en emploi' },
-          { v: 1456, d: 0 },
-          { v: 1336, d: 0 },
-          { v: 1511, d: 0 },
-          { v: 1667, d: 0 },
-          { v: 1796, d: 0 },
+          { v: 1452, d: 0 },
+          { v: 1334, d: 0 },
+          { v: 1509, d: 0 },
+          { v: 1512, d: 0 },
+          { v: 1702, d: 0 },
         ],
       },
       {
         cells: [
           { t: '<em>dont</em> emploi rapporté à la population totale' },
-          { v: 54.5, d: 1, u: '%' },
-          { v: 50.9, d: 1, u: '%' },
-          { v: 42.3, d: 1, u: '%' },
-          { v: 48.6, d: 1, u: '%' },
-          { v: 47.4, d: 1, u: '%' },
+          { v: 57.1, d: 1, u: '%' },
+          { v: 55.1, d: 1, u: '%' },
+          { v: 44.7, d: 1, u: '%' },
+          { v: 48.5, d: 1, u: '%' },
+          { v: 48.5, d: 1, u: '%' },
         ],
       },
       {
@@ -1310,7 +1379,7 @@ export const tables = {
   },
   'part-dans-la-valeur-ajoutee-2005-2024': {
     vintage: '2024',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdppop'],
     columns: [
       {
         key: 'part-dans-la-valeur-ajoutee-2005-2024',
@@ -1386,7 +1455,7 @@ export const tables = {
   },
   'croissance-de-la-valeur-ajoutee-en-volume-2005-2024': {
     vintage: '2024',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdppop'],
     columns: [
       {
         key: 'croissance-de-la-valeur-ajoutee-en-volume-2005-2024',
@@ -1509,7 +1578,7 @@ export const tables = {
   },
   'emplois-du-pib-en-du-pib': {
     vintage: '2024',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdppop'],
     columns: [
       {
         key: 'emplois-du-pib-en-du-pib',
@@ -1593,7 +1662,7 @@ export const tables = {
   },
   'fiscalite-et-ouverture-2024': {
     vintage: '2024',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdppop'],
     columns: [
       {
         key: 'fiscalite-et-ouverture-2024',
@@ -1665,7 +1734,7 @@ export const tables = {
   },
   'retraites-et-bilans': {
     vintage: '2026',
-    sources: ['ocde-gdpvd-cap-2'],
+    sources: ['ocde-gdppop'],
     columns: [
       {
         key: 'retraites-et-bilans',
@@ -2024,7 +2093,7 @@ export const questions = [
   { id: 's2-q11', title: 'La croissance a-t-elle été achetée à crédit ?' },
   {
     id: 's2-q12',
-    title: 'Pourquoi les Pays-Bas produisent-ils 28 % de plus par habitant que la France ?',
+    title: 'Pourquoi les Pays-Bas produisent-ils un quart de plus par habitant que la France ?',
   },
   { id: 's2-q10', title: 'Les crises expliquent-elles la dette, ou le déficit permanent ?' },
 ] satisfies readonly { id: string; title: string }[]
@@ -2040,5 +2109,5 @@ export const citedSources = [
   'eurostat-eurostat-gov-10dd-edpt1-et-bop-iip6-q', 'eurostat-gov-10a-main-2',
   'eurostat-gov-10dd-edpt1', 'eurostat-gov-10dd-edpt1-2',
   'haut-conseil-des-finances-publiques-haut-conseil-des-finan',
-  'insee-calcul-par-nos-soins-a-partir-d-insee-i', 'ocde-gdpvd-cap', 'ocde-gdpvd-cap-2',
+  'insee-calcul-par-nos-soins-a-partir-d-insee-i', 'ocde-gdppop', 'ocde-gdpvd-cap',
 ] satisfies readonly SourceId[]

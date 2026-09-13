@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **316** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Tableaux | **317** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
 | Cellules chiffrées typées en nombres | 4 387 sur 6 836 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
 | Sources | **214 entrées** (204 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **60 053 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| **Rendu de `/tout`** | **60 301 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -421,6 +421,34 @@ croissance en volume et les contributions**, c'est-à-dire la croissance de
 chaque branche pondérée par sa part initiale — seule grandeur dont la somme
 retombe sur la croissance d'ensemble, et donc seule qui permette de dire
 laquelle explique l'écart.
+
+**Un ratio n'est pas une causalité, et il faut l'écrire dans la fiche.** Le
+« prix en dette de la croissance » de `s2-q11` se lisait naturellement comme
+« la dette achète du PIB ». Elle ne l'achète pas, et la fiche le démontre
+désormais en trois temps : le mécanisme comptable, qui ne joue exactement que
+pour la production non marchande des administrations — mesurée par ses coûts,
+donc un euro de salaire public est un euro de PIB — et pas du tout pour un
+transfert, ni pour une entreprise qui déplace un euro du profit vers les
+salaires ; l'absence de corrélation entre emprunt et croissance sur les cinq
+pays (r = −0,01) ; et la production horaire américaine, en hausse de 29,8 % sur
+vingt ans pendant que les heures par habitant reculaient de 2 %.
+
+**Un indicateur dérivé se confronte à la série officielle avant publication.**
+La fiche `s2-q12` a d'abord calculé le PIB par heure en divisant le PIB par
+habitant des *Perspectives économiques* par un volume d'heures reconstitué
+depuis les séries `HRS` et `ET` de la même base. Les évolutions tenaient, les
+niveaux non : l'ordre des pays était faux — l'Allemagne ressortait au-dessus des
+États-Unis, le Royaume-Uni 30 % sous la France au lieu de 10 %. En cause, des
+définitions d'emploi qui ne se correspondent pas d'un pays à l'autre dans cette
+base.
+
+La base **Productivité** de l'OCDE publie les trois grandeurs sur une
+définition commune, et l'identité PIB par habitant = PIB par heure × heures par
+habitant s'y vérifie exactement. C'est désormais la source du tableau, et le
+contrôle d'identité est la vérification à faire : **si les trois termes ne se
+recomposent pas, c'est qu'ils viennent de définitions différentes.** Ses PPA
+sont celles de 2020 et non de 2021, d'où un écart de niveau avec le reste du
+dossier, déclaré dans l'encadré `lim` de la fiche.
 
 ---
 

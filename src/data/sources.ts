@@ -1348,22 +1348,25 @@ const registry = {
     theme: 'education',
     accessed: '2026-08',
   },
-  'ocde-gdpvd-cap': {
-    producer: 'OCDE',
-    kind: 'database',
-    datasets: ['GDPVD_CAP', 'GDP', 'POP', 'CBGDPR', 'IG', 'NLGQ', '0610', '0710'],
-    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span> (PIB par habitant en volume, dollars à parités de pouvoir d\'achat constantes de 2021), <span class="num">GDP</span> (PIB nominal), <span class="num">POP</span>, <span class="num">CBGDPR</span> (solde courant), <span class="num">IG</span> (investissement public) et <span class="num">NLGQ</span> (capacité de financement des administrations publiques) ; OCDE, comptes financiers annuels, tableau <span class="num">0610</span> pour les flux et tableau <span class="num">0710</span> pour les stocks, consolidés, passifs en titres de créance (F3) et crédits (F4) des administrations publiques (S13), des ménages (S1M) et des sociétés non financières (S11). Extraction par API SDMX le 13 septembre 2026. <b>Calcul par nos soins</b> : la correction appliquée est <i>PIB par habitant × (1 − endettement net de l\'année / PIB)</i>.',
-    theme: 'dette-deficit',
-    accessed: '2026-08',
-  },
-  'ocde-gdpvd-cap-2': {
+  'ocde-gdppop': {
     producer: 'OCDE',
     kind: 'database',
     datasets: [
-      'GDPVD_CAP', 'HRS', 'ET', 'POP', 'UNR', 'XGS', 'MGS', 'CP', 'CG', 'ITISK', 'WSSS', 'TAXQ',
-      'YPGTQ', 'BSII', '0710',
+      'GDPPOP', 'GDPHRS', 'HRSPOP', 'HRSAV', 'EMP', 'UNR', 'XGS', 'MGS', 'CP', 'CG', 'ITISK',
+      'WSSS', 'TAXQ', 'YPGTQ', 'BSII', '0710',
     ],
-    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span>, <span class="num">HRS</span>, <span class="num">ET</span>, <span class="num">POP</span>, <span class="num">UNR</span>, <span class="num">XGS</span>, <span class="num">MGS</span>, <span class="num">CP</span>, <span class="num">CG</span>, <span class="num">ITISK</span>, <span class="num">WSSS</span>, <span class="num">TAXQ</span>, <span class="num">YPGTQ</span> et <span class="num">BSII</span> ; OCDE, <i>National Accounts at a Glance</i>, chapitre 4 (valeur ajoutée par branche, parts et croissance en volume) ; OCDE, <i>Social Expenditure Database</i>, dépenses publiques de vieillesse et survie en espèces ; OCDE, <i>Revenue Statistics</i>, tableaux comparatifs, poste 1200 ; OCDE, comptes financiers annuels, tableau <span class="num">0710</span> (droits sur assurances et retraites des ménages, dettes par secteur). Extraction par API SDMX le 13 septembre 2026. <b>Calcul par nos soins</b> : heures par habitant = heures par emploi × emploi ÷ population ; PIB par heure = PIB par habitant ÷ heures par habitant ; décomposition en parts logarithmiques.',
+    text: 'OCDE, base <i>Productivité</i>, séries <span class="num">GDPPOP</span>, <span class="num">GDPHRS</span>, <span class="num">HRSPOP</span>, <span class="num">HRSAV</span> et <span class="num">EMP</span> (PIB par habitant, PIB par heure travaillée et heures travaillées, dollars aux parités de pouvoir d\'achat constantes de 2020) ; OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">UNR</span>, <span class="num">XGS</span>, <span class="num">MGS</span>, <span class="num">CP</span>, <span class="num">CG</span>, <span class="num">ITISK</span>, <span class="num">WSSS</span>, <span class="num">TAXQ</span>, <span class="num">YPGTQ</span> et <span class="num">BSII</span> ; OCDE, <i>National Accounts at a Glance</i>, chapitre 4 (valeur ajoutée par branche, parts et croissance en volume) ; OCDE, <i>Social Expenditure Database</i>, dépenses publiques de vieillesse et survie en espèces ; OCDE, <i>Revenue Statistics</i>, tableaux comparatifs, poste 1200 ; OCDE, comptes financiers annuels, tableau <span class="num">0710</span> (droits sur assurances et retraites des ménages, dettes par secteur). Extraction par API SDMX le 13 septembre 2026. <b>Calcul par nos soins</b> : heures par habitant = heures par emploi × emploi ÷ population ; PIB par heure = PIB par habitant ÷ heures par habitant ; décomposition en parts logarithmiques.',
+    theme: 'dette-deficit',
+    accessed: '2026-08',
+  },
+  'ocde-gdpvd-cap': {
+    producer: 'OCDE',
+    kind: 'database',
+    datasets: [
+      'GDPVD_CAP', 'GDP', 'POP', 'CBGDPR', 'IGV', 'NLGQ', 'GDPPOP', 'GDPHRS', 'HRSPOP', '0610',
+      '0710',
+    ],
+    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span> (PIB par habitant en volume, dollars à parités de pouvoir d\'achat constantes de 2021), <span class="num">GDP</span> (PIB nominal), <span class="num">POP</span>, <span class="num">CBGDPR</span> (solde courant), <span class="num">IGV</span> (investissement public, volume) et <span class="num">NLGQ</span> ; OCDE, base <i>Productivité</i>, séries <span class="num">GDPPOP</span>, <span class="num">GDPHRS</span> et <span class="num">HRSPOP</span> (capacité de financement des administrations publiques) ; OCDE, comptes financiers annuels, tableau <span class="num">0610</span> pour les flux et tableau <span class="num">0710</span> pour les stocks, consolidés, passifs en titres de créance (F3) et crédits (F4) des administrations publiques (S13), des ménages (S1M) et des sociétés non financières (S11). Extraction par API SDMX le 13 septembre 2026. <b>Calcul par nos soins</b> : la correction appliquée est <i>PIB par habitant × (1 − endettement net de l\'année / PIB)</i>.',
     theme: 'dette-deficit',
     accessed: '2026-08',
   },
