@@ -1384,6 +1384,213 @@ export const tables = {
       },
     ],
   },
+  'croissance-de-la-valeur-ajoutee-en-volume-2005-2024': {
+    vintage: '2024',
+    sources: ['ocde-gdpvd-cap-2'],
+    columns: [
+      {
+        key: 'croissance-de-la-valeur-ajoutee-en-volume-2005-2024',
+        header: 'Croissance de la valeur ajoutée en volume, 2005 → 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'pays-bas', header: 'Pays-Bas', type: 'number', headerNumeric: true },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'contribution-nl', header: 'Contribution NL', type: 'number', headerNumeric: true },
+      { key: 'contribution-fr', header: 'Contribution FR', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Ensemble de l\'économie</b>' },
+          { v: 36, d: 0, u: '%', sign: true, strong: true },
+          { v: 26, d: 0, u: '%', sign: true, strong: true },
+          { v: 25, d: 0, u: '%', sign: true, strong: true },
+          null,
+          null,
+        ],
+        total: true,
+      },
+      {
+        cells: [
+          { t: 'Commerce, transport, hébergement et restauration' },
+          { v: 41, d: 0, u: '%', sign: true },
+          { v: 21, d: 0, u: '%', sign: true },
+          { v: 28, d: 0, u: '%', sign: true },
+          { v: 8.1, d: 1, u: 'pts', sign: true, strong: true },
+          { v: 3.6, d: 1, u: 'pts', sign: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Industrie manufacturière</b>' },
+          { v: 47, d: 0, u: '%', sign: true, strong: true },
+          { v: 16, d: 0, u: '%', sign: true, strong: true },
+          { v: 25, d: 0, u: '%', sign: true },
+          { v: 6.2, d: 1, u: 'pts', sign: true, strong: true },
+          { v: 2.1, d: 1, u: 'pts', sign: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Services aux entreprises' },
+          { v: 69, d: 0, u: '%', sign: true },
+          { v: 42, d: 0, u: '%', sign: true },
+          { v: 37, d: 0, u: '%', sign: true },
+          { v: 9, d: 1, u: 'pts', sign: true, strong: true },
+          { v: 5.3, d: 1, u: 'pts', sign: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Administration, santé, éducation' },
+          { v: 31, d: 0, u: '%', sign: true },
+          { v: 22, d: 0, u: '%', sign: true },
+          { v: 27, d: 0, u: '%', sign: true },
+          { v: 6.2, d: 1, u: 'pts', sign: true },
+          { v: 4.7, d: 1, u: 'pts', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Information et communication' },
+          { v: 106, d: 0, u: '%', sign: true },
+          { v: 118, d: 0, u: '%', sign: true },
+          { v: 138, d: 0, u: '%', sign: true },
+          { v: 5.3, d: 1, u: 'pts', sign: true },
+          { v: 6.4, d: 1, u: 'pts', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Activités immobilières' },
+          { v: 23, d: 0, u: '%', sign: true },
+          { v: 25, d: 0, u: '%', sign: true },
+          { v: 23, d: 0, u: '%', sign: true },
+          { v: 1.7, d: 1, u: 'pts', sign: true },
+          { v: 3.3, d: 1, u: 'pts', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Activités financières et d\'assurance' },
+          { v: 9, d: 0, u: '%', sign: true },
+          { v: 47, d: 0, u: '%', sign: true },
+          { v: -1, d: 0, u: '%' },
+          { v: 0.7, d: 1, u: 'pts', sign: true },
+          { v: 1.8, d: 1, u: 'pts', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Construction' },
+          { v: 26, d: 0, u: '%', sign: true },
+          { v: -7, d: 0, u: '%' },
+          { v: -19, d: 0, u: '%' },
+          { v: 1.4, d: 1, u: 'pts', sign: true },
+          { v: -0.4, d: 1, u: 'pts' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Agriculture' },
+          { v: 28, d: 0, u: '%', sign: true },
+          { v: -8, d: 0, u: '%' },
+          { v: 15, d: 0, u: '%', sign: true },
+          { v: 0.6, d: 1, u: 'pts', sign: true },
+          { v: -0.1, d: 1, u: 'pts' },
+        ],
+      },
+    ],
+  },
+  'emplois-du-pib-en-du-pib': {
+    vintage: '2024',
+    sources: ['ocde-gdpvd-cap-2'],
+    columns: [
+      {
+        key: 'emplois-du-pib-en-du-pib',
+        header: 'Emplois du PIB, en % du PIB',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'pays-bas-2005', header: 'Pays-Bas 2005', type: 'number', headerNumeric: true },
+      { key: 'pays-bas-2024', header: 'Pays-Bas 2024', type: 'number', headerNumeric: true },
+      { key: 'france-2024', header: 'France 2024', type: 'number', headerNumeric: true },
+      { key: 'allemagne-2024', header: 'Allemagne 2024', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Consommation des ménages</b>' },
+          { v: 48.4, d: 1, u: '%' },
+          { v: 43.5, d: 1, u: '%', strong: true },
+          { v: 54.6, d: 1, u: '%', strong: true },
+          { v: 52.7, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Consommation publique' },
+          { v: 22.3, d: 1, u: '%' },
+          { v: 25.7, d: 1, u: '%' },
+          { v: 24.2, d: 1, u: '%' },
+          { v: 22, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Investissement, stocks compris' },
+          { v: 20.4, d: 1, u: '%' },
+          { v: 19.7, d: 1, u: '%' },
+          { v: 21.6, d: 1, u: '%' },
+          { v: 21.5, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Exportations' },
+          { v: 65.5, d: 1, u: '%' },
+          { v: 82.3, d: 1, u: '%' },
+          { v: 33.9, d: 1, u: '%' },
+          { v: 41.5, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Importations' },
+          { v: 56.6, d: 1, u: '%' },
+          { v: 71.3, d: 1, u: '%' },
+          { v: 34.2, d: 1, u: '%' },
+          { v: 37.7, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Solde extérieur</b>' },
+          { v: 8.9, d: 1, u: 'pts', sign: true },
+          { v: 11, d: 1, u: 'pts', sign: true, strong: true },
+          { v: -0.3, d: 1, u: 'pts', strong: true },
+          { v: 3.8, d: 1, u: 'pts', sign: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Rémunération des salariés</b>' },
+          { v: 48.1, d: 1, u: '%' },
+          { v: 46.8, d: 1, u: '%', strong: true },
+          { v: 51.4, d: 1, u: '%', strong: true },
+          { v: 54.3, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
   'fiscalite-et-ouverture-2024': {
     vintage: '2024',
     sources: ['ocde-gdpvd-cap-2'],

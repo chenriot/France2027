@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **314** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Tableaux | **316** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
 | Cellules chiffrées typées en nombres | 4 387 sur 6 836 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
 | Sources | **214 entrées** (204 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **59 549 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| **Rendu de `/tout`** | **60 053 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -405,6 +405,22 @@ ratio faux, qui passait le contrôle de rendu sans rien signaler. Il fallait
 Royaume-Uni, et une phrase entière sur l'investissement public français reposait
 dessus. Règle : **volume avec volume, valeur avec valeur** — `check:render`
 vérifie la fidélité de l'extraction, jamais la justesse d'un calcul.
+
+**Une part de valeur ajoutée ne dit rien d'une croissance.** La fiche `s2-q12`
+concluait d'abord, sur la foi des parts sectorielles, que « la structure de
+l'économie n'explique presque rien » de l'écart néerlandais. C'était vrai des
+parts et faux du reste : les parts de l'industrie manufacturière reculent
+identiquement aux Pays-Bas et en France (13,0 → 11,7 et 13,5 → 11,4) alors que
+les volumes ont crû de 47 % d'un côté et de 16 % de l'autre. Une part baisse dès
+que les autres branches vont plus vite, ou que les prix relatifs de la branche
+cèdent ; elle ne mesure pas une production. La fiche porte désormais les deux
+tableaux, et l'encadré `lim` qui les sépare dit pourquoi.
+
+Corollaire adopté pour la suite : **toute comparaison sectorielle porte la
+croissance en volume et les contributions**, c'est-à-dire la croissance de
+chaque branche pondérée par sa part initiale — seule grandeur dont la somme
+retombe sur la croissance d'ensemble, et donc seule qui permette de dire
+laquelle explique l'écart.
 
 ---
 
