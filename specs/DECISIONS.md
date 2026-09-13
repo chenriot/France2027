@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **312** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 337 sur 6 776 (64 %) | extraction |
+| Tableaux | **314** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 387 sur 6 836 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
 | Sources | **214 entrées** (204 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **59 205 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| **Rendu de `/tout`** | **59 549 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -384,6 +384,27 @@ Deux points de méthode qu'elle fixe.
 - **Une décomposition multiplicative se donne en parts logarithmiques.** PIB par
   habitant = heures par habitant × PIB par heure ; les contributions sont
   `ln(rapport)/ln(rapport total)`, seule répartition qui somme à 100 %.
+
+**Un ratio construit sur une année de référence se teste en la déplaçant.** La
+fiche `s2-q11` a été complétée d'un contrôle qui vaut règle pour la suite : le
+« prix en dette » de la croissance, calculé depuis 2005, donnait 0,37 $ à
+l'Allemagne contre 1,34 $ aux États-Unis — un facteur trois et demi. Recalculé
+depuis 2015, il donne 1,33 contre 1,56 : l'écart disparaît presque. Le résultat
+était celui d'une décennie, pas d'un modèle. Publier un tel ratio sans sa
+sensibilité à la période, c'est publier une conclusion qu'on n'a pas testée.
+
+Le contrôle s'accompagne d'un tableau « ce que le ratio ne voit pas » — niveau
+de production, trajectoire depuis 2019, solde courant, investissement public —
+parce qu'un dénominateur qui stagne améliore un ratio sans rien améliorer.
+
+**Un piège de dénominateur, rencontré et corrigé avant publication.** Les
+*Perspectives économiques* publient l'investissement public en volume
+(`IGV`) et non en valeur ; le rapporter au PIB **nominal** (`GDP`) donne un
+ratio faux, qui passait le contrôle de rendu sans rien signaler. Il fallait
+`IGV/GDPV`. L'écart n'était pas anodin : 3,5 % au lieu de 2,9 % pour le
+Royaume-Uni, et une phrase entière sur l'investissement public français reposait
+dessus. Règle : **volume avec volume, valeur avec valeur** — `check:render`
+vérifie la fidélité de l'extraction, jamais la justesse d'un calcul.
 
 ---
 

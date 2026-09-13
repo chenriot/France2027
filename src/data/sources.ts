@@ -1351,8 +1351,8 @@ const registry = {
   'ocde-gdpvd-cap': {
     producer: 'OCDE',
     kind: 'database',
-    datasets: ['GDPVD_CAP', 'GDP', 'POP', 'NLGQ', '0610', '0710'],
-    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span> (PIB par habitant en volume, dollars à parités de pouvoir d\'achat constantes de 2021), <span class="num">GDP</span> (PIB nominal), <span class="num">POP</span> et <span class="num">NLGQ</span> (capacité de financement des administrations publiques) ; OCDE, comptes financiers annuels, tableau <span class="num">0610</span> pour les flux et tableau <span class="num">0710</span> pour les stocks, consolidés, passifs en titres de créance (F3) et crédits (F4) des administrations publiques (S13), des ménages (S1M) et des sociétés non financières (S11). Extraction par API SDMX le 13 septembre 2026. <b>Calcul par nos soins</b> : la correction appliquée est <i>PIB par habitant × (1 − endettement net de l\'année / PIB)</i>.',
+    datasets: ['GDPVD_CAP', 'GDP', 'POP', 'CBGDPR', 'IG', 'NLGQ', '0610', '0710'],
+    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span> (PIB par habitant en volume, dollars à parités de pouvoir d\'achat constantes de 2021), <span class="num">GDP</span> (PIB nominal), <span class="num">POP</span>, <span class="num">CBGDPR</span> (solde courant), <span class="num">IG</span> (investissement public) et <span class="num">NLGQ</span> (capacité de financement des administrations publiques) ; OCDE, comptes financiers annuels, tableau <span class="num">0610</span> pour les flux et tableau <span class="num">0710</span> pour les stocks, consolidés, passifs en titres de créance (F3) et crédits (F4) des administrations publiques (S13), des ménages (S1M) et des sociétés non financières (S11). Extraction par API SDMX le 13 septembre 2026. <b>Calcul par nos soins</b> : la correction appliquée est <i>PIB par habitant × (1 − endettement net de l\'année / PIB)</i>.',
     theme: 'dette-deficit',
     accessed: '2026-08',
   },

@@ -990,6 +990,18 @@ export const tables = {
         headerNumeric: false,
       },
       {
+        key: 'pib-par-habitant-2006',
+        header: 'PIB par habitant 2006',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'pib-par-habitant-2025',
+        header: 'PIB par habitant 2025',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
         key: 'production-gagnee-au-dessus-de-2005',
         header: 'Production gagnée au-dessus de 2005',
         type: 'number',
@@ -1012,6 +1024,8 @@ export const tables = {
       {
         cells: [
           { t: 'Royaume-Uni' },
+          { v: 49012, d: 0, u: '$' },
+          { v: 53832, d: 0, u: '$' },
           { v: 46487, d: 0, u: '$' },
           { v: 112812, d: 0, u: '$' },
           { v: 2.43, d: 2, u: '$', strong: true },
@@ -1021,6 +1035,8 @@ export const tables = {
       {
         cells: [
           { t: '<b>France</b>' },
+          { v: 49457, d: 0, u: '$' },
+          { v: 55197, d: 0, u: '$' },
           { v: 61621, d: 0, u: '$' },
           { v: 113195, d: 0, u: '$' },
           { v: 1.84, d: 2, u: '$', strong: true },
@@ -1030,6 +1046,8 @@ export const tables = {
       {
         cells: [
           { t: 'États-Unis' },
+          { v: 60579, d: 0, u: '$' },
+          { v: 76834, d: 0, u: '$' },
           { v: 126997, d: 0, u: '$' },
           { v: 170745, d: 0, u: '$' },
           { v: 1.34, d: 2, u: '$' },
@@ -1038,6 +1056,8 @@ export const tables = {
       {
         cells: [
           { t: 'Pays-Bas' },
+          { v: 60391, d: 0, u: '$' },
+          { v: 71271, d: 0, u: '$' },
           { v: 133302, d: 0, u: '$' },
           { v: 105726, d: 0, u: '$' },
           { v: 0.79, d: 2, u: '$' },
@@ -1046,9 +1066,161 @@ export const tables = {
       {
         cells: [
           { t: '<b>Allemagne</b>' },
+          { v: 54104, d: 0, u: '$' },
+          { v: 62888, d: 0, u: '$' },
           { v: 158450, d: 0, u: '$' },
           { v: 59097, d: 0, u: '$' },
           { v: 0.37, d: 2, u: '$', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'dette-par-dollar-produit-en-plus-selon-l-annee-de-referenc': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'dette-par-dollar-produit-en-plus-selon-l-annee-de-referenc',
+        header: 'Dette par dollar produit en plus, selon l\'année de référence du cumul, jusqu\'en 2025',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'base-2005', header: 'Base 2005', type: 'number', headerNumeric: true },
+      { key: 'base-2010', header: 'Base 2010', type: 'number', headerNumeric: true },
+      { key: 'base-2015', header: 'Base 2015', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'France' },
+          { v: 1.84, d: 2, u: '$' },
+          { v: 1.94, d: 2, u: '$' },
+          { v: 3.05, d: 2, u: '$' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Royaume-Uni' },
+          { v: 2.43, d: 2, u: '$' },
+          { v: 1.4, d: 2, u: '$' },
+          { v: 2.65, d: 2, u: '$' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>États-Unis</b>' },
+          { v: 1.34, d: 2, u: '$', strong: true },
+          { v: 1.08, d: 2, u: '$' },
+          { v: 1.56, d: 2, u: '$', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Pays-Bas' },
+          { v: 0.79, d: 2, u: '$' },
+          { v: 0.92, d: 2, u: '$' },
+          { v: 0.75, d: 2, u: '$' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Allemagne</b>' },
+          { v: 0.37, d: 2, u: '$', strong: true },
+          { v: 0.52, d: 2, u: '$' },
+          { v: 1.33, d: 2, u: '$', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'ce-que-le-ratio-ne-voit-pas': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'ce-que-le-ratio-ne-voit-pas',
+        header: 'Ce que le ratio ne voit pas',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'pib-par-habitant-2019',
+        header: 'PIB par habitant 2019',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'pib-par-habitant-2025',
+        header: 'PIB par habitant 2025',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: '2019-2025', header: '2019 → 2025', type: 'number', headerNumeric: true },
+      {
+        key: 'solde-courant-moyen-2006-2025',
+        header: 'Solde courant moyen 2006-2025',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'investissement-public-moyen-2006-2025-en-volume',
+        header: 'Investissement public moyen 2006-2025, en volume',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>États-Unis</b>' },
+          { v: 69043, d: 0, u: '$' },
+          { v: 76834, d: 0, u: '$' },
+          { v: 11.3, d: 1, u: '%', sign: true, strong: true },
+          { v: -3.1, d: 1, u: '%' },
+          { v: 3.7, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Pays-Bas' },
+          { v: 67820, d: 0, u: '$' },
+          { v: 71271, d: 0, u: '$' },
+          { v: 5.1, d: 1, u: '%', sign: true },
+          { v: 7.3, d: 1, u: '%', sign: true },
+          { v: 3.6, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'France' },
+          { v: 53504, d: 0, u: '$' },
+          { v: 55197, d: 0, u: '$' },
+          { v: 3.2, d: 1, u: '%', sign: true },
+          { v: -0.6, d: 1, u: '%' },
+          { v: 4.2, d: 1, u: '%', strong: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Royaume-Uni' },
+          { v: 53369, d: 0, u: '$' },
+          { v: 53832, d: 0, u: '$' },
+          { v: 0.9, d: 1, u: '%', sign: true },
+          { v: -3.2, d: 1, u: '%' },
+          { v: 2.9, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Allemagne</b>' },
+          { v: 63730, d: 0, u: '$' },
+          { v: 62888, d: 0, u: '$' },
+          { v: -1.3, d: 1, u: '%', strong: true },
+          { v: 6.6, d: 1, u: '%', sign: true },
+          { v: 2.6, d: 1, u: '%', strong: true },
         ],
         emphasis: true,
       },
