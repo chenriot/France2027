@@ -142,7 +142,7 @@ année à une série doit se faire en éditant un seul fichier.
 C'est la contrainte la plus facile à violer sans s'en apercevoir. Elle est
 donc **vérifiée automatiquement** : `npm run check:render` compare le HTML
 prérendu de `/tout` au document d'origine, élément par élément. Aujourd'hui :
-57 752 éléments, 29 corrections déclarées, aucun écart non déclaré.
+61 324 éléments, 29 corrections déclarées, aucun écart non déclaré.
 
 Ce que ça implique au quotidien :
 
@@ -195,8 +195,8 @@ doit être conditionné au mode, sinon il casse la vérification.
 
 ## État actuel
 
-Le site est construit et vérifié : 21 chapitres, 304 tableaux, 58 figures,
-212 sources, 28 routes prérendues, toutes sous la charte (§D18). `/tout` rend 57 752 éléments avec
+Le site est construit et vérifié : 21 chapitres, 322 tableaux, 58 figures,
+215 sources, 28 routes prérendues, toutes sous la charte (§D18). `/tout` rend 61 324 éléments avec
 **29 corrections déclarées et aucun écart non déclaré**. Le JavaScript par page
 est de 170 Ko pour 120 visés : dette mesurée, expliquée et cliquetée
 (`DECISIONS.md` §D11).
@@ -207,7 +207,7 @@ valeurs fausses et les commentaires qui ne doivent pas entrer dans `/tout`
 passent par les amendements (`DECISIONS.md` §D17).
 
 Ce qui reste ouvert est listé et chiffré dans `specs/DECISIONS.md` §D10 :
-URL des sources (10 renseignées sur 212), millésimes à confirmer, 26 figures dont le tracé n'est pas
+URL des sources (10 renseignées sur 215), millésimes à confirmer, 26 figures dont le tracé n'est pas
 encore régénéré, un axe incohérent du document d'origine à arbitrer, un
 commentaire éditorial à réécrire après correction, les autres tableaux
 jamais confrontés à leur source, et les captures Playwright clair/sombre.

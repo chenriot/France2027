@@ -92,6 +92,368 @@ export const tables = {
       },
     ],
   },
+  'le-constat': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      { key: 'le-constat', header: 'Le constat', type: 'text', headerNumeric: false },
+      {
+        key: 'l-indicateur-qui-le-tranche',
+        header: 'L\'indicateur qui le tranche',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'valeur-millesimes-2021-2025',
+        header: 'Valeur, millésimes 2021-2025',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>1.</b> La France est riche, mais décroche' },
+          { t: 'Avance sur le PIB par habitant moyen de l\'OCDE' },
+          { v: 11.3, d: 1, u: '% en 2005 → +1,4 % en 2025', sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>2.</b> L\'économie est compétitive, le travail est rare' },
+          { t: 'Heures travaillées par habitant et par an' },
+          { v: 674, d: 0, u: 'contre 735 en Allemagne', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>3.</b> Le taux le plus haut sur l\'assiette la plus faible' },
+          { t: 'Prélèvements obligatoires par habitant, en parité de pouvoir d\'achat' },
+          { v: 24498, d: 0, u: '$ contre 25 369 en Allemagne' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>4.</b> Les prestations sociales portent toute la hausse' },
+          { t: 'Part de la hausse de la dépense publique depuis 1975' },
+          { v: 76, d: 0, u: '% — 8,3 points de PIB sur 10,9', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>5.</b> Le système n\'est pas plus généreux' },
+          { t: 'Dépense de vieillesse par habitant, publique et privée' },
+          { v: 7684, d: 0, u: '$ contre 7 759 en Allemagne', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>6.</b> Le déficit est un déficit d\'heures travaillées' },
+          { t: 'Solde public au volume horaire allemand, dépense inchangée' },
+          { v: -12, d: 0, u: 'Md€ au lieu de −153', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>7.</b> On a payé en comprimant l\'investissement' },
+          { t: 'Part de l\'investissement dans la dépense publique' },
+          { v: 11.5, d: 1, u: '% en 1975 → 7,5 % en 2024' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>8.</b> L\'administration n\'est pas le problème' },
+          { t: 'Coût de l\'administration générale par habitant' },
+          { v: 623, d: 0, u: '€ contre 759 en Europe, 1 070 en Allemagne', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>9.</b> Les vents porteurs tournent tous ensemble' },
+          { t: 'Charge de la dette' },
+          { v: 58.9, d: 1, u: 'Md€ en 2024 → ≈ 67 Md€ en 2026' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>10.</b> L\'ordre de grandeur de l\'effort' },
+          { t: 'Écart entre 5,1 % et 3 % de déficit' },
+          { v: 63, d: 0, u: 'Md€ contre 5 à 20 Md€ pour la taxe Zucman' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>11.</b> Le financement est reporté' },
+          { t: 'Dette non financière par habitant' },
+          { v: 112120, d: 0, u: '€, dont 46 333 € publique' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>12.</b> Rien de tout cela n\'est un équilibre' },
+          { t: 'Écart entre dépense et recettes publiques' },
+          { v: 57.4, d: 1, u: '% contre 52,3 % du PIB' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>13.</b> Plus d\'élèves, moins par élève' },
+          { t: 'Dépense par élève, en standards de pouvoir d\'achat' },
+          { v: 8151, d: 0, u: 'contre 10 363 en Allemagne' },
+        ],
+      },
+    ],
+  },
+  'depense-sociale-par-habitant-usd-a-parite-de-pouvoir-d-ach': {
+    vintage: '2021',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'depense-sociale-par-habitant-usd-a-parite-de-pouvoir-d-ach',
+        header: 'Dépense sociale par habitant, USD à parité de pouvoir d\'achat, 2021',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'pays-bas', header: 'Pays-Bas', type: 'number', headerNumeric: true },
+      { key: 'royaume-uni', header: 'Royaume-Uni', type: 'number', headerNumeric: true },
+      { key: 'etats-unis', header: 'États-Unis', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Dépense sociale publique, % du PIB' },
+          { v: 32.7, d: 1, u: '%' },
+          { v: 28.9, d: 1, u: '%' },
+          { v: 19.8, d: 1, u: '%' },
+          { v: 24.4, d: 1, u: '%' },
+          { v: 21.6, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Dépense sociale totale par habitant</b> <em>(publique et privée)</em>' },
+          { v: 19578, d: 0, u: '$', strong: true },
+          { v: 20440, d: 0, u: '$', strong: true },
+          { v: 21623, d: 0, u: '$', strong: true },
+          { v: 15388, d: 0, u: '$' },
+          { v: 21312, d: 0, u: '$' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>dont vieillesse</b>' },
+          { v: 7684, d: 0, u: '$', strong: true },
+          { v: 7759, d: 0, u: '$', strong: true },
+          { v: 7343, d: 0, u: '$' },
+          { v: 5858, d: 0, u: '$' },
+          { v: 8394, d: 0, u: '$' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<em>dont part publique</em>' },
+          { v: 7543, d: 0, u: '$' },
+          { v: 7317, d: 0, u: '$' },
+          { v: 5174, d: 0, u: '$' },
+          { v: 4201, d: 0, u: '$' },
+          { v: 4461, d: 0, u: '$' },
+        ],
+      },
+    ],
+  },
+  'france-2025-si-le-volume-horaire-par-habitant-etait-celui': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'france-2025-si-le-volume-horaire-par-habitant-etait-celui',
+        header: 'France 2025, si le volume horaire par habitant était celui de…',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'aujourd-hui', header: 'Aujourd\'hui', type: 'number', headerNumeric: true },
+      { key: 'l-allemagne', header: 'l\'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'des-pays-bas', header: 'des Pays-Bas', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Heures travaillées par habitant' },
+          { v: 674, d: 0 },
+          { v: 735, d: 0 },
+          { v: 828, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'PIB' },
+          { v: 2984, d: 0, u: 'Md€' },
+          { v: 3252, d: 0, u: 'Md€' },
+          { v: 3667, d: 0, u: 'Md€' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Recettes publiques, taux inchangé' },
+          { v: 1562, d: 0, u: 'Md€' },
+          { v: 1702, d: 0, u: 'Md€' },
+          { v: 1919, d: 0, u: 'Md€' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Solde public</b>' },
+          { v: -153, d: 0, u: 'Md€', strong: true },
+          { v: -12, d: 0, u: 'Md€', strong: true },
+          { v: 205, d: 0, u: 'Md€', sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Taux d\'emploi nécessaire</b> <em>(à durée du travail française inchangée)</em>' },
+          { v: 44.7, d: 1, u: '%' },
+          { v: 48.7, d: 1, u: '%', strong: true },
+          { v: 54.9, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Personnes en emploi supplémentaires' },
+          null,
+          { v: 2.8, d: 1, u: 'millions' },
+          { v: 7, d: 1, u: 'millions' },
+        ],
+      },
+    ],
+  },
+  'france-2025-avec-davantage-d-heures-travaillees': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'france-2025-avec-davantage-d-heures-travaillees',
+        header: 'France 2025, avec davantage d\'heures travaillées',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'heures-par-habitant',
+        header: 'Heures par habitant',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'pib', header: 'PIB', type: 'number', headerNumeric: true },
+      { key: 'solde-public', header: 'Solde public', type: 'number', headerNumeric: true },
+      {
+        key: 'part-du-deficit-comblee',
+        header: 'Part du déficit comblée',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Aujourd\'hui' },
+          { v: 674, d: 0 },
+          { v: 2984, d: 0, u: 'Md€' },
+          { v: -153, d: 0, u: 'Md€' },
+          null,
+        ],
+      },
+      {
+        cells: [
+          { t: '+ 30 heures par an et par personne en emploi' },
+          { v: 687, d: 0 },
+          { v: 3044, d: 0, u: 'Md€' },
+          { v: -121, d: 0, u: 'Md€' },
+          { v: 20, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>+ 30 heures par an et par habitant</b>' },
+          { v: 704, d: 0 },
+          { v: 3117, d: 0, u: 'Md€' },
+          { v: -83, d: 0, u: 'Md€', strong: true },
+          { v: 46, d: 0, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Volume horaire allemand' },
+          { v: 735, d: 0 },
+          { v: 3252, d: 0, u: 'Md€' },
+          { v: -12, d: 0, u: 'Md€' },
+          { v: 92, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Équilibre du budget</b>' },
+          { v: 740, d: 0, strong: true },
+          { v: 3276, d: 0, u: 'Md€', strong: true },
+          { v: 0, d: 0, u: 'Md€', strong: true },
+          { v: 100, d: 0, u: '%', strong: true },
+        ],
+        total: true,
+      },
+      {
+        cells: [
+          { t: 'Volume horaire néerlandais' },
+          { v: 828, d: 0 },
+          { v: 3667, d: 0, u: 'Md€' },
+          { v: 205, d: 0, u: 'Md€', sign: true },
+          null,
+        ],
+      },
+    ],
+  },
+  'les-deux-chemins-vers-l-equilibre-2025': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'les-deux-chemins-vers-l-equilibre-2025',
+        header: 'Les deux chemins vers l\'équilibre, 2025',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'ce-qu-il-faudrait', header: 'Ce qu\'il faudrait', type: 'number', headerNumeric: true },
+      { key: 'repere', header: 'Repère', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Par la durée du travail</b>, à taux d\'emploi inchangé' },
+          { v: 147, d: 0, u: 'heures par an et par personne en emploi', sign: true, strong: true },
+          { v: 39, d: 0, u: 'min par jour ouvré' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Par le taux d\'emploi</b>, à durée du travail inchangée' },
+          { v: 3, d: 1, u: 'millions de personnes en emploi', sign: true, strong: true },
+          { v: 49, d: 1, u: '% au lieu de 44,7 %' },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -107,7 +469,7 @@ export const series = {
       { color: 's5', label: 'Investissement' },
       { color: 's2', label: 'Charge de la dette' },
     ],
-    svg: '<svg viewBox="0 0 720 452" class="cv" role="img" aria-labelledby="cnatur-y-t" preserveAspectRatio="xMidYMid meet">\r\n<title id="cnatur-y-t">Dépense publique par nature</title>\r\n<defs><pattern id="coh-y" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="cohl" x1="0" y1="0" x2="0" y2="6"></line></pattern></defs>\r\n<line class="grid" x1="52" y1="372.0" x2="602" y2="372.0"></line>\r\n<text class="ax ar" x="43" y="376.0">0</text>\r\n<line class="grid" x1="52" y1="313.7" x2="602" y2="313.7"></line>\r\n<text class="ax ar" x="43" y="317.7">5</text>\r\n<line class="grid" x1="52" y1="255.3" x2="602" y2="255.3"></line>\r\n<text class="ax ar" x="43" y="259.3">10</text>\r\n<line class="grid" x1="52" y1="197.0" x2="602" y2="197.0"></line>\r\n<text class="ax ar" x="43" y="201.0">15</text>\r\n<line class="grid" x1="52" y1="138.7" x2="602" y2="138.7"></line>\r\n<text class="ax ar" x="43" y="142.7">20</text>\r\n<line class="grid" x1="52" y1="80.3" x2="602" y2="80.3"></line>\r\n<text class="ax ar" x="43" y="84.3">25</text>\r\n<line class="grid" x1="52" y1="22.0" x2="602" y2="22.0"></line>\r\n<text class="ax ar" x="43" y="26.0">30</text>\r\n<text class="ax" x="43" y="14" text-anchor="end">% du PIB</text>\r\n<line class="axis" x1="52" y1="372" x2="602" y2="372"></line>\r\n<polyline class="ln s1" points="52.0,171.0 63.2,172.0 74.4,169.3 85.7,162.0 96.9,161.9 108.1,157.1 119.3,144.7 130.6,136.1 141.8,134.7 153.0,130.8 164.2,127.2 175.5,128.6 186.7,131.7 197.9,135.4 209.1,137.6 220.4,134.0 231.6,127.1 242.8,120.7 254.0,109.0 265.3,110.2 276.5,110.7 287.7,108.3 298.9,107.2 310.2,111.8 321.4,111.8 332.6,118.8 343.8,116.5 355.1,110.7 366.3,104.8 377.5,103.7 388.7,102.5 400.0,102.5 411.2,103.7 422.4,100.2 433.6,79.2 444.9,78.0 456.1,80.3 467.3,73.3 478.5,71.0 489.8,68.7 501.0,69.8 512.2,68.7 523.4,71.0 534.7,73.3 545.9,74.5 557.1,36.0 568.3,55.8 579.6,71.0 590.8,80.3 602.0,74.5"></polyline>\r\n<polyline class="ln s4" points="52.0,235.4 63.2,231.8 74.4,227.7 85.7,224.6 96.9,225.2 108.1,222.4 119.3,218.8 130.6,215.3 141.8,215.1 153.0,214.4 164.2,214.5 175.5,215.9 186.7,219.1 197.9,224.9 209.1,228.6 220.4,229.0 231.6,227.0 242.8,223.6 254.0,217.3 265.3,216.8 276.5,214.5 287.7,212.2 298.9,214.5 310.2,216.8 321.4,216.8 332.6,218.0 343.8,219.2 355.1,216.8 366.3,216.8 377.5,219.2 388.7,220.3 400.0,222.7 411.2,226.2 422.4,226.2 433.6,216.8 444.9,218.0 456.1,220.3 467.3,219.2 478.5,219.2 489.8,219.2 501.0,220.3 512.2,221.5 523.4,221.5 534.7,225.0 545.9,227.3 557.1,216.8 568.3,225.0 579.6,226.2 590.8,229.7 602.0,227.3"></polyline>\r\n<polyline class="ln s3" points="52.0,304.9 63.2,305.0 74.4,307.8 85.7,306.0 96.9,307.4 108.1,303.5 119.3,301.6 130.6,301.1 141.8,299.2 153.0,299.7 164.2,298.3 175.5,304.8 186.7,303.6 197.9,302.9 209.1,307.8 220.4,308.5 231.6,307.1 242.8,305.0 254.0,300.7 265.3,305.7 276.5,307.8 287.7,305.5 298.9,305.5 310.2,312.5 321.4,312.5 332.6,312.5 343.8,313.7 355.1,311.3 366.3,312.5 377.5,312.5 388.7,312.5 400.0,313.7 411.2,314.8 422.4,314.8 433.6,309.0 444.9,309.0 456.1,310.2 467.3,309.0 478.5,309.0 489.8,310.2 501.0,310.2 512.2,311.3 523.4,310.2 534.7,311.3 545.9,311.3 557.1,307.8 568.3,309.0 579.6,307.8 590.8,306.7 602.0,307.8"></polyline>\r\n<polyline class="ln s5" points="52.0,310.2 63.2,311.1 74.4,316.7 85.7,319.3 96.9,318.9 108.1,317.3 119.3,315.5 130.6,313.7 141.8,316.6 153.0,317.1 164.2,315.4 175.5,316.0 186.7,314.8 197.9,312.0 209.1,312.3 220.4,311.4 231.6,309.6 242.8,310.6 254.0,313.1 265.3,314.7 276.5,318.3 287.7,318.3 298.9,323.0 310.2,324.2 321.4,324.2 332.6,321.8 343.8,323.0 355.1,324.2 366.3,321.8 377.5,321.8 388.7,320.7 400.0,320.7 411.2,320.7 422.4,320.7 433.6,316.0 444.9,316.0 456.1,319.5 467.3,318.3 478.5,318.3 489.8,321.8 501.0,326.5 512.2,326.5 523.4,327.7 534.7,326.5 545.9,323.0 557.1,323.0 568.3,324.2 579.6,323.0 590.8,323.0 602.0,321.8"></polyline>\r\n<polyline class="ln s2" points="52.0,361.3 63.2,362.3 74.4,360.9 85.7,359.9 96.9,358.7 108.1,357.6 119.3,351.9 130.6,351.4 141.8,345.9 153.0,344.5 164.2,342.2 175.5,341.9 186.7,342.9 197.9,344.1 209.1,343.2 220.4,340.6 231.6,339.1 242.8,337.0 254.0,334.4 265.3,333.0 276.5,331.2 287.7,330.0 298.9,330.0 310.2,332.3 321.4,335.8 332.6,337.0 343.8,335.8 355.1,337.0 366.3,338.2 377.5,339.3 388.7,340.5 400.0,341.7 411.2,340.5 422.4,338.2 433.6,342.8 444.9,342.8 456.1,340.5 467.3,341.7 478.5,345.2 489.8,346.3 501.0,348.7 512.2,349.8 523.4,351.0 534.7,351.0 545.9,354.5 557.1,356.8 568.3,355.7 579.6,349.8 590.8,349.8 602.0,348.7"></polyline>\r\n<circle class="dot s1" cx="602.0" cy="74.5" r="4"></circle>\r\n<text class="lbl s1t" x="610.0" y="78.5">Prestations sociales</text>\r\n<circle class="dot s4" cx="602.0" cy="227.3" r="4"></circle>\r\n<text class="lbl s4t" x="610.0" y="231.3">Rémunération des agents</text>\r\n<circle class="dot s3" cx="602.0" cy="307.8" r="4"></circle>\r\n<text class="lbl s3t" x="610.0" y="311.8">Consommations intermédiaires</text>\r\n<circle class="dot s5" cx="602.0" cy="321.8" r="4"></circle>\r\n<text class="lbl s5t" x="610.0" y="325.8">Investissement</text>\r\n<circle class="dot s2" cx="602.0" cy="348.7" r="4"></circle>\r\n<text class="lbl s2t" x="610.0" y="352.7">Charge de la dette</text>\r\n<rect class="pr pr-d" x="52.0" y="388" width="71.8" height="30" rx="2"></rect>\r\n<text class="prl" x="87.9" y="400" text-anchor="middle">Giscard d\'Estaing</text>\r\n<rect class="pr pr-g" x="123.8" y="388" width="157.1" height="30" rx="2"></rect>\r\n<text class="prl" x="202.4" y="400" text-anchor="middle">Mitterrand</text>\r\n<rect class="pr pr-d" x="281.0" y="388" width="134.7" height="30" rx="2"></rect>\r\n<text class="prl" x="348.3" y="400" text-anchor="middle">Chirac</text>\r\n<rect class="pr pr-d" x="415.7" y="388" width="56.1" height="30" rx="2"></rect>\r\n<text class="prl" x="443.7" y="400" text-anchor="middle">Sarkozy</text>\r\n<rect class="pr pr-g" x="471.8" y="388" width="56.1" height="30" rx="2"></rect>\r\n<text class="prl" x="499.9" y="400" text-anchor="middle">Hollande</text>\r\n<rect class="pr pr-c" x="527.9" y="388" width="80.8" height="30" rx="2"></rect>\r\n<text class="prl" x="568.3" y="400" text-anchor="middle">Macron</text>\r\n<rect class="coh" x="177.7" y="404" width="24.7" height="12" rx="1"></rect>\r\n<rect class="coh" x="256.3" y="404" width="24.7" height="12" rx="1"></rect>\r\n<rect class="coh" x="304.6" y="404" width="55.0" height="12" rx="1"></rect>\r\n<text class="prl mutp" x="245.1" y="416" text-anchor="middle">cohabitations</text>\r\n<text class="ax" x="52.0" y="434" text-anchor="start">1975</text>\r\n<text class="ax" x="164.2" y="434" text-anchor="middle">1985</text>\r\n<text class="ax" x="276.5" y="434" text-anchor="middle">1995</text>\r\n<text class="ax" x="388.7" y="434" text-anchor="middle">2005</text>\r\n<text class="ax" x="501.0" y="434" text-anchor="middle">2015</text>\r\n<text class="ax" x="602.0" y="434" text-anchor="end">2024</text>\r\n</svg>',
+    svg: '<svg viewBox="0 0 720 452" class="cv" role="img" aria-labelledby="cnatur-y-t" preserveAspectRatio="xMidYMid meet">\n<title id="cnatur-y-t">Dépense publique par nature</title>\n<defs><pattern id="coh-y" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="cohl" x1="0" y1="0" x2="0" y2="6"></line></pattern></defs>\n<line class="grid" x1="52" y1="372.0" x2="602" y2="372.0"></line>\n<text class="ax ar" x="43" y="376.0">0</text>\n<line class="grid" x1="52" y1="313.7" x2="602" y2="313.7"></line>\n<text class="ax ar" x="43" y="317.7">5</text>\n<line class="grid" x1="52" y1="255.3" x2="602" y2="255.3"></line>\n<text class="ax ar" x="43" y="259.3">10</text>\n<line class="grid" x1="52" y1="197.0" x2="602" y2="197.0"></line>\n<text class="ax ar" x="43" y="201.0">15</text>\n<line class="grid" x1="52" y1="138.7" x2="602" y2="138.7"></line>\n<text class="ax ar" x="43" y="142.7">20</text>\n<line class="grid" x1="52" y1="80.3" x2="602" y2="80.3"></line>\n<text class="ax ar" x="43" y="84.3">25</text>\n<line class="grid" x1="52" y1="22.0" x2="602" y2="22.0"></line>\n<text class="ax ar" x="43" y="26.0">30</text>\n<text class="ax" x="43" y="14" text-anchor="end">% du PIB</text>\n<line class="axis" x1="52" y1="372" x2="602" y2="372"></line>\n<polyline class="ln s1" points="52.0,171.0 63.2,172.0 74.4,169.3 85.7,162.0 96.9,161.9 108.1,157.1 119.3,144.7 130.6,136.1 141.8,134.7 153.0,130.8 164.2,127.2 175.5,128.6 186.7,131.7 197.9,135.4 209.1,137.6 220.4,134.0 231.6,127.1 242.8,120.7 254.0,109.0 265.3,110.2 276.5,110.7 287.7,108.3 298.9,107.2 310.2,111.8 321.4,111.8 332.6,118.8 343.8,116.5 355.1,110.7 366.3,104.8 377.5,103.7 388.7,102.5 400.0,102.5 411.2,103.7 422.4,100.2 433.6,79.2 444.9,78.0 456.1,80.3 467.3,73.3 478.5,71.0 489.8,68.7 501.0,69.8 512.2,68.7 523.4,71.0 534.7,73.3 545.9,74.5 557.1,36.0 568.3,55.8 579.6,71.0 590.8,80.3 602.0,74.5"></polyline>\n<polyline class="ln s4" points="52.0,235.4 63.2,231.8 74.4,227.7 85.7,224.6 96.9,225.2 108.1,222.4 119.3,218.8 130.6,215.3 141.8,215.1 153.0,214.4 164.2,214.5 175.5,215.9 186.7,219.1 197.9,224.9 209.1,228.6 220.4,229.0 231.6,227.0 242.8,223.6 254.0,217.3 265.3,216.8 276.5,214.5 287.7,212.2 298.9,214.5 310.2,216.8 321.4,216.8 332.6,218.0 343.8,219.2 355.1,216.8 366.3,216.8 377.5,219.2 388.7,220.3 400.0,222.7 411.2,226.2 422.4,226.2 433.6,216.8 444.9,218.0 456.1,220.3 467.3,219.2 478.5,219.2 489.8,219.2 501.0,220.3 512.2,221.5 523.4,221.5 534.7,225.0 545.9,227.3 557.1,216.8 568.3,225.0 579.6,226.2 590.8,229.7 602.0,227.3"></polyline>\n<polyline class="ln s3" points="52.0,304.9 63.2,305.0 74.4,307.8 85.7,306.0 96.9,307.4 108.1,303.5 119.3,301.6 130.6,301.1 141.8,299.2 153.0,299.7 164.2,298.3 175.5,304.8 186.7,303.6 197.9,302.9 209.1,307.8 220.4,308.5 231.6,307.1 242.8,305.0 254.0,300.7 265.3,305.7 276.5,307.8 287.7,305.5 298.9,305.5 310.2,312.5 321.4,312.5 332.6,312.5 343.8,313.7 355.1,311.3 366.3,312.5 377.5,312.5 388.7,312.5 400.0,313.7 411.2,314.8 422.4,314.8 433.6,309.0 444.9,309.0 456.1,310.2 467.3,309.0 478.5,309.0 489.8,310.2 501.0,310.2 512.2,311.3 523.4,310.2 534.7,311.3 545.9,311.3 557.1,307.8 568.3,309.0 579.6,307.8 590.8,306.7 602.0,307.8"></polyline>\n<polyline class="ln s5" points="52.0,310.2 63.2,311.1 74.4,316.7 85.7,319.3 96.9,318.9 108.1,317.3 119.3,315.5 130.6,313.7 141.8,316.6 153.0,317.1 164.2,315.4 175.5,316.0 186.7,314.8 197.9,312.0 209.1,312.3 220.4,311.4 231.6,309.6 242.8,310.6 254.0,313.1 265.3,314.7 276.5,318.3 287.7,318.3 298.9,323.0 310.2,324.2 321.4,324.2 332.6,321.8 343.8,323.0 355.1,324.2 366.3,321.8 377.5,321.8 388.7,320.7 400.0,320.7 411.2,320.7 422.4,320.7 433.6,316.0 444.9,316.0 456.1,319.5 467.3,318.3 478.5,318.3 489.8,321.8 501.0,326.5 512.2,326.5 523.4,327.7 534.7,326.5 545.9,323.0 557.1,323.0 568.3,324.2 579.6,323.0 590.8,323.0 602.0,321.8"></polyline>\n<polyline class="ln s2" points="52.0,361.3 63.2,362.3 74.4,360.9 85.7,359.9 96.9,358.7 108.1,357.6 119.3,351.9 130.6,351.4 141.8,345.9 153.0,344.5 164.2,342.2 175.5,341.9 186.7,342.9 197.9,344.1 209.1,343.2 220.4,340.6 231.6,339.1 242.8,337.0 254.0,334.4 265.3,333.0 276.5,331.2 287.7,330.0 298.9,330.0 310.2,332.3 321.4,335.8 332.6,337.0 343.8,335.8 355.1,337.0 366.3,338.2 377.5,339.3 388.7,340.5 400.0,341.7 411.2,340.5 422.4,338.2 433.6,342.8 444.9,342.8 456.1,340.5 467.3,341.7 478.5,345.2 489.8,346.3 501.0,348.7 512.2,349.8 523.4,351.0 534.7,351.0 545.9,354.5 557.1,356.8 568.3,355.7 579.6,349.8 590.8,349.8 602.0,348.7"></polyline>\n<circle class="dot s1" cx="602.0" cy="74.5" r="4"></circle>\n<text class="lbl s1t" x="610.0" y="78.5">Prestations sociales</text>\n<circle class="dot s4" cx="602.0" cy="227.3" r="4"></circle>\n<text class="lbl s4t" x="610.0" y="231.3">Rémunération des agents</text>\n<circle class="dot s3" cx="602.0" cy="307.8" r="4"></circle>\n<text class="lbl s3t" x="610.0" y="311.8">Consommations intermédiaires</text>\n<circle class="dot s5" cx="602.0" cy="321.8" r="4"></circle>\n<text class="lbl s5t" x="610.0" y="325.8">Investissement</text>\n<circle class="dot s2" cx="602.0" cy="348.7" r="4"></circle>\n<text class="lbl s2t" x="610.0" y="352.7">Charge de la dette</text>\n<rect class="pr pr-d" x="52.0" y="388" width="71.8" height="30" rx="2"></rect>\n<text class="prl" x="87.9" y="400" text-anchor="middle">Giscard d\'Estaing</text>\n<rect class="pr pr-g" x="123.8" y="388" width="157.1" height="30" rx="2"></rect>\n<text class="prl" x="202.4" y="400" text-anchor="middle">Mitterrand</text>\n<rect class="pr pr-d" x="281.0" y="388" width="134.7" height="30" rx="2"></rect>\n<text class="prl" x="348.3" y="400" text-anchor="middle">Chirac</text>\n<rect class="pr pr-d" x="415.7" y="388" width="56.1" height="30" rx="2"></rect>\n<text class="prl" x="443.7" y="400" text-anchor="middle">Sarkozy</text>\n<rect class="pr pr-g" x="471.8" y="388" width="56.1" height="30" rx="2"></rect>\n<text class="prl" x="499.9" y="400" text-anchor="middle">Hollande</text>\n<rect class="pr pr-c" x="527.9" y="388" width="80.8" height="30" rx="2"></rect>\n<text class="prl" x="568.3" y="400" text-anchor="middle">Macron</text>\n<rect class="coh" x="177.7" y="404" width="24.7" height="12" rx="1"></rect>\n<rect class="coh" x="256.3" y="404" width="24.7" height="12" rx="1"></rect>\n<rect class="coh" x="304.6" y="404" width="55.0" height="12" rx="1"></rect>\n<text class="prl mutp" x="245.1" y="416" text-anchor="middle">cohabitations</text>\n<text class="ax" x="52.0" y="434" text-anchor="start">1975</text>\n<text class="ax" x="164.2" y="434" text-anchor="middle">1985</text>\n<text class="ax" x="276.5" y="434" text-anchor="middle">1995</text>\n<text class="ax" x="388.7" y="434" text-anchor="middle">2005</text>\n<text class="ax" x="501.0" y="434" text-anchor="middle">2015</text>\n<text class="ax" x="602.0" y="434" text-anchor="end">2024</text>\n</svg>',
     sources: ['eurostat-nasa-10-nf-tr'],
     vintage: '2024',
     values: {
@@ -483,4 +845,4 @@ export const questions = [
  * tableaux et les figures. La bibliographie les recense aussi : une source
  * citée en prose reste une source du dossier.
  */
-export const citedSources = [] satisfies readonly SourceId[]
+export const citedSources = ['ocde-gdpvd-cap'] satisfies readonly SourceId[]

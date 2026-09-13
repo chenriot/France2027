@@ -357,6 +357,121 @@ qu'une fois les intérêts retirés elle tombe **exactement à la moyenne
 européenne**. Ce n'est pas un problème de bureaucratie, c'est un problème de
 dette.
 
+### « On s'endette, d'accord, mais est-ce que ça nous enrichit ? »
+
+C'est la bonne question, et elle a une réponse chiffrée. Produire un euro de
+richesse en empruntant un euro, ce n'est pas produire plus — c'est déplacer une
+dépense dans le temps. Alors regardons les deux côtés en même temps, sur vingt
+ans, dans six pays.
+
+D'abord ce qu'on a produit. Les montants sont en dollars « à parité de pouvoir
+d'achat », c'est-à-dire corrigés des différences de prix entre pays : 1 dollar
+achète la même chose partout.
+
+| PIB par habitant | 2005 | 2025 | En 20 ans |
+|---|--:|--:|--:|
+| États-Unis | 59 501 | **76 834** | **+29 %** |
+| Pays-Bas | 58 352 | 71 271 | +22 % |
+| Allemagne | 51 901 | 62 888 | +21 % |
+| **France** | 48 376 | **55 197** | **+14 %** |
+| Royaume-Uni | 48 291 | 53 832 | +11 % |
+| Chine | 6 280 | 25 147 | +300 % |
+
+Un Français produisait 81 % de ce que produisait un Américain en 2005. Il en
+produit **72 % aujourd'hui**. L'écart ne s'est pas résorbé, il s'est creusé.
+
+Ensuite ce qu'on a emprunté pour cela — **dette publique et dette privée
+ensemble**, parce qu'un crédit immobilier compte autant qu'un emprunt d'État
+dans la dépense d'un pays.
+
+| Emprunté chaque année, en % du PIB | Total | dont public | dont privé |
+|---|--:|--:|--:|
+| États-Unis | 12,9 | 7,0 | 6,0 |
+| Royaume-Uni | 11,2 | 5,8 | 5,5 |
+| **France** | **11,1** | 4,9 | 6,2 |
+| Pays-Bas | 8,2 | 1,7 | 6,6 |
+| **Allemagne** | **4,9** | 1,8 | 3,1 |
+
+**La France emprunte chaque année plus du double de l'Allemagne, pour une
+croissance deux fois plus faible.** Et la moitié de cet emprunt n'est pas celui
+de l'État : c'est celui des ménages et des entreprises.
+
+Maintenant, la division qui répond à la question. D'un côté, toute la richesse
+produite en plus depuis 2005, année après année, cumulée. De l'autre, tout ce
+qui a été emprunté pendant le même temps. Par habitant, dans la même monnaie.
+
+| Cumul 2006-2025, par habitant | Produit en plus | Emprunté | Dette par dollar produit en plus |
+|---|--:|--:|--:|
+| Royaume-Uni | 46 487 $ | 112 812 $ | **2,43 $** |
+| **France** | 61 621 $ | 113 195 $ | **1,84 $** |
+| États-Unis | 126 997 $ | 170 745 $ | 1,34 $ |
+| Pays-Bas | 133 302 $ | 105 726 $ | 0,79 $ |
+| **Allemagne** | 158 450 $ | 59 097 $ | **0,37 $** |
+
+**L'Allemagne a emprunté 37 centimes pour chaque dollar produit en plus. La
+France, 1,84 dollar.** Et le pays qui a le moins emprunté est aussi celui qui a
+accumulé le plus de production supplémentaire. Ce qui sépare ces pays, ce n'est
+donc pas le montant de la dette — c'est ce qu'elle rapporte.
+
+**Trois précautions, parce qu'elles comptent.** Tout emprunt ne finance pas de
+la production : un crédit qui achète un logement ancien gonfle la dette sans
+rien produire. C'est de la dette **brute**, sans compter ce qu'on a acheté avec
+— une usine et une dépense courante s'y ressemblent. Et la **Chine est absente**
+de ces deux derniers tableaux : personne ne publie ses comptes financiers dans
+un format comparable.
+
+### Et les Pays-Bas, comment font-ils ?
+
+Ils produisent 28 % de plus par habitant que nous, en empruntant deux fois
+moins. On imagine qu'ils sont plus efficaces. **Ce n'est pas ça du tout.**
+
+| 2024 | Pays-Bas | France |
+|---|--:|--:|
+| PIB par habitant | 70 452 $ | 54 820 $ |
+| **Produit en une heure de travail** | **88,9 $** | **85,9 $** |
+| **Heures travaillées par habitant et par an** | **793** | **638** |
+| Heures par personne qui travaille | 1 456 | 1 511 |
+| Personnes en emploi / population totale | **54,5 %** | 42,3 % |
+
+Un Néerlandais produit **3,5 % de plus qu'un Français en une heure**. Pas 30 % :
+3,5 %. Tout le reste de l'écart vient d'une seule chose — **il y a beaucoup plus
+de gens qui travaillent**. Et le détail est savoureux : chaque Néerlandais qui
+travaille fait *moins* d'heures qu'un Français (1 456 contre 1 511, c'est le pays
+du temps partiel), mais ils sont douze points de population de plus à travailler.
+
+**La France n'a pas un problème de productivité, elle a un problème de volume de
+travail.** C'est l'inverse du Royaume-Uni, qui travaille plus que les Pays-Bas
+(810 heures par habitant) et produit un quart de moins, parce que son heure de
+travail vaut 66 $ au lieu de 89 $. Deux maladies opposées, deux remèdes opposés.
+
+**Et la structure de l'économie n'explique rien** : l'industrie pèse 11,7 % de la
+valeur ajoutée aux Pays-Bas et 11,4 % en France — les deux sont à dix points de
+l'Allemagne. Deux vraies différences seulement : le commerce et le transport
+(Rotterdam, la réexportation — les Pays-Bas exportent 83 % de leur PIB contre
+32 % pour nous), et l'immobilier, qui pèse presque deux fois plus en France
+parce que le logement y est cher.
+
+**L'impôt ? Pas dans le sens qu'on croit.** Les Pays-Bas prélèvent 38,8 % du PIB
+contre 44,7 % chez nous. Mais leur **impôt sur les sociétés rapporte 4,3 % du
+PIB, presque le double du nôtre (2,3 %)**. Leur attractivité ne consiste pas à
+taxer moins les bénéfices : elle consiste à en attirer beaucoup. Le prix à payer
+est visible : chaque année, l'équivalent de 1 à 2 points de PIB néerlandais
+repart en profits chez des propriétaires étrangers. Une partie de leur avance est
+comptable, pas vécue.
+
+**Et la retraite par capitalisation ?** Les ménages néerlandais possèdent
+**164 % du PIB en droits à la retraite**, contre 75 % en France. Résultat : leur
+dépense publique de retraite est de **6,4 % du PIB contre 13,6 % chez nous**.
+Sept points d'écart — voilà l'essentiel de la différence de dépense publique, et
+donc d'impôts, et donc de dette publique (42 % du PIB contre 107 %).
+
+Mais **ça ne rend personne plus productif** : 3,5 % de plus par heure, on l'a vu.
+Et ça a une contrepartie que l'on oublie toujours. Obligés d'épargner pour leur
+retraite, les Néerlandais empruntent pour se loger : **93 % du PIB de crédit
+immobilier, contre 60 % en France**. Le pays le moins endetté publiquement du
+panel est le plus endetté privément. **La capitalisation n'a pas supprimé la
+dette, elle l'a déplacée de l'État vers les ménages.**
+
 **Le mécanisme complet, en une phrase :** une dépense sociale qui augmente toute
 seule, financée d'abord en coupant la défense et l'investissement, puis par
 l'emprunt — et dont les intérêts viennent aujourd'hui prendre la place des
@@ -1518,6 +1633,182 @@ détecté pèse **plus** que l'ensemble des fraudes aux prestations sociales
 réunies, et la **fraude fiscale** détectée pèse près de **six fois** la fraude
 sociale. La seule fraude à la TVA est estimée à environ **15 milliards par an**,
 contre 1 à 3 milliards pour la fraude aux prestations.
+
+---
+
+# La chaîne, en treize chiffres
+
+*Les dix-huit thèmes disent chacun une chose. Mis bout à bout, ils racontent une
+seule histoire, et chaque maillon explique le suivant. Voici cette histoire, avec
+un chiffre par étape — celui qui tranche.*
+
+### 1. La France est riche, mais elle décroche
+
+En 2005, un Français produisait **11 % de plus que la moyenne des pays riches**.
+Aujourd'hui : **1 %**. On ne s'est pas appauvri — la production par habitant a
+augmenté de 14 % en vingt ans — mais les autres ont avancé deux fois plus vite.
+
+### 2. Ce n'est pas qu'on travaille mal, c'est qu'on travaille peu
+
+Voilà le chiffre le plus mal connu du débat français. **En une heure de travail,
+un Français produit autant qu'un Allemand, un Néerlandais ou un Américain** :
+81,6 dollars contre 83,0, 82,1 et 84,1. Quatre pays dans un mouchoir de poche.
+
+Mais rapporté à l'ensemble de la population, on travaille beaucoup moins :
+**674 heures par habitant et par an, contre 735 en Allemagne et 828 aux Pays-Bas.**
+
+Et attention au contresens : **un Allemand qui travaille fait moins d'heures
+qu'un Français** (1 334 contre 1 509). L'écart ne vient pas de la durée du
+travail. Il vient du **nombre de gens qui travaillent** : 55 % de la population
+allemande, 45 % de la française.
+
+### 3. On a le taux d'impôt le plus élevé — et moins d'argent au bout
+
+C'est le paradoxe qu'il faut avoir en tête avant toute discussion sur les impôts.
+La France prélève **44,7 % de ce qu'elle produit**, le record du groupe.
+L'Allemagne prélève 40,5 %. Et pourtant, par habitant, l'État français récolte
+**24 500 dollars contre 25 400 en Allemagne**.
+
+Le taux le plus fort sur le gâteau le plus petit rapporte moins que le taux
+allemand sur le gâteau allemand. **Ce n'est donc pas le taux qui manque.**
+
+### 4. Ce qui a gonflé, c'est la protection sociale
+
+Depuis 1975, la dépense publique a augmenté de 10,9 points de PIB. **Les
+prestations sociales expliquent 8,3 de ces points, soit 76 % du total.** Aucun
+autre poste n'en explique plus de 16 %.
+
+### 5. Mais notre modèle n'est pas plus généreux que l'allemand
+
+Deuxième contresens courant. Oui, la France consacre à la protection sociale la
+part de richesse la plus élevée : 32,7 % contre 28,9 % en Allemagne. Mais
+**en euros par habitant, elle dépense moins** :
+
+| Par habitant et par an | France | Allemagne | Pays-Bas |
+|---|--:|--:|--:|
+| Dépense sociale totale | **19 578 $** | 20 440 $ | 21 623 $ |
+| dont retraites | **7 684 $** | 7 759 $ | 7 343 $ |
+
+**Un retraité allemand ne reçoit pas moins qu'un retraité français.** La France
+ne verse pas plus : elle produit moins pour verser autant. Ce qui la distingue
+n'est pas sa générosité, c'est son assiette.
+
+### 6. Le déficit est un déficit d'heures travaillées
+
+C'est le calcul central. Si la France travaillait autant que l'Allemagne — même
+productivité, mêmes dépenses publiques, mêmes taux d'impôt :
+
+| France 2025 | Aujourd'hui | Au volume horaire allemand |
+|---|--:|--:|
+| Heures par habitant | 674 | 735 |
+| PIB | 2 984 Md€ | 3 252 Md€ |
+| **Déficit** | **−153 Md€** | **−12 Md€** |
+
+**Le déficit passerait de 153 milliards à 12.** Sans augmenter un impôt, sans
+couper une dépense.
+
+Et si on préfère raisonner en heures : **30 heures de plus par habitant et par an
+— 35 minutes par semaine — comblent 46 % du déficit.** Pour l'équilibre complet
+il faudrait 66 heures, c'est-à-dire soit **39 minutes de plus par jour ouvré**
+pour ceux qui travaillent déjà, soit **3 millions de personnes de plus en
+emploi**. Les deux chemins donnent le même résultat ; le second n'allonge la
+journée de personne.
+
+*Une réserve honnête : c'est de l'arithmétique, pas une prévision. Les personnes
+qu'on ramène vers l'emploi sont en moyenne moins productives, donc le gain réel
+serait plus faible. Mais l'ordre de grandeur tient.*
+
+### 7. Pour payer, on a coupé l'investissement
+
+La hausse des prestations n'a pas été financée en coupant ailleurs à hauteur
+équivalente : elle l'a été par la hausse de la dépense totale, puis par
+l'emprunt. Un seul poste a vraiment reculé : **l'investissement public, de 11,5 %
+à 7,5 % de la dépense publique**. Sur 100 € dépensés en 1975, 11,50 € allaient
+aux routes, aux ponts, aux réseaux. Il en reste 7,50 €.
+
+C'est le poste le plus facile à comprimer, parce que reporter la rénovation d'un
+pont ne se voit pas l'année où on le décide. Ça se voit vingt ans plus tard.
+
+### 8. Le problème n'est pas le nombre de fonctionnaires
+
+Troisième contresens, et le plus tenace. **L'administration générale française
+coûte 623 € par habitant, contre 759 en moyenne européenne, 1 070 en Allemagne et
+1 268 aux Pays-Bas.** C'est la moins chère du groupe après l'Espagne.
+
+Et sur le terrain, la France est plutôt sous-dotée : **3,28 médecins pour 1 000
+habitants contre 4,53 en Allemagne** — et c'est le seul des quatre pays comparés
+dont la densité médicale a *reculé* depuis 2010.
+
+On peut toujours simplifier le millefeuille administratif. Mais ce n'est pas là
+que se joue l'équation budgétaire.
+
+### 9. Tous les vents porteurs s'inversent en même temps
+
+On a longtemps bénéficié de circonstances favorables : peu de dépenses
+militaires, des taux d'intérêt très bas, une population encore jeune. Les trois
+se retournent ensemble. **La charge de la dette passe de 58,9 milliards en 2024 à
+environ 67 milliards prévus en 2026.** La défense remonte après cinquante ans de
+repli. Les dépenses de santé et le rapport entre actifs et retraités vont dans le
+même sens.
+
+Chacune de ces tendances comprimera davantage ce qui a été épargné jusqu'ici :
+l'école, la culture, la justice.
+
+### 10. L'ordre de grandeur de l'effort
+
+Revenir de 5,1 % à 3 % de déficit demande environ **63 milliards** — 3,6 % de
+toute la dépense publique. Les chiffrages de la taxe Zucman vont de **5 à
+20 milliards** selon les hypothèses. Au mieux un tiers de l'écart, au pire un
+douzième.
+
+C'est un débat de justice fiscale, légitime comme tel. **Ce n'est pas un
+instrument de retour à l'équilibre**, et le présenter comme tel — dans un camp
+comme dans l'autre — est une erreur de catégorie.
+
+### 11. En attendant, ce sont nos enfants qui paient
+
+L'écart entre 57,4 % de dépense et 52,3 % de recettes se comble par l'emprunt,
+chaque année depuis 1975. La dette non financière française atteint **112 120 €
+par habitant**, dont 46 333 € de dette publique. Et **4,9 points de déficit sur
+5,1 sont structurels** : aucune reprise de croissance ne les effacera.
+
+### 12. Rien de tout cela n'est une fatalité — ni un équilibre
+
+Dire que « le système est à l'équilibre » n'a pas de sens en soi. Un système
+social est à l'équilibre **si on décide de le financer**, et il ne l'est pas si on
+décide de ne pas le faire. La France peut choisir de produire plus, de verser
+moins, ou de prélever autrement : les trois sont des décisions légitimes, et ce
+dossier n'en recommande aucune.
+
+**Il y a en revanche une quatrième option, et c'est celle qu'on suit : ne rien
+décider.** Elle consiste à faire payer la génération suivante pour un niveau de
+travail que la génération actuelle a choisi.
+
+### 13. On a plus d'enfants — et moins d'argent pour chacun
+
+La France fait encore plus d'enfants que ses voisins, même si l'écart se resserre
+(1,62 enfant par femme, contre 2,03 en 2010). C'est une chance à long terme. À
+court terme, c'est une facture : plus d'élèves à financer.
+
+Et là, un dernier contresens à lever. On dit que la France dépense beaucoup pour
+son école : 5,1 % du PIB, au-dessus de la moyenne. Mais ce chiffre est gonflé
+d'environ 9 % par le mode de calcul des retraites des enseignants. **Corrigé, il
+tombe à 4,6 % — sous la moyenne européenne de 4,7 %.** Et par élève, l'écart est
+net : **8 151 contre 10 363 en Allemagne**.
+
+La France ne dépense pas plus pour son école. **Elle répartit la même somme entre
+plus d'enfants.**
+
+---
+
+**La chaîne en une phrase.** La France produit moins parce qu'elle travaille moins
+— pas moins vite, moins longtemps collectivement —, ce qui rétrécit l'assiette ;
+sur cette assiette étroite elle applique le taux d'impôt le plus élevé du groupe
+et obtient moins d'argent par habitant que l'Allemagne ; elle finance avec cet
+argent une protection sociale qui, par habitant, n'est pas plus généreuse que
+l'allemande ; l'écart se comble en rognant l'investissement et les services, puis
+par la dette. **Le maillon faible n'est ni la générosité du modèle, ni le coût de
+l'administration : c'est le volume de travail.**
 
 ---
 

@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **304** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 165 sur 6 558 (64 %) | extraction |
+| Tableaux | **322** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 387 sur 6 836 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **212 entrées** (202 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **57 752 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Sources | **215 entrées** (205 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **61 324 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -330,6 +330,167 @@ intermédiaires, la ventilation sectorielle à métier constant, le taux de
 promotion comparé à poste et ancienneté identiques, et l'ancienneté par sexe. Ces trous ne sont pas des lacunes de
 recherche à combler plus tard : ce sont des données qui ne sont pas publiées,
 et c'est un résultat en soi.
+
+**Deuxième application : `s2-q11`**, « La croissance a-t-elle été achetée à
+crédit ? », en fin du chapitre « Dette et déficit ». Quatre tableaux, une
+source, aucune dette de migration ajoutée. C'est la première fiche du dossier
+bâtie sur des données **extraites en direct**, par l'API SDMX publique de
+l'OCDE, et non recopiées d'une publication : *Perspectives économiques* n° 119
+pour le PIB par habitant, comptes financiers annuels (tableaux 0610 et 0710)
+pour les dettes publique et privée de six pays.
+
+Trois points valent d'être notés pour la suite.
+
+- **Le choix du flux plutôt que du stock est une décision de fond, pas de
+  commodité.** La dette est un stock, le PIB un flux annuel : on ne retranche
+  pas l'un de l'autre. La fiche retranche l'endettement *net nouveau de
+  l'année*, seule grandeur homogène au PIB. Un deuxième motif s'y ajoute : les
+  stocks des comptes financiers sont évalués aux prix de marché, si bien que la
+  chute des cours obligataires depuis 2022 y fait disparaître de la dette que
+  personne n'a remboursée — 370 Md€ pour la seule France en 2022.
+- **Deux conventions de dette publique coexistent désormais dans le chapitre**
+  — Maastricht en valeur nominale (115 % du PIB, ≈ 50 400 € par habitant)
+  ailleurs, comptes financiers aux prix de marché (≈ 46 333 €) dans cette
+  fiche, parce que c'est la seule base qui existe aussi pour la dette privée et
+  pour les cinq autres pays. Un encadré `defn` réconcilie les deux dans le
+  corps du texte : sans lui, le chapitre se contredirait.
+- **La Chine est absente des tableaux de dette, et c'est déclaré.** L'OCDE ne
+  publie pas ses comptes financiers ; la BRI, le FMI et la Banque mondiale
+  n'étaient pas joignables depuis l'environnement d'extraction. Un encadré
+  `hole` le dit et interdit la comparaison, plutôt qu'une estimation non
+  sourcée.
+
+**Troisième application : `s2-q12`**, « Pourquoi les Pays-Bas produisent-ils
+28 % de plus par habitant que la France ? », qui prolonge la précédente dans le
+même chapitre. Quatre tableaux, une source, quatre bases de l'OCDE croisées
+(Perspectives économiques, *National Accounts at a Glance* chapitre 4,
+*Social Expenditure Database*, *Revenue Statistics*).
+
+Elle est placée dans « Dette et déficit » et non dans « Europe » ou « Emploi »
+pour une raison de lecture : **elle répond à une question que le tableau
+précédent laisse ouverte** — les Pays-Bas empruntent peu et produisent
+beaucoup — et la décomposition qu'elle emploie n'a de sens qu'à côté des séries
+de PIB par habitant de `s2-q11`. Une fiche qui explique un écart doit vivre là
+où l'écart est montré.
+
+Deux points de méthode qu'elle fixe.
+
+- **Les millésimes hétérogènes se déclarent ligne à ligne, pas en note.** La
+  décomposition est à 2024 (dernière année où les heures travaillées existent
+  pour les cinq pays), la dépense de vieillesse à 2021 (dernier millésime
+  homogène de SOCX), les dettes à fin 2025. Chaque ligne porte son année entre
+  parenthèses et l'encadré `lim` interdit de lire les trois tableaux comme une
+  photographie unique.
+- **Une décomposition multiplicative se donne en parts logarithmiques.** PIB par
+  habitant = heures par habitant × PIB par heure ; les contributions sont
+  `ln(rapport)/ln(rapport total)`, seule répartition qui somme à 100 %.
+
+**Un ratio construit sur une année de référence se teste en la déplaçant.** La
+fiche `s2-q11` a été complétée d'un contrôle qui vaut règle pour la suite : le
+« prix en dette » de la croissance, calculé depuis 2005, donnait 0,37 $ à
+l'Allemagne contre 1,34 $ aux États-Unis — un facteur trois et demi. Recalculé
+depuis 2015, il donne 1,33 contre 1,56 : l'écart disparaît presque. Le résultat
+était celui d'une décennie, pas d'un modèle. Publier un tel ratio sans sa
+sensibilité à la période, c'est publier une conclusion qu'on n'a pas testée.
+
+Le contrôle s'accompagne d'un tableau « ce que le ratio ne voit pas » — niveau
+de production, trajectoire depuis 2019, solde courant, investissement public —
+parce qu'un dénominateur qui stagne améliore un ratio sans rien améliorer.
+
+**Un piège de dénominateur, rencontré et corrigé avant publication.** Les
+*Perspectives économiques* publient l'investissement public en volume
+(`IGV`) et non en valeur ; le rapporter au PIB **nominal** (`GDP`) donne un
+ratio faux, qui passait le contrôle de rendu sans rien signaler. Il fallait
+`IGV/GDPV`. L'écart n'était pas anodin : 3,5 % au lieu de 2,9 % pour le
+Royaume-Uni, et une phrase entière sur l'investissement public français reposait
+dessus. Règle : **volume avec volume, valeur avec valeur** — `check:render`
+vérifie la fidélité de l'extraction, jamais la justesse d'un calcul.
+
+**Une part de valeur ajoutée ne dit rien d'une croissance.** La fiche `s2-q12`
+concluait d'abord, sur la foi des parts sectorielles, que « la structure de
+l'économie n'explique presque rien » de l'écart néerlandais. C'était vrai des
+parts et faux du reste : les parts de l'industrie manufacturière reculent
+identiquement aux Pays-Bas et en France (13,0 → 11,7 et 13,5 → 11,4) alors que
+les volumes ont crû de 47 % d'un côté et de 16 % de l'autre. Une part baisse dès
+que les autres branches vont plus vite, ou que les prix relatifs de la branche
+cèdent ; elle ne mesure pas une production. La fiche porte désormais les deux
+tableaux, et l'encadré `lim` qui les sépare dit pourquoi.
+
+Corollaire adopté pour la suite : **toute comparaison sectorielle porte la
+croissance en volume et les contributions**, c'est-à-dire la croissance de
+chaque branche pondérée par sa part initiale — seule grandeur dont la somme
+retombe sur la croissance d'ensemble, et donc seule qui permette de dire
+laquelle explique l'écart.
+
+**Un ratio n'est pas une causalité, et il faut l'écrire dans la fiche.** Le
+« prix en dette de la croissance » de `s2-q11` se lisait naturellement comme
+« la dette achète du PIB ». Elle ne l'achète pas, et la fiche le démontre
+désormais en trois temps : le mécanisme comptable, qui ne joue exactement que
+pour la production non marchande des administrations — mesurée par ses coûts,
+donc un euro de salaire public est un euro de PIB — et pas du tout pour un
+transfert, ni pour une entreprise qui déplace un euro du profit vers les
+salaires ; l'absence de corrélation entre emprunt et croissance sur les cinq
+pays (r = −0,01) ; et la production horaire américaine, en hausse de 29,8 % sur
+vingt ans pendant que les heures par habitant reculaient de 2 %.
+
+**Un indicateur dérivé se confronte à la série officielle avant publication.**
+La fiche `s2-q12` a d'abord calculé le PIB par heure en divisant le PIB par
+habitant des *Perspectives économiques* par un volume d'heures reconstitué
+depuis les séries `HRS` et `ET` de la même base. Les évolutions tenaient, les
+niveaux non : l'ordre des pays était faux — l'Allemagne ressortait au-dessus des
+États-Unis, le Royaume-Uni 30 % sous la France au lieu de 10 %. En cause, des
+définitions d'emploi qui ne se correspondent pas d'un pays à l'autre dans cette
+base.
+
+La base **Productivité** de l'OCDE publie les trois grandeurs sur une
+définition commune, et l'identité PIB par habitant = PIB par heure × heures par
+habitant s'y vérifie exactement. C'est désormais la source du tableau, et le
+contrôle d'identité est la vérification à faire : **si les trois termes ne se
+recomposent pas, c'est qu'ils viennent de définitions différentes.** Ses PPA
+sont celles de 2020 et non de 2021, d'où un écart de niveau avec le reste du
+dossier, déclaré dans l'encadré `lim` de la fiche.
+
+**Quatrième application : `synth-q5`**, « Treize constats, treize chiffres »,
+en fin de chapitre « Synthèse ». Trois tableaux, une source, et une contrainte
+de forme demandée : **un seul indicateur par constat**, celui qui le tranche.
+Le tableau d'ouverture porte les treize ; le corps ne développe que ce qui ne
+se lit pas dans le chiffre.
+
+C'est la première fiche du dossier qui **contredit explicitement deux
+formulations courantes du débat**, et elle le fait dans un encadré `lim` plutôt
+qu'en passant : la France ne prélève pas « plus » en montant — 24 498 dollars
+par habitant contre 25 369 en Allemagne, avec un taux de 44,7 % contre 40,5 % ;
+et elle ne dépense pas « plus » pour son école — 4,6 % du PIB une fois retirées
+les cotisations retraite des enseignants, contre 4,7 % de moyenne européenne.
+Quand un chiffre brut et un chiffre retraité disent l'inverse, les deux
+figurent.
+
+**Le constat 6 est le seul calcul original de la fiche** et le seul qui ne soit
+pas une mesure : appliquer à la France le volume horaire par habitant allemand,
+à productivité horaire et dépense inchangées, ramène le solde public de
+−153 Md€ à −12 Md€. Un encadré `lim` immédiatement dessous énumère les trois
+raisons d'y voir un plafond et non une prévision. Règle retenue : **un
+contrefactuel se publie avec ses réserves dans le même écran, jamais en note de
+bas de page.**
+
+La fiche a été complétée d'une seconde lecture du même calcul, en heures plutôt
+qu'en emplois : 30 heures de plus par habitant et par an comblent 46 % du
+déficit, l'équilibre en demande 66 — soit 147 heures par personne en emploi
+(39 minutes par jour ouvré) ou 3,0 millions d'emplois supplémentaires. Les deux
+chemins sont arithmétiquement équivalents et la fiche le dit, parce que le
+débat public confond systématiquement « travailler plus » et « être plus
+nombreux à travailler ».
+
+**Une erreur de clé, attrapée par le graphique et pas par le code.** La page
+publiée de cette synthèse a d'abord affiché 100,7 dollars de PIB horaire pour
+l'Allemagne et 63,2 pour la France. La série `GDPHRS` de la base Productivité
+existe en cinq variantes — deux unités × trois bases de prix — et le
+dictionnaire de chargement n'était indexé que par `(pays, mesure)` : la
+dernière ligne lue écrasait les autres. Corollaire de la règle précédente :
+**une clé SDMX incomplète ne produit pas d'erreur, elle produit un chiffre**.
+Indexer sur le tuple complet, et vérifier l'identité quand il en existe une —
+ici `PIB/habitant = PIB/heure × heures/habitant`, qui retombe juste à 0,1 %
+près sur les cinq pays une fois la clé corrigée.
 
 ---
 
