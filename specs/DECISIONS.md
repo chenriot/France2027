@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **304** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 165 sur 6 558 (64 %) | extraction |
+| Tableaux | **308** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 241 sur 6 657 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **212 entrées** (202 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **57 752 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Sources | **213 entrées** (203 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **58 417 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -330,6 +330,35 @@ intermédiaires, la ventilation sectorielle à métier constant, le taux de
 promotion comparé à poste et ancienneté identiques, et l'ancienneté par sexe. Ces trous ne sont pas des lacunes de
 recherche à combler plus tard : ce sont des données qui ne sont pas publiées,
 et c'est un résultat en soi.
+
+**Deuxième application : `s2-q11`**, « La croissance a-t-elle été achetée à
+crédit ? », en fin du chapitre « Dette et déficit ». Quatre tableaux, une
+source, aucune dette de migration ajoutée. C'est la première fiche du dossier
+bâtie sur des données **extraites en direct**, par l'API SDMX publique de
+l'OCDE, et non recopiées d'une publication : *Perspectives économiques* n° 119
+pour le PIB par habitant, comptes financiers annuels (tableaux 0610 et 0710)
+pour les dettes publique et privée de six pays.
+
+Trois points valent d'être notés pour la suite.
+
+- **Le choix du flux plutôt que du stock est une décision de fond, pas de
+  commodité.** La dette est un stock, le PIB un flux annuel : on ne retranche
+  pas l'un de l'autre. La fiche retranche l'endettement *net nouveau de
+  l'année*, seule grandeur homogène au PIB. Un deuxième motif s'y ajoute : les
+  stocks des comptes financiers sont évalués aux prix de marché, si bien que la
+  chute des cours obligataires depuis 2022 y fait disparaître de la dette que
+  personne n'a remboursée — 370 Md€ pour la seule France en 2022.
+- **Deux conventions de dette publique coexistent désormais dans le chapitre**
+  — Maastricht en valeur nominale (115 % du PIB, ≈ 50 400 € par habitant)
+  ailleurs, comptes financiers aux prix de marché (≈ 46 333 €) dans cette
+  fiche, parce que c'est la seule base qui existe aussi pour la dette privée et
+  pour les cinq autres pays. Un encadré `defn` réconcilie les deux dans le
+  corps du texte : sans lui, le chapitre se contredirait.
+- **La Chine est absente des tableaux de dette, et c'est déclaré.** L'OCDE ne
+  publie pas ses comptes financiers ; la BRI, le FMI et la Banque mondiale
+  n'étaient pas joignables depuis l'environnement d'extraction. Un encadré
+  `hole` le dit et interdit la comparaison, plutôt qu'une estimation non
+  sourcée.
 
 ---
 
