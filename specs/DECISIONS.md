@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **317** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Tableaux | **320** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
 | Cellules chiffrées typées en nombres | 4 387 sur 6 836 (64 %) | extraction |
 | Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **214 entrées** (204 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **60 301 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Sources | **215 entrées** (205 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **61 088 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -449,6 +449,29 @@ contrôle d'identité est la vérification à faire : **si les trois termes ne s
 recomposent pas, c'est qu'ils viennent de définitions différentes.** Ses PPA
 sont celles de 2020 et non de 2021, d'où un écart de niveau avec le reste du
 dossier, déclaré dans l'encadré `lim` de la fiche.
+
+**Quatrième application : `synth-q5`**, « Treize constats, treize chiffres »,
+en fin de chapitre « Synthèse ». Trois tableaux, une source, et une contrainte
+de forme demandée : **un seul indicateur par constat**, celui qui le tranche.
+Le tableau d'ouverture porte les treize ; le corps ne développe que ce qui ne
+se lit pas dans le chiffre.
+
+C'est la première fiche du dossier qui **contredit explicitement deux
+formulations courantes du débat**, et elle le fait dans un encadré `lim` plutôt
+qu'en passant : la France ne prélève pas « plus » en montant — 24 498 dollars
+par habitant contre 25 369 en Allemagne, avec un taux de 44,7 % contre 40,5 % ;
+et elle ne dépense pas « plus » pour son école — 4,6 % du PIB une fois retirées
+les cotisations retraite des enseignants, contre 4,7 % de moyenne européenne.
+Quand un chiffre brut et un chiffre retraité disent l'inverse, les deux
+figurent.
+
+**Le constat 6 est le seul calcul original de la fiche** et le seul qui ne soit
+pas une mesure : appliquer à la France le volume horaire par habitant allemand,
+à productivité horaire et dépense inchangées, ramène le solde public de
+−153 Md€ à −12 Md€. Un encadré `lim` immédiatement dessous énumère les trois
+raisons d'y voir un plafond et non une prévision. Règle retenue : **un
+contrefactuel se publie avec ses réserves dans le même écran, jamais en note de
+bas de page.**
 
 ---
 

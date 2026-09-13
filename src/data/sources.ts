@@ -1362,6 +1362,14 @@ const registry = {
   'ocde-gdpvd-cap': {
     producer: 'OCDE',
     kind: 'database',
+    datasets: ['GDPVD_CAP', 'TAXQ', 'YRGTQ', 'YPGTQ', 'GDP', 'POP', 'GDPHRS', 'HRSPOP', 'HRSAV', 'EMP'],
+    text: 'OCDE, <i>Perspectives économiques</i> n° 119 (juin 2026), séries <span class="num">GDPVD_CAP</span>, <span class="num">TAXQ</span>, <span class="num">YRGTQ</span>, <span class="num">YPGTQ</span>, <span class="num">GDP</span> et <span class="num">POP</span>, y compris l\'agrégat OCDE ; OCDE, base <i>Productivité</i>, séries <span class="num">GDPHRS</span>, <span class="num">HRSPOP</span>, <span class="num">HRSAV</span> et <span class="num">EMP</span> ; OCDE, <i>Social Expenditure Database</i>, agrégats publics et privés par habitant en parité de pouvoir d\'achat. Extraction par API SDMX le 13 septembre 2026. Les constats 4, 7, 8, 9, 10, 11 et 13 reprennent les chapitres « Dépenses publiques », « Dette et déficit », « Santé », « Éducation » et « Démographie » de ce dossier, où ils portent leurs propres sources. <b>Calcul par nos soins</b> pour le constat 6, décrit dans l\'encadré qui le suit.',
+    theme: 'synthese',
+    accessed: '2026-08',
+  },
+  'ocde-gdpvd-cap-2': {
+    producer: 'OCDE',
+    kind: 'database',
     datasets: [
       'GDPVD_CAP', 'GDP', 'POP', 'CBGDPR', 'IGV', 'NLGQ', 'GDPPOP', 'GDPHRS', 'HRSPOP', '0610',
       '0710',

@@ -92,6 +92,252 @@ export const tables = {
       },
     ],
   },
+  'le-constat': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      { key: 'le-constat', header: 'Le constat', type: 'text', headerNumeric: false },
+      {
+        key: 'l-indicateur-qui-le-tranche',
+        header: 'L\'indicateur qui le tranche',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'valeur-millesimes-2021-2025',
+        header: 'Valeur, millésimes 2021-2025',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>1.</b> La France est riche, mais décroche' },
+          { t: 'Avance sur le PIB par habitant moyen de l\'OCDE' },
+          { v: 11.3, d: 1, u: '% en 2005 → +1,4 % en 2025', sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>2.</b> L\'économie est compétitive, le travail est rare' },
+          { t: 'Heures travaillées par habitant et par an' },
+          { v: 674, d: 0, u: 'contre 735 en Allemagne', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>3.</b> Le taux le plus haut sur l\'assiette la plus faible' },
+          { t: 'Prélèvements obligatoires par habitant, en parité de pouvoir d\'achat' },
+          { v: 24498, d: 0, u: '$ contre 25 369 en Allemagne' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>4.</b> Les prestations sociales portent toute la hausse' },
+          { t: 'Part de la hausse de la dépense publique depuis 1975' },
+          { v: 76, d: 0, u: '% — 8,3 points de PIB sur 10,9', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>5.</b> Le système n\'est pas plus généreux' },
+          { t: 'Dépense de vieillesse par habitant, publique et privée' },
+          { v: 7684, d: 0, u: '$ contre 7 759 en Allemagne', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>6.</b> Le déficit est un déficit d\'heures travaillées' },
+          { t: 'Solde public au volume horaire allemand, dépense inchangée' },
+          { v: -12, d: 0, u: 'Md€ au lieu de −153', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>7.</b> On a payé en comprimant l\'investissement' },
+          { t: 'Part de l\'investissement dans la dépense publique' },
+          { v: 11.5, d: 1, u: '% en 1975 → 7,5 % en 2024' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>8.</b> L\'administration n\'est pas le problème' },
+          { t: 'Coût de l\'administration générale par habitant' },
+          { v: 623, d: 0, u: '€ contre 759 en Europe, 1 070 en Allemagne', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>9.</b> Les vents porteurs tournent tous ensemble' },
+          { t: 'Charge de la dette' },
+          { v: 58.9, d: 1, u: 'Md€ en 2024 → ≈ 67 Md€ en 2026' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>10.</b> L\'ordre de grandeur de l\'effort' },
+          { t: 'Écart entre 5,1 % et 3 % de déficit' },
+          { v: 63, d: 0, u: 'Md€ contre 5 à 20 Md€ pour la taxe Zucman' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>11.</b> Le financement est reporté' },
+          { t: 'Dette non financière par habitant' },
+          { v: 112120, d: 0, u: '€, dont 46 333 € publique' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>12.</b> Rien de tout cela n\'est un équilibre' },
+          { t: 'Écart entre dépense et recettes publiques' },
+          { v: 57.4, d: 1, u: '% contre 52,3 % du PIB' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>13.</b> Plus d\'élèves, moins par élève' },
+          { t: 'Dépense par élève, en standards de pouvoir d\'achat' },
+          { v: 8151, d: 0, u: 'contre 10 363 en Allemagne' },
+        ],
+      },
+    ],
+  },
+  'depense-sociale-par-habitant-usd-a-parite-de-pouvoir-d-ach': {
+    vintage: '2021',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'depense-sociale-par-habitant-usd-a-parite-de-pouvoir-d-ach',
+        header: 'Dépense sociale par habitant, USD à parité de pouvoir d\'achat, 2021',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'allemagne', header: 'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'pays-bas', header: 'Pays-Bas', type: 'number', headerNumeric: true },
+      { key: 'royaume-uni', header: 'Royaume-Uni', type: 'number', headerNumeric: true },
+      { key: 'etats-unis', header: 'États-Unis', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Dépense sociale publique, % du PIB' },
+          { v: 32.7, d: 1, u: '%' },
+          { v: 28.9, d: 1, u: '%' },
+          { v: 19.8, d: 1, u: '%' },
+          { v: 24.4, d: 1, u: '%' },
+          { v: 21.6, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Dépense sociale totale par habitant</b> <em>(publique et privée)</em>' },
+          { v: 19578, d: 0, u: '$', strong: true },
+          { v: 20440, d: 0, u: '$', strong: true },
+          { v: 21623, d: 0, u: '$', strong: true },
+          { v: 15388, d: 0, u: '$' },
+          { v: 21312, d: 0, u: '$' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>dont vieillesse</b>' },
+          { v: 7684, d: 0, u: '$', strong: true },
+          { v: 7759, d: 0, u: '$', strong: true },
+          { v: 7343, d: 0, u: '$' },
+          { v: 5858, d: 0, u: '$' },
+          { v: 8394, d: 0, u: '$' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<em>dont part publique</em>' },
+          { v: 7543, d: 0, u: '$' },
+          { v: 7317, d: 0, u: '$' },
+          { v: 5174, d: 0, u: '$' },
+          { v: 4201, d: 0, u: '$' },
+          { v: 4461, d: 0, u: '$' },
+        ],
+      },
+    ],
+  },
+  'france-2025-si-le-volume-horaire-par-habitant-etait-celui': {
+    vintage: '2025',
+    sources: ['ocde-gdpvd-cap'],
+    columns: [
+      {
+        key: 'france-2025-si-le-volume-horaire-par-habitant-etait-celui',
+        header: 'France 2025, si le volume horaire par habitant était celui de…',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'aujourd-hui', header: 'Aujourd\'hui', type: 'number', headerNumeric: true },
+      { key: 'l-allemagne', header: 'l\'Allemagne', type: 'number', headerNumeric: true },
+      { key: 'des-pays-bas', header: 'des Pays-Bas', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Heures travaillées par habitant' },
+          { v: 674, d: 0 },
+          { v: 735, d: 0 },
+          { v: 828, d: 0 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'PIB' },
+          { v: 2984, d: 0, u: 'Md€' },
+          { v: 3252, d: 0, u: 'Md€' },
+          { v: 3667, d: 0, u: 'Md€' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Recettes publiques, taux inchangé' },
+          { v: 1562, d: 0, u: 'Md€' },
+          { v: 1702, d: 0, u: 'Md€' },
+          { v: 1919, d: 0, u: 'Md€' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Solde public</b>' },
+          { v: -153, d: 0, u: 'Md€', strong: true },
+          { v: -12, d: 0, u: 'Md€', strong: true },
+          { v: 205, d: 0, u: 'Md€', sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Taux d\'emploi nécessaire</b> <em>(à durée du travail française inchangée)</em>' },
+          { v: 44.7, d: 1, u: '%' },
+          { v: 48.7, d: 1, u: '%', strong: true },
+          { v: 54.9, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Personnes en emploi supplémentaires' },
+          null,
+          { v: 2.8, d: 1, u: 'millions' },
+          { v: 7, d: 1, u: 'millions' },
+        ],
+      },
+    ],
+  },
 } satisfies Tables
 
 export const series = {
@@ -483,4 +729,4 @@ export const questions = [
  * tableaux et les figures. La bibliographie les recense aussi : une source
  * citée en prose reste une source du dossier.
  */
-export const citedSources = [] satisfies readonly SourceId[]
+export const citedSources = ['ocde-gdpvd-cap'] satisfies readonly SourceId[]
