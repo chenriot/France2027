@@ -129,21 +129,27 @@ function Lines({ c }: { c: Extract<Chart, { kind: "lines" }> }) {
     col: string;
   }[] = [];
 
+  // Un `null` ne signale pas un trou dans la mesure : il dit que **cette
+  // série-là n'a pas de point à cette abscisse**, parce que les abscisses
+  // d'une figure sont l'union des grilles de ses séries. Eurostat relève les
+  // homicides tous les deux ans pour la France et tous les trois ans pour
+  // l'Allemagne ; le `x` commun porte donc les deux grilles, et chaque série
+  // est absente des années de l'autre.
+  //
+  // On joint donc d'un point relevé au suivant, comme le fait
+  // `polylinePoints` de `src/lib/scales.ts` pour les figures des chapitres —
+  // et comme le fait le document d'origine, qui trace une polyligne continue
+  // par série. Couper à chaque `null` découpait la courbe en tronçons
+  // décalés, et faisait disparaître les séries à grille lâche, dont aucun
+  // tronçon n'atteignait deux points.
   for (const s of c.series) {
     const col = tone(s.tone);
-    let run: string[] = [];
-    let seg = 0;
+    const pts: string[] = [];
     for (const [i, v] of s.values.entries()) {
-      if (v === null) {
-        if (run.length > 1)
-          paths.push({ key: `${s.key}-${seg++}`, pts: run.join(" "), col });
-        run = [];
-        continue;
-      }
-      run.push(`${px(c.x[i])} ${py(v)}`);
+      if (v === null) continue;
+      pts.push(`${px(c.x[i])} ${py(v)}`);
     }
-    if (run.length > 1)
-      paths.push({ key: `${s.key}-${seg}`, pts: run.join(" "), col });
+    if (pts.length > 1) paths.push({ key: s.key, pts: pts.join(" "), col });
     const last = s.values.reduce<number>((a, v, i) => (v !== null ? i : a), -1);
     if (last >= 0) {
       const v = s.values[last] as number;

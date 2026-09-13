@@ -36,7 +36,9 @@ export interface LineSeries {
   readonly key: string
   readonly label: string
   readonly tone: Tone
-  /** `null` = donnée absente. Le tracé s'interrompt, il ne s'invente pas. */
+  /** `null` = cette série n'a pas de point à cette abscisse — les abscisses
+   *  d'une figure sont l'union des grilles de ses séries. Le tracé joint d'un
+   *  point relevé au suivant, comme celui du chapitre. */
   readonly values: readonly (number | null)[]
 }
 
