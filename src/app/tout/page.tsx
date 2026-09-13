@@ -82,7 +82,7 @@ export default function Tout() {
               <li>
                 <a href="#synth">
                   <span className="n">00</span>
-                  <span>Synthèse et commentaire</span>
+                  <span>Synthèse</span>
                 </a>
               </li>
               {allChapters

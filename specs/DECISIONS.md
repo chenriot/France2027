@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **330** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
-| Cellules chiffrées typées en nombres | 4 387 sur 6 836 (64 %) | extraction |
-| Figures | **58** — 29 migrées et prouvées identiques + 3 ajoutées (§D17) · 22 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
+| Tableaux | **329** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Cellules chiffrées typées en nombres | 4 661 sur 7 221 (65 %) | extraction |
+| Figures | **53** — 28 migrées et prouvées identiques + 3 ajoutées (§D17) · 21 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
 | Sources | **215 entrées** (205 migrées + 10 ajoutées, §D17), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **62 374 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| **Rendu de `/tout`** | **60 724 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -450,9 +450,21 @@ recomposent pas, c'est qu'ils viennent de définitions différentes.** Ses PPA
 sont celles de 2020 et non de 2021, d'où un écart de niveau avec le reste du
 dossier, déclaré dans l'encadré `lim` de la fiche.
 
-**Quatrième application : `synth-q5`**, réécrite en « Dix constats, dix
-chiffres : la chaîne, expliquée simplement », en fin de chapitre « Synthèse ».
-Treize tableaux, une source, et une contrainte de forme demandée :
+**Quatrième application : le chapitre « Synthèse » est réduit à une seule
+fiche**, « Dix constats, dix chiffres : la chaîne, expliquée simplement ».
+Les quatre fiches qui la précédaient — « La thèse centrale, mise à l'épreuve »,
+« Le contrepoint qu'il faut garder en tête », « Résumé par thème » et
+« Commentaire » — ont été retirées du document d'origine : elles disaient la
+même chose dans un autre ordre, et un chapitre de synthèse qui expose quatre
+synthèses concurrentes n'en est plus une. Les deux figures qu'elles portaient
+existaient déjà à l'identique dans « Dépenses publiques » — mêmes valeurs,
+mêmes coordonnées — et rien n'est donc perdu ; les tests unitaires de
+`src/lib/chart.ts` et le mur d'indicateurs de l'accueil, qui les pointaient
+dans « Synthèse », pointent désormais l'exemplaire survivant. Le chapitre
+s'appelle maintenant « Synthèse » et non plus « Synthèse et commentaire ».
+
+La fiche restante porte treize tableaux, une source, et une contrainte de forme
+demandée :
 **être lisible sans connaissance préalable en économie**. Concrètement, quatre
 règles tenues tout au long de la fiche :
 

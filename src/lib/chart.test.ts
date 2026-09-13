@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { series } from '@/app/(chapitres)/synthese/data'
+import { series } from '@/app/(chapitres)/depenses-publiques/data'
 import { buildChart, svgNumber } from './chart'
 import { isRawFigure } from './types'
 import type { Figure, Series } from './types'
@@ -22,7 +22,7 @@ describe('svgNumber', () => {
 })
 
 describe('buildChart, courbe', () => {
-  const figure = dataDriven('france-trois-mesures-du-pib-indice-ue-27-100')
+  const figure = dataDriven('les-trois-mesures-indice-ue-27-100')
 
   it('retrouve les ordonnées de grille du document d’origine', () => {
     const grid = buildChart(figure).filter((n) => n.cls === 'grid')
@@ -47,7 +47,7 @@ describe('buildChart, courbe', () => {
 })
 
 describe('buildChart, barres', () => {
-  const figure = dataDriven('depense-publique-par-fonction-en-euros-par-habitant')
+  const figure = dataDriven('depense-publique-par-fonction-france-et-moyenne-europeenne')
 
   it('retrouve les largeurs de barre du document d’origine', () => {
     const bars = buildChart(figure).filter((n) => n.tag === 'rect')

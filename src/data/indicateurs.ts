@@ -154,14 +154,14 @@ const GES: Origine = {
 }
 const PISA: Origine = { chapitre: 'education', cle: 'pisa-mathematiques-2003-2022' }
 const LOGEMENT: Origine = { chapitre: 'logement', cle: 'indice-prix-revenu-base-100-en-2015' }
-const PIB: Origine = { chapitre: 'synthese', cle: 'france-trois-mesures-du-pib-indice-ue-27-100' }
+const PIB: Origine = { chapitre: 'depenses-publiques', cle: 'les-trois-mesures-indice-ue-27-100' }
 const CRIME: Origine = {
   chapitre: 'securite-justice',
   cle: 'homicides-et-tentatives-d-homicide-france-et-allemagne',
 }
 const FONCTIONS: Origine = {
-  chapitre: 'synthese',
-  cle: 'depense-publique-par-fonction-en-euros-par-habitant',
+  chapitre: 'depenses-publiques',
+  cle: 'depense-publique-par-fonction-france-et-moyenne-europeenne',
 }
 const COFOG: Origine = { chapitre: 'depenses-publiques', cle: 'fonction-cofog-2024' }
 const EMPLOI_AGE: Origine = { chapitre: 'retraites-travail', cle: 'taux-d-emploi-2024' }
@@ -221,7 +221,7 @@ export const tiles: readonly Tile[] = [
     axis: 'x',
     faces: [
       {
-        eyebrow: 'Synthèse · dépense comparée',
+        eyebrow: 'Thème 01 · Dépenses publiques',
         tone: 'blue',
         title: 'Dépense publique par fonction, en euros par habitant',
         note: "L'Allemagne dépense plus que la France sur <b>huit fonctions sur dix</b>. Les exceptions sont le logement et la culture.",
@@ -396,7 +396,7 @@ export const tiles: readonly Tile[] = [
     axis: 'x',
     faces: [
       {
-        eyebrow: 'Synthèse · proposition n° 1',
+        eyebrow: 'Thème 02 · Dette et déficit',
         tone: 'blue',
         title: 'Prestations sociales, en % du PIB',
         note: 'Le poste qui a absorbé toute la marge budgétaire depuis 1975.',
@@ -506,7 +506,7 @@ export const tiles: readonly Tile[] = [
     axis: 'y',
     faces: [
       {
-        eyebrow: 'Synthèse · proposition n° 1',
+        eyebrow: 'Thème 02 · Dette et déficit',
         tone: 'blue',
         title: 'La marge budgétaire, absorbée',
         note: 'De la hausse de la dépense publique depuis 1975 vient des <b>prestations sociales</b>. Aucun autre poste n’en explique plus de 16 %.',
@@ -553,7 +553,7 @@ export const tiles: readonly Tile[] = [
     axis: 'y',
     faces: [
       {
-        eyebrow: 'Synthèse · composition de la dépense',
+        eyebrow: 'Thème 03 · Retraites',
         tone: 'blue',
         title: 'Retraites, par personne de 65 ans et plus',
         note: 'Sur ce poste, la France dépense <b>plus</b> que l’Allemagne.',
@@ -580,7 +580,7 @@ export const tiles: readonly Tile[] = [
         ...de(PENSIONS),
       },
       {
-        eyebrow: 'Synthèse · composition de la dépense',
+        eyebrow: 'Thème 14 · Éducation',
         tone: 'red',
         title: "Dépense par élève, en pouvoir d'achat",
         note: "Sur celui-là, un cinquième de moins — et une part de l'écart reste masquée par les pensions.",
@@ -739,7 +739,7 @@ export const hero: Tile = {
       ...de(PIB),
     },
     {
-      eyebrow: 'Synthèse · proposition n° 3',
+      eyebrow: 'Thème 01 · Dépenses publiques',
       tone: 'blue',
       title: "Deuxième d'Europe en part du PIB, huitième par habitant",
       value: cellule(COFOG, 'Total', 'France €/hab'),

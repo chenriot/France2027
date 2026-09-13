@@ -1658,7 +1658,7 @@ export const tables = {
   '2024-3': {
     vintage: '2024',
     sources: [
-      'eurostat-lfsi-emp-a-2', 'eurostat-lfsi-emp-a',
+      'eurostat-lfsi-emp-a', 'eurostat-lfsi-emp-a-2',
       'eurostat-ocde-panorama-des-pensions-2025-via-l',
     ],
     columns: [
@@ -1736,7 +1736,7 @@ export const tables = {
   'ecart-de-la-france-2024': {
     vintage: '2024',
     sources: [
-      'eurostat-lfsi-emp-a-2', 'eurostat-lfsi-emp-a',
+      'eurostat-lfsi-emp-a', 'eurostat-lfsi-emp-a-2',
       'eurostat-ocde-panorama-des-pensions-2025-via-l',
     ],
     columns: [
@@ -1804,7 +1804,7 @@ export const tables = {
   'passage-du-denominateur-15-64-au-denominateur-national': {
     vintage: '2025',
     sources: [
-      'eurostat-lfsi-emp-a-2', 'eurostat-lfsi-emp-a',
+      'eurostat-lfsi-emp-a', 'eurostat-lfsi-emp-a-2',
       'eurostat-ocde-panorama-des-pensions-2025-via-l',
     ],
     columns: [
@@ -4043,7 +4043,7 @@ export const series = {
     title: 'Le PIB rapporté à trois dénominateurs différents',
     subtitle: '2024, en milliers de dollars internationaux constants de 2021. Trois barres par pays.',
     caption: '<b>Plus le dénominateur se rapproche de ceux qui produisent réellement, plus l\'écart français se referme.</b> Sur la population de 15 à 64 ans, la France est 5ᵉ sur 7 et 9,8 % derrière l\'Allemagne. Rapportée aux seules personnes en emploi, elle passe <b>devant l\'Allemagne (+3,0 %)</b> et à égalité avec les Pays-Bas. Seul l\'écart avec les États-Unis résiste : −17,3 %.',
-    sources: ['eurostat-lfsi-emp-a-2'],
+    sources: ['eurostat-lfsi-emp-a'],
     vintage: '2024',
     legend: [
       { color: 's4', label: 'par personne de 15 à 64 ans' },
@@ -4104,7 +4104,7 @@ export const series = {
     title: 'PIB par personne en emploi, 1995-2024',
     subtitle: 'En milliers de dollars internationaux constants de 2021.',
     caption: '<b>Le fait saillant de trente ans n\'est pas européen.</b> La France tient son rang face à l\'Allemagne et aux Pays-Bas sur toute la période — elle était devant en 1995, elle l\'est encore aujourd\'hui. Mais face aux États-Unis, elle passe de <b>+6,5 % en 1995 à −17,3 % en 2024</b> : près de 24 points perdus, dont l\'essentiel après 2000 et une accélération après 2019.',
-    sources: ['eurostat-lfsi-emp-a'],
+    sources: ['eurostat-lfsi-emp-a-2'],
     vintage: '2024',
     legend: [
       { color: 's2', label: 'États-Unis' },
