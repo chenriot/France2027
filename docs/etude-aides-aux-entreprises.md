@@ -321,6 +321,112 @@ d'une part, et de maintien du niveau d'emploi d'autre part ».
   pour 2025 détruirait des emplois **[R]**. Avant d'attribuer au rapport les
   effets de la réforme, comparer le barème recommandé et le barème voté.
 
+### 3.7 Préconise-t-il de diminuer les exonérations ? Non.
+
+La question est posée partout ; le rapport y répond sans ambiguïté, et dans
+l'autre sens.
+
+- **Tous les scénarios sont à budget constant**, par choix de méthode assumé :
+  « à des fins de clarté, nous avons privilégié des scénarios à budget constant »
+  **[B-W p. 10]**. Ce que le rapport propose, c'est de **déplacer** la masse le
+  long du barème, pas de la retirer.
+- **La conclusion générale est explicite** : « il faut globalement continuer
+  d'alléger le coût du travail, et pour atteindre cet objectif uniformément et
+  non pas uniquement sur certains segments de la force de travail, ne pas
+  s'interdire de proposer des pistes nouvelles sur les assiettes »
+  **[B-W p. 280]**.
+- **Et la suppression est écartée** : « mettre fin entièrement aux réductions de
+  cotisations employeur ne semble ni réaliste ni souhaitable » **[B-W p. 281]**.
+- **La contrainte budgétaire est reconnue, pas endossée** : « nous sommes
+  conscients de la dégradation des finances publiques et des contraintes de très
+  court terme **pouvant nécessiter** de réduire le volume des exonérations ».
+  Et aussitôt bornée : « s'il est possible de diminuer de quelques milliards le
+  montant des exonérations, cette hausse de prélèvements obligatoires sur les
+  salaires doit rester limitée, et il vaut mieux chercher des recettes sur
+  d'autres bases fiscales » **[B-W p. 11]**.
+
+**Ce que le rapport veut réduire, c'est la pente, pas le volume.** La seule
+baisse qu'il préconise — 4,05 points au niveau du Smic — est intégralement
+recyclée vers les salaires intermédiaires. Un gouvernement qui coupe dans les
+allègements pour financer autre chose ne s'appuie pas sur ce rapport : il s'y
+heurte.
+
+### 3.8 Peut-on faire le bilan coût-bénéfice ? À moitié, et le rapport dit laquelle
+
+C'est la question la plus honnêtement traitée du document, et la réponse est
+inconfortable pour tout le monde.
+
+**Ce qui s'évalue, et qui est évalué.**
+
+L'effet emploi des allègements ciblés des années 1990 est le résultat le plus
+solide : Crépon et Desplatz (2001), confirmés par des réplications récentes sur
+données administratives, montrent que l'emploi des salariés entre 1 et 1,3 Smic
+a nettement plus progressé dans les entreprises bénéficiaires **[B-W p. 89-91]**.
+Les élasticités de la littérature s'étagent de −0,5 à −1,5 selon les études et
+les périodes.
+
+Le rapport fait lui-même l'arithmétique du retrait total, et c'est le passage à
+retenir **[B-W p. 68-69, encadré 1.1]** :
+
+| Étape du calcul | Montant |
+|---|---|
+| Cotisations récupérées **si l'emploi ne bougeait pas** | 67 Md€ |
+| Emplois détruits, aux élasticités retenues par le rapport | **−980 000 ETP** |
+| Cotisations perdues du fait de ces destructions | −19 Md€ |
+| **Recettes nettes** | **48 Md€** |
+
+Et le rapport ajoute que même ces 48 Md€ sont surestimés : il faudrait retrancher
+les dépenses d'assurance chômage des salariés qui perdraient leur emploi, et les
+moindres recettes de CSG, de TVA et d'impôt sur le revenu.
+
+Rapporté au nombre d'emplois — *ce calcul est le nôtre, le rapport ne le présente
+pas ainsi* —, cela situe le coût du dispositif autour de **49 000 € par emploi**
+à la marge d'une suppression totale. À comparer aux **20 000 à 40 000 € par
+emploi des allègements ciblés sur les bas salaires** et aux **~180 000 € du
+CICE** **[D]** : c'est bien le ciblage qui fait l'écart, et une moyenne sur
+l'ensemble du barème ne dit rien du coût marginal à chaque niveau de salaire.
+
+**Ce qui ne s'évalue pas — et c'est précisément ce sur quoi porte la décision.**
+
+- « Les modèles disponibles, dans la littérature académique et au sein des
+  administrations, **ne permettent pas d'évaluer les arbitrages entre effets
+  positifs en emploi des allègements et effets négatifs sur la dynamique
+  salariale** » **[B-W p. 12]**. Les deux plateaux de la balance ne sont pas
+  mesurés dans la même unité, ni avec la même fiabilité.
+- Les effets de trappe sont graduels et cumulatifs, « ce qui rend les
+  méthodologies impuissantes à les mesurer » **[B-W p. 9]**.
+- Les effets de composition sur le tissu productif sont « particulièrement
+  difficiles à identifier empiriquement ».
+- Et les chiffrages de coût eux-mêmes sont statiques : ils « ne donnent pas
+  d'indication précise sur les éventuelles économies qui pourraient être faites
+  en rendant le barème moins généreux » **[B-W p. 68]**.
+
+**Trois résultats de méthode, qui valent pour tout le champ des aides.**
+
+1. **L'écart ex ante / ex post est énorme.** Sur le CICE, une élasticité de −0,9
+   donnait environ **340 000 emplois** en prévision ; les évaluations ex post ont
+   trouvé **100 000 à 150 000**. Pour retomber sur 150 000, il faudrait une
+   élasticité de −0,3 **[B-W p. 176]**. C'est pourquoi les auteurs ont **révisé à
+   la baisse les élasticités emploi utilisées par les administrations**
+   **[B-W p. 12]**.
+2. **Le mode de financement divise le résultat.** Malinvaud (1998), cité par le
+   rapport : l'effet emploi positif d'une exonération est **réduit d'un facteur
+   deux à trois** selon la façon dont elle est financée **[B-W p. 69]**. Une
+   évaluation qui ignore le financement compte un bénéfice sans son coût.
+3. **Pour les dispositifs ciblés, le verdict existe et il est négatif.** Les
+   évaluations des nombreux régimes dérogatoires « se sont révélées
+   systématiquement négatives quant à leurs effets attendus » **[B-W p. 242,
+   tableau 5.3]**. C'est ce constat, et non une préférence pour la simplicité,
+   qui fonde la recommandation 1.
+
+**La conclusion pratique.** On peut chiffrer ce que coûte un dispositif et, avec
+une fourchette large, combien d'emplois il porte. On ne sait pas encore chiffrer
+ce qu'il fait aux salaires, aux qualifications et à la spécialisation de
+l'économie — c'est-à-dire l'autre moitié du bilan, et celle sur laquelle le
+rapport fonde sa recommandation. Qui affirme un ratio coût-bénéfice unique pour
+les allègements avance donc au-delà de ce que les données permettent, dans un
+sens comme dans l'autre.
+
 ### 3.7 Un mot sur le vocabulaire
 
 **« Désmicardisation » n'est pas un mot du rapport.** Il n'y figure pas une seule
