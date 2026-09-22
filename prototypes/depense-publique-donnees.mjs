@@ -90,15 +90,26 @@ for (const clef of Object.keys(grille)) {
   if (Number.isFinite(an)) colonnes[an] = m[1]
 }
 
-/** Une ligne du classeur, repérée par son libellé en colonne A. */
-function ligne(libelle) {
-  const m = Object.keys(grille).find((c) => /^A\d+$/.test(c) && grille[c] === libelle)
+/**
+ * Une ligne du classeur, repérée par le début de son libellé en colonne A — les
+ * libellés portent des appels de note. `nulOk` accepte les années « nd » et les
+ * rend en `null` : la dette brute ne commence qu'en 1978, et un trou se dessine
+ * comme un trou, il ne s'invente pas.
+ */
+function ligne(libelle, nulOk = false) {
+  const cellules = Object.keys(grille).filter((c) => /^A\d+$/.test(c))
+  // L'égalité d'abord : « Dépenses » commence aussi le titre du classeur.
+  const m = cellules.find((c) => grille[c] === libelle)
+    ?? cellules.find((c) => String(grille[c]).startsWith(libelle))
   if (!m) throw new Error(`ligne introuvable dans le classeur : « ${libelle} »`)
   const n = m.slice(1)
   const out = []
   for (let an = AN0; an <= AN1; an++) {
     const v = grille[`${colonnes[an]}${n}`]
-    if (typeof v !== 'number') throw new Error(`valeur manquante : ${libelle} ${an}`)
+    if (typeof v !== 'number') {
+      if (nulOk) { out.push(null); continue }
+      throw new Error(`valeur manquante : ${libelle} ${an}`)
+    }
     out.push(v)
   }
   return out
@@ -107,6 +118,20 @@ function ligne(libelle) {
 const depenses = ligne('Dépenses')
 const recettes = ligne('Recettes')
 const solde = ligne('Déficit au sens de Maastricht')
+const dette = ligne('Dette des administrations publiques (brute)', true)
+
+/**
+ * Le PIB en valeur ouvre le second mode de lecture — les mêmes séries en
+ * milliards d'euros courants. Il n'est pas dans le classeur des ratios : tant
+ * qu'une ligne « Produit intérieur brut » (en Md€) n'y figure pas, le mode
+ * reste fermé plutôt qu'approché.
+ */
+let pib = null
+try {
+  pib = ligne('Produit intérieur brut')
+} catch {
+  console.warn('PIB en valeur absent du classeur : le mode « en euros » restera fermé.')
+}
 
 /* ----------------------------------------------------------- contrôles */
 
@@ -125,6 +150,24 @@ for (const [j, an] of annees.entries()) {
   if (ecart > 0.1) throw new Error(`en ${an}, recettes − dépenses s'écarte du solde notifié de ${ecart.toFixed(2)} point`)
 }
 
+if (pib !== null) {
+  // Garde-fou d'unité : le mode « en euros » attend des milliards d'euros
+  // courants. Une série en millions donnerait un graphique juste au facteur
+  // mille près, c'est-à-dire faux sans que rien ne le signale.
+  const dernier = pib.at(-1)
+  if (dernier < 1000 || dernier > 5000) {
+    throw new Error(
+      `PIB ${AN1} = ${dernier} : unité inattendue. Le mode « en euros » attend des milliards d'euros courants (ordre de grandeur 2 000 à 3 500).`,
+    )
+  }
+}
+
+const debutDette = dette.findIndex((v) => v !== null)
+if (debutDette < 0) throw new Error('la dette brute est absente du classeur')
+for (let j = debutDette; j < dette.length; j++) {
+  if (dette[j] === null) throw new Error(`trou dans la dette en ${annees[j]} : la série n'est plus continue`)
+}
+
 /* -------------------------------------------------------------- sortie */
 
 const r3 = (v) => Math.round(v * 1000) / 1000
@@ -139,6 +182,8 @@ const donnees = {
   depenses: depenses.map(r3),
   recettes: recettes.map(r3),
   solde: solde.map(r3),
+  dette: dette.map((v) => (v === null ? null : r3(v))),
+  pib: pib === null ? null : pib.map(r3),
   mandats: nature.annotations.mandates.map((m) => ({
     libelle: m.label,
     de: r3(AN0 + m.from),
@@ -161,4 +206,7 @@ const k = html.indexOf(fin)
 if (i < 0 || k < 0) throw new Error('marqueurs de données introuvables dans le prototype')
 fs.writeFileSync(cible, `${html.slice(0, i + debut.length)}\n${texte}${html.slice(k)}`)
 
-console.log(`${annees.length} années écrites · reste de ${r3(Math.min(...reste))} à ${r3(Math.max(...reste))} point du PIB`)
+console.log(
+  `${annees.length} années écrites · reste de ${r3(Math.min(...reste))} à ${r3(Math.max(...reste))} point du PIB`
+  + ` · dette de ${annees[debutDette]} à ${AN1}, de ${dette[debutDette]} à ${dette.at(-1)} % du PIB`,
+)

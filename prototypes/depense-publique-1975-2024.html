@@ -53,7 +53,7 @@ body{margin:0;background:var(--paper);color:var(--ink);
   font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
 :focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:2px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 80px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 80px}
 
 /* ------------------------------------------------------------- en-tête */
 .mast{padding:clamp(32px,5vw,64px) 0 0;max-width:72ch}
@@ -67,47 +67,49 @@ h1{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(28px,4.2
 /* -------------------------------------------------------------- scène */
 .scene{margin:26px 0 0;background:var(--surface);border:1px solid var(--rule);border-radius:4px;
   box-shadow:var(--shadow);overflow:hidden}
-.cadre{position:relative}
+/* Deux unités de lecture : la part du PIB, et les euros de l'année. */
+.modes{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px clamp(16px,3vw,28px) 12px}
+.bascule{display:inline-flex;border:1px solid var(--rule-2);border-radius:3px;overflow:hidden;flex:none}
+.bascule button{appearance:none;background:var(--surface);border:0;padding:8px 15px;cursor:pointer;
+  font:600 13px/1 "IBM Plex Sans",sans-serif;color:var(--muted)}
+.bascule button+button{border-left:1px solid var(--rule-2)}
+.bascule button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.bascule button:disabled{opacity:.45;cursor:not-allowed}
+.modes .note{margin:0;font-size:12.5px;line-height:1.45;color:var(--muted);max-width:74ch}
+.cadre{position:relative;border-top:1px solid var(--rule)}
 svg.cv{display:block;width:100%;height:auto;background:var(--surface)}
 
-/* Le récit occupe une hauteur fixe : sans elle, la planche sauterait à chaque
-   changement d'acte, et le regard quitterait le graphique. */
-.recit{border-top:1px solid var(--rule);padding:18px clamp(16px,3vw,28px) 4px;min-height:132px}
-.recit .num{font:600 11.5px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--accent);margin:0 0 8px}
-.recit h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:22px;line-height:1.2;margin:0 0 6px}
-.recit p.txt{margin:0;color:var(--ink-2);max-width:82ch}
+/* Hauteur fixe : sans elle, la planche sauterait à chaque jalon. */
+.recit{border-top:1px solid var(--rule);padding:16px clamp(16px,3vw,28px) 6px;min-height:118px;
+  display:flex;gap:clamp(16px,3vw,34px);align-items:baseline}
+.recit .an{font:600 34px/1 "IBM Plex Mono",monospace;color:var(--ink);font-variant-numeric:tabular-nums;
+  flex:none;letter-spacing:-.02em}
+.recit .dit{margin:0;color:var(--ink-2);max-width:78ch}
 
-/* -------------------------------------------------------------- barre */
-.rail{display:flex;gap:4px;padding:0 clamp(16px,3vw,28px) 14px}
-.rail button{flex:1;appearance:none;background:none;border:0;padding:8px 0 0;cursor:pointer;text-align:left;
-  font:500 11.5px/1.3 "IBM Plex Sans",sans-serif;color:var(--muted)}
-.rail button .bar{display:block;height:3px;border-radius:2px;background:var(--rule);margin-bottom:6px;overflow:hidden}
-.rail button .bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:2px}
-.rail button[aria-current="true"]{color:var(--ink)}
-.rail button.vu .bar i{width:100%}
-
-.cmds{display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-  padding:0 clamp(16px,3vw,28px) 16px}
+/* ------------------------------------------------------------ réglages */
+.cmds{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px clamp(16px,3vw,28px) 16px}
 .cmds button{appearance:none;font:600 13px/1 "IBM Plex Sans",sans-serif;color:var(--ink-2);
   background:var(--surface-2);border:1px solid var(--rule);border-radius:3px;padding:8px 12px;cursor:pointer}
 .cmds button:hover{border-color:var(--rule-2);color:var(--ink)}
 .cmds .droite{margin-left:auto}
+input[type="range"]{flex:1 1 260px;min-width:180px;accent-color:var(--accent);height:22px}
 
 /* ------------------------------------------------------------ légende */
-.legende{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin:0;
-  padding:14px clamp(16px,3vw,28px);border-top:1px solid var(--rule);background:var(--surface-2)}
-.legende li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);
-  transition:opacity .3s ease}
-.legende li[data-vu="0"]{opacity:.34}
+.legende{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;margin:0;
+  padding:13px clamp(16px,3vw,28px);border-top:1px solid var(--rule);background:var(--surface-2)}
+.legende li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)}
 .legende i{width:14px;height:14px;border-radius:2px;flex:none;display:block}
 .legende i.hach{border:1px solid var(--rule-2);
   background:repeating-linear-gradient(45deg,transparent 0 3px,var(--muted) 3px 4px)}
+.legende i.hachd{border:1px solid var(--gap);
+  background:repeating-linear-gradient(-45deg,transparent 0 2px,var(--gap) 2px 4px)}
 .legende i.trait{height:0;border-top:2.5px solid var(--ink)}
 .legende i.tirets{height:0;border-top:2.5px dashed var(--ink)}
+.legende b{font:600 13px/1 "IBM Plex Mono",monospace;color:var(--ink);font-variant-numeric:tabular-nums}
+.legende li.tot{margin-left:auto}
 
 /* ---------------------------------------------------------- infobulle */
-.info{position:absolute;pointer-events:none;z-index:5;min-width:212px;
+.info{position:absolute;pointer-events:none;z-index:5;min-width:216px;
   background:var(--surface);border:1px solid var(--rule-2);border-radius:3px;box-shadow:var(--shadow);
   padding:9px 11px;font-size:12.5px;line-height:1.45;color:var(--ink-2)}
 .info[hidden]{display:none}
@@ -137,54 +139,49 @@ footer p{margin:0 0 10px}
 footer .num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 
 /* --------------------------------------------- vocabulaire des figures
-   Reprise des classes de src/styles/base.css, aux tailles de cette planche
-   (un cadre de 1000 de large contre 720 dans le dossier). */
+   Classes de src/styles/base.css, aux tailles de cette planche. */
 svg.cv .grid{stroke:var(--rule);stroke-width:1}
 svg.cv .axis{stroke:var(--rule-2);stroke-width:1}
 svg.cv .ax{font-family:"IBM Plex Mono",monospace;font-size:13px;fill:var(--muted);
   text-anchor:middle;font-variant-numeric:tabular-nums}
 svg.cv .ax.ar{text-anchor:end}
 svg.cv .ax.al{text-anchor:start}
-svg.cv .lbl{font-family:"IBM Plex Sans",sans-serif;font-size:14px;font-weight:600;
-  font-variant-numeric:tabular-nums}
+svg.cv .lbl{font-family:"IBM Plex Sans",sans-serif;font-size:13.5px;font-weight:600;
+  font-variant-numeric:tabular-nums;fill:var(--ink)}
 svg.cv .lbl.mut{fill:var(--muted);font-weight:500}
-svg.cv .lbl.enc{fill:var(--ink)}
-svg.cv .val{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:500;
-  fill:var(--muted);font-variant-numeric:tabular-nums}
+svg.cv .val{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;
+  fill:var(--ink);font-variant-numeric:tabular-nums}
 svg.cv .ln{fill:none;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
 svg.cv .pr{stroke:var(--surface);stroke-width:1.5}
 svg.cv .pr-d{fill:var(--s1);opacity:.30}
 svg.cv .pr-g{fill:var(--s2);opacity:.30}
 svg.cv .pr-c{fill:var(--s3);opacity:.30}
 svg.cv .prl{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:600;fill:var(--ink-2)}
-svg.cv .prl.mutp{font-weight:500;fill:var(--muted);font-size:11px}
-svg.cv .prl.al{text-anchor:start}
+svg.cv .prl.mutp{font-weight:500;fill:var(--muted);font-size:11px;text-anchor:start}
 svg.cv .coh{fill:url(#coh);stroke:none}
 svg.cv .cohl{stroke:var(--ink-2);stroke-width:1.4;opacity:.55}
-svg.cv .s1{stroke:var(--s1)} svg.cv .s2{stroke:var(--s2)} svg.cv .s3{stroke:var(--s3)}
-svg.cv .s4{stroke:var(--s4)} svg.cv .s5{stroke:var(--s5)}
 svg.cv .s1f{fill:var(--s1)} svg.cv .s2f{fill:var(--s2)} svg.cv .s3f{fill:var(--s3)}
 svg.cv .s4f{fill:var(--s4)} svg.cv .s5f{fill:var(--s5)}
-svg.cv .s1t{fill:var(--s1)} svg.cv .s2t{fill:var(--s2)} svg.cv .s3t{fill:var(--s3)}
-svg.cv .s4t{fill:var(--s4)} svg.cv .s5t{fill:var(--s5)}
 /* propres à cette planche */
-svg.cv .bande{stroke:none}
-svg.cv .reste{fill:url(#hach)}
-svg.cv .resteb{stroke:var(--muted);stroke-width:1.4;fill:none;opacity:.7}
-svg.cv .defz{fill:url(#hachd)}
+svg.cv .bande{stroke:var(--surface);stroke-width:.6}
+svg.cv .reste{fill:url(#hach);stroke:var(--surface);stroke-width:.6}
+svg.cv .defvoile{fill:var(--surface);opacity:.8}
+svg.cv .defz{fill:url(#hachd);opacity:.9}
 svg.cv .total{stroke:var(--ink);stroke-width:2.6;fill:none;stroke-linejoin:round}
 svg.cv .rec{stroke:var(--ink);stroke-width:2.6;fill:none;stroke-dasharray:9 5;stroke-linejoin:round}
-svg.cv .somme{stroke:var(--ink);stroke-width:2;fill:none;stroke-dasharray:3 4;opacity:.85}
-svg.cv .flag{fill:var(--surface);stroke:var(--rule-2);stroke-width:1}
+svg.cv .curseur{stroke:var(--ink-2);stroke-width:1;stroke-dasharray:3 3;opacity:.8}
 svg.cv .viseur{stroke:var(--rule-2);stroke-width:1;stroke-dasharray:3 3}
-svg.cv .pt{stroke:var(--surface);stroke-width:1.5}
+svg.cv .flag{fill:var(--surface);stroke:var(--rule-2);stroke-width:1}
+svg.cv .pt{stroke:var(--surface);stroke-width:1.6;fill:var(--ink)}
 svg.cv .gapt{fill:var(--gap)}
-svg.cv .hl{stroke:var(--gap);stroke-width:1.6;fill:none}
-svg.cv .filet{stroke:var(--rule-2);stroke-width:1;fill:none}
-
-@media (prefers-reduced-motion:reduce){
-  .legende li{transition:none}
-}
+svg.cv .stockc{fill:var(--surface-2);stroke:var(--rule);stroke-width:1}
+svg.cv .stockf{fill:var(--gap);opacity:.72}
+svg.cv .stockl{stroke:var(--gap);stroke-width:1.6;fill:none}
+svg.cv .repere{stroke:var(--rule-2);stroke-width:1;stroke-dasharray:4 3}
+svg.cv .titre{font-family:"IBM Plex Sans",sans-serif;font-size:14px;font-weight:600;fill:var(--ink)}
+svg.cv .stockv{font-family:"IBM Plex Mono",monospace;font-size:21px;font-weight:600;
+  fill:var(--gap);font-variant-numeric:tabular-nums;text-anchor:middle}
+svg.cv .stockv.dedans{fill:var(--surface)}
 </style>
 </head>
 <body>
@@ -192,35 +189,39 @@ svg.cv .filet{stroke:var(--rule-2);stroke-width:1;fill:none}
 
 <header class="mast">
   <p class="kicker">Chiffres pour 2027 · prototype d'animation</p>
-  <h1>Ce que l'État dépense, poste par poste, et ce qu'il encaisse</h1>
+  <h1>Cinquante ans de dépense publique, année après année</h1>
   <p class="lede">
-    Cinq postes de dépense suivis depuis 1975, empilés jusqu'au total, puis confrontés aux
-    recettes. Chaque étape ne montre qu'une chose, et le graphique ne repart jamais de zéro :
-    c'est la même planche qui se transforme.
+    La dépense se construit sous les yeux, poste par poste empilé jusqu'au total ; les recettes
+    suivent en dessous, et l'écart entre les deux est le déficit de l'année. À droite, la barre
+    monte : c'est la dette, le stock que ces écarts alimentent.
   </p>
   <p class="prov" id="prov"></p>
 </header>
 
-<section class="scene" aria-label="Animation de la dépense publique par nature">
+<section class="scene" aria-label="Animation de la dépense publique, des recettes et de la dette">
+  <div class="modes">
+    <div class="bascule" role="group" aria-label="Unité de lecture">
+      <button type="button" id="m-pct" aria-pressed="true">% du PIB</button>
+      <button type="button" id="m-val" aria-pressed="false">En euros</button>
+    </div>
+    <p class="note" id="note-mode"></p>
+  </div>
+
   <div class="cadre">
-    <svg class="cv" id="cv" viewBox="0 0 1000 600" role="img" aria-labelledby="cv-t cv-d"
+    <svg class="cv" id="cv" viewBox="0 0 1200 620" role="img" aria-labelledby="cv-t cv-d"
          preserveAspectRatio="xMidYMid meet"></svg>
     <div class="info" id="info" hidden></div>
   </div>
 
   <div class="recit">
-    <p class="num" id="acte-num"></p>
-    <h2 id="acte-titre"></h2>
-    <p class="txt" id="acte-txt"></p>
+    <p class="an" id="an"></p>
+    <p class="dit" id="dit"></p>
   </div>
 
-  <div class="rail" id="rail" role="tablist" aria-label="Étapes"></div>
-
   <div class="cmds">
-    <button type="button" id="prec" aria-label="Étape précédente">◀ Précédent</button>
-    <button type="button" id="jouer" aria-label="Lecture ou pause">⏸ Pause</button>
-    <button type="button" id="suiv" aria-label="Étape suivante">Suivant ▶</button>
+    <button type="button" id="jouer">⏸ Pause</button>
     <button type="button" id="rejouer">↻ Rejouer</button>
+    <input type="range" id="curseur" min="0" step="1" value="0" aria-label="Année">
     <button type="button" id="theme" class="droite">Thème</button>
   </div>
 
@@ -235,26 +236,31 @@ svg.cv .filet{stroke:var(--rule-2);stroke-width:1;fill:none}
 <footer>
   <h3>Ce que ce graphique ne dit pas</h3>
   <p>
+    <b>La dette n'est pas la somme des déficits.</b> Les deux se lisent dans la même unité — des
+    points de PIB, ou des euros — mais l'un est un flux annuel et l'autre un stock, et le ratio de
+    dette bouge aussi quand le PIB bouge : une année de forte croissance le fait baisser sans qu'un
+    euro soit remboursé, et 2020 le fait bondir autant par la chute du dénominateur que par
+    l'emprunt. La barre de droite est la dette brute au sens de Maastricht, telle que l'Insee la
+    publie ; elle ne commence qu'en 1978.
+  </p>
+  <p id="p-euros"></p>
+  <p>
     <b>La grille est celle des natures, pas des politiques.</b> Elle dit à qui l'argent est versé,
     pas à quoi il sert : le salaire d'une infirmière hospitalière est une « rémunération d'agent »,
     le remboursement d'une consultation une « prestation ». Les deux financent de la santé. La
     ventilation par fonction, elle, n'existe pas avant 1995.
   </p>
   <p>
-    <b>La bande hachurée croise deux millésimes.</b> Les cinq postes viennent d'Eurostat, la
+    <b>La bande hachurée croise deux millésimes.</b> Les cinq postes nommés viennent d'Eurostat, la
     dépense totale et les recettes de l'Insee ; les deux mesures de PIB diffèrent de 0,1 à
-    0,3 point. Le reste doit donc se lire comme un ordre de grandeur, pas comme un chiffre à la
-    décimale. Le contrôle qui compte a été fait : <span class="num" id="ctrl"></span>
+    0,3 point. « Autres dépenses » est le solde des deux — subventions, autres transferts, dépenses
+    en capital — et doit se lire comme un ordre de grandeur. Le contrôle qui compte a été fait :
+    <span class="num" id="ctrl"></span>
   </p>
   <p>
     <b>2020 et 2021 sont doublement gonflées</b>, par les dépenses de crise au numérateur et par la
     contraction du PIB au dénominateur. Le ressaut de la bande hachurée en 2020 n'est pas un défaut
     de raccord : ce sont les aides versées aux entreprises, enregistrées en subventions.
-  </p>
-  <p>
-    <b>Enfin, l'écart entre les deux courbes n'est pas exactement le déficit notifié.</b> Il en est
-    la traduction comptable en points de PIB, à quelques centièmes près ; c'est le solde au sens de
-    Maastricht qui fait foi, et il figure dans le tableau ci-dessus.
   </p>
 
   <h3>Provenance</h3>
@@ -269,8 +275,9 @@ window.addEventListener('error', (e) => { document.title = 'ERREUR ' + e.message
 /* ------------------------------------------------------------------------
    Données. Écrites par `node prototypes/depense-publique-donnees.mjs`, qui
    les lit dans le dépôt : les cinq postes dans la figure du chapitre « Dette
-   et déficit », la dépense totale et les recettes dans le classeur Insee de
-   `docs/`. Ne rien corriger ici — le script réécrit ce bloc.
+   et déficit », la dépense totale, les recettes, le solde, la dette et — s'il
+   y figure — le PIB en valeur dans le classeur Insee de `docs/`. Ne rien
+   corriger ici : le script réécrit ce bloc.
    ------------------------------------------------------------------------ */
 /* @données */
 const DONNEES = {
@@ -769,6 +776,59 @@ const DONNEES = {
     -5.4,
     -5.8
   ],
+  "dette": [
+    null,
+    null,
+    null,
+    21.6,
+    21.6,
+    21.3,
+    22.6,
+    26.2,
+    27.7,
+    30.2,
+    31.9,
+    32.4,
+    34.8,
+    34.7,
+    35.5,
+    36.8,
+    37.8,
+    41.7,
+    48.2,
+    51.6,
+    57.8,
+    60.6,
+    62,
+    62.1,
+    61.4,
+    59.7,
+    59.3,
+    61.3,
+    65.4,
+    66.9,
+    68.2,
+    65.4,
+    65.5,
+    69.8,
+    84.1,
+    86.3,
+    88.7,
+    91.7,
+    94.6,
+    96.2,
+    97,
+    98.2,
+    98.8,
+    98.5,
+    98.2,
+    114.9,
+    112.8,
+    111.4,
+    109.5,
+    112.6
+  ],
+  "pib": null,
   "mandats": [
     {
       "libelle": "Giscard d'Estaing",
@@ -826,266 +886,234 @@ const DONNEES = {
 
 /* ------------------------------------------------------- mise en forme
    Conventions de src/lib/format.ts : virgule décimale, signe moins
-   typographique, espace fine insécable avant le symbole dans un SVG. */
+   typographique, espace ordinaire pour les milliers dans le texte et espace
+   fine insécable dans les SVG. */
 const MOINS = '−'
 const FINE = ' '
+const ESPACE = ' '
 const TIRET = '—'
-const nb = (v, d = 1) => (v < 0 ? MOINS : '') + Math.abs(v).toFixed(d).replace('.', ',')
-const pc = (v, d = 1) => nb(v, d) + FINE + '%'
-const signe = (v, d = 1) => (v < 0 ? MOINS : '+') + Math.abs(v).toFixed(d).replace('.', ',')
+const CADRATIN = '—'
+
+function groupe(entier, sep) {
+  let out = ''
+  for (let i = entier.length; i > 0; i -= 3) out = entier.slice(Math.max(0, i - 3), i) + (out ? sep + out : '')
+  return out
+}
+function nb(v, d = 1, sep = ESPACE) {
+  const [ent, dec] = Math.abs(v).toFixed(d).split('.')
+  return (v < 0 ? MOINS : '') + groupe(ent, sep) + (dec ? ',' + dec : '')
+}
 
 /* ------------------------------------------------------------ dérivées */
 const AN = DONNEES.annees
 const N = AN.length
 const AN0 = AN[0]
 const AN1 = AN[N - 1]
-const POSTES = DONNEES.postes
 
-/** cumul[k][j] : somme des postes 0 à k, l'année j. C'est l'empilement. */
-const cumul = []
-for (const [k, p] of POSTES.entries()) cumul.push(p.valeurs.map((v, j) => v + (k ? cumul[k - 1][j] : 0)))
-const CINQ = cumul[POSTES.length - 1]
+/**
+ * L'ordre d'empilement, du bas vers le haut. C'est une décision de lecture :
+ * l'investissement au sol, le social en tête, et « autres dépenses » — le
+ * solde entre les cinq postes nommés et la dépense totale — juste dessous.
+ * Les consommations intermédiaires sont intercalées au-dessus de la
+ * rémunération des agents, les deux postes de fonctionnement courant : sans
+ * elles la pile n'atteindrait pas le total, et la comparaison aux recettes
+ * perdrait son sens.
+ */
+const ORDRE = ['s5', 's4', 's3', 's2', 'autres', 's1']
+
+const parCle = Object.fromEntries(DONNEES.postes.map((p) => [p.cle, p]))
+const CINQ = AN.map((_, j) => DONNEES.postes.reduce((t, p) => t + p.valeurs[j], 0))
 const RESTE = DONNEES.depenses.map((d, j) => d - CINQ[j])
+const AUTRES = { cle: 'autres', libelle: 'Autres dépenses', couleur: null, valeurs: RESTE }
+const COUCHES = ORDRE.map((c) => (c === 'autres' ? AUTRES : parCle[c]))
+const jDette = DONNEES.dette.findIndex((v) => v !== null)
+
+/* ------------------------------------------------------------- échelles */
+/** Un maximum d'axe rond, et son pas, pour une dizaine de graduations au plus. */
+function echelle(max, cible = 7) {
+  const brut = max / cible
+  const ordre = Math.pow(10, Math.floor(Math.log10(brut)))
+  const pas = [1, 2, 2.5, 5, 10].map((m) => m * ordre).find((p) => p >= brut) ?? 10 * ordre
+  return { max: Math.ceil(max / pas) * pas, pas }
+}
+
+/* ------------------------------------------------------- les deux modes
+   Le dossier raisonne en points de PIB ; la lecture en euros répond à une
+   autre question, et les deux ne disent pas la même chose. Une seule série
+   de données, deux conversions, et tout le reste est commun. */
+function construireVue(mode) {
+  const euros = mode === 'val'
+  const pib = DONNEES.pib
+  const conv = (arr) => arr.map((v, j) => (v === null ? null : euros ? (v / 100) * pib[j] : v))
+  const dec = euros ? 0 : 1
+  const unite = euros ? 'Md€' : '%'
+
+  const couches = COUCHES.map((c) => ({ ...c, valeurs: conv(c.valeurs) }))
+  const cumul = []
+  for (const [k, c] of couches.entries()) cumul.push(c.valeurs.map((v, j) => v + (k ? cumul[k - 1][j] : 0)))
+  const depenses = conv(DONNEES.depenses)
+  const recettes = conv(DONNEES.recettes)
+  const dette = conv(DONNEES.dette)
+  const ecart = conv(DONNEES.solde.map((v) => Math.abs(v)))
+
+  const fmt = (v, sep = ESPACE) => (v === null ? CADRATIN : nb(v, dec, sep) + (sep === FINE ? FINE : ' ') + unite)
+  return {
+    mode, euros, couches, cumul, depenses, recettes, dette, ecart, dec, unite, fmt,
+    ech: echelle(Math.max(...depenses)),
+    echDette: echelle(Math.max(...dette.filter((v) => v !== null)), 5),
+    axe: euros ? 'Md€ courants' : '% du PIB',
+    axeDette: euros ? 'Md€ courants, brute' : '% du PIB, brute',
+    /** Pour les phrases : « 52,6 % » ou « 413 Md€ ». L'unité se dit une fois. */
+    prose: (v) => (euros ? fmt(v) : nb(v, 1) + ' %'),
+    /** Pour un écart : « 5,8 points » ou « 169 Md€ ». */
+    proseEcart: (v) => (euros ? fmt(v) : nb(v, 1) + ' points'),
+  }
+}
+
+const VUES = { pct: construireVue('pct') }
+if (DONNEES.pib) VUES.val = construireVue('val')
+let mode = 'pct'
+const vue = () => VUES[mode]
+
+/* --------------------------------------------------------------- récit
+   Les jalons portent des phrases, jamais des chiffres saisis : chacune relit
+   la série à l'année dite, dans l'unité affichée. */
+function jalons() {
+  const V = vue()
+  const a = (an) => an - AN0
+  const p = (serie, an) => V.prose(serie[a(an)])
+  const dep = V.depenses, rec = V.recettes, det = V.dette, ec = V.ecart
+  const pres = V.couches.find((c) => c.cle === 's1').valeurs
+  const hausse = (serie, de, vers) => V.proseEcart(serie[a(vers)] - serie[a(de)])
+  return [
+    { an: AN0, dit: `Premier repère, en ${V.euros ? 'euros courants' : 'part du PIB'} : ${p(dep, AN0)} de
+        dépense publique contre ${p(rec, AN0)} de recettes. L'écart est déjà de ${V.proseEcart(ec[0])}.
+        La dette, elle, n'est pas mesurée avant ${AN[jDette]}.` },
+    { an: 1981, dit: `Alternance. La dépense atteint ${p(dep, 1981)}, et c'est le social qui pousse : les
+        prestations ont gagné ${hausse(pres, AN0, 1981)} depuis ${AN0}.` },
+    { an: 1993, dit: `Récession. Le déficit touche ${V.proseEcart(ec[a(1993)])} et la dette a doublé en dix
+        ans : ${p(det, 1983)} en 1983, ${p(det, 1993)} maintenant. C'est ici que le stock décolle.` },
+    { an: 2000, dit: `Vingt-cinq ans plus tard, le déficit est retombé à ${V.proseEcart(ec[a(2000)])} — le plus
+        bas de la série — mais la dépense est à ${p(dep, 2000)}, contre ${p(dep, AN0)} en ${AN0}. La
+        décrue n'a jamais ramené au point de départ.` },
+    { an: 2009, dit: `Crise financière. La dépense saute à ${p(dep, 2009)} quand les recettes tombent à
+        ${p(rec, 2009)} : ${V.proseEcart(ec[a(2009)])} de déficit en une année, et la dette passe de
+        ${p(det, 2007)} à ${p(det, 2009)} en deux ans.` },
+    { an: 2020, dit: `Covid. ${p(dep, 2020)} de dépense, le plus haut de la série, ${V.proseEcart(ec[a(2020)])}
+        de déficit. La dette bondit de ${p(det, 2019)} à ${p(det, 2020)} — autant parce que le PIB recule
+        que parce que l'État emprunte.` },
+    { an: AN1, dit: `Fin de série. ${p(dep, AN1)} de dépense contre ${p(rec, AN1)} de recettes, soit
+        ${V.proseEcart(ec[a(AN1)])} de déficit, et une dette de ${p(det, AN1)}, contre
+        ${p(det, AN[jDette])} en ${AN[jDette]}. Cinquante
+        ans sans un seul excédent.` },
+  ]
+}
+let JALONS = jalons()
+const ditDe = (j) => {
+  let dit = JALONS[0].dit
+  for (const jal of JALONS) if (AN[j] >= jal.an) dit = jal.dit
+  return dit.replace(/\s+/g, ' ').trim()
+}
 
 /* ------------------------------------------------------------ géométrie */
-const L = 78, R = 740, T = 56, B = 466
-const RUBAN_Y = 490, RUBAN_H = 26, COH_Y = 520, COH_H = 11, AX_Y = 550
+const L = 80, R = 950, T = 58, B = 452
+const RUBAN_Y = 478, RUBAN_H = 25, COH_Y = 507, COH_H = 10, AX_Y = 537
+const DL = 1012, DR = 1102, DT = 92, DB = 452
 const xAn = (an) => L + ((an - AN0) / (AN1 - AN0)) * (R - L)
-const yV = (v, ymax) => B - (v / ymax) * (B - T)
+const yV = (v) => B - (v / vue().ech.max) * (B - T)
+const yD = (v) => DB - (v / vue().echDette.max) * (DB - DT)
 const px = (n) => Math.round(n * 10) / 10
-
-/* ---------------------------------------------------------- transitions */
-const clamp = (t) => (t < 0 ? 0 : t > 1 ? 1 : t)
-const lerp = (a, b, t) => a + (b - a) * t
-const easeIO = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
-const easeO = (t) => 1 - Math.pow(1 - t, 3)
-
-/* ----------------------------------------------------------- le récit
-   Aucun chiffre n'est saisi dans les phrases : tout est relu des données. */
-const iMax = DONNEES.depenses.indexOf(Math.max(...DONNEES.depenses))
-const excedents = DONNEES.solde.filter((v) => v > 0).length
-const pres = POSTES[0]
-const hausseCinq = CINQ[N - 1] - CINQ[0]
-const haussePres = pres.valeurs[N - 1] - pres.valeurs[0]
-
-const ACTES = [
-  {
-    titre: 'Cinq postes, et un seul qui monte',
-    texte: `La dépense publique se décompose par nature : elle dit à qui l'argent est versé. Cinq postes
-      remontent jusqu'à ${AN0}. Une seule courbe monte vraiment — les prestations sociales, de
-      ${pc(pres.valeurs[0])} à ${pc(pres.valeurs[N - 1])} du PIB. Les quatre autres oscillent
-      autour de leur niveau de départ.`,
-    duree: 6200,
-  },
-  {
-    titre: 'On les empile',
-    texte: `Prises séparément, ces courbes ne disent pas combien l'État dépense. On les cumule donc :
-      chaque poste vient se poser sur le précédent, et l'axe s'ouvre pour faire la place. La ligne du
-      haut devient la somme des cinq.`,
-    duree: 6400,
-  },
-  {
-    titre: 'Ce que pèsent les cinq postes',
-    texte: `${pc(CINQ[0])} du PIB en ${AN0}, ${pc(CINQ[N - 1])} en ${AN1} : ${signe(hausseCinq)} point
-      en cinquante ans, dont ${signe(haussePres)} pour les seules prestations sociales. Les quatre
-      autres postes réunis expliquent le reste, soit ${signe(hausseCinq - haussePres)} point.`,
-    duree: 4600,
-  },
-  {
-    titre: 'Et pourtant, le compte n’y est pas',
-    texte: `La dépense totale est plus haute : ${pc(DONNEES.depenses[0])} en ${AN0},
-      ${pc(DONNEES.depenses[N - 1])} en ${AN1}. La bande hachurée est ce que les cinq postes ne
-      couvrent pas — subventions, autres transferts, dépenses en capital : ${pc(RESTE[0])} du PIB en
-      ${AN0}, ${pc(RESTE[N - 1])} en ${AN1}. Le sommet de la pile, lui, est la dépense publique
-      entière, ${pc(DONNEES.depenses[iMax])} au pic de ${AN[iMax]}.`,
-    duree: 7000,
-  },
-  {
-    titre: 'Face aux recettes',
-    texte: `Les recettes suivent, plus bas : ${pc(DONNEES.recettes[N - 1])} du PIB en ${AN1}. La zone
-      hachurée de rouge entre les deux courbes est le déficit — ${nb(Math.abs(DONNEES.solde[N - 1]))}
-      points en ${AN1}, et ${excedents === 0 ? `chaque année depuis ${AN0}, sans une seule exception`
-      : `${N - excedents} années sur ${N}`}. C'est cet écart, année après année, qui fait la dette.`,
-    duree: 7400,
-  },
-]
-
-/* --------------------------------------------------------------- états
-   L'état est une fonction pure de (acte, avancement) : rejouer, reculer ou
-   sauter d'un acte à l'autre donne exactement la même image. */
-function etat(i, p) {
-  const s = {
-    ymax: 30, trace: 0, empile: [0, 0, 0, 0, 0], ruban: 0,
-    somme: 0, reste: 0, total: 0, recettes: 0, deficit: 0, estompe: 0,
-  }
-  const plein = () => { s.trace = 1; s.empile = s.empile.map(() => 1); s.ruban = 1; s.ymax = 56 }
-  if (i === 0) {
-    s.trace = easeO(p)
-    s.ruban = clamp((p - 0.55) / 0.45)
-  } else if (i === 1) {
-    plein()
-    s.ymax = lerp(30, 56, easeIO(clamp((p - 0.06) / 0.8)))
-    s.empile = POSTES.map((_, k) => easeIO(clamp((p - k * 0.11) / 0.48)))
-  } else if (i === 2) {
-    plein()
-    s.somme = easeO(clamp(p / 0.35))
-  } else if (i === 3) {
-    plein()
-    s.somme = 1 - easeIO(clamp(p / 0.22))
-    s.ymax = lerp(56, 66, easeIO(clamp(p / 0.4)))
-    s.reste = easeIO(clamp((p - 0.18) / 0.62))
-    s.total = easeO(clamp((p - 0.3) / 0.5))
-  } else {
-    plein()
-    s.ymax = 66
-    s.reste = 1
-    s.total = 1
-    s.recettes = easeO(clamp(p / 0.45))
-    s.deficit = easeIO(clamp((p - 0.42) / 0.48))
-    s.estompe = s.deficit
-  }
-  return s
-}
 
 /* ---------------------------------------------------------------- tracé */
 const cv = document.getElementById('cv')
 
-function chemin(haut, bas, ymax) {
+function aire(haut, bas, jusqu) {
   let d = ''
-  for (let j = 0; j < N; j++) d += (j ? 'L' : 'M') + px(xAn(AN[j])) + ',' + px(yV(haut[j], ymax))
-  for (let j = N - 1; j >= 0; j--) d += 'L' + px(xAn(AN[j])) + ',' + px(yV(bas[j], ymax))
+  for (let j = 0; j <= jusqu; j++) d += (j ? 'L' : 'M') + px(xAn(AN[j])) + ',' + px(yV(haut[j]))
+  for (let j = jusqu; j >= 0; j--) d += 'L' + px(xAn(AN[j])) + ',' + px(yV(bas[j]))
   return d + 'Z'
 }
-function points(vals, ymax) {
-  return vals.map((v, j) => px(xAn(AN[j])) + ',' + px(yV(v, ymax))).join(' ')
+function trait(vals, jusqu) {
+  const p = []
+  for (let j = 0; j <= jusqu; j++) if (vals[j] !== null) p.push(px(xAn(AN[j])) + ',' + px(yV(vals[j])))
+  return p.join(' ')
 }
 
 /**
- * Écarte les étiquettes de droite qui se chevauchent, sans changer leur ordre.
- * Chacune occupe deux lignes — son libellé et sa valeur — d'où l'écart minimal.
- * `ancre` garde la position juste, celle de la bande ; le filet de rappel la
- * relie à l'étiquette déplacée.
+ * Dessine la planche à l'année d'indice `j`. Fonction pure de (année, mode) :
+ * reculer, sauter ou rejouer redonne exactement la même image, et chaque
+ * nombre affiché est une donnée de l'année, jamais une interpolation.
  */
-function demele(etiq, mini = 33) {
-  const t = etiq.slice().sort((a, b) => a.y - b.y)
-  for (const e of t) e.ancre = e.y
-  for (let i = 1; i < t.length; i++) if (t[i].y - t[i - 1].y < mini) t[i].y = t[i - 1].y + mini
-  for (let i = t.length - 2; i >= 0; i--) if (t[i + 1].y - t[i].y < mini) t[i].y = t[i + 1].y - mini
-  const haut = T + 6
-  const debord = haut - t[0].y
-  if (debord > 0) for (const e of t) e.y += debord
-  return etiq
-}
-
-function dessine(s, survol) {
+function dessine(j, survol) {
+  const V = vue()
   const o = []
-  const clip = (id, w) => `<clipPath id="${id}"><rect x="${L - 3}" y="${T - 30}" width="${px(Math.max(0, w))}" height="${B - T + 60}"/></clipPath>`
   o.push('<defs>')
   o.push('<pattern id="coh" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="cohl" x1="0" y1="0" x2="0" y2="6"/></pattern>')
   o.push('<pattern id="hach" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="var(--muted)" stroke-width="1.3" opacity=".55"/></pattern>')
-  o.push('<pattern id="hachd" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="6" stroke="var(--gap)" stroke-width="1.6" opacity=".85"/></pattern>')
-  o.push(clip('c-trace', s.trace * (R - L) + 6))
-  o.push(clip('c-reste', s.reste * (R - L) + 6))
-  o.push(clip('c-total', s.total * (R - L) + 6))
-  o.push(clip('c-rec', s.recettes * (R - L) + 6))
-  o.push(clip('c-def', s.deficit * (R - L) + 6))
+  o.push('<pattern id="hachd" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5" stroke="var(--gap)" stroke-width="1.8"/></pattern>')
   o.push('</defs>')
 
-  /* grille et axe des ordonnées */
-  const pas = s.ymax <= 32 ? 5 : 10
-  for (let v = 0; v <= s.ymax + 0.001; v += pas) {
-    const y = px(yV(v, s.ymax))
+  /* grille */
+  for (let v = 0; v <= V.ech.max + 0.001; v += V.ech.pas) {
+    const y = px(yV(v))
     o.push(`<line class="grid" x1="${L}" y1="${y}" x2="${R}" y2="${y}"/>`)
-    o.push(`<text class="ax ar" x="${L - 10}" y="${y + 4}">${nb(v, 0)}</text>`)
+    o.push(`<text class="ax ar" x="${L - 10}" y="${y + 4}">${nb(v, 0, FINE)}</text>`)
   }
-  o.push(`<text class="ax ar" x="${L - 10}" y="${T - 22}">% du PIB</text>`)
+  o.push(`<text class="ax ar" x="${L - 10}" y="${T - 24}">${V.axe}</text>`)
   o.push(`<line class="axis" x1="${L}" y1="${B}" x2="${R}" y2="${B}"/>`)
 
-  const etiq = []
-
-  /* les cinq postes : une courbe devient une bande en glissant sur la pile */
-  o.push(`<g clip-path="url(#c-trace)" style="opacity:${px(lerp(1, 0.42, s.estompe))}">`)
-  POSTES.forEach((poste, k) => {
-    const e = s.empile[k]
-    const haut = poste.valeurs.map((v, j) => lerp(v, cumul[k][j], e))
-    const bas = poste.valeurs.map((v, j) => lerp(v, k ? cumul[k - 1][j] : 0, e))
-    o.push(`<path class="bande ${poste.couleur}f" d="${chemin(haut, bas, s.ymax)}" style="opacity:${px(0.9 * e)}"/>`)
-    o.push(`<polyline class="ln ${poste.couleur}" points="${points(haut, s.ymax)}"/>`)
-    etiq.push({
-      y: yV(lerp(poste.valeurs[N - 1], (cumul[k][N - 1] + (k ? cumul[k - 1][N - 1] : 0)) / 2, e), s.ymax),
-      classe: poste.couleur + 't',
-      texte: poste.libelle,
-      val: pc(poste.valeurs[N - 1]),
-      op: clamp((s.trace - 0.85) / 0.15) * lerp(1, 0.45, s.estompe),
-    })
+  /* l'empilement, dans l'ordre de lecture, du sol vers le sommet */
+  V.couches.forEach((c, k) => {
+    const bas = k ? V.cumul[k - 1] : AN.map(() => 0)
+    o.push(`<path class="${c.couleur ? `bande ${c.couleur}f` : 'reste'}" d="${aire(V.cumul[k], bas, j)}"/>`)
   })
-  o.push('</g>')
 
-  /* la somme des cinq, soulignée le temps d'un acte */
-  if (s.somme > 0.01) {
-    o.push(`<g style="opacity:${px(s.somme)}">`)
-    o.push(`<polyline class="somme" points="${points(CINQ, s.ymax)}"/>`)
-    for (const j of [0, N - 1]) {
-      const x = xAn(AN[j]), y = yV(CINQ[j], s.ymax)
-      const largeur = 86, gauche = j === 0 ? x + 8 : x - largeur - 8
-      o.push(`<rect class="flag" x="${px(gauche)}" y="${px(y - 32)}" width="${largeur}" height="26" rx="2"/>`)
-      o.push(`<text class="lbl enc" x="${px(gauche + largeur / 2)}" y="${px(y - 14)}" text-anchor="middle">${AN[j]} · ${pc(CINQ[j])}</text>`)
-    }
-    o.push('</g>')
-  }
-
-  /* ce que les cinq postes ne couvrent pas, jusqu'au total */
-  if (s.reste > 0.01) {
-    o.push(`<g clip-path="url(#c-reste)" style="opacity:${px(lerp(1, 0.5, s.estompe))}">`)
-    o.push(`<path class="reste" d="${chemin(DONNEES.depenses, CINQ, s.ymax)}"/>`)
-    o.push(`<polyline class="resteb" points="${points(CINQ, s.ymax)}"/>`)
-    o.push('</g>')
-    etiq.push({
-      y: yV((DONNEES.depenses[N - 1] + CINQ[N - 1]) / 2, s.ymax),
-      classe: 'mut', texte: 'Autres dépenses', val: pc(RESTE[N - 1]), op: s.reste,
-    })
-  }
-
-  /* déficit : l'écart entre les deux courbes */
-  if (s.deficit > 0.01) {
-    o.push(`<g clip-path="url(#c-def)">`)
-    o.push(`<path class="defz" d="${chemin(DONNEES.depenses, DONNEES.recettes, s.ymax)}" style="opacity:${px(0.55 * s.deficit)}"/>`)
-    o.push('</g>')
-  }
+  /* le déficit : ce qui sépare les recettes du sommet de la pile */
+  const zone = aire(V.depenses, V.recettes, j)
+  o.push(`<path class="defvoile" d="${zone}"/>`)
+  o.push(`<path class="defz" d="${zone}"/>`)
 
   /* les deux agrégats */
-  if (s.total > 0.01) {
-    o.push(`<polyline class="total" clip-path="url(#c-total)" points="${points(DONNEES.depenses, s.ymax)}"/>`)
-    etiq.push({ y: yV(DONNEES.depenses[N - 1], s.ymax), classe: 'enc', texte: 'Dépense totale', val: pc(DONNEES.depenses[N - 1]), op: s.total })
-  }
-  if (s.recettes > 0.01) {
-    o.push(`<polyline class="rec" clip-path="url(#c-rec)" points="${points(DONNEES.recettes, s.ymax)}"/>`)
-    etiq.push({ y: yV(DONNEES.recettes[N - 1], s.ymax), classe: 'enc', texte: 'Recettes', val: pc(DONNEES.recettes[N - 1]), op: s.recettes })
-    if (s.deficit > 0.01) {
-      etiq.push({ y: yV((DONNEES.depenses[N - 1] + DONNEES.recettes[N - 1]) / 2, s.ymax), classe: 'gapt', texte: 'déficit', val: nb(Math.abs(DONNEES.solde[N - 1])) + ' pts', op: s.deficit })
+  o.push(`<polyline class="total" points="${trait(V.depenses, j)}"/>`)
+  o.push(`<polyline class="rec" points="${trait(V.recettes, j)}"/>`)
+
+  /* le front de l'animation : l'année atteinte, et ses trois valeurs */
+  const x = xAn(AN[j])
+  o.push(`<line class="curseur" x1="${px(x)}" y1="${T - 16}" x2="${px(x)}" y2="${B}"/>`)
+  o.push(`<circle class="pt" cx="${px(x)}" cy="${px(yV(V.depenses[j]))}" r="4.5"/>`)
+  o.push(`<circle class="pt" cx="${px(x)}" cy="${px(yV(V.recettes[j]))}" r="4.5"/>`)
+  {
+    const bx = x > R - 190 ? x - 178 : x + 12
+    let y = Math.max(px(yV(V.depenses[j])) - 30, T - 6)
+    for (const p of [{ v: V.depenses[j], t: 'Dépense' }, { v: V.recettes[j], t: 'Recettes' }]) {
+      o.push(`<rect class="flag" x="${px(bx)}" y="${px(y)}" width="166" height="26" rx="2"/>`)
+      o.push(`<text class="lbl" x="${px(bx + 9)}" y="${px(y + 18)}">${p.t}</text>`)
+      o.push(`<text class="val" x="${px(bx + 157)}" y="${px(y + 18)}" text-anchor="end">${V.fmt(p.v, FINE)}</text>`)
+      y += 30
     }
+    o.push(`<rect class="flag" x="${px(bx)}" y="${px(y)}" width="166" height="26" rx="2"/>`)
+    o.push(`<text class="lbl gapt" x="${px(bx + 9)}" y="${px(y + 18)}">Déficit</text>`)
+    o.push(`<text class="val gapt" x="${px(bx + 157)}" y="${px(y + 18)}" text-anchor="end">${V.fmt(V.ecart[j], FINE)}</text>`)
   }
 
-  /* ruban des mandats, repris de la figure du dossier */
-  if (s.ruban > 0.01) {
-    o.push(`<g style="opacity:${px(s.ruban)}">`)
-    for (const m of DONNEES.mandats) {
-      const x = xAn(m.de), w = xAn(m.a) - xAn(m.de)
-      o.push(`<rect class="pr pr-${m.bloc}" x="${px(x)}" y="${RUBAN_Y}" width="${px(w)}" height="${RUBAN_H}" rx="2"/>`)
-      // Un mandat court ne peut pas porter un nom long : on le réduit plutôt
-      // que de le laisser déborder sur ses voisins.
-      const nom = m.libelle.length * 6.4 > w - 8 ? m.libelle.split(' ')[0] : m.libelle
-      if (nom.length * 6.4 <= w - 6) {
-        o.push(`<text class="prl" x="${px(x + w / 2)}" y="${RUBAN_Y + 17}" text-anchor="middle">${nom}</text>`)
-      }
+  /* ruban des mandats, dévoilé au même pas que la planche */
+  for (const m of DONNEES.mandats) {
+    if (m.de > AN[j]) continue
+    const x0 = xAn(m.de), w = xAn(Math.min(m.a, AN[j])) - x0
+    o.push(`<rect class="pr pr-${m.bloc}" x="${px(x0)}" y="${RUBAN_Y}" width="${px(Math.max(w, 0.5))}" height="${RUBAN_H}" rx="2"/>`)
+    const nom = m.libelle.length * 6.4 > w - 8 ? m.libelle.split(' ')[0] : m.libelle
+    if (nom.length * 6.4 <= w - 6) {
+      o.push(`<text class="prl" x="${px(x0 + w / 2)}" y="${RUBAN_Y + 17}" text-anchor="middle">${nom}</text>`)
     }
-    for (const c of DONNEES.cohabitations) {
-      o.push(`<rect class="coh" x="${px(xAn(c.de))}" y="${COH_Y}" width="${px(xAn(c.a) - xAn(c.de))}" height="${COH_H}" rx="1"/>`)
-    }
-    const fin = Math.max(...DONNEES.cohabitations.map((c) => xAn(c.a)))
-    o.push(`<text class="prl mutp al" x="${px(fin + 7)}" y="${COH_Y + COH_H - 1}">cohabitations</text>`)
-    o.push('</g>')
   }
+  let finCoh = null
+  for (const c of DONNEES.cohabitations) {
+    if (c.de > AN[j]) continue
+    const x0 = xAn(c.de), w = xAn(Math.min(c.a, AN[j])) - x0
+    o.push(`<rect class="coh" x="${px(x0)}" y="${COH_Y}" width="${px(Math.max(w, 0.5))}" height="${COH_H}" rx="1"/>`)
+    finCoh = x0 + w
+  }
+  if (finCoh !== null) o.push(`<text class="prl mutp" x="${px(finCoh + 7)}" y="${COH_Y + COH_H - 1}">cohabitations</text>`)
 
   /* axe des abscisses */
   for (const an of [AN0, 1985, 1995, 2005, 2015, AN1]) {
@@ -1093,51 +1121,72 @@ function dessine(s, survol) {
     o.push(`<text class="ax ${ancre}" x="${px(xAn(an))}" y="${AX_Y}">${an}</text>`)
   }
 
-  /* étiquettes de droite, écartées si elles se marchent dessus */
-  for (const e of demele(etiq)) {
-    if (e.op < 0.02) continue
-    const filet = Math.abs(e.y - e.ancre) > 5
-      ? `<path class="filet" d="M${R + 2},${px(e.ancre)} L${R + 12},${px(e.ancre)} L${R + 18},${px(e.y - 4)}"/>`
-      : ''
-    o.push(`<g style="opacity:${px(e.op)}">${filet}`
-      + `<text class="lbl ${e.classe}" x="${R + 22}" y="${px(e.y)}">${e.texte}</text>`
-      + `<text class="val" x="${R + 22}" y="${px(e.y + 15)}">${e.val}</text></g>`)
+  /* ------------------------------------------------------ le stock
+     Une barre qui monte, à côté du flux qui l'alimente. Même unité, deux
+     natures : l'un se remet à zéro chaque 31 décembre, l'autre jamais. */
+  o.push(`<text class="titre" x="${DL}" y="${T - 24}">Dette publique</text>`)
+  o.push(`<text class="ax al" x="${DL}" y="${T - 6}">${V.axeDette}</text>`)
+  o.push(`<rect class="stockc" x="${DL}" y="${px(yD(V.echDette.max))}" width="${DR - DL}" height="${px(yD(0) - yD(V.echDette.max))}" rx="2"/>`)
+  for (let v = 0; v <= V.echDette.max + 0.001; v += V.echDette.pas) {
+    o.push(`<line class="grid" x1="${DL}" y1="${px(yD(v))}" x2="${DR + 5}" y2="${px(yD(v))}"/>`)
+    o.push(`<text class="ax al" x="${DR + 9}" y="${px(yD(v)) + 4}">${nb(v, 0, FINE)}</text>`)
   }
+  const dette = V.dette[j]
+  if (dette === null) {
+    o.push(`<text class="ax" x="${px((DL + DR) / 2)}" y="${px(yD(V.echDette.max / 2))}">non mesurée</text>`)
+    o.push(`<text class="ax" x="${px((DL + DR) / 2)}" y="${px(yD(V.echDette.max / 2)) + 17}">avant ${AN[jDette]}</text>`)
+  } else {
+    o.push(`<rect class="stockf" x="${DL}" y="${px(yD(dette))}" width="${DR - DL}" height="${px(yD(0) - yD(dette))}"/>`)
+    o.push(`<line class="stockl" x1="${DL}" y1="${px(yD(dette))}" x2="${DR}" y2="${px(yD(dette))}"/>`)
+    const hautBarre = yD(dette)
+    const dedans = hautBarre < DT + 34
+    o.push(`<text class="stockv${dedans ? ' dedans' : ''}" x="${px((DL + DR) / 2)}" y="${px(dedans ? hautBarre + 26 : hautBarre - 12)}">${V.fmt(dette, FINE)}</text>`)
+    if (j > jDette) {
+      const d0 = V.dette[jDette]
+      o.push(`<line class="repere" x1="${DL - 6}" y1="${px(yD(d0))}" x2="${DR}" y2="${px(yD(d0))}"/>`)
+      o.push(`<text class="ax ar" x="${DL - 9}" y="${px(yD(d0)) + 4}">${AN[jDette]}</text>`)
+    }
+  }
+  o.push(`<text class="ax" x="${px((DL + DR) / 2)}" y="${DB + 26}">${AN[j]}</text>`)
 
   /* viseur de survol */
   if (survol !== null && survol !== undefined) {
-    const x = px(xAn(AN[survol]))
-    o.push(`<line class="viseur" x1="${x}" y1="${T - 12}" x2="${x}" y2="${B}"/>`)
+    const xs = px(xAn(AN[survol]))
+    o.push(`<line class="viseur" x1="${xs}" y1="${T - 12}" x2="${xs}" y2="${B}"/>`)
   }
 
-  cv.innerHTML = `<title id="cv-t">Dépense publique par nature, recomposée jusqu'au total, et recettes, ${AN0}-${AN1}</title>`
-    + `<desc id="cv-d">En % du PIB. Les cinq postes suivis depuis ${AN0} sont empilés, complétés par les autres dépenses jusqu'au total, et comparés aux recettes ; l'écart est le déficit. Les données chiffrées figurent dans le tableau sous le graphique.</desc>`
+  cv.innerHTML = `<title id="cv-t">Dépense publique empilée par nature, recettes et dette, ${AN0}-${AN1}, en ${V.axe}</title>`
+    + `<desc id="cv-d">Six couches empilées — investissement, rémunération des agents, consommations intermédiaires, charge de la dette, autres dépenses, prestations sociales — dont le sommet est la dépense publique totale ; une courbe de recettes en dessous, l'écart entre les deux étant le déficit ; et à droite une barre verticale figurant le stock de dette. Les données chiffrées figurent dans le tableau sous le graphique.</desc>`
     + o.join('')
 }
 
 /* ------------------------------------------------------------ la boucle */
 const douceur = window.matchMedia('(prefers-reduced-motion: reduce)')
-let acte = 0
-let avance = 0
+const PAS = 380 // millisecondes par année
+let annee = 0
 let joue = !douceur.matches
 let horloge = null
+let reste = PAS
 let survol = null
 
+const legende = document.getElementById('legende')
+const curseur = document.getElementById('curseur')
+const jouer = document.getElementById('jouer')
+
 function rendre() {
-  dessine(etat(acte, avance), survol)
-  document.getElementById('acte-num').textContent = `Acte ${acte + 1} sur ${ACTES.length}`
-  document.getElementById('acte-titre').textContent = ACTES[acte].titre
-  document.getElementById('acte-txt').textContent = ACTES[acte].texte.replace(/\s+/g, ' ').trim()
-  for (const [i, b] of [...rail.children].entries()) {
-    b.setAttribute('aria-current', String(i === acte))
-    b.classList.toggle('vu', i < acte)
-    b.querySelector('i').style.width = `${i < acte ? 100 : i === acte ? avance * 100 : 0}%`
-  }
-  // Les cinq postes sont là dès le premier acte ; les quatre entrées suivantes
-  // n'apparaissent qu'à l'acte qui les introduit.
-  const paraitA = [...POSTES.map(() => 0), 3, 3, 4, 4]
-  for (const [i, li] of [...legende.children].entries()) {
-    li.dataset.vu = acte >= paraitA[i] ? '1' : '0'
+  const V = vue()
+  dessine(annee, survol)
+  document.getElementById('an').textContent = AN[annee]
+  document.getElementById('dit').textContent = ditDe(annee)
+  curseur.value = String(annee)
+  for (const li of legende.children) {
+    const cle = li.dataset.cle
+    const v = cle === 'total' ? V.depenses[annee]
+      : cle === 'recettes' ? V.recettes[annee]
+      : cle === 'ecart' ? V.ecart[annee]
+      : cle === 'dette' ? V.dette[annee]
+      : V.couches.find((c) => c.cle === cle).valeurs[annee]
+    li.querySelector('b').textContent = V.fmt(v)
   }
   jouer.textContent = joue ? '⏸ Pause' : '▶ Lecture'
 }
@@ -1147,9 +1196,11 @@ function boucle(t) {
   const dt = t - horloge
   horloge = t
   if (joue) {
-    avance += dt / ACTES[acte].duree
-    if (avance >= 1) {
-      if (acte < ACTES.length - 1) { acte++; avance = 0 } else { avance = 1; joue = false }
+    reste -= dt
+    while (reste <= 0) {
+      reste += PAS
+      if (annee < N - 1) annee++
+      else { joue = false; break }
     }
     rendre()
   }
@@ -1157,104 +1208,117 @@ function boucle(t) {
 }
 
 /* ----------------------------------------------------------- commandes */
-const rail = document.getElementById('rail')
-const legende = document.getElementById('legende')
-const jouer = document.getElementById('jouer')
+curseur.max = String(N - 1)
 
-for (const [i, a] of ACTES.entries()) {
-  const b = document.createElement('button')
-  b.type = 'button'
-  b.innerHTML = '<span class="bar"><i></i></span>'
-  b.append(document.createTextNode(a.titre))
-  b.addEventListener('click', () => va(i))
-  rail.append(b)
-}
-
-for (const p of POSTES) {
+for (const c of COUCHES) {
   const li = document.createElement('li')
-  li.innerHTML = `<i style="background:var(--${p.couleur})"></i>${p.libelle}`
+  li.dataset.cle = c.cle
+  li.innerHTML = (c.couleur ? `<i style="background:var(--${c.couleur})"></i>` : '<i class="hach"></i>')
+    + `${c.libelle} <b></b>`
   legende.append(li)
 }
-for (const [html, texte] of [
-  ['<i class="hach"></i>', 'Autres dépenses (subventions, transferts, capital)'],
-  ['<i class="trait"></i>', 'Dépense publique totale'],
-  ['<i class="tirets"></i>', 'Recettes publiques'],
-  ['<i style="background:var(--gap-bg);border:1px solid var(--gap)"></i>', 'Déficit'],
+for (const [cle, html, texte] of [
+  ['total', '<i class="trait"></i>', 'Dépense totale'],
+  ['recettes', '<i class="tirets"></i>', 'Recettes'],
+  ['ecart', '<i class="hachd"></i>', 'Déficit de l\u2019année'],
+  ['dette', '<i style="background:var(--gap);opacity:.72"></i>', 'Dette (stock)'],
 ]) {
   const li = document.createElement('li')
-  li.innerHTML = html + texte
+  li.dataset.cle = cle
+  if (cle === 'total') li.className = 'tot'
+  li.innerHTML = `${html}${texte} <b></b>`
   legende.append(li)
 }
 
-function va(i, p = 0) {
-  acte = Math.max(0, Math.min(ACTES.length - 1, i))
-  avance = p
-  if (douceur.matches) { avance = 1; joue = false }
+function va(j) {
+  annee = Math.max(0, Math.min(N - 1, j))
+  reste = PAS
   rendre()
 }
-document.getElementById('prec').addEventListener('click', () => va(acte - 1))
-document.getElementById('suiv').addEventListener('click', () => (acte === ACTES.length - 1 ? va(acte, 1) : va(acte + 1)))
-document.getElementById('rejouer').addEventListener('click', () => { va(0); joue = !douceur.matches; rendre() })
 jouer.addEventListener('click', () => {
   joue = !joue
-  if (joue && acte === ACTES.length - 1 && avance >= 1) va(0)
+  if (joue && annee >= N - 1) annee = 0
   rendre()
 })
+document.getElementById('rejouer').addEventListener('click', () => { annee = 0; joue = !douceur.matches; reste = PAS; rendre() })
+curseur.addEventListener('input', () => { joue = false; va(parseInt(curseur.value, 10)) })
 document.getElementById('theme').addEventListener('click', () => {
   const sombre = document.documentElement.getAttribute('data-theme') === 'dark'
   document.documentElement.setAttribute('data-theme', sombre ? 'light' : 'dark')
 })
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowLeft') va(acte - 1)
-  else if (e.key === 'ArrowRight') va(acte + 1)
+  if (e.target === curseur) return
+  if (e.key === 'ArrowLeft') { joue = false; va(annee - 1) }
+  else if (e.key === 'ArrowRight') { joue = false; va(annee + 1) }
   else if (e.key === ' ' && e.target === document.body) { e.preventDefault(); jouer.click() }
 })
+
+/* --------------------------------------------------------- les deux modes */
+const bPct = document.getElementById('m-pct')
+const bVal = document.getElementById('m-val')
+const noteMode = document.getElementById('note-mode')
+
+function basculer(vers) {
+  // Un mode fermé ne bloque pas l'ouverture : on retombe sur la part du PIB.
+  mode = VUES[vers] ? vers : 'pct'
+  JALONS = jalons()
+  bPct.setAttribute('aria-pressed', String(mode === 'pct'))
+  bVal.setAttribute('aria-pressed', String(mode === 'val'))
+  noteMode.textContent = !VUES.val
+    ? `Lecture en euros courants : indisponible, la série de PIB en valeur manque au dépôt.`
+    : mode === 'val'
+      ? `Euros courants : l'inflation est dedans, et la moitié de la pente des années 1975-1990 vient d'elle.`
+      : `Rapportée au PIB : ce que la dépense pèse dans la richesse produite, à prix et à taille d'économie neutralisés.`
+  majTableau()
+  rendre()
+}
+bPct.addEventListener('click', () => basculer('pct'))
+bVal.addEventListener('click', () => basculer('val'))
+if (!VUES.val) {
+  bVal.disabled = true
+  bVal.title = 'Série de PIB en valeur absente du classeur Insee déposé dans docs/.'
+}
 
 /* ------------------------------------------------------------ infobulle */
 const info = document.getElementById('info')
 const cadre = cv.parentElement
 
-function anSousLaSouris(e) {
-  const r = cv.getBoundingClientRect()
-  const x = ((e.clientX - r.left) / r.width) * 1000
-  if (x < L - 6 || x > R + 6) return null
-  const an = AN0 + ((x - L) / (R - L)) * (AN1 - AN0)
-  return Math.max(0, Math.min(N - 1, Math.round(an - AN0)))
-}
-
 cadre.addEventListener('pointermove', (e) => {
-  const j = anSousLaSouris(e)
-  if (j === null) { info.hidden = true; if (survol !== null) { survol = null; rendre() } ; return }
+  const V = vue()
+  const r = cv.getBoundingClientRect()
+  const x = ((e.clientX - r.left) / r.width) * 1200
+  if (x < L - 6 || x > R + 6) {
+    info.hidden = true
+    if (survol !== null) { survol = null; rendre() }
+    return
+  }
+  const j = Math.max(0, Math.min(annee, Math.round(AN0 + ((x - L) / (R - L)) * (AN1 - AN0)) - AN0))
   if (j !== survol) { survol = j; rendre() }
-  const s = etat(acte, avance)
-  const lignes = POSTES.map((p) => `<tr><td class="p"><i style="background:var(--${p.couleur})"></i>${p.libelle}</td><td class="v">${pc(p.valeurs[j])}</td></tr>`)
-  if (s.empile[POSTES.length - 1] > 0.5) {
-    lignes.push(`<tr class="sep"><td class="p">Les cinq postes</td><td class="v">${pc(CINQ[j])}</td></tr>`)
-  }
-  if (s.reste > 0.5) {
-    lignes.push(`<tr><td class="p">Autres dépenses</td><td class="v">${pc(RESTE[j])}</td></tr>`)
-    lignes.push(`<tr><td class="p"><b>Dépense totale</b></td><td class="v">${pc(DONNEES.depenses[j])}</td></tr>`)
-  }
-  if (s.recettes > 0.5) {
-    lignes.push(`<tr class="sep"><td class="p">Recettes</td><td class="v">${pc(DONNEES.recettes[j])}</td></tr>`)
-    lignes.push(`<tr><td class="p">Solde (Maastricht)</td><td class="v">${nb(DONNEES.solde[j])}</td></tr>`)
-  }
+  const lignes = V.couches.map((c) => `<tr><td class="p">`
+    + (c.couleur ? `<i style="background:var(--${c.couleur})"></i>` : '<i class="hach" style="border:1px solid var(--rule-2)"></i>')
+    + `${c.libelle}</td><td class="v">${V.fmt(c.valeurs[j])}</td></tr>`)
+  lignes.push(`<tr class="sep"><td class="p"><b>Dépense totale</b></td><td class="v">${V.fmt(V.depenses[j])}</td></tr>`)
+  lignes.push(`<tr><td class="p">Recettes</td><td class="v">${V.fmt(V.recettes[j])}</td></tr>`)
+  lignes.push(`<tr><td class="p">Déficit</td><td class="v">${V.fmt(V.ecart[j])}</td></tr>`)
+  lignes.push(`<tr class="sep"><td class="p">Dette</td><td class="v">${V.fmt(V.dette[j])}</td></tr>`)
   info.innerHTML = `<b>${AN[j]}</b><table>${lignes.join('')}</table>`
   info.hidden = false
-  const r = cadre.getBoundingClientRect()
-  const gauche = e.clientX - r.left
-  info.style.left = `${Math.min(gauche + 18, r.width - info.offsetWidth - 10)}px`
-  info.style.top = `${Math.min(Math.max(e.clientY - r.top - 40, 8), r.height - info.offsetHeight - 8)}px`
+  const rc = cadre.getBoundingClientRect()
+  info.style.left = `${Math.min(e.clientX - rc.left + 18, rc.width - info.offsetWidth - 10)}px`
+  info.style.top = `${Math.min(Math.max(e.clientY - rc.top - 40, 8), rc.height - info.offsetHeight - 8)}px`
 })
 cadre.addEventListener('pointerleave', () => { info.hidden = true; survol = null; rendre() })
 
 /* -------------------------------------------------------------- tableau */
-{
-  const entetes = ['Année', ...POSTES.map((p) => p.libelle), 'Les cinq', 'Autres dépenses', 'Dépense totale', 'Recettes', 'Solde']
+function majTableau() {
+  const V = vue()
+  const entetes = ['Année', ...V.couches.map((c) => c.libelle), 'Dépense totale', 'Recettes',
+    V.euros ? 'Déficit' : 'Solde', 'Dette']
   const lignes = AN.map((an, j) => {
     const cellules = [
-      ...POSTES.map((p) => pc(p.valeurs[j])),
-      pc(CINQ[j]), pc(RESTE[j]), pc(DONNEES.depenses[j]), pc(DONNEES.recettes[j]), nb(DONNEES.solde[j]),
+      ...V.couches.map((c) => V.fmt(c.valeurs[j])),
+      V.fmt(V.depenses[j]), V.fmt(V.recettes[j]),
+      V.euros ? V.fmt(V.ecart[j]) : nb(DONNEES.solde[j], 1), V.fmt(V.dette[j]),
     ]
     return `<tr><td>${an}</td>${cellules.map((c) => `<td>${c}</td>`).join('')}</tr>`
   })
@@ -1265,26 +1329,37 @@ cadre.addEventListener('pointerleave', () => { info.hidden = true; survol = null
 
 /* ------------------------------------------------------------ provenance */
 document.getElementById('prov').textContent =
-  `${AN0}${TIRET}${AN1} · ${N} années · en % du PIB · cinq postes Eurostat, total et recettes Insee base 2020`
+  `${AN0}${TIRET}${AN1} · ${N} années · six couches Eurostat et Insee · dette Insee depuis ${AN[jDette]}`
 document.getElementById('ctrl').textContent =
   `recettes ${MOINS} dépenses retombe sur le solde notifié à 0,1 point près, chacune des ${N} années.`
+document.getElementById('p-euros').innerHTML = VUES.val
+  ? '<b>Les euros sont courants.</b> Le mode « en euros » multiplie chaque ratio par le PIB en valeur de '
+    + 'l’année : l’inflation y est comprise, et une bonne part de la pente des années 1975-1990 '
+    + 'vient d’elle plutôt que d’un choix budgétaire. C’est précisément pourquoi le dossier '
+    + 'raisonne en points de PIB ; la lecture en euros répond à une autre question — combien d’argent, '
+    + 'pas quelle part de la richesse.'
+  : '<b>Le mode « en euros » est prévu mais fermé.</b> Il demande une série de PIB en valeur, en milliards '
+    + 'd’euros courants, de ' + AN0 + ' à ' + AN1 + ' ; elle ne figure pas dans le classeur déposé dans '
+    + '<span class="num">docs/</span>. Dès qu’elle y sera, le générateur l’emportera et le bouton s’ouvrira, '
+    + 'sans autre changement.'
 document.getElementById('sources').innerHTML =
   'Cinq postes par nature : séries reconstituées à partir d’Eurostat <span class="num">nasa_10_nf_tr</span> et '
   + '<span class="num">gov_10a_main</span> (prestations sociales D62, rémunérations D1, consommations '
   + 'intermédiaires P2, investissement P51g, charge d’intérêts D41), rebasées sur la série 2020 — reprises '
-  + 'telles quelles de la figure du chapitre « Dette et déficit ». Dépense totale, recettes et solde : Insee, '
-  + 'comptes nationaux annuels, base 2020 (<span class="num">docs/insee-depenses-recettes-publiques-base-2020.xlsx</span>), '
-  + `champ France ; ${AN1} semi-définitif.`
+  + 'telles quelles de la figure du chapitre « Dette et déficit ». Dépense totale, recettes, solde au sens de '
+  + 'Maastricht et dette publique brute : Insee, comptes nationaux annuels, base 2020 '
+  + '(<span class="num">docs/insee-depenses-recettes-publiques-base-2020.xlsx</span>), champ France ; '
+  + `${AN1} semi-définitif.`
 
 /* --------------------------------------------------------------- départ
-   `?acte=3` ouvre directement sur un acte, figé : c'est ce qui permet de
-   relire une étape, d'en faire une capture, ou d'en donner le lien. */
+   `?an=1993` ouvre sur une année, figée, et `?mode=val` sur la lecture en
+   euros : de quoi relire un moment, en faire une capture, ou en donner le lien. */
 const params = new URLSearchParams(location.search)
-const demande = parseInt(params.get('acte') ?? '', 10)
-const instant = parseFloat(params.get('avance') ?? '')
-va(0)
-if (Number.isFinite(demande)) { va(demande - 1, Number.isFinite(instant) ? instant : 1); joue = false; rendre() }
-else if (douceur.matches) va(ACTES.length - 1, 1)
+basculer(params.get('mode') === 'val' ? 'val' : 'pct')
+const demande = parseInt(params.get('an') ?? '', 10)
+if (Number.isFinite(demande)) { joue = false; va(demande - AN0) }
+else if (douceur.matches) { joue = false; va(N - 1) }
+else va(0)
 requestAnimationFrame(boucle)
 </script>
 </body>
