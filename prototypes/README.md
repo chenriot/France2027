@@ -133,3 +133,50 @@ page porte ces limites, avec 2020-2021 et le ressaut des subventions de crise.
 les chapitres. S'il est retenu, les données remontent par la voie normale — le
 document d'origine et un générateur de figure — et seule l'animation part dans
 `src/components/client/`.
+
+## `prestations-sociales-2024.html` — où vont les prestations sociales
+
+Un fichier HTML autonome, à ouvrir directement dans un navigateur. Il ouvre un
+seul chiffre — les prestations de protection sociale versées en 2024 — et le
+décompose en six actes.
+
+**Le récit.** (1) Un bloc : le total, qui ne dit rien tant qu'on ne l'ouvre pas.
+(2) Il se divise en six risques, au sens de la nomenclature des comptes de la
+protection sociale. (3) Les segments se rangent du plus lourd au plus léger, à la
+même échelle : les ordres de grandeur deviennent comparables. (4) Les deux
+premiers risques font quatre cinquièmes du total. (5) Les trois qui occupent le
+débat public en font un dixième. (6) Chaque barre s'ouvre enfin sur ses postes,
+et le premier de tous — les pensions de retraite — pèse à lui seul plus du tiers
+de l'ensemble.
+
+**La transformation est une interpolation de rectangles** : un risque garde sa
+largeur — l'échelle en euros ne change jamais — et ne déplace que son coin.
+Passer du bloc empilé aux rangées classées est donc un simple réarrangement, ce
+qui est exactement ce qu'on veut montrer. Les étiquettes des petits risques se
+posent sous le bloc à la première hauteur libre, largeurs comparées.
+
+Survol : le détail complet d'un risque, poste par poste. Clavier : ←, → et
+espace. `?acte=4` ouvre sur un acte, figé. Sous `prefers-reduced-motion`, la
+planche s'ouvre à son état final et se parcourt aux boutons.
+
+**Les données.** `node prototypes/prestations-donnees.mjs` les lit dans le
+chapitre « Dépenses publiques et prélèvements » : la figure des six risques pour
+le premier niveau, les tableaux de détail pour le second. Ce que le script
+déclare, ce ne sont pas des chiffres mais **quelles lignes retenir** — les
+tableaux du dossier mêlent des postes, leurs sous-postes et un sous-total
+(« Total aides au logement ») qui compterait deux fois. La sélection est
+explicite, et le script échoue si une ligne disparaît du chapitre ou si les
+postes retenus dépassent le total de leur risque.
+
+**Ce qu'il faut savoir avant de le montrer.** Le périmètre est celui de la DREES
+— comptes de la protection sociale, régimes privés compris — et non la ligne
+« prestations sociales » des comptes nationaux, plus étroite, qui vaut 25,5 % du
+PIB dans l'autre prototype : les deux totaux ne se superposent pas. Les postes
+nommés ne couvrent pas tout un risque (de 70 % à 100 % selon les cas) ; la part
+laissée en clair dans chaque barre est ce qui reste, et elle n'est jamais
+complétée par une valeur inventée.
+
+**Ce qu'il ne fait pas.** Une seule année : les comptes de la protection sociale
+remontent à 1959, mais le dossier n'en porte que le millésime 2024. Une
+animation de l'évolution par risque demanderait cette série. Aucune intégration
+Next.js, aucun test.

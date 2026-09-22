@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiffres pour 2027 — animation : où vont les prestations sociales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+/* ------------------------------------------------------------------
+   Jetons repris verbatim de src/styles/tokens.css (CLAUDE.md, règle 6).
+   Le prototype n'introduit aucune couleur nouvelle.
+   ------------------------------------------------------------------ */
+:root{
+  --paper:#f4f5f3; --surface:#ffffff; --surface-2:#eceeeb;
+  --ink:#151b21; --ink-2:#3d4750; --muted:#6d7780;
+  --rule:#d5d9d6; --rule-2:#c2c8c4;
+  --accent:#1a4e63; --accent-2:#2a7492;
+  --caveat:#8a5320; --caveat-bg:#f6efe6;
+  --gap:#8f3a3a; --gap-bg:#f7ecec;
+  --note:#2c5c4a; --note-bg:#e9f1ed;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7; --s5:#e34948;
+  --shadow:0 1px 2px rgba(21,27,33,.05),0 8px 24px -18px rgba(21,27,33,.35);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#11161a; --surface:#171d22; --surface-2:#1d242a;
+    --ink:#e8ebe9; --ink-2:#bcc4c6; --muted:#8d979b;
+    --rule:#2a3238; --rule-2:#3a444b;
+    --accent:#7cc0d8; --accent-2:#9ad2e6;
+    --caveat:#d6a86a; --caveat-bg:#241d13;
+    --gap:#e08b8b; --gap-bg:#241616;
+    --note:#8fc9b0; --note-bg:#152220;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9; --s5:#e66767;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11161a; --surface:#171d22; --surface-2:#1d242a;
+  --ink:#e8ebe9; --ink-2:#bcc4c6; --muted:#8d979b;
+  --rule:#2a3238; --rule-2:#3a444b;
+  --accent:#7cc0d8; --accent-2:#9ad2e6;
+  --caveat:#d6a86a; --caveat-bg:#241d13;
+  --gap:#e08b8b; --gap-bg:#241616;
+  --note:#8fc9b0; --note-bg:#152220;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9; --s5:#e66767;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 80px}
+
+/* ------------------------------------------------------------- en-tête */
+.mast{padding:clamp(32px,5vw,64px) 0 0;max-width:72ch}
+.kicker{font:600 12px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 14px}
+h1{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(28px,4.2vw,44px);
+  line-height:1.12;letter-spacing:-.01em;margin:0 0 14px}
+.lede{color:var(--ink-2);font-size:clamp(16px,1.5vw,18px);margin:0 0 10px}
+.prov{font:500 12.5px/1.5 "IBM Plex Mono",monospace;color:var(--muted);margin:18px 0 0}
+
+/* -------------------------------------------------------------- scène */
+.scene{margin:26px 0 0;background:var(--surface);border:1px solid var(--rule);border-radius:4px;
+  box-shadow:var(--shadow);overflow:hidden}
+/* Deux unités de lecture : la part du PIB, et les euros de l'année. */
+.modes{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px clamp(16px,3vw,28px) 12px}
+.bascule{display:inline-flex;border:1px solid var(--rule-2);border-radius:3px;overflow:hidden;flex:none}
+.bascule button{appearance:none;background:var(--surface);border:0;padding:8px 15px;cursor:pointer;
+  font:600 13px/1 "IBM Plex Sans",sans-serif;color:var(--muted)}
+.bascule button+button{border-left:1px solid var(--rule-2)}
+.bascule button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.bascule button:disabled{opacity:.45;cursor:not-allowed}
+.modes .note{margin:0;font-size:12.5px;line-height:1.45;color:var(--muted);max-width:74ch}
+.cadre{position:relative;border-top:1px solid var(--rule)}
+svg.cv{display:block;width:100%;height:auto;background:var(--surface)}
+
+/* Hauteur fixe : sans elle, la planche sauterait à chaque jalon. */
+.recit{border-top:1px solid var(--rule);padding:16px clamp(16px,3vw,28px) 6px;min-height:118px;
+  display:flex;gap:clamp(16px,3vw,34px);align-items:baseline}
+.recit .an{font:600 34px/1 "IBM Plex Mono",monospace;color:var(--ink);font-variant-numeric:tabular-nums;
+  flex:none;letter-spacing:-.02em}
+.recit .dit{margin:0;color:var(--ink-2);max-width:78ch}
+
+/* ------------------------------------------------------------ réglages */
+.cmds{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px clamp(16px,3vw,28px) 16px}
+.cmds button{appearance:none;font:600 13px/1 "IBM Plex Sans",sans-serif;color:var(--ink-2);
+  background:var(--surface-2);border:1px solid var(--rule);border-radius:3px;padding:8px 12px;cursor:pointer}
+.cmds button:hover{border-color:var(--rule-2);color:var(--ink)}
+.cmds .droite{margin-left:auto}
+input[type="range"]{flex:1 1 260px;min-width:180px;accent-color:var(--accent);height:22px}
+
+/* ------------------------------------------------------------ légende */
+.legende{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;margin:0;
+  padding:13px clamp(16px,3vw,28px);border-top:1px solid var(--rule);background:var(--surface-2)}
+.legende li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)}
+.legende i{width:14px;height:14px;border-radius:2px;flex:none;display:block}
+.legende i.hachd{border:1px solid var(--gap);
+  background:repeating-linear-gradient(-45deg,transparent 0 2px,var(--gap) 2px 4px)}
+.legende i.trait{height:0;border-top:2.5px solid var(--ink)}
+.legende i.tirets{height:0;border-top:2.5px dashed var(--ink)}
+.legende b{font:600 13px/1 "IBM Plex Mono",monospace;color:var(--ink);font-variant-numeric:tabular-nums}
+.legende li.tot{margin-left:auto}
+
+/* ---------------------------------------------------------- infobulle */
+.info{position:absolute;pointer-events:none;z-index:5;min-width:216px;
+  background:var(--surface);border:1px solid var(--rule-2);border-radius:3px;box-shadow:var(--shadow);
+  padding:9px 11px;font-size:12.5px;line-height:1.45;color:var(--ink-2)}
+.info[hidden]{display:none}
+.info b{display:block;font:600 13px/1.3 "IBM Plex Mono",monospace;color:var(--ink);margin-bottom:5px}
+.info table{border-collapse:collapse;width:100%}
+.info td{padding:1px 0;vertical-align:baseline}
+.info td.v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);padding-left:12px}
+.info td.p{white-space:nowrap}
+.info i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:6px}
+.info tr.sep td{border-top:1px solid var(--rule);padding-top:5px}
+
+/* ------------------------------------------------------------ tableau */
+details.donnees{margin:22px 0 0;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
+details.donnees>summary{cursor:pointer;padding:12px 16px;font-weight:600;font-size:14px}
+.tabwrap{max-height:420px;overflow:auto;border-top:1px solid var(--rule)}
+table.dt{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+table.dt th,table.dt td{padding:5px 10px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+table.dt th:first-child,table.dt td:first-child{text-align:left}
+table.dt thead th{position:sticky;top:0;background:var(--surface-2);font-size:11.5px;font-weight:600;
+  color:var(--ink-2);text-align:right}
+
+/* --------------------------------------------------------------- pied */
+footer{margin:28px 0 0;font-size:13.5px;color:var(--ink-2);max-width:82ch}
+footer h3{font:600 12px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin:22px 0 8px}
+footer p{margin:0 0 10px}
+footer .num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+
+/* --------------------------------------------- vocabulaire des figures
+   Classes de src/styles/base.css, aux tailles de cette planche. */
+svg.cv .grid{stroke:var(--rule);stroke-width:1}
+svg.cv .axis{stroke:var(--rule-2);stroke-width:1}
+svg.cv .ax{font-family:"IBM Plex Mono",monospace;font-size:13px;fill:var(--muted);
+  text-anchor:middle;font-variant-numeric:tabular-nums}
+svg.cv .ax.ar{text-anchor:end}
+svg.cv .ax.al{text-anchor:start}
+svg.cv .lbl{font-family:"IBM Plex Sans",sans-serif;font-size:13.5px;font-weight:600;
+  font-variant-numeric:tabular-nums;fill:var(--ink)}
+svg.cv .lbl.mut{fill:var(--muted);font-weight:500}
+svg.cv .val{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;
+  fill:var(--ink);font-variant-numeric:tabular-nums}
+svg.cv .ln{fill:none;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+svg.cv .pr{stroke:var(--surface);stroke-width:1.5}
+svg.cv .pr-d{fill:var(--s1);opacity:.30}
+svg.cv .pr-g{fill:var(--s2);opacity:.30}
+svg.cv .pr-c{fill:var(--s3);opacity:.30}
+svg.cv .prl{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:600;fill:var(--ink-2)}
+svg.cv .prl.mutp{font-weight:500;fill:var(--muted);font-size:11px;text-anchor:start}
+svg.cv .coh{fill:url(#coh);stroke:none}
+svg.cv .cohl{stroke:var(--ink-2);stroke-width:1.4;opacity:.55}
+svg.cv .s1{stroke:var(--s1)} svg.cv .s2{stroke:var(--s2)} svg.cv .s3{stroke:var(--s3)}
+svg.cv .s4{stroke:var(--s4)} svg.cv .s5{stroke:var(--s5)}
+svg.cv .s1t{fill:var(--s1)} svg.cv .s2t{fill:var(--s2)} svg.cv .s3t{fill:var(--s3)}
+svg.cv .s4t{fill:var(--s4)} svg.cv .s5t{fill:var(--s5)}
+svg.cv .s1f{fill:var(--s1)} svg.cv .s2f{fill:var(--s2)} svg.cv .s3f{fill:var(--s3)}
+svg.cv .s4f{fill:var(--s4)} svg.cv .s5f{fill:var(--s5)}
+/* propres à cette planche */
+svg.cv .defz{fill:url(#hachd);opacity:.5}
+svg.cv .dot{stroke:var(--surface);stroke-width:1.2}
+svg.cv .lblp{font-family:"IBM Plex Sans",sans-serif;font-size:12px;font-weight:600}
+svg.cv .seuil{stroke:var(--ink-2);stroke-width:1;stroke-dasharray:5 3;opacity:.55}
+svg.cv .seuil.clair{stroke:var(--surface);opacity:.85}
+svg.cv .prl.sur{fill:var(--surface);font-weight:500;font-size:11px}
+svg.cv .total{stroke:var(--ink);stroke-width:2.6;fill:none;stroke-linejoin:round}
+svg.cv .rec{stroke:var(--ink);stroke-width:2.6;fill:none;stroke-dasharray:9 5;stroke-linejoin:round}
+svg.cv .curseur{stroke:var(--ink-2);stroke-width:1;stroke-dasharray:3 3;opacity:.8}
+svg.cv .viseur{stroke:var(--rule-2);stroke-width:1;stroke-dasharray:3 3}
+svg.cv .flag{fill:var(--surface);stroke:var(--rule-2);stroke-width:1}
+svg.cv .pt{stroke:var(--surface);stroke-width:1.6;fill:var(--ink)}
+svg.cv .gapt{fill:var(--gap)}
+svg.cv .stockc{fill:var(--surface-2);stroke:var(--rule);stroke-width:1}
+svg.cv .stockf{fill:var(--gap);opacity:.72}
+svg.cv .stockl{stroke:var(--gap);stroke-width:1.6;fill:none}
+svg.cv .repere{stroke:var(--rule-2);stroke-width:1;stroke-dasharray:4 3}
+svg.cv .titre{font-family:"IBM Plex Sans",sans-serif;font-size:14px;font-weight:600;fill:var(--ink)}
+svg.cv .titremut{font-weight:500;fill:var(--muted)}
+svg.cv .stockv{font-family:"IBM Plex Mono",monospace;font-size:21px;font-weight:600;
+  fill:var(--gap);font-variant-numeric:tabular-nums;text-anchor:middle}
+svg.cv .stockv.dedans{fill:var(--surface)}
+
+/* ------------------------------------------- propres à cette décomposition */
+.recit{align-items:flex-start}
+.recit .num{font:600 12px/1.6 "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--accent);flex:none}
+.recit h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:21px;line-height:1.25;margin:0 0 5px}
+.recit .txt{margin:0;color:var(--ink-2);max-width:86ch}
+
+.rail{display:flex;gap:4px;padding:0 clamp(16px,3vw,28px) 14px}
+.rail button{flex:1;appearance:none;background:none;border:0;padding:8px 0 0;cursor:pointer;text-align:left;
+  font:500 11.5px/1.3 "IBM Plex Sans",sans-serif;color:var(--muted)}
+.rail button .bar{display:block;height:3px;border-radius:2px;background:var(--rule);margin-bottom:6px;overflow:hidden}
+.rail button .bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:2px}
+.rail button[aria-current="true"]{color:var(--ink)}
+.rail button.vu .bar i{width:100%}
+
+.legende i.clair{border:1px solid var(--rule-2);background:var(--surface-2)}
+table.dt tr.risque td{font-weight:600;background:var(--surface-2)}
+table.dt td.sous{padding-left:26px;color:var(--ink-2)}
+table.dt td.mut{color:var(--muted);font-style:italic}
+
+svg.cv .seg{stroke:var(--surface);stroke-width:1.5}
+svg.cv .neutre{fill:var(--accent)}
+svg.cv .accentf{fill:var(--accent)}
+svg.cv .dans{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;font-weight:600;fill:var(--surface)}
+svg.cv .dans.grand{font-size:16px}
+svg.cv .petit{font-family:"IBM Plex Sans",sans-serif;font-size:12px;font-weight:600;fill:var(--ink)}
+svg.cv .petit.mut{font-weight:500;fill:var(--muted)}
+svg.cv .tige{stroke:var(--rule-2);stroke-width:1}
+svg.cv .total-v{font-family:"IBM Plex Mono",monospace;font-size:27px;font-weight:600;fill:var(--ink);
+  font-variant-numeric:tabular-nums}
+svg.cv .somme-v{font-family:"IBM Plex Mono",monospace;font-size:21px;font-weight:600;fill:var(--ink);
+  font-variant-numeric:tabular-nums}
+svg.cv .accolade{stroke:var(--rule-2);stroke-width:1.5;fill:none}
+svg.cv .survol{fill:none;stroke:var(--ink);stroke-width:2}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="kicker">Chiffres pour 2027 · prototype d'animation</p>
+  <h1>Où vont les prestations sociales</h1>
+  <p class="lede">
+    Un seul bloc, celui de l'année 2024, qu'on ouvre : six risques, puis les postes qui les
+    composent. L'ordre de grandeur est la seule chose à retenir — et il n'est pas celui du débat
+    public.
+  </p>
+  <p class="prov" id="prov"></p>
+</header>
+
+<section class="scene" aria-label="Décomposition des prestations sociales">
+  <div class="cadre">
+    <svg class="cv" id="cv" viewBox="0 0 1200 540" role="img" aria-labelledby="cv-t cv-d"
+         preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="info" id="info" hidden></div>
+  </div>
+
+  <div class="recit">
+    <p class="num" id="acte-num"></p>
+    <div>
+      <h2 id="acte-titre"></h2>
+      <p class="txt" id="acte-txt"></p>
+    </div>
+  </div>
+
+  <div class="rail" id="rail" role="tablist" aria-label="Étapes"></div>
+
+  <div class="cmds">
+    <button type="button" id="prec">◀ Précédent</button>
+    <button type="button" id="jouer">⏸ Pause</button>
+    <button type="button" id="suiv">Suivant ▶</button>
+    <button type="button" id="rejouer">↻ Rejouer</button>
+    <button type="button" id="theme" class="droite">Thème</button>
+  </div>
+
+  <ul class="legende" id="legende"></ul>
+</section>
+
+<details class="donnees">
+  <summary>Les données, risque par risque et poste par poste</summary>
+  <div class="tabwrap" id="tabwrap"></div>
+</details>
+
+<footer>
+  <h3>Ce que ce graphique ne dit pas</h3>
+  <p>
+    <b>Le périmètre n'est pas celui des comptes nationaux.</b> Ce total est celui des comptes de la
+    protection sociale : il comprend les prestations versées par des régimes privés — mutuelles,
+    institutions de prévoyance, assureurs — et par les employeurs. La ligne « prestations sociales »
+    de la comptabilité nationale, celle qui vaut <span class="num">25,5 %</span> du PIB en 2024 dans
+    le chapitre « Dette et déficit », est plus étroite. Les deux totaux ne se superposent pas, et
+    additionner l'un à l'autre n'aurait aucun sens.
+  </p>
+  <p>
+    <b>Les postes nommés ne couvrent pas tout un risque.</b> Le dossier détaille les principaux, pas
+    la totalité : la part laissée en clair dans chaque barre est ce qui reste, et elle va de
+    <span class="num" id="couverture"></span> Elle n'est pas complétée par une valeur inventée.
+  </p>
+  <p>
+    <b>Un risque n'est pas une politique.</b> « Santé » mêle les soins remboursés, les indemnités
+    journalières, l'allocation aux adultes handicapés et les rentes d'accidents du travail ;
+    « vieillesse » mêle les pensions de droit direct, les réversions et la perte d'autonomie. Le
+    classement suit la nomenclature de la DREES, qui range par risque couvert, pas par ministère ni
+    par caisse.
+  </p>
+  <p>
+    <b>Ce sont des prestations, pas le coût complet.</b> Les frais de gestion des régimes, les
+    dépenses d'action sociale et les transferts entre régimes ne sont pas ici.
+  </p>
+
+  <h3>Provenance</h3>
+  <p id="sources"></p>
+</footer>
+
+</div>
+
+<script>
+// Un défaut de script doit se voir, y compris en capture automatique.
+window.addEventListener('error', (e) => { document.title = 'ERREUR ' + e.message })
+/* ------------------------------------------------------------------------
+   Données. Écrites par `node prototypes/prestations-donnees.mjs`, qui les lit
+   dans le chapitre « Dépenses publiques et prélèvements » : la figure des six
+   risques, puis le tableau de détail de chacun. Ne rien corriger ici : le
+   script réécrit ce bloc.
+   ------------------------------------------------------------------------ */
+/* @données */
+const DONNEES = {
+  "annee": "2024",
+  "total": 932.546,
+  "risques": [
+    {
+      "cle": "r1",
+      "libelle": "Vieillesse et survie",
+      "couleur": "s1",
+      "montant": 426.667,
+      "detaille": 409.2,
+      "postes": [
+        {
+          "libelle": "Droits directs (pensions de retraite)",
+          "montant": 352.2
+        },
+        {
+          "libelle": "Droits dérivés (réversion)",
+          "montant": 40.9
+        },
+        {
+          "libelle": "Dépendance et perte d'autonomie",
+          "montant": 11.2
+        },
+        {
+          "libelle": "Minimum vieillesse et ASPA",
+          "montant": 4.9
+        }
+      ],
+      "source": "vieillesse-et-survie-426-7-md"
+    },
+    {
+      "cle": "r2",
+      "libelle": "Santé (maladie, invalidité, AT-MP)",
+      "couleur": "s3",
+      "montant": 338.903,
+      "detaille": 295.5,
+      "postes": [
+        {
+          "libelle": "Soins de santé (prestation en nature)",
+          "montant": 211.5
+        },
+        {
+          "libelle": "Accueil, accompagnement et hébergement du handicap",
+          "montant": 19.2
+        },
+        {
+          "libelle": "Indemnités journalières (en espèces)",
+          "montant": 16.8
+        },
+        {
+          "libelle": "Médico-social personnes âgées",
+          "montant": 16.2
+        },
+        {
+          "libelle": "AAH",
+          "montant": 13.8
+        },
+        {
+          "libelle": "Pensions et rentes d'invalidité",
+          "montant": 9.7
+        },
+        {
+          "libelle": "Pensions et rentes accidents du travail",
+          "montant": 5.9
+        },
+        {
+          "libelle": "Prestation de compensation du handicap",
+          "montant": 2.4
+        }
+      ],
+      "source": "sante-338-9-md"
+    },
+    {
+      "cle": "r3",
+      "libelle": "Famille",
+      "couleur": "s4",
+      "montant": 65.823,
+      "detaille": 46.4,
+      "postes": [
+        {
+          "libelle": "Allocations familiales",
+          "montant": 13.8
+        },
+        {
+          "libelle": "Aide sociale à l'enfance",
+          "montant": 11.1
+        },
+        {
+          "libelle": "Crèches et modes d'accueil (en nature)",
+          "montant": 7.5
+        },
+        {
+          "libelle": "Accueil du jeune enfant (PAJE)",
+          "montant": 7.3
+        },
+        {
+          "libelle": "Maternité",
+          "montant": 4.5
+        },
+        {
+          "libelle": "Allocation de rentrée scolaire",
+          "montant": 2.2
+        }
+      ],
+      "source": "famille-65-8-md"
+    },
+    {
+      "cle": "r4",
+      "libelle": "Emploi et chômage",
+      "couleur": "s2",
+      "montant": 51.083,
+      "detaille": 51.2,
+      "postes": [
+        {
+          "libelle": "Indemnisation du chômage",
+          "montant": 45.6
+        },
+        {
+          "libelle": "Insertion et réinsertion professionnelle",
+          "montant": 5.6
+        }
+      ],
+      "source": "emploi-et-chomage-51-1-md"
+    },
+    {
+      "cle": "r5",
+      "libelle": "Pauvreté et exclusion",
+      "couleur": "s5",
+      "montant": 33.98,
+      "detaille": 28.5,
+      "postes": [
+        {
+          "libelle": "RSA",
+          "montant": 12
+        },
+        {
+          "libelle": "Prime d'activité",
+          "montant": 10.6
+        },
+        {
+          "libelle": "Bourses de l'enseignement supérieur",
+          "montant": 2.6
+        },
+        {
+          "libelle": "Prestations des CCAS et CIAS",
+          "montant": 2.5
+        },
+        {
+          "libelle": "Chèque énergie",
+          "montant": 0.8
+        }
+      ],
+      "source": "pauvrete-exclusion-et-logement-50-1-md"
+    },
+    {
+      "cle": "r6",
+      "libelle": "Logement",
+      "couleur": "accent",
+      "montant": 16.09,
+      "detaille": 15.9,
+      "postes": [
+        {
+          "libelle": "APL",
+          "montant": 7.1
+        },
+        {
+          "libelle": "ALS",
+          "montant": 5.5
+        },
+        {
+          "libelle": "ALF",
+          "montant": 3.3
+        }
+      ],
+      "source": "pauvrete-exclusion-et-logement-50-1-md"
+    }
+  ],
+  "debat": [
+    "Emploi et chômage",
+    "Pauvreté et exclusion",
+    "Logement"
+  ],
+  "sommet": [
+    "Vieillesse et survie",
+    "Santé (maladie, invalidité, AT-MP)"
+  ]
+}
+/* @fin-données */
+
+/* ------------------------------------------------------- mise en forme */
+const FINE = ' '
+const ESPACE = ' '
+const CADRATIN = '—'
+function groupe(entier, sep) {
+  let out = ''
+  for (let i = entier.length; i > 0; i -= 3) out = entier.slice(Math.max(0, i - 3), i) + (out ? sep + out : '')
+  return out
+}
+function nb(v, d = 1, sep = ESPACE) {
+  const [ent, dec] = Math.abs(v).toFixed(d).split('.')
+  return (v < 0 ? '−' : '') + groupe(ent, sep) + (dec ? ',' + dec : '')
+}
+const md = (v, sep = ESPACE) => nb(v, 1, sep) + (sep === FINE ? FINE : ' ') + 'Md€'
+const pct = (v, sep = ESPACE) => nb(v, 1, sep) + (sep === FINE ? FINE : ' ') + '%'
+
+/* ------------------------------------------------------------ dérivées */
+const R = DONNEES.risques
+const TOTAL = DONNEES.total
+const part = (v) => (100 * v) / TOTAL
+const cumul = []
+R.reduce((t, r, i) => { cumul[i] = t; return t + r.montant }, 0)
+const estSommet = (r) => DONNEES.sommet.includes(r.libelle)
+const estDebat = (r) => DONNEES.debat.includes(r.libelle)
+const sommeSommet = R.filter(estSommet).reduce((t, r) => t + r.montant, 0)
+const sommeDebat = R.filter(estDebat).reduce((t, r) => t + r.montant, 0)
+const premierPoste = R[0].postes[0]
+
+/* ------------------------------------------------------------ géométrie */
+const BL0 = 110, BR = 1100          // le bloc empilé, pleine largeur
+const STK_Y = 240, STK_H = 78
+const BL = 300, RT = 110, PITCH = 64, ROW_H = 40   // les rangées classées
+const ECH = (BR - BL0) / TOTAL      // pixels par milliard, commune aux deux vues
+const px = (n) => Math.round(n * 10) / 10
+
+const clamp = (t) => (t < 0 ? 0 : t > 1 ? 1 : t)
+const lerp = (a, b, t) => a + (b - a) * t
+const easeIO = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
+const easeO = (t) => 1 - Math.pow(1 - t, 3)
+
+/* ---------------------------------------------------------------- récit */
+const fois = Math.round(R[0].montant / R[R.length - 1].montant)
+const ACTES = [
+  {
+    titre: 'Un bloc',
+    texte: `En ${DONNEES.annee}, la protection sociale a versé ${md(TOTAL)} de prestations. Le chiffre ne
+      dit rien tant qu'on ne l'ouvre pas : ce bloc est tout ce qui suit.`,
+    duree: 4200,
+  },
+  {
+    titre: 'Six risques',
+    texte: `Il se divise en six risques, au sens de la nomenclature des comptes de la protection
+      sociale : ce contre quoi la prestation protège. ${R[0].libelle} et ${R[1].libelle.split(' (')[0].toLowerCase()}
+      occupent déjà presque toute la longueur.`,
+    duree: 5200,
+  },
+  {
+    titre: 'Mis en rang',
+    texte: `Rangés du plus lourd au plus léger, à la même échelle, les ordres de grandeur deviennent
+      comparables : ${R[0].libelle.toLowerCase()} pèse ${fois} fois ${R[R.length - 1].libelle.toLowerCase()}.`,
+    duree: 5000,
+  },
+  {
+    titre: 'Deux risques, quatre cinquièmes',
+    texte: `${R[0].libelle} et ${R[1].libelle.split(' (')[0].toLowerCase()} font à eux seuls
+      ${md(sommeSommet)}, soit ${pct(part(sommeSommet))} du total. Toute économie d'ampleur sur la
+      protection sociale passe par l'un des deux, ou n'a pas lieu.`,
+    duree: 5600,
+  },
+  {
+    titre: 'Ce dont on débat',
+    texte: `Les trois risques qui occupent le débat public — ${DONNEES.debat.join(', ').toLowerCase()} —
+      pèsent ensemble ${md(sommeDebat)}, soit ${pct(part(sommeDebat))} du total. Ce n'est pas rien ;
+      ce n'est pas là que se joue l'équilibre.`,
+    duree: 5800,
+  },
+  {
+    titre: 'Poste par poste',
+    texte: `Chaque barre s'ouvre sur les postes que le dossier détaille ; la part laissée en clair est
+      ce qu'ils ne couvrent pas. Le premier de tous, à lui seul : ${premierPoste.libelle.toLowerCase()},
+      ${md(premierPoste.montant)}, soit ${pct(part(premierPoste.montant))} de l'ensemble des
+      prestations.`,
+    duree: 7000,
+  },
+]
+
+function etat(i, p) {
+  const s = { division: 0, rangees: 0, focus: null, foc: 0, detail: 0 }
+  if (i === 0) s.division = easeO(clamp((p - 0.55) / 0.45)) * 0
+  else if (i === 1) s.division = easeIO(clamp(p / 0.55))
+  else if (i === 2) { s.division = 1; s.rangees = easeIO(clamp(p / 0.7)) }
+  else if (i === 3) { s.division = 1; s.rangees = 1; s.focus = 'sommet'; s.foc = easeO(clamp(p / 0.35)) }
+  else if (i === 4) { s.division = 1; s.rangees = 1; s.focus = 'debat'; s.foc = easeO(clamp(p / 0.35)) }
+  else { s.division = 1; s.rangees = 1; s.detail = easeIO(clamp(p / 0.6)) }
+  return s
+}
+
+/* ---------------------------------------------------------------- tracé */
+const cv = document.getElementById('cv')
+let ZONES = []   // rectangles dessinés, pour le survol
+
+function dessine(s, survol) {
+  const o = []
+  ZONES = []
+  o.push('<defs><pattern id="hach" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
+    + '<line x1="0" y1="0" x2="0" y2="7" stroke="var(--muted)" stroke-width="1.2" opacity=".5"/></pattern></defs>')
+
+  o.push(`<text class="titre" x="40" y="46">Prestations de protection sociale, France, ${DONNEES.annee}</text>`)
+  o.push(`<text class="ax al" x="40" y="66">en milliards d’euros · le bloc entier vaut ${md(TOTAL, FINE)}</text>`)
+
+  const basEmpile = STK_Y + STK_H
+  R.forEach((r, i) => {
+    const x = lerp(BL0 + cumul[i] * ECH, BL, s.rangees)
+    const y = lerp(STK_Y, RT + i * PITCH, s.rangees)
+    const h = lerp(STK_H, ROW_H, s.rangees)
+    const w = r.montant * ECH
+    const vedette = s.focus === null || (s.focus === 'sommet' ? estSommet(r) : estDebat(r))
+    const att = vedette ? 1 : lerp(1, 0.16, s.foc)
+    ZONES.push({ r, x, y, w, h })
+
+    o.push(`<g style="opacity:${px(att)}">`)
+    // Le bloc d'abord d'une seule teneur, puis chaque risque prend sa couleur.
+    o.push(`<rect class="seg neutre" x="${px(x)}" y="${px(y)}" width="${px(w)}" height="${px(h)}" rx="2" style="opacity:${px(1 - s.division)}"/>`)
+    o.push(`<rect class="seg ${r.couleur}f" x="${px(x)}" y="${px(y)}" width="${px(w)}" height="${px(h)}" rx="2" style="opacity:${px(lerp(0, 1, s.division) * lerp(1, 0.22, s.detail))}"/>`)
+
+    // Le détail : les postes peints par-dessus, depuis la gauche.
+    if (s.detail > 0.01) {
+      let dx = x
+      r.postes.forEach((poste, k) => {
+        const pw = poste.montant * ECH * s.detail
+        o.push(`<rect class="seg ${r.couleur}f" x="${px(dx)}" y="${px(y)}" width="${px(pw)}" height="${px(h)}" rx="2" style="opacity:${px(Math.max(0.3, 1 - k * 0.13))}"/>`)
+        const tient = Math.floor((pw - 18) / 6.6)
+        if (tient >= 8 && h > 20) {
+          const nom = poste.libelle.length > tient ? poste.libelle.slice(0, tient - 1).trimEnd() + '…' : poste.libelle
+          o.push(`<text class="dans" x="${px(dx + 8)}" y="${px(y + h / 2 + 4)}">${nom}</text>`)
+        }
+        dx += pw
+      })
+    }
+    o.push('</g>')
+  })
+
+  /* étiquettes : à gauche en rangées, autour du bloc quand il est empilé */
+  const occupe = []   // abscisses déjà prises, par étage, sous le bloc
+  R.forEach((r, i) => {
+    const x = lerp(BL0 + cumul[i] * ECH, BL, s.rangees)
+    const y = lerp(STK_Y, RT + i * PITCH, s.rangees)
+    const h = lerp(STK_H, ROW_H, s.rangees)
+    const w = r.montant * ECH
+    const vedette = s.focus === null || (s.focus === 'sommet' ? estSommet(r) : estDebat(r))
+    const att = vedette ? 1 : lerp(1, 0.22, s.foc)
+
+    // en rangées : nom à gauche, montant au bout
+    if (s.rangees > 0.4) {
+      const op = px((s.rangees - 0.4) / 0.6 * att)
+      o.push(`<text class="lbl" x="${BL - 14}" y="${px(y + h / 2 + 5)}" text-anchor="end" style="opacity:${op}">${r.libelle}</text>`)
+      o.push(`<text class="val" x="${px(x + w + 10)}" y="${px(y + h / 2 + 5)}" style="opacity:${op}">${md(r.montant, FINE)} · ${pct(part(r.montant), FINE)}</text>`)
+    }
+    // empilé : les deux grands dedans, les petits dessous en quinconce
+    if (s.rangees < 0.6 && s.division > 0.3) {
+      const op = px((1 - s.rangees / 0.6) * s.division)
+      if (w > 150) {
+        o.push(`<text class="dans grand" x="${px(x + 12)}" y="${px(STK_Y + 30)}" style="opacity:${op}">${r.libelle.split(' (')[0]}</text>`)
+        o.push(`<text class="dans" x="${px(x + 12)}" y="${px(STK_Y + 52)}" style="opacity:${op}">${md(r.montant, FINE)} · ${pct(part(r.montant), FINE)}</text>`)
+      } else {
+        const demi = Math.max(r.libelle.split(' (')[0].length * 6.6, 62) / 2
+        const centre = x + w / 2
+        let etage = 0
+        while (etage < 4 && occupe[etage]?.some((o) => Math.abs(o.centre - centre) < o.demi + demi + 12)) etage++
+        ;(occupe[etage] ??= []).push({ centre, demi })
+        const yb = basEmpile + 22 + etage * 34
+        o.push(`<line class="tige" x1="${px(x + w / 2)}" y1="${basEmpile + 2}" x2="${px(x + w / 2)}" y2="${px(yb - 12)}" style="opacity:${op}"/>`)
+        o.push(`<text class="petit" x="${px(x + w / 2)}" y="${px(yb)}" text-anchor="middle" style="opacity:${op}">${r.libelle.split(' (')[0]}</text>`)
+        o.push(`<text class="petit mut" x="${px(x + w / 2)}" y="${px(yb + 15)}" text-anchor="middle" style="opacity:${op}">${md(r.montant, FINE)}</text>`)
+      }
+    }
+  })
+
+  /* le total, tant que le bloc est entier */
+  if (s.rangees < 0.5) {
+    const op = px(1 - s.rangees / 0.5)
+    o.push(`<text class="total-v" x="${px((BL0 + BR) / 2)}" y="${STK_Y - 22}" text-anchor="middle" style="opacity:${op}">${md(TOTAL, FINE)}</text>`)
+  }
+
+  /* l'accolade des actes 4 et 5 */
+  if (s.focus && s.foc > 0.02) {
+    const vedettes = R.filter((r) => (s.focus === 'sommet' ? estSommet(r) : estDebat(r)))
+    const idx = vedettes.map((r) => R.indexOf(r))
+    const y1 = RT + Math.min(...idx) * PITCH
+    const y2 = RT + Math.max(...idx) * PITCH + ROW_H
+    const somme = vedettes.reduce((t, r) => t + r.montant, 0)
+    const xb = 912   // au-delà de la plus longue étiquette de valeur
+    o.push(`<g style="opacity:${px(s.foc)}">`)
+    o.push(`<path class="accolade" d="M${xb},${px(y1)} L${xb + 14},${px(y1)} L${xb + 14},${px(y2)} L${xb},${px(y2)}"/>`)
+    o.push(`<text class="somme-v" x="${xb + 26}" y="${px((y1 + y2) / 2 - 2)}">${md(somme, FINE)}</text>`)
+    o.push(`<text class="lbl mut" x="${xb + 26}" y="${px((y1 + y2) / 2 + 20)}">${pct(part(somme), FINE)} du total</text>`)
+    o.push('</g>')
+  }
+
+  /* le premier poste de tous, souligné quand le détail est ouvert */
+  if (s.detail > 0.6) {
+    const op = px((s.detail - 0.6) / 0.4)
+    const y = RT + ROW_H + 6
+    const w = premierPoste.montant * ECH
+    o.push(`<g style="opacity:${op}">`)
+    o.push(`<path class="accolade bas" d="M${BL},${px(y)} L${BL},${px(y + 10)} L${px(BL + w)},${px(y + 10)} L${px(BL + w)},${px(y)}"/>`)
+    o.push(`<text class="petit" x="${px(BL + w + 10)}" y="${px(y + 14)}">${premierPoste.libelle} · ${md(premierPoste.montant, FINE)} · ${pct(part(premierPoste.montant), FINE)} de l’ensemble</text>`)
+    o.push('</g>')
+  }
+
+  if (survol) {
+    o.push(`<rect class="survol" x="${px(survol.x)}" y="${px(survol.y)}" width="${px(survol.w)}" height="${px(survol.h)}" rx="2"/>`)
+  }
+
+  cv.innerHTML = `<title id="cv-t">Les prestations de protection sociale de ${DONNEES.annee}, décomposées</title>`
+    + `<desc id="cv-d">Un bloc de ${md(TOTAL)} se divise en six risques — ${R.map((r) => r.libelle).join(', ')} — puis chaque risque s'ouvre sur ses principaux postes. Les montants figurent dans le tableau sous le graphique.</desc>`
+    + o.join('')
+}
+
+/* ------------------------------------------------------------ la boucle */
+const douceur = window.matchMedia('(prefers-reduced-motion: reduce)')
+let acte = 0
+let avance = 0
+let joue = !douceur.matches
+let horloge = null
+let survol = null
+
+const rail = document.getElementById('rail')
+const legende = document.getElementById('legende')
+const jouer = document.getElementById('jouer')
+
+function rendre() {
+  dessine(etat(acte, avance), survol)
+  document.getElementById('acte-num').textContent = `${acte + 1}/${ACTES.length}`
+  document.getElementById('acte-titre').textContent = ACTES[acte].titre
+  document.getElementById('acte-txt').textContent = ACTES[acte].texte.replace(/\s+/g, ' ').trim()
+  for (const [i, b] of [...rail.children].entries()) {
+    b.setAttribute('aria-current', String(i === acte))
+    b.classList.toggle('vu', i < acte)
+    b.querySelector('i').style.width = `${i < acte ? 100 : i === acte ? avance * 100 : 0}%`
+  }
+  jouer.textContent = joue ? '⏸ Pause' : '▶ Lecture'
+}
+
+function boucle(t) {
+  if (horloge === null) horloge = t
+  const dt = t - horloge
+  horloge = t
+  if (joue) {
+    avance += dt / ACTES[acte].duree
+    if (avance >= 1) {
+      if (acte < ACTES.length - 1) { acte++; avance = 0 } else { avance = 1; joue = false }
+    }
+    rendre()
+  }
+  requestAnimationFrame(boucle)
+}
+
+/* ----------------------------------------------------------- commandes */
+for (const [i, a] of ACTES.entries()) {
+  const b = document.createElement('button')
+  b.type = 'button'
+  b.innerHTML = '<span class="bar"><i></i></span>'
+  b.append(document.createTextNode(a.titre))
+  b.addEventListener('click', () => va(i))
+  rail.append(b)
+}
+for (const r of R) {
+  const li = document.createElement('li')
+  li.innerHTML = `<i style="background:var(--${r.couleur})"></i>${r.libelle.split(' (')[0]} <b>${md(r.montant)}</b>`
+  legende.append(li)
+}
+{
+  const li = document.createElement('li')
+  li.className = 'tot'
+  li.innerHTML = `<i class="clair"></i>part non détaillée du risque`
+  legende.append(li)
+}
+
+function va(i, p = 0) {
+  acte = Math.max(0, Math.min(ACTES.length - 1, i))
+  avance = douceur.matches ? 1 : p
+  if (douceur.matches) joue = false
+  rendre()
+}
+document.getElementById('prec').addEventListener('click', () => va(acte - 1))
+document.getElementById('suiv').addEventListener('click', () => (acte === ACTES.length - 1 ? va(acte, 1) : va(acte + 1)))
+document.getElementById('rejouer').addEventListener('click', () => { va(0); joue = !douceur.matches; rendre() })
+jouer.addEventListener('click', () => {
+  joue = !joue
+  if (joue && acte === ACTES.length - 1 && avance >= 1) va(0)
+  rendre()
+})
+document.getElementById('theme').addEventListener('click', () => {
+  const sombre = document.documentElement.getAttribute('data-theme') === 'dark'
+  document.documentElement.setAttribute('data-theme', sombre ? 'light' : 'dark')
+})
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') va(acte - 1)
+  else if (e.key === 'ArrowRight') va(acte + 1)
+  else if (e.key === ' ' && e.target === document.body) { e.preventDefault(); jouer.click() }
+})
+
+/* ------------------------------------------------------------ infobulle */
+const info = document.getElementById('info')
+const cadre = cv.parentElement
+cadre.addEventListener('pointermove', (e) => {
+  const rect = cv.getBoundingClientRect()
+  const x = ((e.clientX - rect.left) / rect.width) * 1200
+  const y = ((e.clientY - rect.top) / rect.height) * 540
+  const z = ZONES.find((z) => x >= z.x && x <= z.x + z.w && y >= z.y && y <= z.y + z.h)
+  if (!z) {
+    info.hidden = true
+    if (survol) { survol = null; rendre() }
+    return
+  }
+  if (!survol || survol.r !== z.r) { survol = z; rendre() }
+  const reste = z.r.montant - z.r.detaille
+  const lignes = z.r.postes.map((p) =>
+    `<tr><td class="p">${p.libelle}</td><td class="v">${md(p.montant)}</td></tr>`)
+  if (reste > 0.2) lignes.push(`<tr><td class="p">Part non détaillée</td><td class="v">${md(reste)}</td></tr>`)
+  lignes.push(`<tr class="sep"><td class="p"><b>Total du risque</b></td><td class="v">${md(z.r.montant)}</td></tr>`)
+  lignes.push(`<tr><td class="p">Part de l’ensemble</td><td class="v">${pct(part(z.r.montant))}</td></tr>`)
+  info.innerHTML = `<b>${z.r.libelle}</b><table>${lignes.join('')}</table>`
+  info.hidden = false
+  const rc = cadre.getBoundingClientRect()
+  info.style.left = `${Math.min(e.clientX - rc.left + 18, rc.width - info.offsetWidth - 10)}px`
+  info.style.top = `${Math.min(Math.max(e.clientY - rc.top - 40, 8), rc.height - info.offsetHeight - 8)}px`
+})
+cadre.addEventListener('pointerleave', () => { info.hidden = true; survol = null; rendre() })
+
+/* -------------------------------------------------------------- tableau */
+{
+  const lignes = []
+  for (const r of R) {
+    lignes.push(`<tr class="risque"><td>${r.libelle}</td><td>${md(r.montant)}</td><td>${CADRATIN}</td><td>${pct(part(r.montant))}</td></tr>`)
+    for (const p of r.postes) {
+      lignes.push(`<tr><td class="sous">${p.libelle}</td><td>${md(p.montant)}</td>`
+        + `<td>${pct((100 * p.montant) / r.montant)}</td><td>${pct(part(p.montant))}</td></tr>`)
+    }
+    const reste = r.montant - r.detaille
+    if (reste > 0.2) {
+      lignes.push(`<tr><td class="sous mut">Part non détaillée</td><td>${md(reste)}</td>`
+        + `<td>${pct((100 * reste) / r.montant)}</td><td>${pct(part(reste))}</td></tr>`)
+    }
+  }
+  lignes.push(`<tr class="risque"><td>Ensemble</td><td>${md(TOTAL)}</td><td>${CADRATIN}</td><td>${pct(100)}</td></tr>`)
+  document.getElementById('tabwrap').innerHTML =
+    '<table class="dt"><thead><tr><th>Risque et poste</th><th>Montant</th><th>Part du risque</th>'
+    + '<th>Part de l’ensemble</th></tr></thead><tbody>' + lignes.join('') + '</tbody></table>'
+}
+
+/* ------------------------------------------------------------ provenance */
+document.getElementById('prov').textContent =
+  `${DONNEES.annee} · ${R.length} risques · ${R.reduce((t, r) => t + r.postes.length, 0)} postes · ${md(TOTAL)} au total`
+{
+  const couvertures = R.map((r) => (100 * r.detaille) / r.montant)
+  document.getElementById('couverture').textContent =
+    `${pct(100 - Math.max(...couvertures))} à ${pct(100 - Math.min(...couvertures))} du risque selon les cas.`
+}
+document.getElementById('sources').innerHTML =
+  'DREES, <i>La protection sociale en France et en Europe</i>, comptes de la protection sociale, édition 2025, '
+  + 'données 2024, fiches 05 à 11 — reprises telles quelles du chapitre « Dépenses publiques et prélèvements » '
+  + 'du dossier, figure « Les prestations sociales par risque » et tableaux de détail par risque. '
+  + 'Les montants des postes sont ceux que publie la DREES ; leur somme par risque et leur part dans '
+  + 'l’ensemble sont calculées ici.'
+
+/* --------------------------------------------------------------- départ */
+const demande = parseInt(new URLSearchParams(location.search).get('acte') ?? '', 10)
+va(0)
+if (Number.isFinite(demande)) { va(demande - 1, 1); joue = false; rendre() }
+else if (douceur.matches) va(ACTES.length - 1, 1)
+requestAnimationFrame(boucle)
+</script>
+</body>
+</html>
