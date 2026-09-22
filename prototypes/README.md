@@ -61,3 +61,52 @@ système ; le bouton **Thème** force l'un ou l'autre.
 Next.js, aucun test. Si le design est retenu, la mosaïque devient un composant
 serveur alimenté par un registre d'indicateurs, et seule la rotation part dans
 `src/components/client/`.
+
+## `depense-publique-1975-2024.html` — animation : la dépense, poste par poste, puis face aux recettes
+
+Un fichier HTML autonome, à ouvrir directement dans un navigateur. Il reprend la
+figure « Dépense publique par nature, 1975-2024 » du chapitre *Dette et déficit*
+et la transforme en cinq actes, sur la même planche, sans jamais la redessiner
+de zéro.
+
+**Le récit.** (1) Les cinq courbes par nature se tracent — une seule monte
+vraiment. (2) Elles s'empilent : chaque poste vient se poser sur le précédent,
+l'axe s'ouvre pour faire la place, la ligne du haut devient la somme des cinq.
+(3) Cette somme est chiffrée à ses deux bouts. (4) Une bande hachurée comble
+l'écart jusqu'à la dépense **totale** — subventions, autres transferts, dépenses
+en capital, que les cinq postes ne couvrent pas. (5) Les recettes arrivent, et
+l'écart entre les deux courbes, hachuré de rouge, est le déficit.
+
+**L'animation.** L'état affiché est une fonction pure de `(acte, avancement)` :
+reculer, sauter ou rejouer redonne exactement la même image. Les courbes se
+tracent par découpe (`clipPath`), et l'empilement est une **interpolation entre
+deux géométries** — une courbe est une bande d'épaisseur nulle posée sur sa
+propre valeur, une bande empilée a pour bornes deux cumuls successifs ; le
+passage de l'une à l'autre se fait poste par poste, avec un décalage. L'axe des
+ordonnées s'anime lui aussi, de 30 à 66 % du PIB, sinon la pile sortirait du
+cadre.
+
+Survol : viseur et infobulle à l'année, qui ne montrent que ce que l'acte en
+cours a révélé. Clavier : ←, → et espace. `?acte=4` ouvre sur un acte, figé —
+utile pour relire une étape ou en donner le lien ; `?acte=2&avance=0.42` ouvre
+au milieu d'une transformation. Sous `prefers-reduced-motion`, rien ne bouge :
+la planche s'ouvre à son état final et se parcourt aux boutons.
+
+**Les données.** Aucun chiffre n'est saisi à la main, ni dans le graphique, ni
+dans les phrases du récit : `node prototypes/depense-publique-donnees.mjs` les
+lit dans le dépôt et réécrit le bloc `DONNEES` du fichier. Les cinq postes
+viennent de la figure du chapitre ; la dépense totale, les recettes et le solde
+viennent d'un classeur Insee (comptes nationaux annuels, base 2020) déposé dans
+`docs/`. Le script refuse d'écrire si le croisement des deux sources cesse
+d'être cohérent — reste négatif, ou `recettes − dépenses` s'écartant du solde
+notifié de plus de 0,1 point.
+
+**Ce qu'il faut savoir avant de le montrer.** La bande « autres dépenses » croise
+deux millésimes de PIB (Eurostat pour les postes, Insee pour le total), qui
+diffèrent de 0,1 à 0,3 point : c'est un ordre de grandeur, pas une décimale. Le
+pied de page le dit, avec les trois autres limites.
+
+**Ce qu'il ne fait pas.** Aucune intégration Next.js, aucun test, aucun lien vers
+les chapitres. S'il est retenu, les données remontent par la voie normale — le
+document d'origine et un générateur de figure — et seule l'animation part dans
+`src/components/client/`.
