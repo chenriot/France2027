@@ -1059,7 +1059,9 @@ function dessine(j, survol) {
     o.push(`<line class="grid" x1="${L}" y1="${y}" x2="${R}" y2="${y}"/>`)
     o.push(`<text class="ax ar" x="${L - 10}" y="${y + 4}">${nb(v, 0, FINE)}</text>`)
   }
-  o.push(`<text class="ax ar" x="${L - 10}" y="${T - 24}">${V.axe}</text>`)
+  // Calée à gauche : « Md€ courants » est trop long pour tenir à droite des
+  // graduations sans sortir du cadre.
+  o.push(`<text class="ax al" x="${L - 60}" y="${T - 24}">${V.axe}</text>`)
   o.push(`<line class="axis" x1="${L}" y1="${B}" x2="${R}" y2="${B}"/>`)
 
   /* l'empilement, dans l'ordre de lecture, du sol vers le sommet */

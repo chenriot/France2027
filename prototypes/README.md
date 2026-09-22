@@ -90,6 +90,15 @@ bonne part de la pente vient des prix. Le second mode demande une série de PIB
 en valeur ; tant qu'elle n'est pas dans `docs/`, le bouton reste fermé et le dit,
 plutôt que d'approcher.
 
+**Pour ouvrir la lecture en euros**, il suffit de déposer dans `docs/` le PIB
+annuel à prix courants, 1975-2024, et de relancer le générateur. Il fouille tous
+les fichiers du dossier : un `.xlsx` dont une ligne commence par « Produit
+intérieur brut » et dont une ligne d'en-tête porte les années — la forme des
+tableaux de l'Insee —, ou, à défaut, un `.csv` à deux colonnes `année ; valeur`.
+Les millions d'euros sont convertis en milliards ; toute autre unité est
+refusée, comme l'est une série qui reculerait de plus de 5 % en un an, signe
+qu'elle est en volume et non en valeur.
+
 **L'animation.** L'image est une fonction pure de `(année, mode)` : reculer,
 sauter ou rejouer redonne exactement la même, et **chaque nombre affiché est une
 donnée de l'année** — rien n'est interpolé entre deux points. Un pas par année,

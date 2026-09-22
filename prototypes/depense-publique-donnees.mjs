@@ -5,22 +5,24 @@
  *
  * Aucun chiffre n'est saisi à la main, ici ni dans le prototype : tout est lu
  * dans le dépôt, puis réinjecté dans le fichier HTML entre ses deux marqueurs.
- * Relancer le script après une régénération des chapitres suffit à remettre le
- * prototype à jour.
+ * Relancer le script après une régénération des chapitres, ou après avoir
+ * déposé un fichier dans `docs/`, suffit à remettre le prototype à jour.
  *
- * Deux origines, et c'est la seule chose à savoir avant de lire le graphique :
+ * Trois origines, et c'est la seule chose à savoir avant de lire le graphique :
  *
  * - les cinq postes par nature viennent de la figure du chapitre « Dette et
  *   déficit » (Eurostat `nasa_10_nf_tr` et `gov_10a_main`, rebasés) ;
- * - la dépense totale, les recettes et le solde viennent du classeur Insee
- *   `docs/insee-depenses-recettes-publiques-base-2020.xlsx` (comptes nationaux
- *   annuels, base 2020), que le dossier ne contient pas encore par ailleurs.
+ * - la dépense totale, les recettes, le solde et la dette viennent du classeur
+ *   Insee `docs/insee-depenses-recettes-publiques-base-2020.xlsx` (comptes
+ *   nationaux annuels, base 2020) ;
+ * - le PIB en valeur, qui ouvre la lecture en euros, est cherché dans tous les
+ *   fichiers de `docs/`. Tant qu'il n'y est pas, ce mode reste fermé.
  *
- * Les deux millésimes de PIB diffèrent de 0,1 à 0,3 point — c'est écrit dans le
- * registre des sources du dossier. Le script vérifie donc, année par année, que
- * le croisement reste cohérent : reste positif, et `recettes − dépenses` égal
- * au déficit notifié à 0,1 point près. Il échoue plutôt que d'écrire un
- * graphique faux.
+ * Les deux premiers millésimes de PIB diffèrent de 0,1 à 0,3 point — c'est écrit
+ * dans le registre des sources du dossier. Le script vérifie donc, année par
+ * année, que le croisement tient : reste positif, `recettes − dépenses` égal au
+ * déficit notifié à 0,1 point près, dette continue une fois commencée, PIB dans
+ * une unité attendue. Il échoue plutôt que d'écrire un graphique faux.
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -57,51 +59,63 @@ function figure(fichier, cle) {
 
 const nature = figure('src/app/(chapitres)/dette-deficit/data.ts', 'depense-publique-par-nature-1975-2024').values
 
-/* ------------------------------------------------------- classeur Insee */
-
-/** Lit le classeur Insee sans dépendance : un .xlsx est un zip de XML. */
-function classeur(fichier) {
-  const lire = (membre) =>
-    execFileSync('unzip', ['-p', path.join(racine, fichier), membre], { maxBuffer: 1 << 26 }).toString('utf8')
-  const textes = [...lire('xl/sharedStrings.xml').matchAll(/<si>([\s\S]*?)<\/si>/g)].map((si) =>
-    [...si[1].matchAll(/<t[^>]*>([\s\S]*?)<\/t>/g)].map((t) => t[1]).join(''),
-  )
-  const feuille = lire('xl/worksheets/sheet1.xml')
-  const grille = {}
-  for (const ligne of feuille.matchAll(/<row[^>]*>([\s\S]*?)<\/row>/g)) {
-    for (const c of ligne[1].matchAll(/<c r="([A-Z]+)(\d+)"([^>]*)>([\s\S]*?)<\/c>/g)) {
-      const type = /t="([^"]+)"/.exec(c[3])?.[1]
-      const brut = /<v>([\s\S]*?)<\/v>/.exec(c[4])?.[1]
-      if (brut === undefined) continue
-      grille[`${c[1]}${c[2]}`] = type === 's' ? textes[+brut] : Number(brut)
-    }
-  }
-  return grille
-}
-
-const grille = classeur('docs/insee-depenses-recettes-publiques-base-2020.xlsx')
-
-/** Colonne de chaque année, d'après la ligne d'en-tête (« 2024 (sd) » compris). */
-const colonnes = {}
-for (const clef of Object.keys(grille)) {
-  const m = /^([A-Z]+)4$/.exec(clef)
-  if (!m) continue
-  const an = parseInt(String(grille[clef]), 10)
-  if (Number.isFinite(an)) colonnes[an] = m[1]
-}
+/* ------------------------------------------------------- classeurs .xlsx */
 
 /**
- * Une ligne du classeur, repérée par le début de son libellé en colonne A — les
- * libellés portent des appels de note. `nulOk` accepte les années « nd » et les
- * rend en `null` : la dette brute ne commence qu'en 1978, et un trou se dessine
- * comme un trou, il ne s'invente pas.
+ * Lit un classeur sans dépendance : un .xlsx est un zip de XML. Rend la grille
+ * des cellules et, pour chaque année trouvée dans l'en-tête, sa colonne — sans
+ * présumer de la ligne d'en-tête, qui n'est pas au même endroit d'un fichier
+ * de l'Insee à l'autre.
  */
-function ligne(libelle, nulOk = false) {
+function classeur(fichier) {
+  const lire = (membre) =>
+    execFileSync('unzip', ['-p', fichier, membre], { maxBuffer: 1 << 26 }).toString('utf8')
+  let textes = []
+  try {
+    textes = [...lire('xl/sharedStrings.xml').matchAll(/<si>([\s\S]*?)<\/si>/g)].map((si) =>
+      [...si[1].matchAll(/<t[^>]*>([\s\S]*?)<\/t>/g)].map((t) => t[1]).join(''),
+    )
+  } catch {
+    /* un classeur sans chaînes partagées reste lisible */
+  }
+  const grille = {}
+  for (const feuille of ['xl/worksheets/sheet1.xml']) {
+    for (const ligne of lire(feuille).matchAll(/<row[^>]*>([\s\S]*?)<\/row>/g)) {
+      for (const c of ligne[1].matchAll(/<c r="([A-Z]+)(\d+)"([^>]*)>([\s\S]*?)<\/c>/g)) {
+        const type = /t="([^"]+)"/.exec(c[3])?.[1]
+        const brut = /<v>([\s\S]*?)<\/v>/.exec(c[4])?.[1]
+        if (brut === undefined) continue
+        grille[`${c[1]}${c[2]}`] = type === 's' ? textes[+brut] : Number(brut)
+      }
+    }
+  }
+
+  // La ligne d'en-tête est celle qui porte le plus d'années plausibles.
+  const parLigne = {}
+  for (const [clef, v] of Object.entries(grille)) {
+    const m = /^([A-Z]+)(\d+)$/.exec(clef)
+    const an = parseInt(String(v), 10)
+    if (an >= 1940 && an <= 2040) (parLigne[m[2]] ??= []).push([an, m[1]])
+  }
+  const entete = Object.values(parLigne).sort((a, b) => b.length - a.length)[0] ?? []
+  const colonnes = Object.fromEntries(entete)
+  return { grille, colonnes }
+}
+
+const principal = classeur(path.join(racine, 'docs/insee-depenses-recettes-publiques-base-2020.xlsx'))
+
+/**
+ * Une ligne d'un classeur, repérée par son libellé en colonne A — l'égalité
+ * d'abord, car « Dépenses » commence aussi le titre du document, le début du
+ * libellé ensuite, car ils portent des appels de note. `nulOk` accepte les
+ * années « nd » et les rend en `null` : un trou se dessine comme un trou, il ne
+ * s'invente pas.
+ */
+function ligne({ grille, colonnes }, libelle, nulOk = false) {
   const cellules = Object.keys(grille).filter((c) => /^A\d+$/.test(c))
-  // L'égalité d'abord : « Dépenses » commence aussi le titre du classeur.
   const m = cellules.find((c) => grille[c] === libelle)
     ?? cellules.find((c) => String(grille[c]).startsWith(libelle))
-  if (!m) throw new Error(`ligne introuvable dans le classeur : « ${libelle} »`)
+  if (!m) return null
   const n = m.slice(1)
   const out = []
   for (let an = AN0; an <= AN1; an++) {
@@ -115,22 +129,79 @@ function ligne(libelle, nulOk = false) {
   return out
 }
 
-const depenses = ligne('Dépenses')
-const recettes = ligne('Recettes')
-const solde = ligne('Déficit au sens de Maastricht')
-const dette = ligne('Dette des administrations publiques (brute)', true)
+function exige(classeur, libelle, nulOk = false) {
+  const l = ligne(classeur, libelle, nulOk)
+  if (!l) throw new Error(`ligne introuvable dans le classeur : « ${libelle} »`)
+  return l
+}
 
-/**
- * Le PIB en valeur ouvre le second mode de lecture — les mêmes séries en
- * milliards d'euros courants. Il n'est pas dans le classeur des ratios : tant
- * qu'une ligne « Produit intérieur brut » (en Md€) n'y figure pas, le mode
- * reste fermé plutôt qu'approché.
- */
+const depenses = exige(principal, 'Dépenses')
+const recettes = exige(principal, 'Recettes')
+const solde = exige(principal, 'Déficit au sens de Maastricht')
+const dette = exige(principal, 'Dette des administrations publiques (brute)', true)
+
+/* --------------------------------------------------------- PIB en valeur
+   Il ouvre la lecture en euros. On le cherche dans tous les fichiers déposés
+   dans `docs/` plutôt que dans un seul, pour que déposer le téléchargement de
+   l'Insee suffise, quel qu'en soit le nom. */
+
+/** Un CSV à deux colonnes, « année ; valeur », accepté en dernier recours. */
+function csv(fichier) {
+  const lignes = fs.readFileSync(fichier, 'utf8').split(/\r?\n/)
+  const par = {}
+  for (const l of lignes) {
+    const [a, v] = l.split(/[;,\t]/)
+    const an = parseInt(a, 10)
+    const val = parseFloat(String(v ?? '').replace(',', '.').replace(/\s/g, ''))
+    if (an >= 1940 && an <= 2040 && Number.isFinite(val)) par[an] = val
+  }
+  const out = []
+  for (let an = AN0; an <= AN1; an++) {
+    if (par[an] === undefined) return null
+    out.push(par[an])
+  }
+  return out
+}
+
+function chercherPib() {
+  const dossier = path.join(racine, 'docs')
+  for (const nom of fs.readdirSync(dossier).sort()) {
+    const chemin = path.join(dossier, nom)
+    if (nom.endsWith('.xlsx')) {
+      let c
+      try { c = classeur(chemin) } catch { continue }
+      for (const libelle of ['Produit intérieur brut', 'PIB']) {
+        let l
+        try { l = ligne(c, libelle) } catch { continue }
+        if (l) return { valeurs: l, source: nom, libelle }
+      }
+    } else if (nom.endsWith('.csv')) {
+      const l = csv(chemin)
+      if (l) return { valeurs: l, source: nom, libelle: 'colonnes année ; valeur' }
+    }
+  }
+  return null
+}
+
 let pib = null
-try {
-  pib = ligne('Produit intérieur brut')
-} catch {
-  console.warn('PIB en valeur absent du classeur : le mode « en euros » restera fermé.')
+const trouve = chercherPib()
+if (trouve) {
+  const dernier = trouve.valeurs.at(-1)
+  // Unité : l'Insee publie tantôt des milliards, tantôt des millions d'euros.
+  // Une série en millions donnerait un graphique faux d'un facteur mille sans
+  // que rien ne le signale : on convertit, ou on refuse.
+  let facteur = 1
+  if (dernier > 1e6 && dernier < 5e6) facteur = 1e-3
+  else if (dernier < 1000 || dernier > 5000) {
+    throw new Error(
+      `PIB ${AN1} = ${dernier} dans ${trouve.source} : unité inattendue. Attendu des milliards d'euros courants (ordre de grandeur 2 000 à 3 500) ou des millions.`,
+    )
+  }
+  pib = trouve.valeurs.map((v) => v * facteur)
+  console.log(`PIB en valeur lu dans docs/${trouve.source} (« ${trouve.libelle} »)`
+    + `${facteur === 1 ? '' : ', converti des millions en milliards'} : ${pib[0].toFixed(1)} Md€ en ${AN0}, ${pib.at(-1).toFixed(1)} Md€ en ${AN1}.`)
+} else {
+  console.warn('PIB en valeur absent de docs/ : le mode « en euros » restera fermé.')
 }
 
 /* ----------------------------------------------------------- contrôles */
@@ -150,22 +221,21 @@ for (const [j, an] of annees.entries()) {
   if (ecart > 0.1) throw new Error(`en ${an}, recettes − dépenses s'écarte du solde notifié de ${ecart.toFixed(2)} point`)
 }
 
-if (pib !== null) {
-  // Garde-fou d'unité : le mode « en euros » attend des milliards d'euros
-  // courants. Une série en millions donnerait un graphique juste au facteur
-  // mille près, c'est-à-dire faux sans que rien ne le signale.
-  const dernier = pib.at(-1)
-  if (dernier < 1000 || dernier > 5000) {
-    throw new Error(
-      `PIB ${AN1} = ${dernier} : unité inattendue. Le mode « en euros » attend des milliards d'euros courants (ordre de grandeur 2 000 à 3 500).`,
-    )
-  }
-}
-
 const debutDette = dette.findIndex((v) => v !== null)
 if (debutDette < 0) throw new Error('la dette brute est absente du classeur')
 for (let j = debutDette; j < dette.length; j++) {
   if (dette[j] === null) throw new Error(`trou dans la dette en ${annees[j]} : la série n'est plus continue`)
+}
+
+if (pib) {
+  // Un PIB en valeur croît presque toujours : une chute de plus de 5 % en
+  // euros courants trahirait une série en volume, ou un mauvais raccord.
+  for (let j = 1; j < pib.length; j++) {
+    const taux = pib[j] / pib[j - 1] - 1
+    if (taux < -0.05) {
+      throw new Error(`PIB ${annees[j]} : ${(taux * 100).toFixed(1)} % en un an. Série attendue en euros courants, pas en volume.`)
+    }
+  }
 }
 
 /* -------------------------------------------------------------- sortie */
@@ -208,5 +278,6 @@ fs.writeFileSync(cible, `${html.slice(0, i + debut.length)}\n${texte}${html.slic
 
 console.log(
   `${annees.length} années écrites · reste de ${r3(Math.min(...reste))} à ${r3(Math.max(...reste))} point du PIB`
-  + ` · dette de ${annees[debutDette]} à ${AN1}, de ${dette[debutDette]} à ${dette.at(-1)} % du PIB`,
+  + ` · dette de ${annees[debutDette]} à ${AN1}, de ${dette[debutDette]} à ${dette.at(-1)} % du PIB`
+  + ` · lecture en euros ${pib ? 'ouverte' : 'fermée'}`,
 )
