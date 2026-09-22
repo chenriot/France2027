@@ -321,6 +321,37 @@ d'une part, et de maintien du niveau d'emploi d'autre part ».
   pour 2025 détruirait des emplois **[R]**. Avant d'attribuer au rapport les
   effets de la réforme, comparer le barème recommandé et le barème voté.
 
+### 3.6 bis Trente ans de dispositifs : ce dont on parle avant le CICE
+
+Le CICE (2013) arrive après **vingt ans** de baisses ciblées. Le chapitre 1 du
+rapport en donne la chronologie, et elle se résume à un chiffre : **le taux de
+cotisation employeur au niveau du Smic est passé de 45 % en janvier 1993 à 6,7 %
+en janvier 2020** **[B-W p. 39 et 45]**.
+
+| Période | Dispositif | Forme |
+|---|---|---|
+| 1993-1995 | **Allègements Balladur** | Exonérations en « plateaux » sur les bas salaires, avec de forts effets de seuil à 1,1 puis 1,3 Smic **[B-W p. 38-39]** |
+| 1996 | **Ristourne Juppé** | Dégressive, 12,8 points au Smic, s'annulant à 1,2 Smic ; fusionnée en octobre avec Balladur en un barème unique — 18,2 % au Smic, extinction à 1,33 Smic **[B-W p. 40]** |
+| 1998-2003 | **Aubry I et II** | Articulés avec le passage aux 35 heures, dégressivité hyperbolique, deux régimes en parallèle selon que l'entreprise est passée aux 35 h **[B-W p. 41]** |
+| Juillet 2005 | **Réduction Fillon** | Barème unique pour toutes les entreprises : 26 points au Smic, sortie à 1,6 Smic **[B-W p. 41]** |
+| 2006-2012 | *(stabilité)* | Le taux au Smic passe de 20,26 % à 20,46 % **[B-W p. 42]** |
+| 2013-2019 | **CICE**, puis **Pacte de responsabilité** | CICE : 4 % du salaire jusqu'à 2,5 Smic en 2013, 6 % en 2014, 7 % en 2017, 6 % en 2018. Bandeau famille : −1,8 point, d'abord jusqu'à 1,6 Smic en 2015, porté à 3,5 Smic dès 2016. Allègements généraux portés à 28,35 % au Smic **[B-W p. 44]** |
+| 2019 | **Bascule du CICE** | Le crédit d'impôt devient un allègement de cotisations — le « bandeau maladie », −6 points jusqu'à 2,5 Smic **[B-W p. 44]** |
+| 2020-2024 | *(stabilisation)* | **[B-W p. 45]** |
+
+**Deux observations qui servent le débat.** D'abord, les évaluations les plus
+solides — Crépon et Desplatz (2001), confirmées par des réplications récentes
+**[B-W p. 89-91]** — portent sur les dispositifs **Balladur et Juppé**, c'est-à-dire
+sur des baisses **fortement ciblées** sur 1 à 1,3 Smic. C'est de là que vient le
+résultat « les allègements créent de l'emploi », et il ne se transporte pas
+mécaniquement au CICE, qui couvrait jusqu'à 2,5 Smic.
+
+Ensuite, les dispositifs de 2013-2019 ont **réintroduit des effets de seuil** que
+la réduction Fillon avait supprimés : en 2019, augmenter un salaire mensuel de
+3 803 € à 3 804 € — le seuil de 2,5 Smic — coûtait à l'employeur **2 756 € de
+plus par an**, pour un gain net de **9,50 €** pour le salarié **[B-W p. 45]**.
+C'est l'illustration la plus parlante de ce que le rapport appelle la trappe.
+
 ### 3.7 Préconise-t-il de diminuer les exonérations ? Non.
 
 La question est posée partout ; le rapport y répond sans ambiguïté, et dans
@@ -379,12 +410,40 @@ Et le rapport ajoute que même ces 48 Md€ sont surestimés : il faudrait retra
 les dépenses d'assurance chômage des salariés qui perdraient leur emploi, et les
 moindres recettes de CSG, de TVA et d'impôt sur le revenu.
 
-Rapporté au nombre d'emplois — *ce calcul est le nôtre, le rapport ne le présente
-pas ainsi* —, cela situe le coût du dispositif autour de **49 000 € par emploi**
-à la marge d'une suppression totale. À comparer aux **20 000 à 40 000 € par
-emploi des allègements ciblés sur les bas salaires** et aux **~180 000 € du
-CICE** **[D]** : c'est bien le ciblage qui fait l'écart, et une moyenne sur
-l'ensemble du barème ne dit rien du coût marginal à chaque niveau de salaire.
+**D'où sortent les 980 000 ETP, et que valent-ils ?** C'est une **simulation, pas
+une mesure**, et le rapport la présente comme telle : « à titre d'illustration »,
+pour un « scénario radical » que personne ne propose. Elle applique la formule du
+chapitre 4 **[B-W p. 175]** :
+
+> effet emploi = Σ (effectifs de la tranche de salaire) × (variation relative du
+> coût du travail) × (élasticité de la tranche)
+
+Trois entrées : la distribution des emplois par niveau de salaire (Base Tous
+Salariés), la hausse du coût du travail qu'entraînerait la suppression, et
+l'élasticité retenue. **Le résultat est exactement proportionnel à l'élasticité
+choisie** — c'est une multiplication. Avec −0,3 au Smic plutôt que −0,6, le même
+calcul donnerait environ 490 000 ETP ; avec −0,9, environ 1,47 million. Le chiffre
+n'est donc pas un fait observé : c'est un ordre de grandeur cohérent **sous des
+hypothèses explicites**, et il hérite de toute leur incertitude. Il ignore en
+outre le mode de financement (voir le point 2 ci-dessous) et les effets
+d'équilibre général.
+
+**Les coûts par emploi qu'on peut en tirer.** *Ces divisions sont les nôtres ; le
+rapport fournit les numérateurs et les dénominateurs, mais ne présente jamais de
+ratio.*
+
+| Segment | Budget | Emplois en jeu | Coût par emploi |
+|---|---|---|---|
+| Exonérations générales, suppression totale | 48 Md€ nets (67 bruts) **[B-W p. 69]** | 980 000 ETP | **≈ 49 000 €** (68 000 € en brut) |
+| « Bandeaux » maladie et famille au-delà de 1,6 Smic | 12,2 Md€ **[B-W p. 205]** | 61 870 ETP **[B-W p. 204]** | **≈ 197 000 €** |
+| Allègements ciblés sur les bas salaires | — | — | 20 000 à 40 000 € **[D]** |
+| CICE | — | — | ≈ 180 000 € **[D]** |
+
+La lecture est nette, et c'est la même que celle du dossier : **le coût par
+emploi est de quatre à cinq fois plus élevé sur la partie non ciblée du barème
+que sur sa partie basse.** Une moyenne sur l'ensemble — les 49 000 € — ne dit
+rien du coût marginal à chaque niveau de salaire, et c'est le coût marginal qui
+commande une décision de réforme.
 
 **Ce qui ne s'évalue pas — et c'est précisément ce sur quoi porte la décision.**
 
@@ -403,12 +462,28 @@ l'ensemble du barème ne dit rien du coût marginal à chaque niveau de salaire.
 
 **Trois résultats de méthode, qui valent pour tout le champ des aides.**
 
-1. **L'écart ex ante / ex post est énorme.** Sur le CICE, une élasticité de −0,9
-   donnait environ **340 000 emplois** en prévision ; les évaluations ex post ont
-   trouvé **100 000 à 150 000**. Pour retomber sur 150 000, il faudrait une
-   élasticité de −0,3 **[B-W p. 176]**. C'est pourquoi les auteurs ont **révisé à
-   la baisse les élasticités emploi utilisées par les administrations**
-   **[B-W p. 12]**.
+1. **Les modèles étaient mal calibrés — ce qui n'est pas la même chose qu'un
+   objectif manqué.** Le point mérite d'être énoncé exactement, parce qu'il se
+   prête au contresens. L'« élasticité » dont il s'agit est celle de **la demande
+   de travail à son coût** : une élasticité de −0,6 signifie qu'une baisse de 1 %
+   du coût du travail augmente l'emploi de 0,6 % dans la tranche de salaire
+   considérée, à long terme. Les modèles des administrations la font varier
+   linéairement d'un maximum au Smic jusqu'à un minimum à 2 Smic, puis constante
+   au-delà ; dans les estimations des années 2000, elle allait de **−0,9 à −0,2**
+   **[B-W p. 176]**.
+
+   Les auteurs s'en servent comme d'un **test de calibrage** : en faisant tourner
+   le modèle sur le CICE avec l'ancienne élasticité de −0,9, on obtiendrait
+   **environ 340 000 emplois** — alors que les évaluations ex post en ont mesuré
+   **100 000 à 150 000**. Pour retomber sur 150 000, il faudrait une élasticité de
+   l'ordre de **−0,3**. **Les 340 000 ne sont donc pas une prévision officielle qui
+   aurait été démentie** : c'est ce que le modèle aurait dit si on l'avait
+   interrogé, et l'écart sert à mesurer de combien le modèle exagérait. Les
+   auteurs retiennent finalement **−0,6 au Smic**, « à mi-chemin entre −0,3 et
+   −0,9 », en précisant que le CICE, crédit d'impôt sur les bénéfices à la
+   lisibilité discutée, se prête mal à l'extrapolation vers des baisses de
+   cotisations **[B-W p. 176]**. Par âge : **−0,4 à −0,5 au-delà de 25 ans**, et
+   **−0,8 à −1,5 en dessous**.
 2. **Le mode de financement divise le résultat.** Malinvaud (1998), cité par le
    rapport : l'effet emploi positif d'une exonération est **réduit d'un facteur
    deux à trois** selon la façon dont elle est financée **[B-W p. 69]**. Une
