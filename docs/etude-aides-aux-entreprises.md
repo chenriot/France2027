@@ -11,16 +11,18 @@ Trois marques, et elles comptent plus que le reste :
 
 | Marque | Ce qu'elle signifie |
 |---|---|
+| **[B-W p. N]** | **Vérifié dans le rapport Bozio-Wasmer**, `docs/rapport_vffff_241003.pdf`, à la page N de la pagination du rapport. |
 | **[D]** | Repris d'un chapitre du dossier, où la valeur porte déjà sa source et son millésime. |
 | **[R]** | Tiré d'un rapport public, corroboré par recherche, **non vérifié sur le document lui-même**. |
 | **[?]** | Non vérifié. À confirmer avant tout usage. |
 
-La raison de cette prudence est mécanique : l'environnement de travail bloque
-l'accès réseau à `strategie-plan.gouv.fr`, `senat.fr` et `insee.fr`. Je n'ai pas
-pu ouvrir les rapports cités, seulement leurs résumés et leur reprise par des
-tiers. **Aucun chiffre marqué [R] ne doit entrer dans le dossier sans être relu
-dans le PDF d'origine.** C'est exactement la règle que le dossier s'applique à
-lui-même.
+**Mise à jour du 22 septembre 2026.** Le rapport Bozio-Wasmer a été déposé dans
+`docs/` et lu : 304 pages, synthèse, six chapitres, quatre recommandations
+numérotées. La section 3 de cette étude a été **réécrite sur pièce**, et la
+section 6 dit ce que cette lecture a corrigé. Les autres rapports — CNEPI sur le
+CIR, comité de suivi du CICE, commission d'enquête du Sénat — restent en **[R]**
+faute d'accès : l'environnement de travail bloque `strategie-plan.gouv.fr`,
+`senat.fr` et `insee.fr`.
 
 ---
 
@@ -149,54 +151,183 @@ et 13 % à la baisse du coût du travail** **[D]**.
 
 ---
 
-## 3. Le rapport Bozio-Wasmer : ce qu'il dit, et ce qu'on lui fait dire
+## 3. Le rapport Bozio-Wasmer, lu sur pièce
 
-**Ce que c'est.** *Les politiques d'exonérations de cotisations sociales : une
-inflexion nécessaire*, rapport final remis le **3 octobre 2024** par Antoine
-Bozio (IPP) et Étienne Wasmer, mission commandée après la conférence sociale
-d'octobre 2023 **[R]**.
+*Les politiques d'exonérations de cotisations sociales : une inflexion
+nécessaire*, rapport final, **octobre 2024**, 304 pages. Antoine Bozio (EHESS,
+PSE, directeur de l'IPP) et Étienne Wasmer (NYU Abu Dhabi, Sciences Po).
+Rapportrice générale : Sophie Maillard (IGF), avec la DG Trésor, la Direction de
+la sécurité sociale, la Dares et l'Insee **[B-W p. 3]**.
 
-**Le diagnostic, en trois constats.**
+Mission confiée par la Première ministre Élisabeth Borne à la suite de la
+conférence sociale du **16 octobre 2023**, confirmée par Gabriel Attal, rapport
+final remis à Michel Barnier ; un rapport d'étape avait été rendu public en avril
+2024 **[B-W p. 14]**.
 
-1. **La masse.** Les politiques d'exonération coûtent de l'ordre de **75 Md€ en
-   2023**, les allègements généraux à eux seuls approchant **80 Md€** selon
-   l'agrégation retenue **[R]**. Les deux chiffres circulent ; ils ne recouvrent
-   pas le même périmètre. **[?]** — à trancher sur le rapport.
-2. **La trappe à bas salaires.** L'allègement décroissant fait exploser le taux
-   marginal effectif : augmenter un salaire proche du SMIC coûte à l'employeur
-   la hausse **plus la perte d'exonération** **[D]**. L'entreprise est donc
-   découragée d'augmenter, et le salarié reste au voisinage du minimum.
-3. **La smicardisation et la sur-spécialisation.** Le rapport admet que ces
-   politiques ont pu conduire à une sur-spécialisation dans des emplois et des
-   secteurs à bas salaires, au détriment d'activités à plus forte valeur ajoutée
-   ou exportatrices **[R]**.
+### 3.1 Le diagnostic
 
-**Le scénario central.** Réduire l'exonération d'environ **4 points au niveau du
-SMIC**, supprimer les taux réduits maladie et famille au-delà de 1,6 SMIC, et
-**aplatir la pente** pour un point de sortie **autour de 2,5 SMIC, à budget
-constant**. Effet emploi calculé : **légèrement positif**, de l'ordre de
-**+10 000 emplois** **[R]**.
+**Le coût.** Les exonérations générales ont crû continûment depuis leur création
+en 1993 pour atteindre **75 Md€ en 2023, soit 2,7 points de PIB** **[B-W p. 66]**.
+(L'Urssaf comptait 73,6 Md€ d'allégements du régime général en 2022
+**[B-W bibliographie]**.)
 
-**Les trois contresens à éviter.**
+**L'efficacité décroissante, pas nulle.** La politique « a eu un impact
+significatif sur l'emploi lors de sa mise en place dans les années 1990 »,
+quand le chômage de masse frappait les moins qualifiés. Elle « reste pertinente
+aujourd'hui », mais l'amélioration du marché du travail et le niveau déjà
+atteint des réductions « rendent son efficacité en termes de création d'emploi
+moindre que dans les années 1990 » **[B-W p. 9]**. Le rapport ne dit donc ni que
+les allègements sont inutiles, ni qu'il faut les maintenir tels quels.
 
-- **Ce n'est pas un plan d'économies.** Le scénario central est *à budget
-  constant* : il redéploie la même masse le long du barème. Qui le cite comme
-  un gisement de 4 points d'économies lui fait dire l'inverse de ce qu'il dit.
-- **Ce n'est pas une condamnation des allègements.** Le rapport valide leur
-  effet sur l'emploi au voisinage du SMIC — c'est *la forme* du barème qu'il
-  conteste, pas son principe.
-- **Ce n'est pas la réforme qui a été votée.** La loi de financement de la
-  sécurité sociale pour 2025 a fusionné les trois dispositifs en une réduction
-  unique **s'étendant jusqu'à 3 SMIC** **[D]** — un point de sortie **plus
-  haut** que les 2,5 SMIC recommandés. Antoine Bozio a publiquement estimé que
-  la version retenue pour 2025 détruirait des emplois **[R]**.
+**Le déplacement du problème.** Le progrès technique biaisé contre les moins
+qualifiés a « fait place à des phénomènes parfois diffus de polarisation »
+touchant d'autres catégories de salariés **[B-W p. 9]**.
 
-**La leçon de méthode**, et c'est celle qui vaut pour tout le sujet : un rapport
-n'est pas une loi. Avant d'attribuer à Bozio-Wasmer les effets de la réforme de
-2025-2026, il faut **comparer le barème recommandé et le barème voté**. Ils
-diffèrent sur le seul paramètre qui commande le résultat.
+**L'écrasement des salaires, et l'honnêteté sur la preuve.** Le rapport constate
+un écrasement de la distribution des salaires lié à la dégressivité du barème, et
+note que tous les acteurs décrivent la même réalité avec des mots différents :
+taux marginaux élevés pour les économistes, coût d'augmenter le net pour les
+employeurs, faible dynamique salariale pour les syndicats **[B-W p. 9]**. Sur la
+démonstration, les auteurs sont explicites : la difficulté d'identifier un effet
+causal « provient de son caractère graduel dont les effets s'accumulent décennie
+après décennie, ce qui rend les méthodologies impuissantes à les mesurer ». Et
+ils tranchent quand même : « cela ne doit cependant pas clore la discussion : des
+taux marginaux de prélèvement **atteignant 80 %** pour une part importante de
+salariés ne peuvent qu'avoir des effets importants dans la durée »
+**[B-W p. 9-10]**.
 
----
+C'est un raisonnement assumé **au-delà de la preuve disponible**, et il faut le
+citer comme tel — c'est le point où le rapport est le plus attaquable, et il ne
+s'en cache pas.
+
+### 3.2 Le scénario central, en chiffres
+
+À budget constant, par choix de méthode **[B-W p. 10]** :
+
+- **−4,05 points** d'exonération au niveau du Smic ;
+- **suppression des « bandeaux »** maladie (6 points, jusqu'à 2,5 Smic) et
+  famille (1,8 point, jusqu'à 3,5 Smic) **au-delà de 1,6 Smic** ;
+- d'où une pente fortement abaissée et un **point de sortie autour de 2,5 Smic**.
+
+Le profil qui en résulte, par rapport au régime alors en vigueur : cotisations
+**plus élevées entre 1 et 1,2 Smic**, **plus faibles de 1,2 à 1,9 Smic**, de
+nouveau **plus élevées de 1,9 à 3,5 Smic**. La baisse maximale est de
+**5,7 points à 1,6 Smic — le salaire médian** **[B-W p. 10]**.
+
+Les effets chiffrés **[B-W p. 10-11]** :
+
+| Grandeur | Valeur |
+|---|---|
+| Effet emploi, modèle principal | **+9 460 ETP** |
+| Effet emploi, selon les hypothèses (synthèse) | **+10 000 à +20 000 ETP** |
+| Coût employeur pour +100 € de salaire net, sous 1,6 Smic | **242 € → 215 €** |
+| Coût employeur pour +100 € de revenu disponible (ménage mono-actif au Smic, sans enfant) | **483 € → 430 €**, soit −10 % |
+| Masse salariale supplémentaire | **+2,7 à +5,5 Md€** |
+
+L'effet emploi se décompose : moins d'emplois au Smic, moins de salariés
+*retenus* au Smic, et davantage d'emplois au-dessus de 1,2 Smic. L'impact
+sectoriel est « équilibré », et **l'emploi industriel serait affecté
+positivement** alors même que les exonérations baissent sur les salaires élevés
+**[B-W p. 11]**.
+
+### 3.3 Les variantes — et celle que les auteurs n'ont pas retenue
+
+C'est le tableau le plus instructif du rapport, et celui qu'on ne voit jamais
+cité **[B-W p. 199-212]** :
+
+| Scénario | Effet emploi |
+|---|---|
+| **Central** | **+9 460 ETP** |
+| Central, variante moins de 26 ans | +10 230 ETP (+11 300 d'écart si l'emploi des jeunes est plus élastique) |
+| Suppression des bandeaux **sans** recyclage | **−61 870 ETP**, dont −12 750 dans l'industrie |
+| **Recyclage des bandeaux vers le bas de la distribution** | **+50 530 ETP**, dont +6 410 dans l'industrie |
+
+**Le scénario qui maximise l'emploi n'est pas celui que les auteurs
+recommandent.** Concentrer le budget sur le bas de la distribution fait cinq
+fois mieux en emploi que le scénario central — et c'est exactement ce que le
+scénario central refuse, parce que cela reconduirait l'écrasement des salaires
+qu'il s'agit de défaire. **L'arbitrage est explicite : de l'emploi contre de la
+dynamique salariale.** Qui cite le rapport pour dire « les allègements créent de
+l'emploi » a raison sur les chiffres et tort sur la conclusion ; les auteurs ont
+vu ce résultat et ne l'ont pas choisi.
+
+### 3.4 Les quatre recommandations numérotées
+
+Et voici ce qui surprend à la lecture : **aucune des quatre recommandations
+formelles ne porte sur le barème des allègements.** Le scénario central est une
+« piste de réforme », pas une recommandation numérotée. Les recommandations, au
+sens strict, sont toutes **structurelles** :
+
+> **Recommandation 1.** Se limiter à deux barèmes de réduction de cotisations
+> sociales : le barème général et un barème d'exonération renforcée.
+> **[B-W p. 242]**
+
+> **Recommandation 2.** L'assiette des cotisations sociales devrait être définie
+> comme l'assiette des revenus d'activité soumis à la CSG. Aucune dérogation
+> n'est plus possible, seuls les taux peuvent temporairement varier pour
+> faciliter la transition vers le nouveau régime (deux taux et une assiette
+> unique). **[B-W p. 243]**
+
+> **Recommandation 3.** La contribution au Fonds national d'aide au logement
+> (FNAL), qui dépend de la taille de l'entreprise, ou le versement mobilité (VM),
+> qui varie en fonction de la localisation des établissements, ne sont pas des
+> cotisations sociales et devraient être remplacés par d'autres prélèvements
+> fiscaux. **[B-W p. 243]**
+
+> **Recommandation 4.** Basculer progressivement sur cinq ans la moitié du
+> versement mobilité sur la taxe foncière sous plafond (par exemple un maximum
+> de 2 ou 3 points de taux de taxe communale de hausse par an). **[B-W p. 279]**
+
+Le versement mobilité représente **10,9 Md€ sur une assiette de 548 Md€**, au
+taux moyen de 1,99 %, le taux médian communal étant de 1,46 % et le maximum de
+2,95 % **[B-W p. 273]**. La proposition est de le réduire de moitié, soit 5 Md€,
+en cinq ans.
+
+**Trois propositions non numérotées** complètent l'ensemble **[B-W p. 12]** :
+
+1. **Rendre les cotisations lisibles** en faisant coïncider la distinction
+   employeur/salarié avec la distinction contributif/non contributif — les
+   cotisations salariales ne seraient plus que contributives. Cette refonte « ne
+   changerait ni les droits, ni le salaire net, ni le coût employeur, uniquement
+   le salaire brut », et ferait apparaître que ces cotisations sont « une partie
+   différée mais tangible de la rémunération ».
+2. **Revoir l'indexation du barème** sur un paramètre moins sensible au Smic —
+   le plafond de la sécurité sociale, par exemple — ou sur une décision
+   discrétionnaire éclairée par un collège d'experts **[B-W p. 11]**.
+3. **Amplifier l'évaluation** des dispositifs de réduction de cotisations.
+
+### 3.5 Ce que le rapport dit de la contrainte budgétaire
+
+Il ne l'ignore pas, et il pose une limite : « s'il est possible de diminuer de
+quelques milliards le montant des exonérations, cette hausse de prélèvements
+obligatoires sur les salaires doit rester limitée, et il vaut mieux chercher des
+recettes sur d'autres bases fiscales » **[B-W p. 11]**. L'objectif doit
+« impérativement rester centré sur une stratégie de montée en gamme des emplois
+d'une part, et de maintien du niveau d'emploi d'autre part ».
+
+### 3.6 Les trois contresens à éviter
+
+- **Ce n'est pas un plan d'économies.** Les scénarios sont construits *à budget
+  constant*, par choix de méthode assumé **[B-W p. 10]**. Le rapport dit
+  explicitement que réduire le volume des exonérations est une *contrainte
+  subie*, pas son objectif.
+- **Ce n'est pas une condamnation des allègements.** Le rapport valide leur effet
+  sur l'emploi, hier fortement et aujourd'hui encore. Il conteste **la pente**,
+  pas le principe.
+- **Ce n'est pas la réforme votée.** La loi de financement de la sécurité sociale
+  pour 2025 a fusionné les dispositifs en une réduction unique s'étendant
+  **jusqu'à 3 SMIC** **[D]** — un point de sortie plus haut que les 2,5 Smic du
+  scénario central. Antoine Bozio a publiquement estimé que la version retenue
+  pour 2025 détruirait des emplois **[R]**. Avant d'attribuer au rapport les
+  effets de la réforme, comparer le barème recommandé et le barème voté.
+
+### 3.7 Un mot sur le vocabulaire
+
+**« Désmicardisation » n'est pas un mot du rapport.** Il n'y figure pas une seule
+fois. Les auteurs écrivent « **montée en gamme des emplois** ». La nuance n'est
+pas cosmétique : « désmicardiser » suggère qu'on veut faire sortir les gens du
+Smic ; « montée en gamme » désigne une transformation de la structure des emplois
+et des secteurs, dont la dynamique salariale n'est qu'un des leviers.
 
 ## 4. Ce qui est solide, ce qui est contesté, ce qu'on ignore
 
@@ -209,6 +340,7 @@ diffèrent sur le seul paramètre qui commande le résultat.
 | Les allègements créent une trappe à bas salaires | **Contesté, et daté** — non en 2012, oui en 2024-2025 **[D]** |
 | La baisse des impôts de production a soutenu l'emploi | **Non détecté à court terme** **[D]** |
 | Le total des aides aux entreprises | **Indéterminé** — 18,5 à 211 Md€ selon le périmètre **[R]** |
+| Le coût des exonérations générales | **75 Md€ en 2023, 2,7 points de PIB** **[B-W p. 66]** |
 | Le coût complet des allègements dans les comptes nationaux | **Absent du dossier** — à construire |
 
 ---
@@ -218,10 +350,12 @@ diffèrent sur le seul paramètre qui commande le résultat.
 Le sujet est mûr — il croise déjà cinq chapitres — mais il lui manque sa base
 chiffrée propre. Dans l'ordre :
 
-1. **Les quatre rapports, en PDF, dans `docs/`** : Bozio-Wasmer (octobre 2024),
-   CNEPI sur le CIR (2021), comité de suivi du CICE (2020), commission d'enquête
-   du Sénat (juillet 2025). Sans eux, tout ce qui est marqué **[R]** reste
-   invérifiable, et le dossier n'accepte pas l'invérifiable.
+1. **Les trois rapports qui manquent encore, en PDF, dans `docs/`** : CNEPI sur
+   le CIR (2021), comité de suivi du CICE (2020), commission d'enquête du Sénat
+   (juillet 2025). Bozio-Wasmer y est depuis le 22 septembre 2026
+   (`rapport_vffff_241003.pdf`) et la section 3 a été refaite sur pièce ; les
+   trois autres restent en **[R]**, donc invérifiables, et le dossier n'accepte
+   pas l'invérifiable.
 2. **La série des allègements généraux**, en milliards et en % du PIB, année par
    année — l'annexe 5 du PLFSS (« évaluation des exonérations ») la publie.
    C'est elle qui permettrait la figure centrale : la masse des allègements
@@ -236,12 +370,40 @@ chiffrée propre. Dans l'ordre :
 
 ## Limites de cette étude
 
-- **Aucun rapport n'a pu être ouvert.** L'accès réseau aux sites institutionnels
-  est bloqué dans cet environnement ; les mentions **[R]** viennent de résumés
-  et de reprises, pas des documents. Elles sont plausibles et concordantes entre
-  sources indépendantes, ce qui n'est pas la même chose qu'être vérifiées.
+- **Un rapport sur quatre a été lu.** Bozio-Wasmer, déposé dans `docs/`, l'a été
+  intégralement, et la section 3 le cite page à page. Les trois autres n'ont pas
+  pu être ouverts : l'accès réseau aux sites institutionnels est bloqué dans cet
+  environnement, et les mentions **[R]** viennent de résumés et de reprises, pas
+  des documents. Elles sont plausibles et concordantes entre sources
+  indépendantes, ce qui n'est pas la même chose qu'être vérifiées — la section 6
+  montre précisément ce que la lecture d'un seul document a corrigé.
 - **Aucun chiffre n'a été inventé ni reconstitué de mémoire.** Ce qui n'a pas pu
   être corroboré ne figure pas ici, ou porte **[?]**.
 - **Les montants [D] sont ceux du dossier à sa date** et portent leurs propres
   millésimes dans les chapitres correspondants — *Emploi et chômage*,
   *Dépenses publiques et prélèvements*, *Industrie*, *Dette et déficit*.
+
+---
+
+## 6. Ce que la lecture du rapport a corrigé
+
+Cette étude a d'abord été écrite sans le rapport, à partir de résumés et de
+reprises de presse. Le lire a corrigé quatre choses. Elles sont consignées ici
+plutôt que silencieusement réécrites, parce que l'écart est instructif : il
+mesure ce que vaut une source de seconde main, même concordante.
+
+| Ce qui était écrit | Ce que dit le rapport |
+|---|---|
+| « de l'ordre de 75 Md€, les allègements généraux approchant 80 Md€ » | **75 Md€ en 2023, soit 2,7 points de PIB** **[B-W p. 66]**. Les « près de 80 Md€ » étaient un artefact de presse ; l'Urssaf comptait 73,6 Md€ en 2022. |
+| « environ 4 points au niveau du SMIC » | **4,05 points**, et la suppression des bandeaux maladie et famille au-delà de 1,6 Smic **[B-W p. 10]**. |
+| « effet emploi de l'ordre de +10 000 » | **+9 460 ETP** dans le modèle principal, **10 000 à 20 000** selon les hypothèses **[B-W p. 10]**. |
+| « désmicardiser » | **Mot absent du rapport.** Les auteurs écrivent « montée en gamme des emplois ». |
+
+Et surtout, une omission qui change la lecture : **les quatre recommandations
+numérotées du rapport ne portent pas sur le barème des allègements.** La presse a
+retenu le scénario central — qui n'est qu'une « piste de réforme » — et laissé de
+côté ce que les auteurs recommandent formellement : deux barèmes au lieu de la
+multitude actuelle, une assiette unique alignée sur celle de la CSG, la sortie du
+FNAL et du versement mobilité du champ des cotisations sociales, et le
+basculement de la moitié du versement mobilité sur la taxe foncière. Une étude
+écrite sur les résumés aurait manqué l'essentiel de ce que le rapport demande.
