@@ -445,6 +445,57 @@ que sur sa partie basse.** Une moyenne sur l'ensemble — les 49 000 € — ne 
 rien du coût marginal à chaque niveau de salaire, et c'est le coût marginal qui
 commande une décision de réforme.
 
+**197 000 € par emploi et par an : ce que ce chiffre dit, et ce qu'il ne dit
+pas.** L'ordre de grandeur frappe, et il doit frapper — mais mal lu, il fait
+dire au calcul l'inverse de ce qu'il établit.
+
+*Ce qu'il dit.* Le coût est **annuel** : 12,2 Md€ chaque année pour 61 870
+emplois. Or le coût complet annuel d'un de ces emplois est de l'ordre de
+**60 000 €** — ordre de grandeur que l'on déduit du rapport lui-même, qui estime
+à 19 Md€ les cotisations perdues sur 980 000 emplois en appliquant 47 % au
+salaire moyen par tête **[B-W p. 69]**, soit environ 19 400 € de cotisations et
+41 000 € de brut par emploi. **On dépense donc chaque année environ trois fois le
+coût d'un emploi pour en maintenir un.** Sur ce segment du barème, ce n'est pas
+une politique de l'emploi ; c'est autre chose, qui produit de l'emploi à la
+marge.
+
+*Ce qu'il ne dit pas.* **L'argent n'est pas brûlé.** Un allègement n'est pas une
+subvention versée puis consommée : c'est un prélèvement non levé, sur
+**l'ensemble** des salariés de la tranche — dont l'immense majorité aurait été
+employée de toute façon. Le numérateur est le coût total de la mesure, le
+dénominateur ne compte que les emplois **supplémentaires**. Par construction,
+**toute mesure générale affiche un coût par emploi marginal élevé.** Le ratio ne
+mesure donc pas un gaspillage : il mesure le fait que l'emploi n'est pas le
+principal canal de la dépense.
+
+*Où va l'argent, alors ?* Le dossier donne la réponse, et elle est le résultat le
+mieux établi du sujet **[D]** :
+
+| Type de baisse | Ce qui se transfère aux salaires | Ce qui reste |
+|---|---|---|
+| Cotisations **contributives** (retraite, chômage) | ≈ **103 %** en cinq à six ans | rien : c'est un salaire différé échangé contre du salaire immédiat |
+| Cotisations **non contributives au-dessus du Smic** (maladie, famille — les bandeaux) | ≈ **15 %** | **l'essentiel demeure dans les marges** ; effet emploi faible et cher |
+| Baisse **au voisinage du Smic** | **0 %**, par impossibilité juridique — le Smic est un brut | une vraie baisse du coût du travail, avec un effet emploi réel |
+
+Les 197 000 € par emploi des bandeaux se lisent donc ainsi : **environ 15 % de
+ces 12,2 Md€ finissent dans les salaires, l'essentiel dans les marges des
+entreprises, et l'emploi n'est qu'un sous-produit.** Soutenir les marges peut se
+défendre — compétitivité, investissement, prix — mais c'est un autre débat, qu'il
+faut nommer, et qui ne se juge pas au compteur d'emplois.
+
+*La bonne question n'est jamais « est-ce cher ? ».* C'est : **le même euro
+ferait-il mieux ailleurs ?** Et là, le rapport répond par un chiffre : recyclés
+vers le bas de la distribution, ces mêmes 12,2 Md€ ne détruisent plus 61 870
+emplois, ils en créent **50 530** **[B-W p. 208]**. L'écart entre les deux
+scénarios — plus de 110 000 emplois pour le même budget — est le véritable
+enseignement du calcul.
+
+> **Point à vérifier [?]** : les valeurs de 20 000-40 000 € et 180 000 € reprises
+> du dossier suivent la convention usuelle de ces évaluations — un coût
+> budgétaire **annuel** rapporté au nombre d'emplois créés — mais le chapitre ne
+> le précise pas. À confirmer avant de les mettre en regard des 197 000 €
+> calculés ici, qui sont annuels sans ambiguïté.
+
 **Ce qui ne s'évalue pas — et c'est précisément ce sur quoi porte la décision.**
 
 - « Les modèles disponibles, dans la littérature académique et au sein des
