@@ -3489,6 +3489,104 @@ export const tables = {
       },
     ],
   },
+  'societes-non-financieres-2024': {
+    vintage: '2024',
+    sources: ['eurostat-fipeco-les-prelevements-sur-les-socie'],
+    columns: [
+      {
+        key: 'societes-non-financieres-2024',
+        header: 'Sociétés non financières, 2024',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'md', header: 'Md€', type: 'number', headerNumeric: true },
+      {
+        key: 'de-leur-valeur-ajoutee',
+        header: '% de leur valeur ajoutée',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Prélèvements payés' },
+          { v: 382, d: 0 },
+          { v: 25.2, d: 1 },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          {
+            t: 'Aides reçues <em>(42 de subventions d\'exploitation, 31 d\'aides à l\'investissement)</em>',
+          },
+          { v: 73, d: 0 },
+          { v: 4.8, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Prélèvements nets des aides</b>' },
+          { v: 309, d: 0, strong: true },
+          { v: 20.4, d: 1, strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'prelevements-sur-les-entreprises-du-pib-2023': {
+    vintage: '2023',
+    sources: ['eurostat-fipeco-les-prelevements-sur-les-socie'],
+    columns: [
+      {
+        key: 'prelevements-sur-les-entreprises-du-pib-2023',
+        header: 'Prélèvements sur les entreprises, % du PIB, 2023',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'france', header: 'France', type: 'number', headerNumeric: true },
+      { key: 'zone-euro', header: 'Zone euro', type: 'number', headerNumeric: true },
+      { key: 'ecart', header: 'Écart', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Cotisations employeurs' },
+          { v: 9.9, d: 1 },
+          { v: 7.6, d: 1 },
+          { v: 2.3, d: 1, sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Impôts de production <em>(Allemagne : 0,7)</em>' },
+          { v: 3.1, d: 1 },
+          { v: 1.5, d: 1 },
+          { v: 1.6, d: 1, sign: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Impôt sur les bénéfices' },
+          { v: 2.9, d: 1 },
+          { v: 3.2, d: 1 },
+          { v: -0.3, d: 1, strong: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Total' },
+          { v: 15.9, d: 1 },
+          { v: 12.3, d: 1 },
+          { v: 3.6, d: 1, sign: true, strong: true },
+        ],
+        total: true,
+      },
+    ],
+  },
   'taxe-zucman-estimations-de-rendement': {
     vintage: '2025',
     sources: [
@@ -4745,6 +4843,7 @@ export const questions = [
     id: 's1-q26',
     title: 'Les prestations sociales, poste par poste : retraites, santé, chômage, RSA',
   },
+  { id: 's1-q28', title: 'Les entreprises paient-elles trop d\'impôts — et que leur rend-on ?' },
   {
     id: 's1-q27',
     title: 'Que rapporterait la « taxe Zucman », et qu’est-ce que ça couvre du déficit ?',
@@ -4775,6 +4874,7 @@ export const citedSources = [
   'eurostat-eurostat-gov-10a-taxag-secteurs-s13-s1',
   'eurostat-eurostat-hlth-sha11-hf-et-hlth-sha11-hc',
   'eurostat-eurostat-nama-10-pc-nama-10-lp-ulc-nlp',
+  'eurostat-fipeco-les-prelevements-sur-les-socie',
   'eurostat-insee-definition-des-cotisations-social',
   'eurostat-ipp-quels-impots-les-milliardaires-pa',
   'eurostat-maddison-project-database-via-our-world',

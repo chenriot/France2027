@@ -629,6 +629,13 @@ const registry = {
     theme: 'commerce-exterieur',
     accessed: '2026-08',
   },
+  'eurostat-fipeco-les-prelevements-sur-les-socie': {
+    producer: 'Eurostat',
+    kind: 'other',
+    text: 'FIPECO, « Les prélèvements sur les sociétés non financières et les aides qu\'elles ont reçues en 2024 » (comptabilité nationale, Insee) pour le bilan et le classement européen ; FIPECO / Eurostat, « Les prélèvements obligatoires en France et dans la zone euro en 2023 » pour la décomposition en points de PIB. Sénat, commission d\'enquête sur l\'utilisation des aides publiques aux grandes entreprises, 2025, pour le chiffre de 211 Md€.',
+    theme: 'depenses-publiques',
+    accessed: '2026-08',
+  },
   'eurostat-france-insee-comptes-de-patrimoine-ba': {
     producer: 'Eurostat',
     kind: 'other',
