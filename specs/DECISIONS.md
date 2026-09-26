@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **320** (migrés + 5 ajoutés, §D17) | `npm run check:data` |
+| Tableaux | **330** (migrés, dont 10 de la fiche `s1-q28` écrite dans le document, §D14, + 5 ajoutés, §D17) | `npm run check:data` |
 | Cellules chiffrées typées en nombres | 4 500 sur 7 003 (64 %) | extraction |
 | Figures | **64** — 37 prouvées identiques (dont 8 tracées depuis leurs valeurs, §D19) + 3 ajoutées (§D17) · 23 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **223 entrées** (205 migrées + 10 ajoutées, §D17 + 8 figures, §D19), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **60 770 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Sources | **231 entrées** (205 migrées + 8 de la fiche `s1-q28`, §D14 + 10 ajoutées, §D17 + 8 figures, §D19), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **61 967 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -556,6 +556,41 @@ dernière ligne lue écrasait les autres. Corollaire de la règle précédente :
 Indexer sur le tuple complet, et vérifier l'identité quand il en existe une —
 ici `PIB/habitant = PIB/heure × heures/habitant`, qui retombe juste à 0,1 %
 près sur les cinq pays une fois la clé corrigée.
+
+**Cinquième application : `s1-q28`**, « Les aides aux entreprises : 80 ou
+211 milliards ? », dans « Dépenses publiques, impôts et redistribution », entre
+la TVA (`s1-q20`) et « Qui paie réellement les prélèvements ? » (`s1-q21`). Dix
+tableaux, huit sources. L'identifiant `s1-q27` étant pris par un ajout des
+amendements (§D17), la fiche prend le suivant ; l'ordre d'affichage suit le
+document, pas le numéro.
+
+Elle est placée au thème 01 et non au thème 04 parce que la question qu'elle
+traite est une question de **prélèvements** : peut-on retrancher les aides des
+1 323,5 Md€ prélevés ? La réponse — non pour les exonérations et les taux
+réduits, déjà nets ; oui pour les crédits d'impôt restituables, comptés en
+dépense — n'a de sens qu'à côté du tableau des prélèvements par assiette. Les
+fiches du thème 04 sur l'incidence et le coût par emploi sont citées par leur
+titre, sans être reprises.
+
+La source principale est le rapport Bozio-Wasmer (octobre 2024), déposé dans
+`docs/` : montants des trois couches d'exonérations, taux patronal au SMIC
+depuis 1993, répartition par taille et par secteur (Urssaf), synthèse des
+évaluations du CICE, chiffrage d'une suppression totale. Deux règles en
+découlent.
+
+- **Une valeur dérivée se dit dans la source.** Le bandeau famille est obtenu
+  par différence dans le tableau 1.1, et le taux de la tranche de 250 salariés
+  et plus est recalculé depuis les montants, la ligne ayant été perdue à
+  l'extraction du PDF ; les deux le disent en `p.src`.
+- **Une case vide n'est pas un zéro.** Le tableau sectoriel ne reprend que les
+  valeurs citées en clair par le rapport ; un encadré `hole` le dit, et dit aussi
+  qu'aucune source consultée ne sépare grande distribution et commerce
+  indépendant.
+
+Les chiffrages du Sénat (211 Md€) et du Haut-commissariat à la stratégie et au
+plan (82 et 187 Md€) sont repris de leurs synthèses publiées, les documents
+eux-mêmes n'ayant pas pu être relus : un encadré `hole` le signale. C'est un
+chantier ouvert au sens de §D10.
 
 ---
 

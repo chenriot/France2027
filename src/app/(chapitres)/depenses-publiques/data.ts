@@ -2559,6 +2559,709 @@ export const tables = {
       },
     ],
   },
+  'estimation-des-aides-publiques-aux-entreprises': {
+    vintage: '2025',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'estimation-des-aides-publiques-aux-entreprises',
+        header: 'Estimation des aides publiques aux entreprises',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'montant-annuel', header: 'Montant annuel', type: 'number', headerNumeric: true },
+      { key: 'ce-qu-elle-compte', header: 'Ce qu\'elle compte', type: 'text', headerNumeric: false },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Sénat, commission d\'enquête</b> (données 2023)' },
+          { v: 211, d: 0, u: 'Md€', strong: true },
+          {
+            t: 'Subventions de l\'État, interventions de Bpifrance, dépenses fiscales y compris « reclassées », allègements de cotisations sociales. Hors régions, communes et fonds européens',
+          },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '— dont aides « au sens strict » selon la même commission' },
+          { v: 108, d: 0, u: 'Md€' },
+          { t: 'Le périmètre resserré retenu par la commission' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Haut-commissariat à la stratégie et au plan</b>, périmètre large' },
+          { v: 187, d: 0, u: 'Md€', strong: true },
+          {
+            t: 'Aides directes et soutiens généraux à l\'activité, allègements généraux de cotisations compris',
+          },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Haut-commissariat à la stratégie et au plan, périmètre étroit' },
+          { v: 82, d: 0, u: 'Md€' },
+          {
+            t: 'Aides directes et ciblées seulement. La différence avec le périmètre large tient d\'abord aux allègements généraux de cotisations, 68 Md€ à eux seuls',
+          },
+        ],
+      },
+    ],
+  },
+  'les-211-md-de-la-commission-d-enquete-du-senat-par-nature': {
+    vintage: '2025',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'les-211-md-de-la-commission-d-enquete-du-senat-par-nature',
+        header: 'Les 211 Md€ de la commission d\'enquête du Sénat, par nature',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'md', header: 'Md€', type: 'number', headerNumeric: true },
+      { key: 'part', header: 'Part', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          {
+            t: '<b>Dépenses fiscales</b>, y compris les dépenses fiscales « reclassées » : crédits d\'impôt, taux réduits, régimes dérogatoires',
+          },
+          { v: 88, d: 0, strong: true },
+          { v: 42, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: '<b>Allègements et exonérations de cotisations sociales</b>' },
+          { v: 75, d: 0, strong: true },
+          { v: 36, d: 0, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Interventions de Bpifrance : prêts, garanties, fonds propres, subventions' },
+          { v: 41, d: 0 },
+          { v: 19, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Subventions de l\'État' },
+          { v: 7, d: 0 },
+          { v: 3, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Total' },
+          { v: 211, d: 0 },
+          { v: 100, d: 0, u: '%' },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'exonerations-generales-de-cotisations-patronales-md': {
+    vintage: '2024',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'exonerations-generales-de-cotisations-patronales-md',
+        header: 'Exonérations générales de cotisations patronales, Md€',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: '2019', header: '2019', type: 'number', headerNumeric: true },
+      { key: '2022', header: '2022', type: 'number', headerNumeric: true },
+      { key: '2023', header: '2023', type: 'number', headerNumeric: true },
+      { key: '2024', header: '2024', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          {
+            t: '<b>Réduction générale sur les bas salaires</b> (dite « Fillon ») : maximale au SMIC, nulle à 1,6 SMIC',
+          },
+          { v: 27.9, d: 1 },
+          { v: 35.9, d: 1 },
+          { v: 40.2, d: 1 },
+          { v: 42.1, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          {
+            t: '<b>Bandeau maladie</b> : −6 points de cotisation maladie jusqu\'à 2,5 SMIC, héritier du CICE depuis 2019',
+          },
+          { v: 22.2, d: 1 },
+          { v: 23.6, d: 1 },
+          { v: 25.4, d: 1 },
+          { v: 26.6, d: 1, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          {
+            t: '<b>Bandeau famille</b> : −1,8 point de cotisation d\'allocations familiales jusqu\'à 3,5 SMIC, Pacte de responsabilité de 2015',
+          },
+          { v: 7.7, d: 1 },
+          { v: 8.8, d: 1 },
+          { v: 9.3, d: 1 },
+          { v: 9.7, d: 1 },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Total des exonérations générales' },
+          { v: 57.7, d: 1 },
+          { v: 68.3, d: 1 },
+          { v: 74.9, d: 1 },
+          { v: 78.4, d: 1 },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'taux-de-cotisation-patronale-au-niveau-du-smic': {
+    vintage: '2025',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'taux-de-cotisation-patronale-au-niveau-du-smic',
+        header: 'Taux de cotisation patronale au niveau du SMIC',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'taux', header: 'Taux', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '1993, avant les premiers allègements' },
+          { v: 45, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '1995, allègements Balladur puis ristourne Juppé' },
+          { v: 39, d: 0, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 1998, d: 0, g: false },
+          { v: 26.6, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '2005, allègements Aubry puis Fillon, accompagnant les 35 heures' },
+          { v: 22.7, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2013, d: 0, g: false },
+          { v: 16.7, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { t: '2019, bascule du CICE en baisse de cotisations' },
+          { v: 10.7, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 2024, d: 0, strong: true, g: false },
+          { v: 6.9, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'cotisations-exonerees-selon-la-taille-de-l-entreprise-2022': {
+    vintage: '2022',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'cotisations-exonerees-selon-la-taille-de-l-entreprise-2022',
+        header: 'Cotisations exonérées selon la taille de l\'entreprise, 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'cotisations-exonerees-m',
+        header: 'Cotisations exonérées, M€',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'part-des-exonerations',
+        header: 'Part des exonérations',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'part-de-la-masse-salariale',
+        header: 'Part de la masse salariale',
+        type: 'number',
+        headerNumeric: true,
+      },
+      {
+        key: 'taux-d-exoneration-apparent',
+        header: 'Taux d\'exonération apparent',
+        type: 'number',
+        headerNumeric: true,
+      },
+    ],
+    rows: [
+      {
+        cells: [
+          { v: 0, d: 0, u: 'à 9 salariés', strong: true },
+          { v: 16030, d: 0 },
+          { v: 22.1, d: 1, u: '%' },
+          { v: 14.9, d: 1, u: '%' },
+          { v: 16.2, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { v: 10, d: 0, u: 'à 49 salariés' },
+          { v: 18183, d: 0 },
+          { v: 25, d: 1, u: '%' },
+          { v: 20.4, d: 1, u: '%' },
+          { v: 13.4, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 50, d: 0, u: 'à 249 salariés' },
+          { v: 14435, d: 0 },
+          { v: 19.9, d: 1, u: '%' },
+          { v: 20, d: 1, u: '%' },
+          { v: 10.9, d: 1, u: '%' },
+        ],
+      },
+      {
+        cells: [
+          { v: 250, d: 0, u: 'salariés et plus', strong: true },
+          { v: 24049, d: 0, strong: true },
+          { v: 33.1, d: 1, u: '%', strong: true },
+          { v: 44.7, d: 1, u: '%' },
+          { v: 8.1, d: 1, u: '%' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Ensemble du secteur privé' },
+          { v: 72697, d: 0 },
+          { v: 100, d: 0, u: '%' },
+          { v: 100, d: 0, u: '%' },
+          { v: 10.9, d: 1, u: '%' },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'exonerations-par-secteur-2022': {
+    vintage: '2022',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'exonerations-par-secteur-2022',
+        header: 'Exonérations par secteur, 2022',
+        type: 'text',
+        headerNumeric: false,
+      },
+      {
+        key: 'taux-d-exoneration-apparent',
+        header: 'Taux d\'exonération apparent',
+        type: 'number',
+        headerNumeric: true,
+      },
+      { key: 'montant', header: 'Montant', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: '<b>Restauration</b>' },
+          { v: 20.9, d: 1, u: '%', strong: true },
+          null,
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Hébergement' },
+          { v: 18.2, d: 1, u: '%' },
+          null,
+        ],
+      },
+      {
+        cells: [
+          { t: 'Services administratifs et de soutien, dont intérim, nettoyage, sécurité' },
+          { v: 17, d: 1, u: '%' },
+          null,
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Commerce</b>' },
+          null,
+          { v: 13.2, d: 1, u: 'Md€', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Construction' },
+          null,
+          { v: 6.7, d: 1, u: 'Md€' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Transport et entreposage' },
+          null,
+          { v: 6, d: 1, u: 'Md€' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Industrie, activités juridiques et d\'ingénierie, informatique, R&D' },
+          { t: 'moins de 10 %' },
+          null,
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Ensemble du secteur privé' },
+          { v: 10.9, d: 1, u: '%' },
+          { v: 72.7, d: 1, u: 'Md€' },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'repartition-du-cice': {
+    vintage: '2025',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'repartition-du-cice',
+        header: 'Répartition du CICE',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'part-de-la-creance', header: 'Part de la créance', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Industries manufacturières et extractives, cible affichée du dispositif' },
+          { v: 19, d: 0, u: '%', approx: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Commerce' },
+          { v: 19, d: 0, u: '%', approx: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Entreprises réalisant plus de 60 % de leur chiffre d\'affaires à l\'export</b>' },
+          { v: 4.7, d: 1, u: '%', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'ce-que-les-evaluations-du-cice-ont-trouve': {
+    vintage: '2025',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'ce-que-les-evaluations-du-cice-ont-trouve',
+        header: 'Ce que les évaluations du CICE ont trouvé',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'methode', header: 'Méthode', type: 'text', headerNumeric: false },
+      { key: 'resultat', header: 'Résultat', type: 'text', headerNumeric: false },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'LIEPP (Carbonnier et al., 2017 et 2022)' },
+          { t: 'Comparaison d\'entreprises plus ou moins exposées' },
+          {
+            t: 'Effet sur l\'emploi <b>non significatif</b> ; hausse des salaires des plus qualifiés ; au moins 50 % du CICE transmis aux salaires',
+          },
+        ],
+      },
+      {
+        cells: [
+          { t: 'TEPP (Gilles, L\'Horty, Mihoubi et Yang, 2017 et 2020)' },
+          { t: 'Même approche, intensité du traitement' },
+          {
+            t: '≈ 38 000 emplois créés ou sauvegardés en 2013, ≈ 118 000 en 2014, <b>moins de 100 000</b> sur 2014-2016, concentrés dans le quart des entreprises les plus bénéficiaires',
+          },
+        ],
+      },
+      {
+        cells: [
+          { t: 'OFCE (Ducoudré et Yol, 2018)' },
+          { t: 'Estimations précédentes intégrées dans un modèle macroéconomique, financement compris' },
+          { t: '111 000 à 281 000 emplois sur 2013-2015 ; <b>effet quasi nul sur le PIB</b>' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Malgouyres et Mayer (2018), Malgouyres (2019)</b>' },
+          { t: 'Effet de la baisse du coût du travail sur les exportations des entreprises' },
+          { t: '<b>Aucun effet significatif sur les exportations</b>, jusqu\'en 2017' },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Comité de suivi du CICE (France Stratégie, 2018 et 2020)' },
+          { t: 'Synthèse' },
+          { t: 'Ordre de grandeur retenu : <b>100 000 emplois</b> créés ou sauvegardés' },
+        ],
+        total: true,
+      },
+    ],
+  },
+  'suppression-totale-des-exonerations-generales-ce-que-chiff': {
+    vintage: '2025',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'suppression-totale-des-exonerations-generales-ce-que-chiff',
+        header: 'Suppression totale des exonérations générales : ce que chiffre le rapport',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'valeur', header: 'Valeur', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Cotisations supplémentaires si l\'emploi ne bougeait pas' },
+          { v: 67, d: 0, u: 'Md€' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Emplois détruits</b>, en équivalent temps plein' },
+          { v: 980000, d: 0, approx: true, strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Cotisations perdues sur ces emplois' },
+          { v: 19, d: 0, u: 'Md€', approx: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Recette nette, avant dépenses de chômage et pertes de CSG, TVA et impôt sur le revenu' },
+          { v: 48, d: 0, u: 'Md€', approx: true },
+        ],
+        total: true,
+      },
+      {
+        cells: [
+          { t: 'Modèle Mésange de la DG Trésor : emplois détruits à long terme' },
+          { v: 1, d: 0, u: 'million', approx: true },
+        ],
+        separator: true,
+      },
+      {
+        cells: [
+          { t: 'Modèle Mésange : effet sur le solde primaire public, à un an' },
+          { v: 1.7, d: 1, u: 'point de PIB', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Modèle Mésange : effet sur le solde primaire public, à long terme</b>' },
+          { v: -0.1, d: 1, u: 'point de PIB', strong: true },
+        ],
+        emphasis: true,
+      },
+    ],
+  },
+  'scenario-central-du-rapport-bozio-wasmer-a-budget-constant': {
+    vintage: '2025',
+    sources: [
+      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
+      'senat-senat-rapport-d-information-n-789-201',
+      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
+    ],
+    columns: [
+      {
+        key: 'scenario-central-du-rapport-bozio-wasmer-a-budget-constant',
+        header: 'Scénario central du rapport Bozio-Wasmer, à budget constant',
+        type: 'text',
+        headerNumeric: false,
+      },
+      { key: 'valeur', header: 'Valeur', type: 'number', headerNumeric: true },
+    ],
+    rows: [
+      {
+        cells: [
+          { t: 'Exonération au niveau du SMIC' },
+          { v: -4.05, d: 2, u: 'points' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Bandeaux maladie et famille au-delà de 1,6 SMIC' },
+          { t: 'supprimés' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Point de sortie des allègements' },
+          { v: 2.5, d: 1, u: 'SMIC', approx: true },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Baisse maximale des cotisations patronales</b>, à 1,6 SMIC, soit le salaire médian' },
+          { v: -5.7, d: 1, u: 'points', strong: true },
+        ],
+        emphasis: true,
+      },
+      {
+        cells: [
+          { t: 'Effet sur l\'emploi' },
+          { v: 10000, d: 0, u: 'à +20 000 ETP', sign: true },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Coût employeur pour 100 € de salaire net en plus, sous 1,6 SMIC' },
+          { v: 242, d: 0, u: '€ → 215 €' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Coût employeur pour 100 € de revenu disponible en plus, célibataire au SMIC' },
+          { v: 483, d: 0, u: '€ → 430 €' },
+        ],
+      },
+      {
+        cells: [
+          { t: 'Gain de masse salariale attendu' },
+          { v: 2.7, d: 1, u: 'à 5,5 Md€' },
+        ],
+        total: true,
+      },
+    ],
+  },
   'taux-global-de-prelevement-tous-prelevements-confondus': {
     vintage: '2025',
     sources: [
@@ -4733,6 +5436,10 @@ export const questions = [
     id: 's1-q20',
     title: 'La consommation : quels taux de TVA, et quel taux réellement supporté ?',
   },
+  {
+    id: 's1-q28',
+    title: 'Les aides aux entreprises : 80 ou 211 milliards ? Ce que recouvrent les chiffres, qui en bénéficie, ce qu\'on en sait',
+  },
   { id: 's1-q21', title: 'Qui paie réellement les prélèvements ?' },
   { id: 's1-q22', title: 'Combien chaque décile paie-t-il, en taux et en milliards ?' },
   { id: 's1-q23', title: 'La TVA est-elle régressive ?' },
@@ -4760,6 +5467,9 @@ export const citedSources = [
   'b-boutchenik-b-boutchenik-les-effets-redistributifs',
   'banque-mondiale-banque-mondiale-ny-gdp-pcap-pp-kd-doll',
   'bercy-pre-rapport-juin-2025-impot-plancher',
+  'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
+  'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
+  'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
   'code-de-commerce-code-de-commerce-art-l-241-3-et-l-24',
   'collectif-trop-c-est-trop-taxe-zucman', 'dgfip-dgfip-statistiques-n-41-novembre-2025',
   'drees-drees-comptes-de-la-protection-sociale',
@@ -4781,7 +5491,12 @@ export const citedSources = [
   'eurostat-ocde-panorama-des-pensions-2025-via-l',
   'eurostat-ocde-taxing-wages-2026-donnees-2025',
   'eurostat-structure-des-prelevements-france-allemagne',
+  'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
   'insee-insee-analyses-n-118-et-119-revenus-de',
-  'insee-insee-france-portrait-social-2025-fic-2', 'parlement-taxe-zucman-votes-2025-2026',
-  'tribune-sept-economistes-le-monde-taxe-zucman', 'zucman-impot-plancher-ultra-riches',
+  'insee-insee-france-portrait-social-2025-fic-2',
+  'ocde-bozio-a-et-wasmer-e-rapport-cite-cha', 'parlement-taxe-zucman-votes-2025-2026',
+  'senat-senat-commission-d-enquete-sur-l-utilis',
+  'senat-senat-rapport-d-information-n-789-201',
+  'tribune-sept-economistes-le-monde-taxe-zucman',
+  'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n', 'zucman-impot-plancher-ultra-riches',
 ] satisfies readonly SourceId[]
