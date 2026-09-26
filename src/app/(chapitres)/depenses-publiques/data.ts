@@ -2562,7 +2562,8 @@ export const tables = {
   'estimation-des-aides-publiques-aux-entreprises': {
     vintage: '2025',
     sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+      'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
       'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
       'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
       'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
@@ -2578,117 +2579,85 @@ export const tables = {
         type: 'text',
         headerNumeric: false,
       },
-      { key: 'montant-annuel', header: 'Montant annuel', type: 'number', headerNumeric: true },
+      { key: 'annee', header: 'Année', type: 'number', headerNumeric: true },
+      { key: 'montant', header: 'Montant', type: 'number', headerNumeric: true },
       { key: 'ce-qu-elle-compte', header: 'Ce qu\'elle compte', type: 'text', headerNumeric: false },
     ],
     rows: [
       {
         cells: [
-          { t: '<b>Sénat, commission d\'enquête</b> (données 2023)' },
+          { t: 'France Stratégie, périmètre le plus large' },
+          { v: 2019, d: 0, g: false },
+          { v: 223, d: 0, u: 'Md€' },
+          { t: 'Le plus large des quatre périmètres publiés en 2020, jamais actualisé depuis' },
+        ],
+      },
+      {
+        cells: [
+          { t: '<b>Sénat, commission d\'enquête, « au sens large »</b>' },
+          { v: 2023, d: 0, g: false },
           { v: 211, d: 0, u: 'Md€', strong: true },
           {
-            t: 'Subventions de l\'État, interventions de Bpifrance, dépenses fiscales y compris « reclassées », allègements de cotisations sociales. Hors régions, communes et fonds européens',
+            t: 'Subventions de l\'État, interventions de Bpifrance y compris prêts et garanties, dépenses fiscales y compris « déclassées », allègements de cotisations sociales. Hors compensations de service public',
           },
         ],
         emphasis: true,
       },
       {
         cells: [
-          { t: '— dont aides « au sens strict » selon la même commission' },
-          { v: 108, d: 0, u: 'Md€' },
-          { t: 'Le périmètre resserré retenu par la commission' },
+          { t: 'Clersé, université de Lille' },
+          { v: 2019, d: 0, g: false },
+          { v: 205, d: 0, u: 'Md€' },
+          { t: 'Périmètre large, construit par les chercheurs' },
         ],
       },
       {
         cells: [
-          { t: '<b>Haut-commissariat à la stratégie et au plan</b>, périmètre large' },
-          { v: 187, d: 0, u: 'Md€', strong: true },
-          {
-            t: 'Aides directes et soutiens généraux à l\'activité, allègements généraux de cotisations compris',
-          },
+          { t: 'Haut-commissariat à la stratégie et au plan, allègements généraux compris' },
+          { v: 2023, d: 0, g: false },
+          { v: 180, d: 0, u: 'Md€', approx: true },
+          { t: 'Le périmètre retenu ci-dessous, plus les allègements généraux de cotisations' },
         ],
-        emphasis: true,
       },
       {
         cells: [
-          { t: 'Haut-commissariat à la stratégie et au plan, périmètre étroit' },
-          { v: 82, d: 0, u: 'Md€' },
+          { t: 'Ministre de l\'Économie, audition du 15 mai 2025' },
+          null,
+          { v: 150, d: 0, u: 'Md€', approx: true },
           {
-            t: 'Aides directes et ciblées seulement. La différence avec le périmètre large tient d\'abord aux allègements généraux de cotisations, 68 Md€ à eux seuls',
+            t: 'Dépenses fiscales 40 Md€, dépenses budgétaires 30 Md€, <b>allègements de cotisations 80 Md€</b>',
           },
         ],
       },
-    ],
-  },
-  'les-211-md-de-la-commission-d-enquete-du-senat-par-nature': {
-    vintage: '2025',
-    sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
-      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
-      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
-      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
-      'senat-senat-rapport-d-information-n-789-201',
-      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
-      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
-      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
-    ],
-    columns: [
-      {
-        key: 'les-211-md-de-la-commission-d-enquete-du-senat-par-nature',
-        header: 'Les 211 Md€ de la commission d\'enquête du Sénat, par nature',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: 'md', header: 'Md€', type: 'number', headerNumeric: true },
-      { key: 'part', header: 'Part', type: 'number', headerNumeric: true },
-    ],
-    rows: [
       {
         cells: [
           {
-            t: '<b>Dépenses fiscales</b>, y compris les dépenses fiscales « reclassées » : crédits d\'impôt, taux réduits, régimes dérogatoires',
+            t: '<b>Haut-commissariat à la stratégie et au plan</b>, périmètre jugé « le plus pertinent »',
           },
-          { v: 88, d: 0, strong: true },
-          { v: 42, d: 0, u: '%' },
+          { v: 2023, d: 0, g: false },
+          { v: 112, d: 0, u: 'Md€', strong: true },
+          { t: 'Hors allègements généraux de cotisations sociales' },
         ],
         emphasis: true,
       },
       {
         cells: [
-          { t: '<b>Allègements et exonérations de cotisations sociales</b>' },
-          { v: 75, d: 0, strong: true },
-          { v: 36, d: 0, u: '%' },
+          { t: '<b>Sénat, commission d\'enquête, « au sens strict »</b>' },
+          { v: 2023, d: 0, g: false },
+          { v: 108, d: 0, u: 'Md€', strong: true },
+          {
+            t: 'Le périmètre large moins les interventions de Bpifrance, les dépenses fiscales « déclassées » et les dépenses fiscales de TVA',
+          },
         ],
         emphasis: true,
-      },
-      {
-        cells: [
-          { t: 'Interventions de Bpifrance : prêts, garanties, fonds propres, subventions' },
-          { v: 41, d: 0 },
-          { v: 19, d: 0, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Subventions de l\'État' },
-          { v: 7, d: 0 },
-          { v: 3, d: 0, u: '%' },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Total' },
-          { v: 211, d: 0 },
-          { v: 100, d: 0, u: '%' },
-        ],
-        total: true,
       },
     ],
   },
   'exonerations-generales-de-cotisations-patronales-md': {
     vintage: '2024',
     sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+      'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
       'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
       'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
       'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
@@ -2760,7 +2729,8 @@ export const tables = {
   'taux-de-cotisation-patronale-au-niveau-du-smic': {
     vintage: '2025',
     sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+      'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
       'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
       'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
       'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
@@ -2827,7 +2797,8 @@ export const tables = {
   'cotisations-exonerees-selon-la-taille-de-l-entreprise-2022': {
     vintage: '2022',
     sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+      'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
       'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
       'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
       'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
@@ -2922,7 +2893,8 @@ export const tables = {
   'exonerations-par-secteur-2022': {
     vintage: '2022',
     sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+      'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
       'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
       'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
       'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
@@ -3009,53 +2981,11 @@ export const tables = {
       },
     ],
   },
-  'repartition-du-cice': {
-    vintage: '2025',
-    sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
-      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
-      'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
-      'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
-      'senat-senat-rapport-d-information-n-789-201',
-      'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
-      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-cha',
-      'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-rapport-cite-syn',
-    ],
-    columns: [
-      {
-        key: 'repartition-du-cice',
-        header: 'Répartition du CICE',
-        type: 'text',
-        headerNumeric: false,
-      },
-      { key: 'part-de-la-creance', header: 'Part de la créance', type: 'number', headerNumeric: true },
-    ],
-    rows: [
-      {
-        cells: [
-          { t: 'Industries manufacturières et extractives, cible affichée du dispositif' },
-          { v: 19, d: 0, u: '%', approx: true },
-        ],
-      },
-      {
-        cells: [
-          { t: 'Commerce' },
-          { v: 19, d: 0, u: '%', approx: true },
-        ],
-      },
-      {
-        cells: [
-          { t: '<b>Entreprises réalisant plus de 60 % de leur chiffre d\'affaires à l\'export</b>' },
-          { v: 4.7, d: 1, u: '%', strong: true },
-        ],
-        emphasis: true,
-      },
-    ],
-  },
   'ce-que-les-evaluations-du-cice-ont-trouve': {
     vintage: '2025',
     sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+      'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
       'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
       'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
       'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
@@ -3121,7 +3051,8 @@ export const tables = {
   'suppression-totale-des-exonerations-generales-ce-que-chiff': {
     vintage: '2025',
     sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+      'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
       'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
       'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
       'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
@@ -3191,7 +3122,8 @@ export const tables = {
   'scenario-central-du-rapport-bozio-wasmer-a-budget-constant': {
     vintage: '2025',
     sources: [
-      'senat-senat-commission-d-enquete-sur-l-utilis',
+      'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+      'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
       'bozio-a-et-wasmer-e-bozio-a-et-wasmer-e-les-politiques-d',
       'ocde-bozio-a-et-wasmer-e-rapport-cite-cha',
       'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n',
@@ -5492,10 +5424,11 @@ export const citedSources = [
   'eurostat-ocde-taxing-wages-2026-donnees-2025',
   'eurostat-structure-des-prelevements-france-allemagne',
   'france-strategie-bozio-a-et-wasmer-e-rapport-cite-cha',
+  'france-strategie-senat-commission-d-enquete-sur-l-utilis',
+  'haut-commissariat-a-la-strategie-et-au-p-haut-commissariat',
   'insee-insee-analyses-n-118-et-119-revenus-de',
   'insee-insee-france-portrait-social-2025-fic-2',
   'ocde-bozio-a-et-wasmer-e-rapport-cite-cha', 'parlement-taxe-zucman-votes-2025-2026',
-  'senat-senat-commission-d-enquete-sur-l-utilis',
   'senat-senat-rapport-d-information-n-789-201',
   'tribune-sept-economistes-le-monde-taxe-zucman',
   'urssaf-urssaf-caisse-nationale-stat-ur-bilan-n', 'zucman-impot-plancher-ultra-riches',

@@ -77,7 +77,7 @@ export const chapters: readonly ChapterEntry[] = [
     legacyAnchor: 's1',
     kind: 'theme',
     family: 'argent',
-    counts: { questions: 28, tables: 56, figures: 18 },
+    counts: { questions: 28, tables: 54, figures: 18 },
   },
   {
     slug: 'dette-deficit',

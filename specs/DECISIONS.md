@@ -16,11 +16,11 @@ passent par les amendements (§D17).
 | Mesure | Valeur | Vérifiée par |
 |---|---|---|
 | Chapitres | 21 répertoires, `page.tsx` + `content.tsx` + `data.ts` | structure du dépôt |
-| Tableaux | **330** (migrés, dont 10 de la fiche `s1-q28` écrite dans le document, §D14, + 5 ajoutés, §D17) | `npm run check:data` |
+| Tableaux | **328** (migrés, dont 8 de la fiche `s1-q28` écrite dans le document, §D14, + 5 ajoutés, §D17) | `npm run check:data` |
 | Cellules chiffrées typées en nombres | 4 500 sur 7 003 (64 %) | extraction |
 | Figures | **64** — 37 prouvées identiques (dont 8 tracées depuis leurs valeurs, §D19) + 3 ajoutées (§D17) · 23 valeurs lues, tracé d’origine conservé · 4 non converties | `npm run extract` |
-| Sources | **231 entrées** (205 migrées + 8 de la fiche `s1-q28`, §D14 + 10 ajoutées, §D17 + 8 figures, §D19), toutes citées, **0 orpheline** | `npm run check:data` |
-| **Rendu de `/tout`** | **61 967 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
+| Sources | **232 entrées** (205 migrées + 9 de la fiche `s1-q28`, §D14 + 10 ajoutées, §D17 + 8 figures, §D19), toutes citées, **0 orpheline** | `npm run check:data` |
+| **Rendu de `/tout`** | **61 951 éléments, 29 corrections déclarées, aucun écart non déclaré** | `npm run check:render` |
 | JS par page | 170 Ko compressés — objectif 120 Ko non atteint (§D11) | `npm run check:bundle` |
 | Routes prérendues | 25 sur 25 | `next build` |
 
@@ -559,8 +559,8 @@ près sur les cinq pays une fois la clé corrigée.
 
 **Cinquième application : `s1-q28`**, « Les aides aux entreprises : 80 ou
 211 milliards ? », dans « Dépenses publiques, impôts et redistribution », entre
-la TVA (`s1-q20`) et « Qui paie réellement les prélèvements ? » (`s1-q21`). Dix
-tableaux, huit sources. L'identifiant `s1-q27` étant pris par un ajout des
+la TVA (`s1-q20`) et « Qui paie réellement les prélèvements ? » (`s1-q21`). Huit
+tableaux, neuf sources. L'identifiant `s1-q27` étant pris par un ajout des
 amendements (§D17), la fiche prend le suivant ; l'ordre d'affichage suit le
 document, pas le numéro.
 
@@ -587,10 +587,24 @@ découlent.
   qu'aucune source consultée ne sépare grande distribution et commerce
   indépendant.
 
-Les chiffrages du Sénat (211 Md€) et du Haut-commissariat à la stratégie et au
-plan (82 et 187 Md€) sont repris de leurs synthèses publiées, les documents
-eux-mêmes n'ayant pas pu être relus : un encadré `hole` le signale. C'est un
-chantier ouvert au sens de §D10.
+**Un chiffre de presse était faux, et seule la source primaire l'a montré.**
+La première version de la fiche reprenait, faute d'accès aux documents, deux
+chiffrages relayés par la presse : 82 et 187 Md€ pour le Haut-commissariat à la
+stratégie et au plan, et une ventilation des 211 Md€ du Sénat en quatre postes
+(7, 41, 88 et 75 Md€). Une fois les documents déposés dans `docs/`, le premier
+s'est révélé faux — l'éditorial de la note n° 157 donne **112 Md€ hors
+allègements généraux et environ 180 Md€ avec**, pour 2023 — et le second
+invérifiable : le rapport du Sénat ne publie sa ventilation que sous forme de
+graphique. La fiche porte désormais les six chiffrages lus dans le texte des
+sources (France Stratégie et Clersé pour 2019 compris, et les 150 Md€ du
+ministre, dont 80 d'allègements), et un encadré `hole` pour la ventilation. De
+même, les parts du CICE par secteur (19 %, 19 %, 4,7 %) ne figurent que dans des
+reprises du rapport sénatorial de 2016, dont seul le plan a pu être relu : elles
+sont sorties du tableau et signalées en `hole`.
+
+Règle : **un chiffre repris d'un article, même concordant avec plusieurs
+autres, n'entre pas dans un tableau.** Deux sites relayaient les 82 et 187 Md€ ;
+ils se citaient l'un l'autre.
 
 ---
 
